@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+**************************************************************************
+
+Lycoming 0-320-A2B Piston Engine
+
+Copyright (c) 2015 Richard Senior
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+**************************************************************************
+-->
+
+<!--
+  File:     Lycoming 0-320-A2B.xml
+  Author:   Aero-Matic v 0.82
+
+  Inputs:
+    name:           Lycoming 0-320-A2B
+    type:           piston
+    power:          150 hp
+    augmented?      no
+    injected?       no
+
+  Generated with Aeromatic, with further details added from:
+  www.pilotfriend.com/aero_engines/engine_specs/Lycoming%200%20320.htm
+-->
+
+<piston_engine name="Lycoming 0-320-A2B">
+  <air-intake-impedance-factor>0.1</air-intake-impedance-factor>
+  <bore unit="IN">5.125</bore>
+  <bsfc>0.45</bsfc>
+  <compression-ratio>7.0</compression-ratio>
+  <cycles>4.0</cycles>
+  <cylinders>4.0</cylinders>
+  <cylinder-head-mass unit="LBS">272</cylinder-head-mass>
+  <displacement unit="IN3">319.8</displacement>
+  <idlerpm>400.0</idlerpm>
+  <maxhp>150.00</maxhp>
+  <maxmp unit="INHG">28.5</maxmp>
+  <maxrpm>2700.0</maxrpm>
+  <minmp unit="INHG">12.0</minmp>
+  <ram-air-factor>0.25</ram-air-factor>
+  <sparkfaildrop>0.1</sparkfaildrop>
+  <stroke unit="IN">3.875</stroke>
+  <starter-rpm>500</starter-rpm>
+  <starter-torque>75</starter-torque>
+  <volumetric-efficiency>0.82</volumetric-efficiency>
+ </piston_engine>
+

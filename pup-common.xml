@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+**************************************************************************
+
+Beagle Pup Common Initialization
+
+Copyright (c) 2015 Richard Senior
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+**************************************************************************
+-->
+
+<PropertyList>
+
+  <autopilot>
+    <locks>
+      <altitude type="string"></altitude>
+      <heading type="string"></heading>
+    </locks>
+    <settings>
+      <bank-auto type="double">20.0</bank-auto>
+      <bank-select type="double">0</bank-select>
+      <heading-bug-deg type="int">240</heading-bug-deg>
+      <pitch-select type="double">7.0</pitch-select>
+    </settings>
+  </autopilot>
+
+  <consumables>
+    <fuel>
+      <tank n="0">
+        <name>Manifold</name>
+      </tank>
+      <tank n="1">
+        <name>Left Wing</name>
+      </tank>
+      <tank n="2">
+        <name>Right Wing</name>
+      </tank>
+    </fuel>
+  </consumables>
+
+  <controls>
+    <anti-ice>
+      <engine>
+        <carb-heat type="bool">false</carb-heat>
+      </engine>
+    </anti-ice>
+    <electric>
+      <battery-switch type="bool">false</battery-switch>
+      <engine>
+        <fuel-pump type="bool">false</fuel-pump>
+        <starter-master type="bool">false</starter-master>
+        <generator type="bool">false</generator>
+      </engine>
+    </electric>
+    <engines>
+      <engine n="0">
+        <magnetos type="int">0</magnetos>
+        <mixture type="double">0.0</mixture>
+      </engine>
+    </engines>
+    <gear>
+      <brake-parking type="double">1.0</brake-parking>
+    </gear>
+    <lighting>
+      <beacon type="bool">false</beacon>
+      <nav-lights type="bool">false</nav-lights>
+      <panel-norm>0.3</panel-norm>
+      <landing-lights type="bool">false</landing-lights>
+      <taxi-light type="bool">false</taxi-light>
+    </lighting>
+  </controls>
+
+  <input>
+    <keyboard include="Interface/keyboard.xml"/>
+  </input>
+
+  <instrumentation>
+    <dme>
+      <mode-btn type="int">0</mode-btn>
+      <power-btn type="bool">1</power-btn>
+    </dme>
+    <transponder>
+      <inputs>
+        <knob-mode type="int">1</knob-mode>
+      </inputs>
+    </transponder>
+  </instrumentation>
+
+  <nasal>
+    <pup>
+      <file>Nasal/autopilot.nas</file>
+      <file>Nasal/controls.nas</file>
+      <file>Nasal/dialog.nas</file>
+      <file>Nasal/electrical.nas</file>
+      <file>Nasal/liveries.nas</file>
+      <file>Nasal/fuel.nas</file>
+      <file>Nasal/icing.nas</file>
+    </pup>
+    <instruments>
+      <file>Models/Instruments/ADF/KR87.nas</file>
+      <file>Models/Instruments/DME/KN62A.nas</file>
+      <file>Models/Instruments/Navomatic/navomatic.nas</file>
+      <file>Models/Instruments/Transponder/KT76A.nas</file>
+      <script><![CDATA[
+        KN62A.new();
+        KT76A.new();
+        ]]></script>
+    </instruments>
+    <generic>
+      <file>Aircraft/Generic/autochecklist.nas</file>
+      <file>Aircraft/Generic/limits.nas</file>
+    </generic>
+  </nasal>
+
+  <Navomatic400A>
+    <switches>
+      <ap-on type="bool">false</ap-on>
+      <alt type="bool">false</alt>
+      <nav type="bool">false</nav>
+    </switches>
+    <push-pull-dial>
+      <pulled-out type="bool">true</pulled-out>
+    </push-pull-dial>
+    <bank-limit type="double">25.0</bank-limit>
+    <powered type="bool">false</powered>
+  </Navomatic400A>
+
+  <sim include="Interface/views.xml">
+
+    <checklists include="Checklists/checklists.xml"/>
+    <help include="Interface/help.xml"/>
+    <menubar include="Interface/menubar.xml"/>
+
+    <aircraft-data>
+      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[0]</path>
+      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[1]</path>
+      <path>consumables/fuel/tank[1]/level-lbs</path>
+      <path>consumables/fuel/tank[2]/level-lbs</path>
+    </aircraft-data>
+
+    <flaps>
+      <setting>0.00</setting>
+      <setting>0.38</setting>
+      <setting>1.00</setting>
+    </flaps>
+
+    <flight-recorder>
+      <replay-config>0</replay-config>
+      <config include="Aircraft/Generic/flightrecorder/generic-piston-propeller-1.xml">
+        <name>Beagle Pup Flight Recorder</name>
+      </config>
+    </flight-recorder>
+
+    <systems include="Systems/electrical.xml">
+      <autopilot>
+        <path>Systems/autopilot.xml</path>
+      </autopilot>
+    </systems>
+
+    <tags>
+      <tag>ga</tag>
+      <tag>trainer</tag>
+      <tag>1960s</tag>
+      <tag>ifr</tag>
+      <tag>fixed-gear</tag>
+      <tag>piston</tag>
+    </tags>
+
+  </sim>
+
+  <limits>
+    <max-flap-extension-speed>
+      <flaps type="double">0.38</flaps>
+      <speed type="double">100</speed>
+    </max-flap-extension-speed>
+    <vne type="double">150</vne>
+  </limits>
+
+  <payload>
+    <weight n="0">
+      <name type="string">Pilot</name>
+      <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]"/>
+      <min-lb type="double">0</min-lb>
+      <max-lb type="double">280</max-lb>
+    </weight>
+    <weight n="1">
+      <name type="string">Co-Pilot</name>
+      <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]"/>
+      <min-lb type="double">0</min-lb>
+      <max-lb type="double">280</max-lb>
+    </weight>
+  </payload>
+
+</PropertyList>

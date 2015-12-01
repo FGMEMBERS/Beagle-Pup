@@ -1,0 +1,364 @@
+<?xml version="1.0"?>
+
+<!--
+Altimeter, based on an Arc EA-401A model
+Author: Pavel Cueto
+License: GPL
+-->
+
+<PropertyList>
+
+  <path>EA-401A.ac</path>
+
+  <animation>
+    <type>material</type>
+    <object-name>Meter</object-name>
+    <object-name>Needle</object-name>
+    <object-name>Counter_100</object-name>
+    <object-name>Counter_1000</object-name>
+    <object-name>Counter_10000</object-name>
+    <object-name>inHg_10-00</object-name>
+    <object-name>inHg_01-00</object-name>
+    <object-name>inHg_00-10</object-name>
+    <object-name>inHg_00-01</object-name>
+    <condition>
+      <property>systems/electrical/outputs/panel-lights</property>
+    </condition>
+    <emission>
+      <red>0.7</red>
+      <green>0.7</green>
+      <blue>0.7</blue>
+      <factor-prop>controls/lighting/panel-norm</factor-prop>  <!-- <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop> -->
+    </emission>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>Flag_01</object-name>
+    <object-name>Flag_02</object-name>
+    <condition>
+      <property>/instrumentation/altimeter/servicable</property>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Needle</object-name>
+    <property>/instrumentation/altimeter/indicated-altitude-ft</property>
+    <factor>0.36</factor>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Counter_100</object-name>
+    <property>/instrumentation/altimeter/indicated-altitude-ft</property>
+    <factor>0.36</factor>
+    <axis>
+      <x>0</x>
+      <y>-1</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m>-0.017</x-m>
+      <y-m> 0</y-m>
+      <z-m> 0.0055</z-m>
+    </center>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Counter_1000</object-name>
+    <property>/instrumentation/altimeter/indicated-altitude-ft</property>
+    <axis>
+      <x>0</x>
+      <y>-1</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m>-0.017</x-m>
+      <y-m> 0</y-m>
+      <z-m> 0.0055</z-m>
+    </center>
+    <interpolation>
+      <entry><ind>-9999</ind>	<dep> -36</dep></entry>
+      <entry><ind> -100</ind>	<dep> -36</dep></entry>
+      <entry><ind>    0</ind>	<dep>   0</dep></entry>
+      <entry><ind>  900</ind>	<dep>   0</dep></entry>
+      <entry><ind> 1000</ind>	<dep>  36</dep></entry>
+      <entry><ind> 1900</ind>	<dep>  36</dep></entry>
+      <entry><ind> 2000</ind>	<dep>  72</dep></entry>
+      <entry><ind> 2900</ind>	<dep>  72</dep></entry>
+      <entry><ind> 3000</ind>	<dep> 108</dep></entry>
+      <entry><ind> 3900</ind>	<dep> 108</dep></entry>
+      <entry><ind> 4000</ind>	<dep> 144</dep></entry>
+      <entry><ind> 4900</ind>	<dep> 144</dep></entry>
+      <entry><ind> 5000</ind>	<dep> 180</dep></entry>
+      <entry><ind> 5900</ind>	<dep> 180</dep></entry>
+      <entry><ind> 6000</ind>	<dep> 216</dep></entry>
+      <entry><ind> 6900</ind>	<dep> 216</dep></entry>
+      <entry><ind> 7000</ind>	<dep> 252</dep></entry>
+      <entry><ind> 7900</ind>	<dep> 252</dep></entry>
+      <entry><ind> 8000</ind>	<dep> 288</dep></entry>
+      <entry><ind> 8900</ind>	<dep> 288</dep></entry>
+      <entry><ind> 9000</ind>	<dep> 324</dep></entry>
+      <entry><ind> 9900</ind>	<dep> 324</dep></entry>
+      <entry><ind>10000</ind>	<dep> 360</dep></entry>
+      <entry><ind>10900</ind>	<dep> 360</dep></entry>
+      <entry><ind>11000</ind>	<dep> 396</dep></entry>
+      <entry><ind>11900</ind>	<dep> 396</dep></entry>
+      <entry><ind>12000</ind>	<dep> 432</dep></entry>
+      <entry><ind>12900</ind>	<dep> 432</dep></entry>
+      <entry><ind>13000</ind>	<dep> 468</dep></entry>
+      <entry><ind>13900</ind>	<dep> 468</dep></entry>
+      <entry><ind>14000</ind>	<dep> 504</dep></entry>
+      <entry><ind>14900</ind>	<dep> 504</dep></entry>
+      <entry><ind>15000</ind>	<dep> 540</dep></entry>
+      <entry><ind>15900</ind>	<dep> 540</dep></entry>
+      <entry><ind>16000</ind>	<dep> 576</dep></entry>
+      <entry><ind>16900</ind>	<dep> 576</dep></entry>
+      <entry><ind>17000</ind>	<dep> 612</dep></entry>
+      <entry><ind>17900</ind>	<dep> 612</dep></entry>
+      <entry><ind>18000</ind>	<dep> 648</dep></entry>
+      <entry><ind>18900</ind>	<dep> 648</dep></entry>
+      <entry><ind>19000</ind>	<dep> 684</dep></entry>
+      <entry><ind>19900</ind>	<dep> 684</dep></entry>
+      <entry><ind>20000</ind>	<dep> 720</dep></entry>
+      <entry><ind>20900</ind>	<dep> 720</dep></entry>
+      <entry><ind>21000</ind>	<dep> 756</dep></entry>
+      <entry><ind>21900</ind>	<dep> 756</dep></entry>
+      <entry><ind>22000</ind>	<dep> 792</dep></entry>
+      <entry><ind>22900</ind>	<dep> 792</dep></entry>
+      <entry><ind>23000</ind>	<dep> 828</dep></entry>
+      <entry><ind>23900</ind>	<dep> 828</dep></entry>
+      <entry><ind>24000</ind>	<dep> 864</dep></entry>
+      <entry><ind>24900</ind>	<dep> 864</dep></entry>
+      <entry><ind>25000</ind>	<dep> 900</dep></entry>
+      <entry><ind>25900</ind>	<dep> 900</dep></entry>
+      <entry><ind>26000</ind>	<dep> 936</dep></entry>
+      <entry><ind>26900</ind>	<dep> 936</dep></entry>
+      <entry><ind>27000</ind>	<dep> 972</dep></entry>
+      <entry><ind>27900</ind>	<dep> 972</dep></entry>
+      <entry><ind>28000</ind>	<dep>1008</dep></entry>
+      <entry><ind>28900</ind>	<dep>1008</dep></entry>
+      <entry><ind>29000</ind>	<dep>1044</dep></entry>
+      <entry><ind>29900</ind>	<dep>1044</dep></entry>
+      <entry><ind>30000</ind>	<dep>1080</dep></entry>
+      <entry><ind>30900</ind>	<dep>1080</dep></entry>
+      <entry><ind>31000</ind>	<dep>1116</dep></entry>
+      <entry><ind>31900</ind>	<dep>1116</dep></entry>
+      <entry><ind>32000</ind>	<dep>1152</dep></entry>
+      <entry><ind>32900</ind>	<dep>1152</dep></entry>
+      <entry><ind>33000</ind>	<dep>1188</dep></entry>
+      <entry><ind>33900</ind>	<dep>1188</dep></entry>
+      <entry><ind>34000</ind>	<dep>1224</dep></entry>
+      <entry><ind>34900</ind>	<dep>1224</dep></entry>
+      <entry><ind>35000</ind>	<dep>1260</dep></entry>
+      <entry><ind>99999</ind>	<dep>1260</dep></entry>
+    </interpolation>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Counter_10000</object-name>
+    <property>/instrumentation/altimeter/indicated-altitude-ft</property>
+    <axis>
+      <x>0</x>
+      <y>-1</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m>-0.017</x-m>
+      <y-m> 0</y-m>
+      <z-m> 0.0055</z-m>
+    </center>
+    <interpolation>
+      <entry><ind>-9999</ind>	<dep>   0</dep></entry>
+      <entry><ind>    0</ind>	<dep>   0</dep></entry>
+      <entry><ind> 9990</ind>	<dep>   0</dep></entry>
+      <entry><ind>10000</ind>	<dep>  36</dep></entry>
+      <entry><ind>19990</ind>	<dep>  36</dep></entry>
+      <entry><ind>20000</ind>	<dep>  72</dep></entry>
+      <entry><ind>29990</ind>	<dep>  72</dep></entry>
+      <entry><ind>30000</ind>	<dep> 108</dep></entry>
+      <entry><ind>99999</ind>	<dep> 108</dep></entry>
+    </interpolation>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>inHg_00-01</object-name>
+    <property>instrumentation/altimeter/setting-inhg</property>
+    <factor>10</factor>
+    <axis>
+      <x>0</x>
+      <y>-1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>inHg_00-10</object-name>
+    <property>instrumentation/altimeter/setting-inhg</property>
+    <factor>1</factor>
+    <step>0.1</step>
+    <scroll>0.01</scroll>
+    <axis>
+      <x>0</x>
+      <y>-1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>inHg_01-00</object-name>
+    <property>instrumentation/altimeter/setting-inhg</property>
+    <factor>0.1</factor>
+    <step>1</step>
+    <scroll>0.01</scroll>
+    <axis>
+      <x>0</x>
+      <y>-1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>inHg_10-00</object-name>
+    <property>instrumentation/altimeter/setting-inhg</property>
+    <factor>0.01</factor>
+    <step>10</step>
+    <scroll>0.01</scroll>
+    <axis>
+      <x>0</x>
+      <y>-1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>Knob</object-name>
+    <visible>true</visible>
+    <action>
+      <name>Calib 1 up</name>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step> 0.01 </step>
+        <min> 26.28 </min>
+        <max> 31.01 </max>
+        <wrap>false</wrap>
+      </binding>
+    </action>
+    <action>
+      <name>Calib 1 down</name>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step>-0.01 </step>
+        <min> 26.28 </min>
+        <max> 31.01 </max>
+        <wrap>false</wrap>
+      </binding>
+    </action>
+    <action>
+      <name>Calib 10 up</name>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step> 0.10 </step>
+        <min> 26.28 </min>
+        <max> 31.01 </max>
+        <wrap>false</wrap>
+      </binding>
+    </action>
+    <action>
+      <name>Calib 10 down</name>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step>-0.10 </step>
+        <min> 26.28 </min>
+        <max> 31.01 </max>
+        <wrap>false</wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Knob</object-name>
+    <property>instrumentation/altimeter/setting-inhg</property>
+    <factor>0.36</factor>
+    <center>
+      <x-m> 0     </x-m>
+      <y-m>-0.032 </y-m>
+      <z-m>-0.028 </z-m>
+    </center>
+    <axis>
+      <x>-1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+<!-- Label Text -->
+
+<text>
+  <name>LabelText</name>
+  <type type="string">literal</type>
+  <text type="string">Altimeter</text>
+  <draw-text type="bool">true</draw-text>
+  <font>Helvetica.txf</font>
+  <character-size type="double">0.012</character-size>
+  <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+  <axis-alignment>yz-plane</axis-alignment>
+  <max-height>0.2</max-height>
+  <max-width>0.07</max-width>
+  <font-resolution>
+    <width type="int">32</width>
+    <height type="int">32</height>
+  </font-resolution>
+  <alignment>center-center</alignment>
+  <offsets>
+    <x-m> 0.01</x-m>
+    <y-m> 0.0 </y-m>
+    <z-m> 0.0 </z-m>
+  </offsets>
+</text>
+
+<animation>
+  <type>material</type>
+  <object-name>LabelText</object-name>
+  <emission>
+    <red>1.0</red>
+    <green>0.8</green>
+    <blue>0.0</blue>
+  </emission>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>LabelText</object-name>
+  <condition>
+    <property>/sim/panel-hotspots</property>
+  </condition>
+</animation>
+
+</PropertyList>

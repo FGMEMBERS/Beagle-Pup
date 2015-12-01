@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+**************************************************************************
+
+Beagle Pup 100 Initialization
+
+Copyright (c) 2015 Richard Senior
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+**************************************************************************
+-->
+
+<PropertyList include="pup-common.xml">
+
+  <sim>
+
+    <aero>pup100</aero>
+    <aircraft-version>0.1.0</aircraft-version>
+    <author>Richard Senior</author>
+    <description>Beagle Pup 100</description>
+    <flight-model>jsb</flight-model>
+
+    <model>
+      <path>Models/pup100.xml</path>
+      <livery>
+        <file type="string"/>
+      </livery>
+    </model>
+
+    <rating>
+      <FDM type="int">2</FDM>
+      <systems type="int">2</systems>
+      <cockpit type="int">2</cockpit>
+      <model type="int">2</model>
+    </rating>
+
+    <sound>
+      <audible>true</audible>
+      <cabin-volume type="double">1.0</cabin-volume>
+      <path>Sounds/pup100-sound.xml</path>
+    </sound>
+
+    <startup>
+      <splash-texture>pup100-splash.png</splash-texture>
+    </startup>
+
+  </sim>
+
+  <limits>
+    <mass-and-balance>
+      <maximum-takeoff-mass-lbs type="double">1600</maximum-takeoff-mass-lbs>
+    </mass-and-balance>
+  </limits>
+
+</PropertyList>
+

@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+
+<!-- http://www.mcico.com/2800%284810N1%29-CN2EB3DD2AB256.html?MN=5688CCB86680 -->
+
+<PropertyList>
+
+  <path>5550-8340N5L.ac</path>
+
+  <animation>
+    <type>material</type>
+    <object-name>Ball</object-name>
+    <object-name>Base_02</object-name>
+    <object-name>Meter</object-name>
+    <object-name>Markers</object-name>
+    <object-name>Needle</object-name>
+    <condition>
+      <property>systems/electrical/outputs/panel-lights</property>
+    </condition>
+    <emission>
+      <red>0.7</red>
+      <green>0.7</green>
+      <blue>0.7</blue>
+      <factor-prop>controls/lighting/panel-norm</factor-prop>  <!-- <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop> -->
+    </emission>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Needle</object-name>
+    <property>/instrumentation/turn-indicator/indicated-turn-rate</property>
+    <factor>20</factor>
+    <min-deg>-16</min-deg>
+    <max-deg> 16</max-deg>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m> 0  </x-m>
+      <y-m> 0  </y-m>
+      <z-m>-0.02</z-m> 
+    </center>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Ball</object-name>
+    <property>/instrumentation/slip-skid-ball/indicated-slip-skid</property>
+    <factor>1</factor>
+    <min-deg>-5</min-deg>
+    <max-deg>5</max-deg>
+    <center>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0.15</z-m> 
+    </center>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+<!-- Label Text -->
+
+<text>
+  <name>LabelText</name>
+  <type type="string">literal</type>
+  <text type="string">Turn Coordinator</text>
+  <draw-text type="bool">true</draw-text>
+  <font>Helvetica.txf</font>
+  <character-size type="double">0.012</character-size>
+  <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+  <axis-alignment>yz-plane</axis-alignment>
+  <max-height>0.2</max-height>
+  <max-width>0.07</max-width>
+  <font-resolution>
+    <width type="int">32</width>
+    <height type="int">32</height>
+  </font-resolution>
+  <alignment>center-center</alignment>
+  <offsets>
+    <x-m> 0.01</x-m>
+    <y-m> 0.0 </y-m>
+    <z-m> 0.0 </z-m>
+  </offsets>
+</text>
+
+<animation>
+  <type>material</type>
+  <object-name>LabelText</object-name>
+  <emission>
+    <red>1.0</red>
+    <green>0.8</green>
+    <blue>0.0</blue>
+  </emission>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>LabelText</object-name>
+  <condition>
+    <property>/sim/panel-hotspots</property>
+  </condition>
+</animation>
+
+</PropertyList>

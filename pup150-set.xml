@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+**************************************************************************
+
+Beagle Pup 150 Initialization
+
+Copyright (c) 2015 Richard Senior
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+**************************************************************************
+-->
+
+<PropertyList include="pup-common.xml">
+
+  <sim>
+
+    <aero>pup150</aero>
+    <aircraft-version>0.1.0</aircraft-version>
+    <author>Richard Senior</author>
+    <description>Beagle Pup 150</description>
+    <flight-model>jsb</flight-model>
+
+    <model>
+      <path>Models/pup150.xml</path>
+    </model>
+
+    <aircraft-data>
+      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[2]</path>
+    </aircraft-data>
+
+    <rating>
+      <FDM type="int">2</FDM>
+      <systems type="int">2</systems>
+      <cockpit type="int">2</cockpit>
+      <model type="int">2</model>
+    </rating>
+
+    <sound>
+      <audible>true</audible>
+      <cabin-volume type="double">1.0</cabin-volume>
+      <path>Sounds/pup150-sound.xml</path>
+    </sound>
+
+    <startup>
+      <splash-texture>pup150-splash.png</splash-texture>
+    </startup>
+
+  </sim>
+
+  <limits>
+    <mass-and-balance>
+      <maximum-takeoff-mass-lbs type="double">1925</maximum-takeoff-mass-lbs>
+    </mass-and-balance>
+  </limits>
+
+  <payload>
+    <weight n="2">
+      <name type="string">Rear Seat</name>
+      <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]"/>
+      <min-lb type="double">0</min-lb>
+      <max-lb type="double">140</max-lb>
+    </weight>
+  </payload>
+
+</PropertyList>
+

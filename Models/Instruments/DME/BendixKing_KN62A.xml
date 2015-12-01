@@ -1,0 +1,545 @@
+<?xml version="1.0" ?>
+
+<!--
+Bendix King KN62A DME model
+Author: Pavel Cueto, based on the previous work of Torsten Dreyer
+License: GPL
+-->
+
+<PropertyList>
+
+<path>KN62A.ac</path>
+
+<params>
+    <power-btn>instrumentation/dme[0]/power-btn</power-btn>
+    <mode-btn>instrumentation/dme[0]/mode-btn</mode-btn>
+    <electrical>systems/electrical/outputs/dme</electrical>
+    <serviceable>instrumentation/dme[0]/serviceable</serviceable>
+    <dimming>instrumentation/dme[0]/dimming-norm</dimming>
+    <in-range>instrumentation/dme[0]/in-range</in-range>
+    <dme-frq-internal>instrumentation/dme[0]/frequencies/internal-mhz</dme-frq-internal>
+    <left-display>instrumentation/dme[0]/left-display</left-display>
+    <left-display-dot>instrumentation/dme[0]/left-dot</left-display-dot>
+    <center-display>instrumentation/dme[0]/center-display</center-display>
+    <center-display-dot>instrumentation/dme[0]/center-dot</center-display-dot>
+    <right-display>instrumentation/dme[0]/right-display</right-display>
+    <kts-annunciator>instrumentation/dme[0]/kts-annunciator</kts-annunciator>
+    <mhz-annunciator>instrumentation/dme[0]/mhz-annunciator</mhz-annunciator>
+    <min-annunciator>instrumentation/dme[0]/min-annunciator</min-annunciator>
+    <rmt-annunciator>instrumentation/dme[0]/rmt-annunciator</rmt-annunciator>
+</params>
+
+<animation>
+    <type>material</type>
+    <object-name>KnobFREQ_01</object-name>
+    <object-name>KnobFREQ_02</object-name>
+    <object-name>Btn_Mode</object-name>
+    <condition>
+      <property>systems/electrical/outputs/panel-lights</property>
+    </condition>
+    <emission>
+        <red>0.7</red>
+        <green>0.7</green>
+        <blue>0.7</blue>
+        <factor-prop>controls/lighting/panel-norm</factor-prop>
+    </emission>
+</animation> 	
+
+<animation>
+    <type>material</type>
+    <object-name>Digit_01</object-name>
+    <object-name>Digit_02</object-name>
+    <object-name>Digit_03</object-name>
+    <object-name>Digit_04</object-name>
+    <object-name>Digit_05</object-name>
+    <object-name>Digit_06</object-name>
+    <object-name>Digit_07</object-name>
+    <object-name>Digit_08</object-name>
+    <object-name>Digit_P1</object-name>
+    <object-name>Digit_P2</object-name>
+    <object-name>Digit_NM</object-name>
+    <object-name>Digit_RMT</object-name>
+    <object-name>Digit_KT</object-name>
+    <object-name>Digit_MHZ</object-name>
+    <object-name>Digit_MIN</object-name>
+	<emission>
+		<red>-1.0</red>
+		<green>-1.0</green>
+		<blue>-1.0</blue>
+		<factor-prop alias="../../../params/dimming"/>
+		<offset>1</offset>
+	</emission>
+</animation>
+
+<!-- POWER SWITCH -->
+    
+<animation>
+    <type>translate</type>
+    <object-name>Btn_Power</object-name>
+    <property alias="../../params/power-btn"/>
+    <factor>0.005</factor>
+    <axis>
+        <x>0</x>
+        <y>1</y>
+        <z>0</z>
+    </axis>
+    <center>
+        <x-m> 0.000257</x-m>
+        <y-m> 0.02592 </y-m>
+        <z-m>-0.008278</z-m>
+    </center>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>Btn_Power</object-name>
+    <visible>true</visible>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>property-toggle</command>
+            <property alias="../../../../params/power-btn"/>
+        </binding>
+    </action>
+</animation>
+
+<!-- MODE SWITCH -->
+
+<animation>
+    <type>translate</type>
+    <object-name>Btn_Mode</object-name>
+    <property alias="../../params/mode-btn"/>
+    <factor>0.004505</factor>
+    <axis>
+        <x>0</x>
+        <y>1</y>
+        <z>0</z>
+    </axis>
+    <center>
+        <x-m>0.000257</x-m>
+        <y-m>0.03017</y-m>
+        <z-m>0.005167</z-m>
+    </center>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>Btn_Mode</object-name>
+    <visible>true</visible>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>property-adjust</command>
+            <property alias="../../../../params/mode-btn"/>
+            <step>1</step>
+            <min>0</min>
+            <max>2</max>
+            <wrap>0</wrap>
+        </binding>
+    </action>
+    <action>
+        <button>1</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>property-adjust</command>
+            <property alias="../../../../params/mode-btn"/>
+            <step>-1</step>
+            <min>0</min>
+            <max>2</max>
+            <wrap>0</wrap>
+        </binding>
+    </action>
+</animation>
+
+<!-- FREQUENCY KNOBS -->
+
+<animation>
+	<type>rotate</type>
+	<object-name>KnobFREQ_01</object-name>
+	<object-name>KnobFREQ_02</object-name>
+	<property alias="../../params/dme-frq-internal"/>
+	<factor>-360</factor>
+	<axis>
+		<x>1</x>
+		<y>0</y>
+		<z>0</z>
+	</axis>
+	<center>
+		<x-m>0.005562</x-m>
+		<y-m>0.0620</y-m>
+		<z-m>-0.0010</z-m>
+	</center>
+</animation>
+
+<animation>
+	<type>pick</type>
+	<object-name>KnobFREQ_01</object-name>
+	<object-name>KnobFREQ_02</object-name>
+	<visible>true</visible>
+	<action>
+		<button>0</button>
+		<repeatable>true</repeatable>
+		<binding>
+			<condition>
+				<equals>
+                    <property alias="../../../../../../params/mode-btn"/>
+                    <value type="int">1</value>
+				</equals>
+			</condition>
+			<command>property-adjust</command>
+			<property alias="../../../../params/dme-frq-internal"/>
+			<step>0.025</step>
+			<min>0.0</min>
+			<max>1.0</max>
+			<resolution>0.025</resolution>
+			<wrap>true</wrap>
+			<mask>decimal</mask>
+		</binding>
+	</action>
+	<action>
+		<button>1</button>
+		<repeatable>true</repeatable>
+		<binding>
+			<condition>
+				<equals>
+                    <property alias="../../../../../../params/mode-btn"/>
+                    <value type="int">1</value>
+				</equals>
+			</condition>
+			<command>property-adjust</command>
+			<property alias="../../../../params/dme-frq-internal"/>
+			<step>-0.025</step>
+			<min>0.0</min>
+			<max>1.0</max>
+			<resolution>0.025</resolution>
+			<wrap>true</wrap>
+			<mask>decimal</mask>
+		</binding>
+    </action>
+	<action>
+		<button>3</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<condition>
+				<equals>
+                    <property alias="../../../../../../params/mode-btn"/>
+                    <value type="int">1</value>
+				</equals>
+			</condition>
+			<command>property-adjust</command>
+			<property alias="../../../../params/dme-frq-internal"/>
+			<step>1</step>
+			<min>108.0</min>
+			<max>118.0</max>
+			<wrap>true</wrap>
+			<mask>integer</mask>
+		</binding>
+	</action>
+	<action>
+		<button>4</button>
+		<repeatable>false</repeatable>
+		<binding>
+			<condition>
+				<equals>
+                    <property alias="../../../../../../params/mode-btn"/>
+                    <value type="int">1</value>
+				</equals>
+			</condition>
+			<command>property-adjust</command>
+			<property alias="../../../../params/dme-frq-internal"/>
+			<step>-1</step>
+			<min>108.0</min>
+			<max>118.0</max>
+			<wrap>true</wrap>
+			<mask>integer</mask>
+		</binding>
+    </action>
+</animation>
+
+<!-- LCD DISPLAY -->
+
+<animation>
+    <type>select</type>
+    <object-name>Digit_01</object-name>
+    <object-name>Digit_02</object-name>
+    <object-name>Digit_03</object-name>
+    <object-name>Digit_04</object-name>
+    <object-name>Digit_05</object-name>
+    <object-name>Digit_06</object-name>
+    <object-name>Digit_07</object-name>
+    <object-name>Digit_08</object-name>
+    <object-name>Digit_P1</object-name>
+    <object-name>Digit_P2</object-name>
+    <object-name>Digit_NM</object-name>
+    <object-name>Digit_RMT</object-name>
+    <object-name>Digit_KT</object-name>
+    <object-name>Digit_MHZ</object-name>
+    <object-name>Digit_MIN</object-name>
+    <condition>
+        <and>
+            <property alias="../../../../params/serviceable"/>
+            <property alias="../../../../params/power-btn"/>
+            <property alias="../../../../params/electrical"/>
+        </and>
+    </condition>
+</animation>
+
+<animation>
+    <type>select</type>
+    <object-name>Digit_KT</object-name>
+    <condition>
+        <property alias="../../../params/kts-annunciator"/>
+    </condition>
+</animation>
+
+<animation>
+    <type>select</type>
+    <object-name>Digit_MHZ</object-name>
+    <condition>
+        <property alias="../../../params/mhz-annunciator"/>
+    </condition>
+</animation>
+
+<animation>
+    <type>select</type>
+    <object-name>Digit_MIN</object-name>
+    <condition>
+        <property alias="../../../params/min-annunciator"/>
+    </condition>
+</animation>
+
+<animation>
+    <type>select</type>
+    <object-name>Digit_RMT</object-name>
+    <condition>
+        <property alias="../../../params/rmt-annunciator"/>
+    </condition>
+</animation>
+
+<!-- LEFT DISPLAY -->
+
+<animation>
+    <name>left_dot</name>
+    <type>select</type>
+    <object-name>Digit_P1</object-name>
+    <condition>
+        <property alias="../../../params/left-display-dot"/>
+    </condition>
+</animation>
+
+<animation>
+    <name>left_100_blank</name>
+    <type>select</type>
+    <object-name>Digit_01</object-name>
+    <condition>
+        <greater-than-equals>
+            <property alias="../../../../params/left-display"/>
+            <value>100.0</value>
+        </greater-than-equals>
+    </condition>
+</animation>
+
+<animation>
+    <name>left_10_blank</name>
+    <type>select</type>
+    <object-name>Digit_02</object-name>
+    <condition>
+        <or>
+            <greater-than-equals>
+                <property alias="../../../../../params/left-display"/>
+                <value>10.0</value>
+            </greater-than-equals>
+            <and>
+                <property alias="../../../../../params/left-display-dot"/>
+                <greater-than-equals>
+                    <property alias="../../../../../../params/left-display"/>
+                    <value>1.0</value>
+                </greater-than-equals>
+            </and>
+        </or>
+    </condition>
+</animation>
+
+<animation>
+    <name>left_1_blank</name>
+    <type>select</type>
+    <object-name>Digit_03</object-name>
+    <condition>
+        <greater-than-equals>
+            <property alias="../../../../params/left-display"/>
+            <value>1.0</value>
+        </greater-than-equals>
+    </condition>
+</animation>
+
+<animation>
+    <name>left_100</name>
+    <type>textranslate</type>
+    <object-name>Digit_01</object-name>
+    <property alias="../../params/left-display"/>
+    <step>100</step>
+    <factor>0.001</factor>
+    <axis>
+        <x>1</x>
+        <y>0</y>
+        <z>0</z>
+    </axis>
+</animation>
+
+<animation>
+    <name>left_10</name>
+    <type>textranslate</type>
+    <object-name>Digit_02</object-name>
+    <property alias="../../params/left-display"/>
+    <step>10</step>
+    <factor>0.01</factor>
+    <axis>
+        <x>1</x>
+        <y>0</y>
+        <z>0</z>
+    </axis>
+</animation>
+
+<animation>
+    <name>left_1</name>
+    <type>textranslate</type>
+    <object-name>Digit_03</object-name>
+    <property alias="../../params/left-display"/>
+    <step>1</step>
+    <factor>0.1</factor>
+    <axis>
+        <x>1</x>
+        <y>0</y>
+        <z>0</z>
+    </axis>
+</animation>
+
+<!-- CENTER DISPLAY -->
+
+<animation>
+    <name>center_dot</name>
+    <type>select</type>
+    <object-name>Digit_P2</object-name>
+    <condition>
+        <property alias="../../../params/center-display-dot"/>
+    </condition>
+</animation>
+
+<animation>
+    <name>center_100</name>
+    <type>textranslate</type>
+    <object-name>Digit_04</object-name>
+    <property alias="../../params/center-display"/>
+    <step>100</step>
+    <factor>0.001</factor>
+    <axis>
+        <x>1</x>
+        <y>0</y>
+        <z>0</z>
+    </axis>
+</animation>
+
+<animation>
+    <name>center_10</name>
+    <type>textranslate</type>
+    <object-name>Digit_05</object-name>
+    <property alias="../../params/center-display"/>
+    <step>10</step>
+    <factor>0.01</factor>
+    <axis>
+        <x>1</x>
+        <y>0</y>
+        <z>0</z>
+    </axis>
+</animation>
+
+<animation>
+    <name>center_1</name>
+    <type>textranslate</type>
+    <object-name>Digit_06</object-name>
+    <property alias="../../params/center-display"/>
+    <step>1</step>
+    <factor>0.1</factor>
+    <axis>
+        <x>1</x>
+        <y>0</y>
+        <z>0</z>
+    </axis>
+</animation>
+
+<!-- RIGHT DISPLAY -->
+
+<animation>
+    <name>right_10</name>
+    <type>textranslate</type>
+    <object-name>Digit_07</object-name>
+    <property alias="../../params/right-display"/>
+    <step>10</step>
+    <factor>0.01</factor>
+    <axis>
+        <x>1</x>
+        <y>0</y>
+        <z>0</z>
+    </axis>
+</animation>
+
+<animation>
+    <name>right_1</name>
+    <type>textranslate</type>
+    <object-name>Digit_08</object-name>
+    <property alias="../../params/right-display"/>
+    <step>1</step>
+    <factor>0.1</factor>
+    <axis>
+        <x>1</x>
+        <y>0</y>
+        <z>0</z>
+    </axis>
+</animation>
+
+<!-- Label Text -->
+
+<text>
+    <name>LabelText</name>
+    <type type="string">literal</type>
+        <text type="string">DME</text>
+    <draw-text type="bool">true</draw-text>
+    <font>Helvetica.txf</font>
+        <character-size type="double">0.012</character-size>
+        <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+    <axis-alignment>yz-plane</axis-alignment>
+    <max-height>0.2</max-height>
+    <max-width>0.07</max-width>
+    <font-resolution>
+        <width type="int">32</width>
+        <height type="int">32</height>
+    </font-resolution>
+    <alignment>center-center</alignment>
+    <offsets>
+        <x-m> 0.01</x-m>
+        <y-m> 0.0 </y-m>
+        <z-m> 0.0 </z-m>
+    </offsets>
+</text>
+
+<animation>
+    <type>material</type>
+        <object-name>LabelText</object-name>
+    <emission>
+        <red>1.0</red>
+        <green>0.8</green>
+        <blue>0.0</blue>
+    </emission>
+</animation>
+
+<animation>
+    <type>select</type>
+        <object-name>LabelText</object-name>
+    <condition>
+        <property>sim/panel-hotspots</property>
+    </condition>
+</animation>
+
+</PropertyList>

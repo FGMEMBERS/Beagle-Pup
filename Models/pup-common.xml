@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+**************************************************************************
+
+Beagle Pup Model
+
+Copyright (c) 2015 Richard Senior
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+**************************************************************************
+-->
+
+<PropertyList>
+
+  <model>
+    <name>Cockpit</name>
+    <path>cockpit.xml</path>
+  </model>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>AileronLeft</object-name>
+    <property>surface-positions/left-aileron-pos-norm</property>
+    <factor>-20</factor>
+    <axis>
+      <x1-m>2.7523</x1-m>
+      <y1-m>-2.8229</y1-m>
+      <z1-m>-0.0438</z1-m>
+      <x2-m>2.5900</x2-m>
+      <y2-m>-4.5868</y2-m>
+      <z2-m>0.1626</z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>AileronRight</object-name>
+    <property>surface-positions/right-aileron-pos-norm</property>
+    <factor>-20</factor>
+    <axis>
+      <x1-m>2.7523</x1-m>
+      <y1-m>2.8236</y1-m>
+      <z1-m>-0.0759</z1-m>
+      <x2-m>2.5900</x2-m>
+      <y2-m>4.5864</y2-m>
+      <z2-m>0.1726</z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>ElevatorLeft</object-name>
+    <property>surface-positions/elevator-pos-norm</property>
+    <factor>20</factor>
+    <center>
+      <x-m>5.8959</x-m>
+      <y-m>-1.4150</y-m>
+      <z-m>0.2192</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>ElevatorRight</object-name>
+    <property>surface-positions/elevator-pos-norm</property>
+    <factor>20</factor>
+    <center>
+      <x-m>5.8959</x-m>
+      <y-m>1.4150</y-m>
+      <z-m>0.2192</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Rudder</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor>-20</factor>
+    <axis>
+      <x1-m>6.6435</x1-m>
+      <y1-m>0.0019</y1-m>
+      <z1-m>1.1905</z1-m>
+      <x2-m>6.3064</x2-m>
+      <y2-m>0.0019</y2-m>
+      <z2-m>-0.1910</z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>FlapLeft</object-name>
+    <property>surface-positions/flap-pos-norm</property>
+    <factor>-39.5</factor>
+    <axis>
+      <x1-m>2.9433</x1-m>
+      <y1-m>-0.7705</y1-m>
+      <z1-m>-0.2990</z1-m>
+      <x2-m>2.7535</x2-m>
+      <y2-m>-2.8173</y2-m>
+      <z2-m>-0.0701</z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>FlapRight</object-name>
+    <property>surface-positions/flap-pos-norm</property>
+    <factor>-39.5</factor>
+    <axis>
+      <x1-m>2.7536</x1-m>
+      <y1-m>2.8121</y1-m>
+      <z1-m>-0.0516</z1-m>
+      <x2-m>2.9433</x2-m>
+      <y2-m>0.7675</y2-m>
+      <z2-m>-0.2989</z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>NoseGear</object-name>
+    <property>fdm/jsbsim/fcs/steer-pos-deg</property>
+    <condition>
+      <property>gear/gear/wow</property>
+    </condition>
+    <factor>1</factor>
+    <axis>
+      <x1-m>1.1145</x1-m>
+      <y1-m>0.0003</y1-m>
+      <z1-m>-0.5206</z1-m>
+      <x2-m>0.9955</x2-m>
+      <y2-m>0.0003</y2-m>
+      <z2-m>-1.0747</z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>NoseGear</object-name>
+    <property>gear/gear/compression-norm</property>
+    <factor>-0.305</factor>
+    <offset-m>0.13</offset-m>
+    <axis>
+      <x1-m>1.1145</x1-m>
+      <y1-m>0.0003</y1-m>
+      <z1-m>-0.5206</z1-m>
+      <x2-m>0.9955</x2-m>
+      <y2-m>0.0003</y2-m>
+      <z2-m>-1.0747</z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>Propeller</object-name>
+    <condition>
+      <less-than>
+        <property>engines/engine/rpm</property>
+        <value>500</value>
+      </less-than>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>PropellerBlur</object-name>
+    <condition>
+      <and>
+        <not>
+          <property>/sim/current-view/internal</property>
+        </not>
+        <greater-than-equals>
+          <property>engines/engine/rpm</property>
+          <value>500</value>
+        </greater-than-equals>
+      </and>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>spin</type>
+    <object-name>Propeller</object-name>
+    <property>engines/engine/rpm</property>
+    <center>
+      <x-m>0.3142</x-m>
+      <y-m>0.0</y-m>
+      <z-m>0.0</z-m>
+    </center>
+    <axis>
+      <x>-1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>spin</type>
+    <object-name>PropellerBlur</object-name>
+    <property>engines/engine/rpm</property>
+    <center>
+      <x-m>0.3142</x-m>
+      <y-m>0.0</y-m>
+      <z-m>0.0</z-m>
+    </center>
+    <axis>
+      <x>-1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+</PropertyList>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+**************************************************************************
+
+Beagle Pup Cockpit
+
+Copyright (c) 2015 Richard Senior
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+**************************************************************************
+-->
+
+<PropertyList>
+
+  <path>cockpit.ac</path>
+
+  <animation>
+    <type>material</type>
+    <object-name>Cockpit</object-name>
+    <condition>
+      <greater-than>
+        <property>systems/electrical/outputs/panel-lights</property>
+        <value>0.0</value>
+      </greater-than>
+    </condition>
+    <emission>
+      <red>0.20</red>
+      <green>0.18</green>
+      <blue>0.18</blue>
+      <factor-prop>controls/lighting/panel-norm</factor-prop>
+    </emission>
+  </animation>
+
+  <model>
+    <path>Instruments/Clock/Clock.xml</path>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>-0.1500</y-m>
+      <z-m> 0.2300</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Instruments/ASI/EA-5174.xml</path>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>-0.3500</y-m>
+      <z-m> 0.1500</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Instruments/AI/EA-5000F6.xml</path>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>-0.2500</y-m>
+      <z-m> 0.1500</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Instruments/Altimeter/EA-401A.xml</path>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>-0.1500</y-m>
+      <z-m> 0.1500</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Instruments/TC/5550-8340N5L.xml</path>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>-0.3500</y-m>
+      <z-m> 0.0500</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Instruments/HI/RCA15AK.xml</path>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>-0.2500</y-m>
+      <z-m> 0.0500</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Instruments/VSI/VSI.xml</path>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>-0.1500</y-m>
+      <z-m> 0.0500</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Instruments/EGT/egt.xml</path>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>-0.0500</y-m>
+      <z-m> 0.2300</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Instruments/VOR/KI-206-nav1.xml</path>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>-0.0500</y-m>
+      <z-m> 0.1500</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Instruments/ADF/KI-227.xml</path>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>-0.0500</y-m>
+      <z-m> 0.0500</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Instruments/Radio/BendixKing_KX155_navcom1.xml</path>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>0.1000</y-m>
+      <z-m>0.2000</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Instruments/ADF/BendixKing_KR87.xml</path>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>0.1000</y-m>
+      <z-m>0.1550</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Instruments/DME/BendixKing_KN62A.xml</path>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>0.1000</y-m>
+      <z-m>0.1200</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Instruments/Transponder/BendixKing_KT76A.xml</path>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>0.1000</y-m>
+      <z-m>0.0800</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Instruments/Navomatic/Navomatic400A.xml</path>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>0.1000</y-m>
+      <z-m>0.0200</z-m>
+    </offsets>
+  </model>
+
+</PropertyList>

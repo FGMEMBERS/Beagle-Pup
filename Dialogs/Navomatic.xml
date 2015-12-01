@@ -1,0 +1,272 @@
+<?xml version="1.0"?>
+
+<!-- Navomatic 400A Autopilot Dialog
+
+     This dialog is designed to match the 3D panel of the Navomatic
+     400A autopilot as closely as possible for authentic control of
+     the autopilot. Standard shortcut keys provide an alternative.
+
+     Copyright (c) 2014, Richard Senior
+
+     This program is free software; you can redistribute it and/or
+     modify it under the terms of the GNU General Public License
+     as published by the Free Software Foundation; either version 2
+     of the License, or (at your option) any later version.
+
+     This program is distributed in the hope that it will be useful,
+     but WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+     GNU General Public License for more details.
+
+     You should have received a copy of the GNU General Public License
+     along with this program; if not, write to the Free Software
+     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, 
+     MA 02110-1301, USA.
+-->
+
+<PropertyList>
+
+  <name>autopilot</name>
+  <layout>vbox</layout>
+
+  <!-- TITLE BAR -->
+
+  <group>
+    <layout>hbox</layout>
+    <empty>
+      <stretch>1</stretch>
+    </empty>
+    <text>
+      <label>400A NAVOMATIC AUTOPILOT CONTROL PANEL</label>
+    </text>
+    <empty>
+      <stretch>1</stretch>
+    </empty>
+    <button>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <legend></legend>
+      <keynum>27</keynum>
+      <border>2</border>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+  </group>
+
+  <hrule/>
+
+  <group>
+
+    <!-- TITLES -->
+
+    <default-padding>6</default-padding>
+    <layout>table</layout>  
+    <text>
+      <row>0</row>
+      <col>0</col>
+      <label>PITCH WHEEL</label>
+    </text>
+    <text>
+      <row>0</row>
+      <col>1</col>
+      <label>PUSH PULL DIAL</label>
+    </text>
+    <text>
+      <row>0</row>
+      <col>2</col>
+      <label>SWITCHES</label>
+    </text>
+
+    <!-- PITCH WHEEL -->
+
+    <group>
+      <layout>vbox</layout>
+      <row>1</row>
+      <col>0</col>
+      <button>
+        <pref-width>40</pref-width>
+        <pref-height>32</pref-height>
+        <legend>DN</legend>
+        <binding>
+          <command>property-adjust</command>
+          <property>autopilot/settings/pitch-select</property>
+          <step>-0.5</step>
+          <min>-10.0</min>
+        </binding>
+      </button>
+      <button>
+        <pref-width>40</pref-width>
+        <pref-height>32</pref-height>
+        <legend>CTR</legend>
+        <binding>
+          <command>property-assign</command>
+          <property>autopilot/settings/pitch-select</property>
+          <value>0</value>
+        </binding>
+      </button>
+      <button>
+        <pref-width>40</pref-width>
+        <pref-height>32</pref-height>
+        <legend>UP</legend>
+        <binding>
+          <command>property-adjust</command>
+          <property>autopilot/settings/pitch-select</property>
+          <step>0.5</step>
+          <max>10.0</max>
+        </binding>
+      </button>
+    </group>
+
+    <!-- PUSH / PULL HEADING DIAL -->
+
+    <group>
+      <layout>vbox</layout>
+      <valign>top</valign>
+      <row>1</row>
+      <col>1</col>
+      <checkbox>
+        <label>Pulled Out</label>
+        <property>Navomatic400A/push-pull-dial/pulled-out</property>
+        <live>true</live>
+        <binding>
+          <condition>
+            <equals>
+              <property>autopilot/settings/bank-select</property>
+              <value>0</value>
+            </equals>
+          </condition>
+          <command>dialog-apply</command>
+        </binding>
+      </checkbox>
+      <empty>
+        <stretch>1</stretch>
+      </empty>
+      <text>
+        <label>BANK SELECT (when pulled out)</label>
+      </text>
+      <group>
+        <layout>hbox</layout>
+        <button>
+          <pref-width>40</pref-width>
+          <pref-height>32</pref-height>
+          <legend>&lt;&lt;</legend>
+          <binding>
+            <condition>
+              <property>Navomatic400A/push-pull-dial/pulled-out</property>
+            </condition>
+            <command>property-assign</command>
+            <property>autopilot/settings/bank-select</property>
+            <value>-25</value>
+          </binding>
+        </button>
+        <button>
+          <pref-width>40</pref-width>
+          <pref-height>32</pref-height>
+          <legend>&lt;</legend>
+          <binding>
+            <condition>
+              <property>Navomatic400A/push-pull-dial/pulled-out</property>
+            </condition>
+            <command>property-adjust</command>
+            <property>autopilot/settings/bank-select</property>
+            <step>-5</step>
+            <min>-25</min>
+            <max>+25</max>
+          </binding>
+        </button>
+        <button>
+          <pref-width>40</pref-width>
+          <pref-height>32</pref-height>
+          <legend>CTR</legend>
+          <binding>
+            <command>property-assign</command>
+            <property>autopilot/settings/bank-select</property>
+            <value>0</value>
+          </binding>
+        </button>
+        <button>
+          <pref-width>40</pref-width>
+          <pref-height>32</pref-height>
+          <legend>&gt;</legend>
+          <binding>
+            <condition>
+              <property>Navomatic400A/push-pull-dial/pulled-out</property>
+            </condition>
+            <command>property-adjust</command>
+            <property>autopilot/settings/bank-select</property>
+            <step>+5</step>
+            <min>-25</min>
+            <max>+25</max>
+          </binding>
+        </button>
+        <button>
+          <pref-width>40</pref-width>
+          <pref-height>32</pref-height>
+          <legend>&gt;&gt;</legend>
+          <binding>
+            <condition>
+              <property>Navomatic400A/push-pull-dial/pulled-out</property>
+            </condition>
+            <command>property-assign</command>
+            <property>autopilot/settings/bank-select</property>
+            <value>+25</value>
+          </binding>
+        </button>
+      </group>
+    </group>
+
+    <!-- SWITCHES -->
+
+    <group>
+      <layout>vbox</layout>
+      <valign>top</valign>
+      <row>1</row>
+      <col>2</col>
+      <checkbox>
+        <halign>left</halign>
+        <label>AP ON</label>
+        <property>Navomatic400A/switches/ap-on</property>
+        <live>true</live>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </checkbox>
+      <checkbox>
+        <halign>left</halign>
+        <label>NAV</label>
+        <property>Navomatic400A/switches/nav</property>
+        <live>true</live>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </checkbox>
+      <checkbox>
+        <halign>left</halign>
+        <label>ALT</label>
+        <property>Navomatic400A/switches/alt</property>
+        <live>true</live>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+      </checkbox>
+    </group>
+
+  </group>
+
+  <!-- MAIN CLOSE BUTTON -->
+
+  <hrule/>
+  <button>
+    <pref-width>60</pref-width>
+    <pref-height>30</pref-height>
+    <legend>Close</legend>
+    <default>true</default>
+    <key>Esc</key>
+    <padding>8</padding>
+    <binding>
+      <command>dialog-close</command>
+    </binding>
+  </button>
+
+</PropertyList>

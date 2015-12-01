@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+**************************************************************************
+
+Beagle Pup Fuel System
+
+Copyright (c) 2015 Richard Senior
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+**************************************************************************
+-->
+
+<system name="fuel">
+
+  <!-- Tank selector: 0 = OFF, 1 = LEFT, 2 = BOTH, 3 = RIGHT -->
+  <property value="0">/controls/fuel/tank-selector</property>
+
+  <channel name="Fuel feed">
+
+    <switch>
+      <default value="0"/>
+      <test logic="OR" value="1">
+        /engines/engine[0]/running NE 0
+        /systems/electrical/outputs/fuel-pump GT 0
+      </test>
+      <output>propulsion/tank[0]/has-fuel-pressure</output>
+    </switch>
+
+    <!-- Return into tank 1 (LEFT) -->
+    <switch>
+      <default value="0.05"/>
+      <test logic="OR" value="0.00">
+        propulsion/tank[0]/contents-lbs LE 0.0
+        propulsion/tank[0]/has-fuel-pressure GT 0
+      </test>
+      <output>propulsion/tank[1]/inflow-rate-pps</output>
+    </switch>
+
+    <!-- Return into tank 2 (RIGHT) -->
+    <switch>
+      <default value="0.05"/>
+      <test logic="OR" value="0.00">
+        propulsion/tank[0]/contents-lbs LE 0.0
+        propulsion/tank[0]/has-fuel-pressure GT 0
+      </test>
+      <output>propulsion/tank[2]/inflow-rate-pps</output>
+    </switch>
+
+    <!-- Feed from tank 1 (LEFT) -->
+    <switch>
+      <default value="0.2"/>
+      <test logic="OR" value="0.0">
+        /controls/fuel/tank-selector EQ 0
+        /controls/fuel/tank-selector EQ 3
+        propulsion/tank[0]/has-fuel-pressure EQ 0
+        propulsion/tank[0]/contents-lbs GE 0.8
+        propulsion/tank[1]/contents-lbs LE 0.0
+      </test>
+      <output>propulsion/tank[1]/outflow-rate-pps</output>
+    </switch>
+
+    <!-- Feed from tank 2 (RIGHT) -->
+    <switch>
+      <default value="0.2"/>
+      <test logic="OR" value="0.0">
+        /controls/fuel/tank-selector EQ 0
+        /controls/fuel/tank-selector EQ 1
+        propulsion/tank[0]/has-fuel-pressure EQ 0
+        propulsion/tank[0]/contents-lbs GE 0.8
+        propulsion/tank[2]/contents-lbs LE 0.0
+      </test>
+      <output>propulsion/tank[2]/outflow-rate-pps</output>
+    </switch>
+
+    <summer>
+      <input>propulsion/tank[1]/inflow-rate-pps</input>
+      <input>-propulsion/tank[1]/outflow-rate-pps</input>
+      <output>propulsion/tank[1]/external-flow-rate-pps</output>
+    </summer>
+
+    <summer>
+      <input>propulsion/tank[2]/inflow-rate-pps</input>
+      <input>-propulsion/tank[2]/outflow-rate-pps</input>
+      <output>propulsion/tank[2]/external-flow-rate-pps</output>
+    </summer>
+
+    <summer>
+      <input>-propulsion/tank[1]/external-flow-rate-pps</input>
+      <input>-propulsion/tank[2]/external-flow-rate-pps</input>
+      <output>propulsion/tank[0]/external-flow-rate-pps</output>
+    </summer>
+
+  </channel>
+
+</system>

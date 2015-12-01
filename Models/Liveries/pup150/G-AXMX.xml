@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim>
+    <model>
+      <livery>
+        <name>G-AXMX (Orange/White)</name>
+        <texture>Liveries/pup150/G-AXMX.png</texture>
+      </livery>
+    </model>
+  </sim>
+
+</PropertyList>

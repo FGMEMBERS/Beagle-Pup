@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+**************************************************************************
+
+Checklist: Before Taxi
+
+Copyright (c) 2015 Richard Senior
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+**************************************************************************
+-->
+
+<PropertyList>
+
+  <title>Before Taxi</title>
+
+  <!-- Taxi Light - ON -->
+  <item>
+    <name>Taxi Light</name>
+    <value>ON</value>
+    <condition>
+      <greater-than>
+        <property>systems/electrical/outputs/taxi-light</property>
+        <value>0</value>
+      </greater-than>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/lighting/taxi-light</property>
+      <value>1</value>
+    </binding>
+  </item>
+
+  <!-- Autopilot - OFF -->
+  <item>
+    <name>Autopilot</name>
+    <value>CHECK &amp; OFF</value>
+    <condition>
+      <and>
+        <equals>
+          <property>autopilot/locks/heading</property>
+          <value></value>
+        </equals>
+        <equals>
+          <property>autopilot/locks/altitude</property>
+          <value></value>
+        </equals>
+      </and>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>autopilot/locks/heading</property>
+      <value></value>
+    </binding>
+    <binding>
+      <command>property-assign</command>
+      <property>autopilot/locks/altitude</property>
+      <value></value>
+    </binding>
+  </item>
+
+</PropertyList>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+**************************************************************************
+
+Sensenich M74DMS-0-62 Propeller
+
+Copyright (c) 2015 Richard Senior
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+**************************************************************************
+-->
+
+<!--
+Configuration notes:
+
+Original configuration generated with Aeromatic:
+
+Inputs:
+                horsepower: 150
+                     pitch: fixed
+            max engine rpm: 2700
+        prop diameter (in): 74
+
+The first two numeric digits in the desgination of a Sensenich propeller give
+the diameter in inches. The last two digits give the geometric pitch of 
+the propeller.
+
+The geometric pitch is the circumference of the propeller disc at the blade
+station multiplied by the tangent of the blade angle at that point. The blade
+station is the point at 0.75 of the radius.
+
+The blade pitch angle can be calculated using this Python snippet:
+
+GP = 60 
+D = 74
+(180 / math.pi) * math.atan((GP) / (D * 0.75 * math.pi))
+
+The pitch angle has been rounded to the nearest degree.
+
+References:
+
+1. Lycoming 0-320 Operators Manual
+  http://www.7ts0.com/manuals/lycoming/320/O-320-IO-320-AIO-320-LIO-320_OM.pdf
+
+2. Sensenich Propeller Application Guide
+  http://www.sensenich.com/files/documents/    Application_Guides_Aluminum_Propeller_Applications_1349891787.pdf
+
+-->
+
+<propeller name="Sensenich_M74DMS-0-62">
+  <ixx>3.01</ixx>
+  <constspeed>0</constspeed>
+  <diameter unit="IN">74.0</diameter>
+  <minpitch>19.6</minpitch>
+  <maxpitch>19.6</maxpitch>
+  <numblades>2</numblades>
+  <gearratio>1.00</gearratio>
+  <p_factor>5.85</p_factor>
+
+  <table name="C_THRUST" type="internal">
+     <tableData>
+       0.0   0.0455
+       0.1   0.0436
+       0.2   0.0418
+       0.3   0.0384
+       0.4   0.0345
+       0.5   0.0304
+       0.6   0.0246
+       0.7   0.0187
+       0.8   0.0101
+       1.0  -0.0034
+       1.2  -0.0179
+       1.4  -0.0322
+     </tableData>
+  </table>
+
+
+  <table name="C_POWER" type="internal">
+     <tableData>
+       0.0   0.0306
+       0.1   0.0306
+       0.2   0.0298
+       0.3   0.0291
+       0.4   0.0274
+       0.5   0.0251
+       0.6   0.0231
+       0.7   0.0194
+       0.8   0.0158
+       1.0   0.0057
+       1.2  -0.0090
+       1.4  -0.0272
+       1.6  -0.0462
+     </tableData>
+  </table>
+
+<!-- thrust effects of helical tip Mach -->
+<table name="CT_MACH" type="internal">
+  <tableData>
+    0.85   1.0
+    1.05   0.8
+  </tableData>
+</table>
+
+<!-- power-required effects of helical tip Mach -->
+<table name="CP_MACH" type="internal">
+  <tableData>
+    0.85   1.0
+    1.05   1.8
+    2.00   1.4
+  </tableData>
+</table>
+
+</propeller>

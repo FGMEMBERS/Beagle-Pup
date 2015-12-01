@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+**************************************************************************
+
+Beagle Pup Menu
+
+Copyright (c) 2015 Richard Senior
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+**************************************************************************
+-->
+
+<PropertyList>
+
+  <default>
+    <menu n="100">
+      <label>Beagle Pup</label>
+      <item>
+        <label>Autostart</label>
+        <binding>
+          <command>nasal</command>
+          <script>
+            if (props.globals.getNode("sim/checklists/auto") == nil) {
+              setprop("sim/messages/copilot",
+              "Autostart needs FGDATA 3.5 or higher"
+            );
+            return;
+            }
+            generic.complete_checklists("autostart");
+          </script>
+        </binding>
+      </item>
+      <item>
+        <label>Select Livery</label>
+        <binding>
+          <command>nasal</command>
+          <script>aircraft.livery.dialog.open();</script>
+        </binding>
+      </item>
+    </menu>
+  </default>
+
+</PropertyList>

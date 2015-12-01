@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+**************************************************************************
+
+Beagle Pup Electrical System
+
+Copyright (c) 2015 Richard Senior
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+**************************************************************************
+-->
+
+<PropertyList>
+
+  <electrical>
+
+    <!-- Disable the default electrical system -->
+    <path></path>
+
+    <!-- Components -->
+
+    <component>
+      <kind type="string">battery</kind>
+      <name type="string">Battery</name>
+      <volts type="float">12</volts>
+      <prop type="string">systems/electrical/suppliers/battery</prop>
+    </component>
+
+    <component>
+      <kind type="string">alternator</kind>
+      <name type="string">Alternator</name>
+      <volts type="float">28</volts>
+      <prop type="string">systems/electrical/suppliers/alternator</prop>
+      <source-prop type="string">engines/engine/rpm</source-prop>
+      <source-min type="float">500</source-min>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">DC Bus</name>
+      <prop type="string">systems/electrical/outputs/bus-dc</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">Avionics Bus</name>
+      <prop type="string">systems/electrical/outputs/bus-avionics</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">Starter</name>
+      <prop type="string">systems/electrical/outputs/starter</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">Flaps</name>
+      <prop type="string">systems/electrical/outputs/flaps</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">Fuel Pump</name>
+      <prop type="string">systems/electrical/outputs/fuel-pump</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">Carb Heat</name>
+      <prop type="string">systems/electrical/outputs/carb-heat</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">Autopilot</name>
+      <prop type="string">systems/electrical/outputs/autopilot</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">ADF</name>
+      <prop type="string">systems/electrical/outputs/adf</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">DME</name>
+      <prop type="string">systems/electrical/outputs/dme</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">NAV</name>
+      <prop type="string">systems/electrical/outputs/nav</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">Transponder</name>
+      <prop type="string">systems/electrical/outputs/transponder</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">Turn Coordinator</name>
+      <prop type="string">systems/electrical/outputs/turn-coordinator</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">Beacon</name>
+      <prop type="string">systems/electrical/outputs/beacon</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">Navigation Lights</name>
+      <prop type="string">systems/electrical/outputs/nav-lights</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">Taxi Light</name>
+      <prop type="string">systems/electrical/outputs/taxi-light</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">Landing Light</name>
+      <prop type="string">systems/electrical/outputs/landing-light</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">Panel Lights</name>
+      <prop type="string">systems/electrical/outputs/panel-lights</prop>
+    </component>
+
+    <!-- Connectors -->
+
+    <connector>
+      <input type="string">Battery</input>
+      <output type="string">DC Bus</output>
+      <switch type="string">controls/electric/battery-switch</switch>
+    </connector>
+
+    <connector>
+      <input type="string">Alternator</input>
+      <output type="string">DC Bus</output>
+      <switch type="string">controls/electric/engine/generator</switch>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">Avionics Bus</output>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">Flaps</output>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">Starter</output>
+      <switch type="string">controls/electric/engine/starter-master</switch>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">Carb Heat</output>
+      <switch type="string">controls/anti-ice/engine/carb-heat</switch>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">Fuel Pump</output>
+      <switch type="string">controls/electric/engine/fuel-pump</switch>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">Panel Lights</output>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">Navigation Lights</output>
+      <switch type="string">controls/lighting/nav-lights</switch>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">Beacon</output>
+      <switch type="string">controls/lighting/beacon</switch>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">Taxi Light</output>
+      <switch type="string">controls/lighting/taxi-light</switch>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">Landing Light</output>
+      <switch type="string">controls/lighting/landing-light</switch>
+    </connector>
+
+    <connector>
+      <input type="string">Avionics Bus</input>
+      <output type="string">Autopilot</output>
+    </connector>
+
+    <connector>
+      <input type="string">Avionics Bus</input>
+      <output type="string">ADF</output>
+    </connector>
+
+    <connector>
+      <input type="string">Avionics Bus</input>
+      <output type="string">DME</output>
+    </connector>
+
+    <connector>
+      <input type="string">Avionics Bus</input>
+      <output type="string">NAV</output>
+    </connector>
+
+    <connector>
+      <input type="string">Avionics Bus</input>
+      <output type="string">Transponder</output>
+    </connector>
+
+    <connector>
+      <input type="string">Avionics Bus</input>
+      <output type="string">Turn Coordinator</output>
+    </connector>
+
+  </electrical>
+
+</PropertyList>

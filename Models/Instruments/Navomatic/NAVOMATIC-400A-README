@@ -1,0 +1,127 @@
+NAVOMATIC 400A GUIDE
+
+The Navomatic 400A is an autopilot manufactured by Cessna in the early 1970s.
+It is a basic unit but very well-designed and simple to use.
+
+Cockpit Panel
+-------------
+
+On the Cessna 337G Skymaster, the cockpit panel is located on the center 
+pedestal below the throttle levers. It consists of a pitch wheel, push-pull
+heading dial (which switches between lateral modes), and three on-off
+switches marked AP ON, NAV and ALT.
+
+Turning On and Off
+------------------
+
+The autopilot is turned on and off using the AP ON switch. Note that, unlike
+some other autopilots, the Navomatic does not necessarily bring your wings level 
+and maintain pitch when it is turned on. It does whatever you have set on the 
+various controls. So check them carefully before engaging the autopilot.
+
+Lateral Modes
+-------------
+
+The push-pull dial controls the lateral modes. It is pulled out using the 
+middle mouse button (alt-click on a Mac) and pushed in using the left mouse 
+button.
+
+When the push-pull dial is pulled out, the bank angle of the aircraft is
+controlled by the dial. When it is centered, the autopilot levels the wings.
+When it is turned left or right, the aircraft turns left or right. When rotated
+all the way left or right this produces a standard rate turn. The Flightgear
+version is a stepped control where each step is 5 degrees of bank.
+
+Note that the dial has a center detent position which prevents it being pushed
+in when it is rotated. Return it to wings level before pushing it in.
+
+When the push-pull dial is pushed in, the autopilot either follows the 
+heading bug on the directional gyro, or tracks a radial on the first NAV radio.
+The NAV switch on the right side of the panel switches between these two 
+modes.
+
+Note that when following a VOR radial using the NAV mode, the radial must
+be dialled as the omni bearing on the course deflection indicator (CDI)
+AND the heading bug on the directional gyro (DG) must be set to the same
+heading. The autpilot corrects for wind drift when following a radial, but
+you can give it a little more help by setting the heading bug slightly into
+the wind, say 5 degrees in a strong crosswind.
+
+Vertical Modes
+--------------
+
+The pitch wheel controls the vertical pitch of the aircraft when the autopilot
+is engaged. When at the center detent position, the aircraft will be pitched
+for level flight. You may also need to adjust pitch trim (large vertical 
+wheel next to the gear up/down lever).
+
+The pitch wheel is rotated with the scroll wheel of the mouse. When rolled 
+backward, the aircraft pitches nose upward. When rolled forward, the aircraft 
+pitches down. Each step on the wheel is 0.5 degrees of pitch. To return to the 
+center detent, click anywhere on the pitch wheel with the left mouse button.
+
+There is no indication of the set pitch because there is no indication on
+the real thing!
+
+To hold an altitude, switch the ALT switch to the right. Note that this will
+only hold the current altitude if the pitch wheel is at the center detent
+position.
+
+If the ALT switch is on and the pitch wheel is moved away from the center
+detent, the aircraft adjusts pitch as normal. When the pitch wheel is 
+returned to center, the new altitude is held.
+
+ILS Approaches
+--------------
+
+The Navomatic autopilots do not have a specific approach mode but the 
+Navomatic 400A will track an ILS and glideslope. Navigate to the ILS and ensure
+the autopilot is in NAV mode (push-pull dial pushed in and NAV switch on) and
+holding a suitable altitude (ALT switch on and pitch wheel centered). A green
+light appears on the main panel when the glideslope is captured. There is no
+need to wait for the glideslope needle to come down before engaging ALT and
+NAV modes -- the autopilot will not climb up to the glideslope.
+
+The autopilot does not disengage automatically, so you must disengage by 
+switching the AP ON switch to off before landing.
+
+Flightgear Dialog
+-----------------
+
+The position of the panel is awkward (but authentic). You can also control
+the autopilot using the autopilot dialog and this is laid out and works
+exactly the same as the 3D panel.
+
+General Notes
+-------------
+
+The Navomatic 400A manual describes how a VOR radial is intercepted and this
+Flightgear simulation simulates that. When the course deflection is
+greater than 10 degrees (full scale on the CDI), the autopilot will turn
+to intercept at 45 degrees. When the deflection goes below 10 degrees, it 
+will fly a smooth arc intercept to the radial. (So expect gentle curves to
+the radials, not last minute 30-degree bank turns).
+
+With any autopilot there is a "zone of confusion" when you are very close to
+a VOR station, e.g. less than 2nm. Expect course swings if you leave the 
+autpilot in NAV mode. It is usually a good idea to pull the push-pull dial
+out for wings level if you are passing over a VOR station in NAV mode, 
+resetting the omni bearing and heading bug to the new course as required.
+
+To avoid unnecessary changes of course, it is recommended to pull the
+push-pull dial out for wings level before changing lateral modes.
+
+The autopilot automatically retrims the aircraft for zero elevator when the
+autopilot is disengaged so that joystick users don't experience sudden
+dips and climbs when they pick up the controls.
+
+Do not try and engage any mode of the autopilot on the ground, other than
+for checking it is operable. Return all controls to center after turning
+the autopilot off again.
+
+Recommended configuration for takeoff is push-pull dial out (for wings level),
+with pitch wheel rotated backward 4-6 steps for 2-3 degrees upward pitch on
+engagement. Alternatively, you can take off with the push-pull dial pushed
+in, heading bug set to runway heading and NAV switch off. Note that if you do
+not move the pitch wheel before takeoff, the autopilot will level your pitch
+when you turn the autopilot on.

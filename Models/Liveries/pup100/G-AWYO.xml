@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim>
+    <model>
+      <livery>
+        <name>G-AWYO (Green/White)</name>
+        <texture>Liveries/pup100/G-AWYO.png</texture>
+      </livery>
+    </model>
+  </sim>
+
+</PropertyList>
