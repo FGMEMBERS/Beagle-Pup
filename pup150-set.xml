@@ -27,29 +27,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <sim>
 
     <aero>pup150</aero>
-    <aircraft-version>0.1.0</aircraft-version>
-    <author>Richard Senior</author>
     <description>Beagle Pup 150</description>
-    <flight-model>jsb</flight-model>
-
-    <model>
-      <path>Models/pup150.xml</path>
-    </model>
 
     <aircraft-data>
       <path>fdm/jsbsim/inertia/pointmass-weight-lbs[2]</path>
     </aircraft-data>
 
-    <rating>
-      <FDM type="int">2</FDM>
-      <systems type="int">2</systems>
-      <cockpit type="int">2</cockpit>
-      <model type="int">2</model>
-    </rating>
+    <model>
+      <path>Models/pup150.xml</path>
+    </model>
 
     <sound>
-      <audible>true</audible>
-      <cabin-volume type="double">1.0</cabin-volume>
       <path>Sounds/pup150-sound.xml</path>
     </sound>
 

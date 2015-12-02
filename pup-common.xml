@@ -144,6 +144,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <help include="Interface/help.xml"/>
     <menubar include="Interface/menubar.xml"/>
 
+    <author>Richard Senior</author>
+    <aircraft-version>0.1.1</aircraft-version>
+    <flight-model>jsb</flight-model>
+
     <aircraft-data>
       <path>fdm/jsbsim/inertia/pointmass-weight-lbs[0]</path>
       <path>fdm/jsbsim/inertia/pointmass-weight-lbs[1]</path>
@@ -163,6 +167,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <name>Beagle Pup Flight Recorder</name>
       </config>
     </flight-recorder>
+
+    <model>
+      <livery>
+        <file type="string"/>
+      </livery>
+    </model>
+
+    <rating>
+      <FDM type="int">2</FDM>
+      <systems type="int">2</systems>
+      <cockpit type="int">2</cockpit>
+      <model type="int">2</model>
+    </rating>
+
+    <sound>
+      <audible>true</audible>
+      <cabin-volume type="double">1.0</cabin-volume>
+    </sound>
 
     <systems include="Systems/electrical.xml">
       <autopilot>

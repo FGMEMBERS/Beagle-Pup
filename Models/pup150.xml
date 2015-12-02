@@ -24,32 +24,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 <PropertyList include="pup-common.xml">
 
-  <nasal>
-    <load>
-      var lup = aircraft.livery_update.new("Models/Liveries/pup150");
-    </load>
-    <unload>
-      lup.stop();
-    </unload>
-  </nasal>
-
   <path>pup100.ac</path>
-
-  <animation>
-    <type>material</type>
-    <object-name>Exterior</object-name>
-    <object-name>FlapLeft</object-name>
-    <object-name>FlapRight</object-name>
-    <object-name>AileronLeft</object-name>
-    <object-name>AileronRight</object-name>
-    <object-name>ElevatorLeft</object-name>
-    <object-name>ElevatorRight</object-name>
-    <object-name>Rudder</object-name>
-    <object-name>NoseGear</object-name>
-    <object-name>Propeller</object-name>
-    <property-base>sim/model/livery</property-base>
-    <texture-prop>texture</texture-prop>
-    <texture>Liveries/pup150/G-AVLN.png</texture>
-  </animation>
 
 </PropertyList>

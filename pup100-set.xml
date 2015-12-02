@@ -27,28 +27,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <sim>
 
     <aero>pup100</aero>
-    <aircraft-version>0.1.0</aircraft-version>
-    <author>Richard Senior</author>
     <description>Beagle Pup 100</description>
-    <flight-model>jsb</flight-model>
 
     <model>
       <path>Models/pup100.xml</path>
-      <livery>
-        <file type="string"/>
-      </livery>
     </model>
 
-    <rating>
-      <FDM type="int">2</FDM>
-      <systems type="int">2</systems>
-      <cockpit type="int">2</cockpit>
-      <model type="int">2</model>
-    </rating>
-
     <sound>
-      <audible>true</audible>
-      <cabin-volume type="double">1.0</cabin-volume>
       <path>Sounds/pup100-sound.xml</path>
     </sound>
 

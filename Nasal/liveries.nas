@@ -24,3 +24,19 @@
 var variant = getprop("sim/aero");
 
 aircraft.livery.init("Models/Liveries/"~variant);
+
+# This is not the usual way to set the initial livery before a selection is
+# made but it allows the material animation for the livery to go into the
+# pup-common.xml, which means other material animations in pup-common.xml
+# can be arranged to come after the livery initialization.
+#
+setlistener("sim/signals/fdm-initialized", func(v) {
+    var texture = "sim/model/livery/texture";
+    if (v.getBoolValue() and !getprop(texture))
+        if (variant == "pup100")
+            setprop(texture, "Liveries/pup100/G-AXDV.png");
+        elsif (variant == "pup150")
+            setprop(texture, "Liveries/pup150/G-AVLN.png");
+        elsif (variant == "pup160")
+            setprop(texture, "Liveries/pup160/VH-EPI.png");
+}, 0, 0);
