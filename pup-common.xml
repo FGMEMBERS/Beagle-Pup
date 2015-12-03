@@ -105,9 +105,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <file>Nasal/controls.nas</file>
       <file>Nasal/dialog.nas</file>
       <file>Nasal/electrical.nas</file>
-      <file>Nasal/liveries.nas</file>
       <file>Nasal/fuel.nas</file>
       <file>Nasal/icing.nas</file>
+      <file>Nasal/liveries.nas</file>
+      <file>Nasal/util.nas</file>
     </pup>
     <instruments>
       <file>Models/Instruments/ADF/KR87.nas</file>
@@ -145,7 +146,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <menubar include="Interface/menubar.xml"/>
 
     <author>Richard Senior</author>
-    <aircraft-version>0.1.1</aircraft-version>
+    <aircraft-version>0.2.0</aircraft-version>
     <flight-model>jsb</flight-model>
 
     <aircraft-data>

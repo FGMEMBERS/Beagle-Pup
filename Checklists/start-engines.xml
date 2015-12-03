@@ -147,7 +147,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <name>Starter Master</name>
     <value>ON</value>
     <condition>
-      <property>systems/electrical/outputs/starter</property>
+      <or>
+        <property>systems/electrical/outputs/starter</property>
+        <property>engines/engine/running</property>
+      </or>
     </condition>
     <binding>
       <command>property-assign</command>
@@ -167,12 +170,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <command>nasal</command>
       <script>
         if (!getprop("engines/engine/cranking")) {
-        controls.startEngine(1);
-        var t = maketimer(3, func {
-        controls.startEngine(0);
-        });
-        t.singleShot = 1;
-        t.start();
+          controls.startEngine(1);
+          var t = maketimer(3, func {
+            controls.startEngine(0);
+          });
+          t.singleShot = 1;
+          t.start();
         }
       </script>
     </binding>
@@ -216,6 +219,26 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <property>controls/engines/engine/throttle</property>
       <value>0.0</value>
       <rate>0.5</rate>
+    </binding>
+  </item>
+
+  <!-- Starter Master - OFF -->
+  <item>
+    <name>Starter Master</name>
+    <value>OFF</value>
+    <condition>
+      <and>
+        <property>engines/engine/running</property>
+        <equals>
+          <property>systems/electrical/outputs/starter</property>
+          <value>0</value>
+        </equals>
+      </and>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/electric/engine/starter-master</property>
+      <value>0</value>
     </binding>
   </item>
 

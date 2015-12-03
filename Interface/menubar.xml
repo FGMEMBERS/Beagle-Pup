@@ -31,15 +31,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <label>Autostart</label>
         <binding>
           <command>nasal</command>
-          <script>
+          <script><![CDATA[
             if (props.globals.getNode("sim/checklists/auto") == nil) {
-              setprop("sim/messages/copilot",
-              "Autostart needs FGDATA 3.5 or higher"
-            );
-            return;
+                setprop("sim/messages/copilot",
+                    "Automated checklists need FGDATA 3.5 or higher"
+                );
+                return;
             }
-            generic.complete_checklists("autostart");
-          </script>
+            if (pup.is_near_runway()) {
+                setprop("sim/checklists/auto/completed-message",
+                    "Checklists complete, ready for takeoff"
+                );
+                generic.complete_checklists("runway-start");
+            } else {
+                setprop("sim/checklists/auto/completed-message",
+                    "Checklists complete, ready to taxi"
+                );
+                generic.complete_checklists("apron-start");
+            }
+          ]]></script>
         </binding>
       </item>
       <item>

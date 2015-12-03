@@ -2,7 +2,7 @@
 <!--
 **************************************************************************
 
-Checklist: Before Takeoff
+Checklist: Initial Climb
 
 Copyright (c) 2015 Richard Senior
 
@@ -24,22 +24,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 <PropertyList>
 
-  <title>Before Takeoff</title>
+  <title>Initial Climb</title>
 
-  <!-- Landing Light - ON -->
+  <!-- Flaps - UP -->
   <item>
-    <name>Landing Lights</name>
-    <value>ON</value>
+    <name>Flaps</name>
+    <value>UP</value>
     <condition>
-      <greater-than>
-        <property>systems/electrical/outputs/landing-lights</property>
+      <equals>
+        <property>controls/flight/flaps</property>
         <value>0</value>
-      </greater-than>
+      </equals>
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>controls/lighting/landing-lights</property>
-      <value>1</value>
+      <property>controls/flight/flaps</property>
+      <value>0</value>
     </binding>
   </item>
 
@@ -60,26 +60,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
-  <!-- Flaps - TAKEOFF -->
+  <!-- Landing Lights - OFF -->
   <item>
-    <name>Flaps</name>
-    <value>TAKEOFF</value>
+    <name>Landing Lights</name>
+    <value>OFF</value>
     <condition>
-      <and>
-        <greater-than>
-          <property>controls/flight/flaps</property>
-          <value>0</value>
-        </greater-than>
-        <less-than>
-          <property>controls/flight/flaps</property>
-          <value>1</value>
-        </less-than>
-      </and>
+      <equals>
+        <property>systems/electrical/outputs/landing-lights</property>
+        <value>0</value>
+      </equals>
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>controls/flight/flaps</property>
-      <value>0.38</value>
+      <property>controls/lighting/landing-lights</property>
+      <value>0</value>
     </binding>
   </item>
 

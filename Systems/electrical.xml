@@ -133,14 +133,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <component>
       <kind type="string">output</kind>
+      <name type="string">Strobe Lights</name>
+      <prop type="string">systems/electrical/outputs/strobe-lights</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
       <name type="string">Taxi Light</name>
       <prop type="string">systems/electrical/outputs/taxi-light</prop>
     </component>
 
     <component>
       <kind type="string">output</kind>
-      <name type="string">Landing Light</name>
-      <prop type="string">systems/electrical/outputs/landing-light</prop>
+      <name type="string">Landing Lights</name>
+      <prop type="string">systems/electrical/outputs/landing-lights</prop>
     </component>
 
     <component>
@@ -204,6 +210,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <connector>
       <input type="string">DC Bus</input>
+      <output type="string">Strobe Lights</output>
+      <switch type="string">controls/lighting/strobe</switch>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
       <output type="string">Beacon</output>
       <switch type="string">controls/lighting/beacon</switch>
     </connector>
@@ -216,8 +228,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <connector>
       <input type="string">DC Bus</input>
-      <output type="string">Landing Light</output>
-      <switch type="string">controls/lighting/landing-light</switch>
+      <output type="string">Landing Lights</output>
+      <switch type="string">controls/lighting/landing-lights</switch>
     </connector>
 
     <connector>

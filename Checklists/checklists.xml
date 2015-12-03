@@ -28,16 +28,32 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <checklist include="start-engines.xml"></checklist>
   <checklist include="before-taxi.xml"></checklist>
   <checklist include="before-takeoff.xml"></checklist>
+  <checklist include="initial-climb.xml"></checklist>
+  <checklist include="pre-traffic-pattern.xml"></checklist>
+  <checklist include="traffic-pattern.xml"></checklist>
+  <checklist include="after-landing.xml"></checklist>
+  <checklist include="parking.xml"></checklist>
 
   <auto>
     <timeout-sec>10</timeout-sec>
     <wait-sec>1</wait-sec>
   </auto>
 
-  <autostart>
+  <apron-start>
     <index n="0">0</index>  <!-- Before Starting Engines -->
     <index n="1">1</index>  <!-- Start Engines -->
+    <index n="2">2</index>  <!-- Before Taxi -->
+  </apron-start>
+
+  <runway-start>
+    <index n="0">0</index>  <!-- Before Starting Engines -->
+    <index n="1">1</index>  <!-- Start Engines -->
+    <index n="2">2</index>  <!-- Before Taxi -->
     <index n="3">3</index>  <!-- Before Takeoff -->
-  </autostart>
+  </runway-start>
+
+  <after-landing>
+    <index n="0">7</index>  <!-- After Landing -->
+  </after-landing>
 
 </PropertyList>

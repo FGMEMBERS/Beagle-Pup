@@ -24,15 +24,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 <PropertyList>
 
-  <title>Beagle Pup B121 Series 1 and 2</title>
+  <title>Beagle Pup</title>
 
   <key>
     <name>C</name>
     <desc>Cruise Power</desc>
   </key>
   <key>
-    <name>T</name>
-    <desc>Takeoff Power</desc>
+    <name>F</name>
+    <desc>Full Power</desc>
+  </key>
+  <key>
+    <name>L</name>
+    <desc>After Landing Checklist</desc>
   </key>
 
 </PropertyList>

@@ -2,7 +2,7 @@
 <!--
 **************************************************************************
 
-Beagle Pup Keyboard Shortcuts
+Checklist: Traffic Pattern
 
 Copyright (c) 2015 Richard Senior
 
@@ -24,33 +24,41 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 <PropertyList>
 
-  <key n="67">
-    <name>C</name>
+  <title>Traffic Pattern</title>
+
+  <!-- Flaps - APPROACH -->
+  <item>
+    <name>Flaps</name>
+    <value>APPROACH</value>
+    <condition>
+      <greater-than>
+        <property>controls/flight/flaps</property>
+        <value>0</value>
+      </greater-than>
+    </condition>
     <binding>
-      <command>nasal</command>
-      <script>interpolate("controls/engines/engine/throttle", 0.85, 1.0);</script>
+      <command>property-assign</command>
+      <property>controls/flight/flaps</property>
+      <value>0.38</value>
     </binding>
-  </key>
-  <key n="70">
-    <name>F</name>
+  </item>
+
+  <!-- Mixture - FULL RICH -->
+  <item>
+    <name>Mixture</name>
+    <value>FULL RICH</value>
+    <condition>
+      <greater-than>
+        <property>controls/engines/engine/mixture</property>
+        <value>0.95</value>
+      </greater-than>
+    </condition>
     <binding>
-      <command>nasal</command>
-      <script>interpolate("controls/engines/engine/throttle", 1.00, 1.0);</script>
+      <command>property-interpolate</command>
+      <property>controls/engines/engine/mixture</property>
+      <value>1</value>
+      <rate>0.5</rate>
     </binding>
-  </key>
-  <key n="76">
-    <binding>
-      <command>nasal</command>
-      <script>
-        if (props.globals.getNode("sim/checklists/auto") == nil) {
-          setprop("sim/messages/copilot",
-            "Automated checklists need FGDATA 3.5 or higher"
-          );
-          return;
-        }
-        generic.complete_checklists("after-landing", 0);
-      </script>
-    </binding>
-  </key>
+  </item>
 
 </PropertyList>

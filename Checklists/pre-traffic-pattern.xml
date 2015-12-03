@@ -2,7 +2,7 @@
 <!--
 **************************************************************************
 
-Checklist: Before Takeoff
+Checklist: Pre Traffic Pattern
 
 Copyright (c) 2015 Richard Senior
 
@@ -24,7 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 <PropertyList>
 
-  <title>Before Takeoff</title>
+  <title>Pre Traffic Pattern</title>
 
   <!-- Landing Light - ON -->
   <item>
@@ -40,46 +40,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <command>property-assign</command>
       <property>controls/lighting/landing-lights</property>
       <value>1</value>
-    </binding>
-  </item>
-
-  <!-- Taxi Light - OFF -->
-  <item>
-    <name>Taxi Light</name>
-    <value>OFF</value>
-    <condition>
-      <equals>
-        <property>systems/electrical/outputs/taxi-light</property>
-        <value>0</value>
-      </equals>
-    </condition>
-    <binding>
-      <command>property-assign</command>
-      <property>controls/lighting/taxi-light</property>
-      <value>0</value>
-    </binding>
-  </item>
-
-  <!-- Flaps - TAKEOFF -->
-  <item>
-    <name>Flaps</name>
-    <value>TAKEOFF</value>
-    <condition>
-      <and>
-        <greater-than>
-          <property>controls/flight/flaps</property>
-          <value>0</value>
-        </greater-than>
-        <less-than>
-          <property>controls/flight/flaps</property>
-          <value>1</value>
-        </less-than>
-      </and>
-    </condition>
-    <binding>
-      <command>property-assign</command>
-      <property>controls/flight/flaps</property>
-      <value>0.38</value>
     </binding>
   </item>
 

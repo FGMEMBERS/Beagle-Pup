@@ -2,7 +2,7 @@
 <!--
 **************************************************************************
 
-Checklist: Before Takeoff
+Checklist: After Landing
 
 Copyright (c) 2015 Richard Senior
 
@@ -24,62 +24,73 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 <PropertyList>
 
-  <title>Before Takeoff</title>
+  <title>After Landing</title>
 
-  <!-- Landing Light - ON -->
+  <!-- Taxi Light - ON -->
   <item>
-    <name>Landing Lights</name>
+    <name>Taxi Light</name>
     <value>ON</value>
     <condition>
       <greater-than>
-        <property>systems/electrical/outputs/landing-lights</property>
+        <property>systems/electrical/outputs/taxi-light</property>
         <value>0</value>
       </greater-than>
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>controls/lighting/landing-lights</property>
+      <property>controls/lighting/taxi-light</property>
       <value>1</value>
     </binding>
   </item>
 
-  <!-- Taxi Light - OFF -->
+  <!-- Landing Lights - OFF -->
   <item>
-    <name>Taxi Light</name>
+    <name>Landing Lights</name>
     <value>OFF</value>
     <condition>
       <equals>
-        <property>systems/electrical/outputs/taxi-light</property>
+        <property>systems/electrical/outputs/landing-lights</property>
         <value>0</value>
       </equals>
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>controls/lighting/taxi-light</property>
+      <property>controls/lighting/landing-lights</property>
       <value>0</value>
     </binding>
   </item>
 
-  <!-- Flaps - TAKEOFF -->
+  <!-- Strobe Lights - OFF -->
+  <item>
+    <name>Strobe Lights</name>
+    <value>OFF</value>
+    <condition>
+      <equals>
+        <property>systems/electrical/outputs/strobe-lights</property>
+        <value>0</value>
+      </equals>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/lighting/strobe</property>
+      <value>0</value>
+    </binding>
+  </item>
+
+  <!-- Flaps - UP -->
   <item>
     <name>Flaps</name>
-    <value>TAKEOFF</value>
+    <value>UP</value>
     <condition>
-      <and>
-        <greater-than>
-          <property>controls/flight/flaps</property>
-          <value>0</value>
-        </greater-than>
-        <less-than>
-          <property>controls/flight/flaps</property>
-          <value>1</value>
-        </less-than>
-      </and>
+      <equals>
+        <property>controls/flight/flaps</property>
+        <value>0</value>
+      </equals>
     </condition>
     <binding>
       <command>property-assign</command>
       <property>controls/flight/flaps</property>
-      <value>0.38</value>
+      <value>0</value>
     </binding>
   </item>
 
