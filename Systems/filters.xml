@@ -31,7 +31,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <property>sim/current-view/internal</property>
       </and>
     </input>
-    <output>sim/rendering/als-secondary-lights/use-landing-lights</output>
+    <output>sim/rendering/als-secondary-lights/use-landing-light</output>
   </logic>
 
   <logic>
@@ -41,7 +41,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <property>sim/current-view/internal</property>
       </and>
     </input>
-    <output>sim/rendering/als-secondary-lights/use-alt-landing-lights</output>
+    <output>sim/rendering/als-secondary-lights/use-alt-landing-light</output>
   </logic>
 
 </PropertyList>

@@ -146,7 +146,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <menubar include="Interface/menubar.xml"/>
 
     <author>Richard Senior</author>
-    <aircraft-version>0.2.1</aircraft-version>
+    <aircraft-version>0.2.2</aircraft-version>
     <flight-model>jsb</flight-model>
 
     <aircraft-data>
