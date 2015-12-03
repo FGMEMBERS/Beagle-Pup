@@ -146,7 +146,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <menubar include="Interface/menubar.xml"/>
 
     <author>Richard Senior</author>
-    <aircraft-version>0.2.0</aircraft-version>
+    <aircraft-version>0.2.1</aircraft-version>
     <flight-model>jsb</flight-model>
 
     <aircraft-data>
@@ -182,6 +182,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <model type="int">2</model>
     </rating>
 
+    <rendering>
+      <als-secondary-lights>
+        <landing-light1-offset-deg type="float">5</landing-light1-offset-deg>
+        <landing-light2-offset-deg type="float">0</landing-light2-offset-deg>
+        <landing-light3-offset-deg type="float">3</landing-light3-offset-deg>
+      </als-secondary-lights>
+    </rendering>
+
     <sound>
       <audible>true</audible>
       <cabin-volume type="double">1.0</cabin-volume>
@@ -191,6 +199,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <autopilot>
         <path>Systems/autopilot.xml</path>
       </autopilot>
+      <property-rule n="100">
+        <path>Systems/filters.xml</path>
+      </property-rule>
     </systems>
 
     <tags>
