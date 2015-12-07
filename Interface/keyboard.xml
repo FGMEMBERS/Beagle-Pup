@@ -26,6 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <key n="67">
     <name>C</name>
+    <desc>Cruise Power</desc>
     <binding>
       <command>nasal</command>
       <script>interpolate("controls/engines/engine/throttle", 0.85, 1.0);</script>
@@ -33,12 +34,45 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </key>
   <key n="70">
     <name>F</name>
+    <desc>Full Power</desc>
     <binding>
       <command>nasal</command>
       <script>interpolate("controls/engines/engine/throttle", 1.00, 1.0);</script>
     </binding>
   </key>
+  <key n="98">
+    <name>b</name>
+    <desc>Select Both Tanks</desc>
+    <mod-alt>
+      <binding>
+        <command>nasal</command>
+        <script>pup.select_fuel_tank(pup.Tank.BOTH);</script>
+      </binding>
+    </mod-alt>
+  </key>
+  <key n="108">
+    <name>l</name>
+    <desc>Select Left Tank</desc>
+    <mod-alt>
+      <binding>
+        <command>nasal</command>
+        <script>pup.select_fuel_tank(pup.Tank.LEFT);</script>
+      </binding>
+    </mod-alt>
+  </key>
+  <key n="114">
+    <name>r</name>
+    <desc>Select Right Tank</desc>
+    <mod-alt>
+      <binding>
+        <command>nasal</command>
+        <script>pup.select_fuel_tank(pup.Tank.RIGHT);</script>
+      </binding>
+    </mod-alt>
+  </key>
   <key n="76">
+    <name>L</name>
+    <desc>After Landing Checklist</desc>
     <binding>
       <command>nasal</command>
       <script>

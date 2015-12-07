@@ -1,6 +1,6 @@
 ################################################################################
 #
-# Beagle Pup Controls Overrides
+# Beagle Pup Controls
 #
 # Copyright (c) 2015 Richard Senior
 #
@@ -21,6 +21,8 @@
 #
 ################################################################################
 
+var Magnetos = {OFF: 0, LEFT: 1, RIGHT: 2, BOTH: 3};
+
 var defaultStartEngine = controls.startEngine;
 
 controls.startEngine = func(v = 1, which...)
@@ -35,6 +37,24 @@ controls.flapsDown = func(step)
 {
     if (getprop("systems/electrical/outputs/flaps") > 0.0)
         defaultFlapsDown(step);
+}
+
+var defaultStepMagnetos = controls.stepMagnetos;
+
+controls.stepMagnetos = func(change)
+{
+    var m = getprop("controls/engines/engine/magnetos");
+    if (m + change <= 3 and m + change >= 0)
+        multi_click(abs(change));
+    defaultStepMagnetos(change);
+}
+
+var select_magnetos = func(n)
+{
+    var m = getprop("controls/engines/engine/magnetos");
+    var steps = abs(n - m);
+    multi_click(steps);
+    setprop("controls/engines/engine/magnetos", n);
 }
 
 print("Controls overrides loaded");

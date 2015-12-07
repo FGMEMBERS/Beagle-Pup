@@ -58,6 +58,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <property>controls/lighting/taxi-light</property>
       <value>0</value>
     </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
+    </binding>
   </item>
 
   <!-- Landing Lights - OFF -->
@@ -74,6 +78,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <command>property-assign</command>
       <property>controls/lighting/landing-lights</property>
       <value>0</value>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
     </binding>
   </item>
 

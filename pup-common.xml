@@ -41,6 +41,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <fuel>
       <tank n="0">
         <name>Manifold</name>
+        <hidden type="bool">1</hidden>
       </tank>
       <tank n="1">
         <name>Left Wing</name>
@@ -101,6 +102,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <nasal>
     <pup>
+      <!-- Eventually these will be rationalized into a smaller set -->
       <file>Nasal/autopilot.nas</file>
       <file>Nasal/controls.nas</file>
       <file>Nasal/dialog.nas</file>
@@ -108,6 +110,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <file>Nasal/fuel.nas</file>
       <file>Nasal/icing.nas</file>
       <file>Nasal/liveries.nas</file>
+      <file>Nasal/thunder.nas</file>
       <file>Nasal/util.nas</file>
     </pup>
     <instruments>
@@ -146,7 +149,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <menubar include="Interface/menubar.xml"/>
 
     <author>Richard Senior</author>
-    <aircraft-version>0.2.2</aircraft-version>
+    <aircraft-version>0.3.0</aircraft-version>
     <flight-model>jsb</flight-model>
 
     <aircraft-data>
@@ -192,7 +195,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <sound>
       <audible>true</audible>
-      <cabin-volume type="double">1.0</cabin-volume>
+      <cabin-volume type="double">0.8</cabin-volume>
+      <click type="bool">false</click>
     </sound>
 
     <systems include="Systems/electrical.xml">

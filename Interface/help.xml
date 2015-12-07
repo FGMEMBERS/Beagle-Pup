@@ -38,5 +38,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <name>L</name>
     <desc>After Landing Checklist</desc>
   </key>
+  <key>
+    <name>Alt-b</name>
+    <desc>Select Both Tanks</desc>
+  </key>
+  <key>
+    <name>Alt-l</name>
+    <desc>Select Left Tank</desc>
+  </key>
+  <key>
+    <name>Alt-r</name>
+    <desc>Select Right Tank</desc>
+  </key>
 
 </PropertyList>

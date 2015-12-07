@@ -23,8 +23,7 @@
 
 var _lock = 0;
 
-var tank_selector = "controls/fuel/tank-selector";
-var feed = {OFF: 0, LEFT: 1, BOTH: 2, RIGHT: 3};
+var Tank = {OFF: 0, LEFT: 1, BOTH: 2, RIGHT: 3};
 
 # Lock changes through listeners. If a function is wrapped in this lock
 # function, listeners will not fire and cause an endless loop.
@@ -41,6 +40,14 @@ var lock = func(f)
 # Helpers
 ################################################################################
 
+var select_fuel_tank = func(n)
+{
+    var s = getprop("controls/fuel/tank-selector");
+    var steps = abs(n - s);
+    multi_click(steps == 3 ? 1 : steps);
+    setprop("controls/fuel/tank-selector", n);
+}
+
 # Infer the position of the fuel tank selector from the checkboxes in the 
 # fuel and payload dialog
 #
@@ -50,46 +57,50 @@ var infer_fuel_tank_selector = func
     var r = getprop("consumables/fuel/tank[2]/selected");
 
     if (!l and !r)
-        setprop(tank_selector, feed.OFF);
+        select_fuel_tank(Tank.OFF);
     elsif (l and !r)
-        setprop(tank_selector, feed.LEFT);
+        select_fuel_tank(Tank.LEFT);
     elsif (!l and r)
-        setprop(tank_selector, feed.RIGHT);
+        select_fuel_tank(Tank.RIGHT);
     else
-        setprop(tank_selector, feed.BOTH);
+        select_fuel_tank(Tank.BOTH);
 }
 
 ################################################################################
 # Listeners
 ################################################################################
 
-# Update the fuel and payload dialog from the fuel selection
-#
-setlistener(tank_selector, func(node) {
-    lock(func {
-        var selection = node != nil and node.getValue();
-        var l = selection == feed.LEFT or selection == feed.BOTH;
-        var r = selection == feed.RIGHT or selection == feed.BOTH;
-        setprop("consumables/fuel/tank[0]/selected", 1);
-        setprop("consumables/fuel/tank[1]/selected", l);
-        setprop("consumables/fuel/tank[2]/selected", r);
-    });
-}, startup = 1, runtime = 0);
+var start_listeners = func()
+{
+    # Update the fuel and payload dialog from the fuel selection
+    #
+    setlistener("controls/fuel/tank-selector", func(node) {
+        lock(func {
+            var selection = node != nil and node.getValue();
+            var l = selection == Tank.LEFT or selection == Tank.BOTH;
+            var r = selection == Tank.RIGHT or selection == Tank.BOTH;
+            setprop("consumables/fuel/tank[1]/selected", l);
+            setprop("consumables/fuel/tank[2]/selected", r);
+        });
+    }, startup = 1, runtime = 0);
 
-# Update the fuel selection from the fuel and payload dialog (left tank)
-#
-setlistener("consumables/fuel/tank[1]/selected", func(node) {
-    lock(func {
-        infer_fuel_tank_selector();
-    });
-}, startup = 1, runtime = 0);
+    # Update the fuel selection from the fuel and payload dialog (left tank)
+    #
+    setlistener("consumables/fuel/tank[1]/selected", func(node) {
+        lock(func {
+            infer_fuel_tank_selector();
+        });
+    }, startup = 1, runtime = 0);
 
-# Update the fuel selection from the fuel and payload dialog (right tank)
-#
-setlistener("consumables/fuel/tank[2]/selected", func(node) {
-    lock(func {
-        infer_fuel_tank_selector();
-    });
-}, startup = 1, runtime = 0);
+    # Update the fuel selection from the fuel and payload dialog (right tank)
+    #
+    setlistener("consumables/fuel/tank[2]/selected", func(node) {
+        lock(func {
+            infer_fuel_tank_selector();
+        });
+    }, startup = 1, runtime = 0);
+}
+
+setlistener("sim/signals/fdm-initialized", start_listeners, 0, 0);
 
 print("Fuel system loaded");

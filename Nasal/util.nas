@@ -52,4 +52,42 @@ var is_near_runway = func()
     return distance_to_nearest_runway(from:current_position()) < 50.0;
 }
 
+# A rather elaborate sound click function with the ability to call a callback
+# function after the sound as played and after a further delay. This allows
+# for single or multiple clicks, e.g.
+#
+# click(); # Single click
+# click(func{click();}, 0.5); # Two clicks, separated by approx 0.5s
+#
+var click = func(callback = nil, delay = 0)
+{
+    var duration = 0.1;
+
+    setprop("sim/sound/click", 1);
+    var t = maketimer(duration, func {
+        setprop("sim/sound/click", 0);
+        if (callback != nil) {
+            var u = maketimer(delay < duration ? duration : delay, func {
+                call(callback);
+            });
+            u.singleShot = 1;
+            u.start();
+        }
+    });
+    t.singleShot = 1;
+    t.start();
+}
+
+# Convenience function for up to three clicks with delay, e.g. fuel, mags
+#
+var multi_click = func(count, delay = 0)
+{
+    if (count == 1)
+        click();
+    elsif (count == 2)
+        click(func{click();}, delay);
+    elsif (count == 3)
+        click(func{click(func{click();}, delay)}, delay);
+}
+
 print ("Utility functions loaded");

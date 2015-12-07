@@ -72,9 +72,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </equals>
     </condition>
     <binding>
-      <command>property-assign</command>
-      <property>controls/engines/engine/magnetos</property>
-      <value>0</value>
+      <command>nasal</command>
+      <script>
+        pup.select_magnetos(pup.Magnetos.OFF);
+      </script>
     </binding>
   </item>
 
@@ -93,6 +94,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <property>controls/lighting/beacon</property>
       <value>0</value>
     </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
+    </binding>
   </item>
 
   <!-- Fuel Tank Selector - OFF -->
@@ -108,9 +113,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </not>
     </condition>
     <binding>
-      <command>property-assign</command>
-      <property>controls/fuel/tank-selector</property>
-      <value>0</value>
+      <command>nasal</command>
+      <script>
+          pup.select_fuel_tank(pup.Tank.OFF);
+      </script>
     </binding>
   </item>
 
@@ -129,6 +135,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <property>controls/lighting/nav-lights</property>
       <value>0</value>
     </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
+    </binding>
   </item>
 
   <!-- Main Battery - OFF -->
@@ -145,6 +155,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <command>property-assign</command>
       <property>controls/electric/battery-switch</property>
       <value>0</value>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
     </binding>
   </item>
 

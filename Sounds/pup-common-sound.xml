@@ -3,6 +3,29 @@
 <PropertyList>
 
   <fx>
+
+    <fuelpump>
+      <name>fuelpump</name>
+      <mode>looped</mode>
+      <path>fuel-pump.wav</path>
+      <condition>
+        <greater-than>
+          <property>systems/electrical/outputs/fuel-pump</property>
+          <value>0</value>
+        </greater-than>
+      </condition>
+      <reference-dist>5.0</reference-dist>
+      <max-dist>10.0</max-dist>
+      <position>
+        <x>0.7</x>
+        <y>0</y>
+        <z>0.1</z>
+      </position>
+      <volume>
+        <property>sim/sound/cabin-volume</property>
+      </volume>
+    </fuelpump>
+
     <crank>
       <name>start</name>
       <mode>once</mode>
@@ -119,6 +142,152 @@
       <reference-dist>2.0</reference-dist>
       <max-dist>3.0</max-dist>
     </flap>
+
+    <click>
+      <name>click</name>
+      <mode>once</mode>
+      <path>Sounds/click.wav</path>
+      <condition>
+        <and>
+          <property>sim/sound/click</property>
+          <property>sim/current-view/internal</property>
+        </and>
+      </condition>
+      <reference-dist>5.0</reference-dist>
+      <max-dist>10.0</max-dist>
+      <position>
+        <x>0.7</x>
+        <y>0.0</y>
+        <z>0.1</z>
+      </position>
+      <volume>
+        <property>sim/sound/cabin-volume</property>
+      </volume>
+    </click>
+
+    <rainwindshield>
+      <name>rainwindshield</name>
+      <mode>looped</mode>
+      <path>Sounds/rain-windshield.wav</path>
+      <condition>
+        <and>
+          <greater-than>
+            <property>environment/rain-norm</property>
+            <value>0</value>
+          </greater-than>
+          <property>sim/current-view/internal</property>
+        </and>
+      </condition>
+      <reference-dist>1.0</reference-dist>
+      <max-dist>5.0</max-dist>
+      <position>
+        <x>0.6</x>
+        <y>0.0</y>
+        <z>0.3</z>
+      </position>
+      <volume>
+        <property>environment/rain-norm</property>
+      </volume>
+      <pitch>
+        <property>environment/rain-norm</property>
+        <factor>0.2</factor>
+        <offset>1.0</offset>
+      </pitch>
+    </rainwindshield>
+
+    <rainoutside>
+      <name>rainoutside</name>
+      <mode>looped</mode>
+      <path>Sounds/rain.wav</path>
+      <condition>
+        <and>
+          <not>
+            <property>sim/current-view/internal</property>
+          </not>
+          <greater-than>
+            <property>environment/rain-norm</property>
+            <value>0</value>
+          </greater-than>
+          <less-than>
+            <property>position/altitude-agl-ft</property>
+            <value>50</value>
+          </less-than>
+        </and>
+      </condition>
+      <reference-dist>100.0</reference-dist>
+      <max-dist>100.0</max-dist>
+      <position>
+        <x>0.0</x>
+        <y>0.0</y>
+        <z>0.0</z>
+      </position>
+      <volume>
+        <property>environment/rain-norm</property>
+      </volume>
+      <pitch>
+        <property>environment/rain-norm</property>
+        <factor>0.2</factor>
+        <offset>0.6</offset>
+      </pitch>
+    </rainoutside>
+
+    <thunder0>
+      <name>thunder0</name>
+      <mode>once</mode>
+      <path>thunder-clap.wav</path>
+      <condition>
+        <property>sim/sound/thunder[0]/active</property>
+      </condition>
+      <reference-dist>1000.0</reference-dist>
+      <max-dist>1000.0</max-dist>
+      <volume>
+        <property>sim/sound/thunder[0]/volume</property>
+      </volume>
+    </thunder0>
+
+    <thunder1>
+      <name>thunder1</name>
+      <mode>once</mode>
+      <path>thunder-clap-midrange.wav</path>
+      <condition>
+        <property>sim/sound/thunder[1]/active</property>
+      </condition>
+      <reference-dist>1000.0</reference-dist>
+      <max-dist>1000.0</max-dist>
+      <volume>
+        <property>sim/sound/thunder[1]/volume</property>
+      </volume>
+      <volume>1.0</volume>
+    </thunder1>
+
+    <thunder2>
+      <name>thunder2</name>
+      <mode>once</mode>
+      <path>thunder-midrange.wav</path>
+      <condition>
+        <property>sim/sound/thunder[2]/active</property>
+      </condition>
+      <reference-dist>1000.0</reference-dist>
+      <max-dist>1000.0</max-dist>
+      <volume>
+        <property>sim/sound/thunder[2]/volume</property>
+      </volume>
+      <volume>1.0</volume>
+    </thunder2>
+
+    <thunder3>
+      <name>thunder3</name>
+      <mode>once</mode>
+      <path>thunder-roll.wav</path>
+      <condition>
+        <property>sim/sound/thunder[3]/active</property>
+      </condition>
+      <reference-dist>1000.0</reference-dist>
+      <max-dist>1000.0</max-dist>
+      <volume>
+        <property>sim/sound/thunder[3]/volume</property>
+      </volume>
+    </thunder3>
 
   </fx>
 

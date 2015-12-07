@@ -58,6 +58,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <property>controls/electric/battery-switch</property>
       <value>1</value>
     </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
+    </binding>
   </item>
 
   <!-- Navigation Lights - ON -->
@@ -74,6 +78,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <command>property-assign</command>
       <property>controls/lighting/nav-lights</property>
       <value>1</value>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
     </binding>
   </item>
 

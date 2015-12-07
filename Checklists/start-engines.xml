@@ -41,6 +41,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <property>controls/lighting/beacon</property>
       <value>1</value>
     </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
+    </binding>
   </item>
 
   <!-- Fuel Tank Selector - EITHER -->
@@ -54,9 +58,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </or>
     </condition>
     <binding>
-      <command>property-assign</command>
-      <property>controls/fuel/tank-selector</property>
-      <value>2</value>
+      <command>nasal</command>
+      <script>
+        pup.select_fuel_tank(pup.Tank.BOTH);
+      </script>
     </binding>
   </item>
 
@@ -95,6 +100,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <command>property-assign</command>
       <property>controls/electric/engine/fuel-pump</property>
       <value>1</value>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
     </binding>
   </item>
 
@@ -136,9 +145,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </equals>
     </condition>
     <binding>
-      <command>property-assign</command>
-      <property>controls/engines/engine/magnetos</property>
-      <value>3</value>
+      <command>nasal</command>
+      <script>
+        pup.select_magnetos(pup.Magnetos.BOTH);
+      </script>
     </binding>
   </item>
 
@@ -156,6 +166,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <command>property-assign</command>
       <property>controls/electric/engine/starter-master</property>
       <value>1</value>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
     </binding>
   </item>
 
@@ -199,6 +213,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <property>controls/electric/engine/fuel-pump</property>
       <value>0</value>
     </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
+    </binding>
   </item>
 
   <!-- Throttle - IDLE -->
@@ -240,6 +258,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <property>controls/electric/engine/starter-master</property>
       <value>0</value>
     </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
+    </binding>
   </item>
 
   <!-- Alternator - ON -->
@@ -256,6 +278,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <command>property-assign</command>
       <property>controls/electric/engine/generator</property>
       <value>1</value>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
     </binding>
   </item>
 
