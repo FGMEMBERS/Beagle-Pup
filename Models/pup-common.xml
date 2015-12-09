@@ -56,6 +56,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <texture-prop>texture</texture-prop>
   </animation>
 
+  <effect>
+    <inherits-from>Aircraft/Beagle-Pup/Models/Effects/glass</inherits-from>
+    <object-name>Windscreen</object-name>
+    <object-name>WindowPilot</object-name>
+    <object-name>WindowCoPilot</object-name>
+    <object-name>WindowPilotRear</object-name>
+    <object-name>WindowCoPilotRear</object-name>
+  </effect>
+
   <animation>
     <type>rotate</type>
     <object-name>AileronLeft</object-name>
