@@ -44,4 +44,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <output>sim/rendering/als-secondary-lights/use-alt-landing-light</output>
   </logic>
 
+  <filter>
+    <type>exponential</type>
+    <filter-time>0.5</filter-time>
+    <input>engines/engine/egt-degf</input>
+    <output>instrumentation/egt/egt-degf</output>
+  </filter>
+
 </PropertyList>
