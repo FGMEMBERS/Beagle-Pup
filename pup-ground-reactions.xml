@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+**************************************************************************
+
+Beagle Pup Ground Reactions (JSBSim)
+
+Copyright (c) 2015 Richard Senior
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+**************************************************************************
+-->
+
+<ground_reactions>
+
+  <contact type="BOGEY" name="NOSE">
+    <location unit="IN">
+      <x>  38.93 </x>
+      <y>   0.00 </y>
+      <z> -54.00 </z>
+    </location>
+    <static_friction>  0.80 </static_friction>
+    <dynamic_friction> 0.50 </dynamic_friction>
+    <rolling_friction> 0.02 </rolling_friction>
+    <spring_coeff unit="LBS/FT">        1677.49 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">   962.48 </damping_coeff>
+    <max_steer unit="DEG"> 12.50 </max_steer>
+    <brake_group>NONE</brake_group>
+    <retractable>1</retractable>
+  </contact>
+
+  <contact type="BOGEY" name="LEFT_MAIN">
+    <location unit="IN">
+      <x>  95.75 </x>
+      <y> -39.73 </y>
+      <z> -52.00 </z>
+    </location>
+    <static_friction>  0.80 </static_friction>
+    <dynamic_friction> 0.50 </dynamic_friction>
+    <rolling_friction> 0.02 </rolling_friction>
+    <spring_coeff unit="LBS/FT">       1924.97 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">   962.48 </damping_coeff>
+    <max_steer unit="DEG">0</max_steer>
+    <brake_group>LEFT</brake_group>
+    <retractable>1</retractable>
+  </contact>
+
+  <contact type="BOGEY" name="RIGHT_MAIN">
+    <location unit="IN">
+      <x>  95.75 </x>
+      <y>  39.73 </y>
+      <z> -52.00 </z>
+    </location>
+    <static_friction>  0.80 </static_friction>
+    <dynamic_friction> 0.50 </dynamic_friction>
+    <rolling_friction> 0.02 </rolling_friction>
+    <spring_coeff unit="LBS/FT">       1924.97 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">   962.48 </damping_coeff>
+    <max_steer unit="DEG">0</max_steer>
+    <brake_group>RIGHT</brake_group>
+    <retractable>1</retractable>
+  </contact>
+
+  <contact type="STRUCTURE" name="LEFT_WING">
+    <location unit="IN">
+      <x>  90.09 </x>
+      <y>-184.51 </y>
+      <z>   5.13 </z>
+    </location>
+    <static_friction>  0.6 </static_friction>
+    <dynamic_friction> 0.5 </dynamic_friction>
+    <spring_coeff unit="LBS/FT">       10000 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">  10000 </damping_coeff>
+  </contact>
+
+  <contact type="STRUCTURE" name="RIGHT_WING">
+    <location unit="IN">
+      <x>  90.09 </x>
+      <y> 184.51 </y>
+      <z>   5.13 </z>
+    </location>
+    <static_friction>  0.6 </static_friction>
+    <dynamic_friction> 0.5 </dynamic_friction>
+    <spring_coeff unit="LBS/FT">       10000 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">  10000 </damping_coeff>
+  </contact>
+
+</ground_reactions>
