@@ -1,461 +1,254 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+**************************************************************************
 
-<!-- Cessna337 Autopilot
+Beagle Pup Autopilot (Sperry SP3)
 
-     This autopilot is tuned for the Cessna 337 but designed to be 
-     independent of the autopilot control panel so that it is possible 
-     to offer aircraft variants with different panels.
+Copyright (c) 2015 Richard Senior
 
-     Copyright (c) 2014, Richard Senior
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
 
-     This program is free software; you can redistribute it and/or
-     modify it under the terms of the GNU General Public License
-     as published by the Free Software Foundation; either version 2
-     of the License, or (at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-     GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-     You should have received a copy of the GNU General Public License
-     along with this program; if not, write to the Free Software
-     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, 
-     MA 02110-1301, USA.
+**************************************************************************
 -->
 
 <PropertyList>
 
   <!-- =============================================================== -->
-  <!-- Filters                                                         -->
+  <!-- Servos                                                          -->
   <!-- =============================================================== -->
 
   <filter>
-    <name>CDI Filter</name>
-    <debug>false</debug>
-    <type>exponential</type>
-    <filter-time>0.5</filter-time>
-    <input>instrumentation/nav/heading-needle-deflection</input>
-    <output>autopilot/internal/nav/filtered-heading-needle-deflection</output>
-  </filter>
-
-  <filter>
-    <name>Pitch Select Filter</name>
-    <debug>false</debug>
-    <type>exponential</type>
-    <filter-time>2.0</filter-time>
-    <input>autopilot/settings/pitch-select</input>
-    <output>autopilot/internal/filtered-pitch-select</output>
-  </filter>
-
-  <filter>
-    <name>Bank Select Filter</name>
-    <debug>false</debug>
-    <type>exponential</type>
-    <filter-time>2.0</filter-time>
-    <input>autopilot/settings/bank-select</input>
-    <output>autopilot/internal/filtered-bank-select</output>
-  </filter>
-
-  <filter>
     <name>Aileron Servo</name>
-    <debug>false</debug>
     <feedback-if-disabled>true</feedback-if-disabled>
     <enable>
       <condition>
-        <not>
-          <equals>
-            <property>autopilot/locks/heading</property>
-            <value></value>
-          </equals>
-        </not>
+        <property>autopilot/locks/active</property>
       </condition>
     </enable>
     <input>autopilot/internal/servos/aileron</input>
-    <output>controls/flight/aileron</output>
+    <output>controls/flight/aileron-trim</output>
     <type>noise-spike</type>
-    <max-rate-of-change>0.125</max-rate-of-change>
+    <max-rate-of-change>0.2</max-rate-of-change>
     <min>-1.0</min>
     <max>1.0</max>
   </filter>
 
   <filter>
     <name>Elevator Servo</name>
-    <debug>false</debug>
     <feedback-if-disabled>true</feedback-if-disabled>
     <enable>
       <condition>
-        <not>
-          <equals>
-            <property>autopilot/locks/altitude</property>
-            <value></value>
-          </equals>
-        </not>
+        <property>autopilot/locks/active</property>
       </condition>
     </enable>
     <input>autopilot/internal/servos/elevator</input>
-    <output>controls/flight/elevator</output>
+    <output>controls/flight/elevator-trim</output>
     <type>noise-spike</type>
-    <max-rate-of-change>0.125</max-rate-of-change>
+    <max-rate-of-change>0.2</max-rate-of-change>
     <min>-1.0</min>
     <max>1.0</max>
   </filter>
 
   <filter>
     <name>Rudder Servo</name>
-    <debug>false</debug>
     <feedback-if-disabled>true</feedback-if-disabled>
     <enable>
       <condition>
-        <not>
-          <equals>
-            <property>autopilot/locks/heading</property>
-            <value></value>
-          </equals>
-        </not>
+        <property>autopilot/locks/active</property>
       </condition>
     </enable>
     <input>autopilot/internal/servos/rudder</input>
-    <output>controls/flight/rudder</output>
+    <output>controls/flight/rudder-trim</output>
     <type>noise-spike</type>
-    <max-rate-of-change>0.125</max-rate-of-change>
+    <max-rate-of-change>0.2</max-rate-of-change>
     <min>-1.0</min>
     <max>1.0</max>
   </filter>
 
   <!-- =============================================================== -->
-  <!-- Auto Coordination                                               -->
+  <!-- Roll Axis                                                       -->
   <!-- =============================================================== -->
 
-  <!-- Not strictly realistic. Perhaps this should be switchable with 
-         an entry under sim/realism ... It flies nicely with this though -->
+  <filter>
+    <type>exponential</type>
+    <filter-time>1.0</filter-time>
+    <input>autopilot/sperry/turn-select</input>
+    <output>autopilot/sperry/turn-select-filtered</output>
+  </filter>
 
-    <pid-controller>
-      <name>Auto Coordination</name>
-      <debug>false</debug>
-      <enable>
-        <condition>
-          <and>
-            <not>
-              <equals>
-                <property>autopilot/locks/heading</property>
-                <value></value>
-              </equals>
-            </not>
-            <not>
-              <property>controls/flight/auto-coordination</property>
-            </not>
-          </and>
-        </condition>
-      </enable>
-      <type>gain</type>
-      <input>instrumentation/slip-skid-ball/indicated-slip-skid</input>
-      <output>autopilot/internal/servos/rudder</output>
-      <config>
-        <Kp>0.2</Kp>
-        <Ti>30.0</Ti>
-        <Td>0.002</Td>
-        <u_min>-0.2</u_min>
-        <u_max>0.2</u_max>
-      </config>
-    </pid-controller>
+  <filter>
+    <name>Turn Select</name>
+    <type>gain</type>
+    <enable>
+      <condition>
+        <not>
+          <property>autopilot/locks/heading-hold</property>
+        </not>
+      </condition>
+    </enable>
+    <input>
+      <expression>
+        <sum>
+          <property>autopilot/sperry/turn-select-filtered</property>
+          <property>autopilot/sperry/roll-trim</property>
+        </sum>
+      </expression>
+    </input>
+    <output>autopilot/internal/target-roll-deg</output>
+  </filter>
 
-    <!-- =============================================================== -->
-    <!-- Roll Axis Modes                                                 -->
-    <!-- =============================================================== -->
+  <filter>
+    <name>Heading Hold</name>
+    <enable>
+      <condition>
+        <property>autopilot/locks/heading-hold</property>
+      </condition>
+    </enable>
+    <type>gain</type>
+    <gain>2.0</gain>
+    <input>autopilot/internal/heading-bug-error-deg</input>
+    <output>autopilot/internal/target-roll-deg</output>
+  </filter>
 
-    <!-- Bank select (including wing leveler when set to zero) -->
+  <filter>
+    <type>exponential</type>
+    <filter-time>1.0</filter-time>
+    <input>autopilot/internal/target-roll-deg</input>
+    <output>autopilot/internal/target-roll-deg-filtered</output>
+  </filter>
 
-    <filter>
-      <name>Bank Angle Roll Computer</name>
-      <debug>false</debug>
-      <enable>
-        <condition>
-          <or>
-            <equals>
-              <property>autopilot/locks/heading</property>
-              <value>wing-leveler</value>
-            </equals>
-            <equals>
-              <property>autopilot/locks/heading</property>
-              <value>bank-hold</value>
-            </equals>
-          </or>
-        </condition>
-      </enable>
-      <type>gain</type>
-      <gain>1.0</gain>
-      <input>autopilot/internal/filtered-bank-select</input>
-      <output>autopilot/internal/target-roll-deg</output>
-    </filter>
+  <pid-controller>
+    <name>Roll Axis</name>
+    <enable>
+      <condition>
+        <property>autopilot/locks/active</property>
+      </condition>
+    </enable>
+    <input>instrumentation/attitude-indicator/internal-roll-deg</input>
+    <reference>autopilot/internal/target-roll-deg-filtered</reference>
+    <output>autopilot/internal/servos/aileron</output>
+    <config>
+      <Kp>0.02</Kp>
+      <Ti>30.0</Ti>
+      <Td>0.0001</Td>
+      <u_min>-1.0</u_min>
+      <u_max>1.0</u_max>
+    </config>
+  </pid-controller>
 
-    <!-- Standard DG heading hold -->
+  <!-- =============================================================== -->
+  <!-- Pitch Axis                                                      -->
+  <!-- =============================================================== -->
 
-    <filter>
-      <name>Directional Gyro Heading Hold Roll Computer</name>
-      <debug>false</debug>
-      <enable>
-        <condition>
-          <equals>
-            <property>autopilot/locks/heading</property>
-            <value>dg-heading-hold</value>
-          </equals>
-        </condition>
-      </enable>
-      <type>gain</type>
-      <gain>2.0</gain>
-      <input>autopilot/internal/heading-bug-error-deg</input>
-      <output>autopilot/internal/target-roll-deg</output>
-      <min>
-        <property>autopilot/settings/bank-auto</property>
-        <scale>-1.0</scale>
-      </min>
-      <max>
-        <property>autopilot/settings/bank-auto</property>
-        <scale>+1.0</scale>
-      </max>
-    </filter>
-
-    <!-- Calculate a NAV course error from the CDI needle deflection -->
-
-    <pi-simple-controller>
-      <name>Course Deflection Indicator Integrator</name>
-      <debug>false</debug>
-      <input>autopilot/internal/nav/filtered-heading-needle-deflection</input>
-      <output>autopilot/internal/nav1-course-error-deg</output>
-      <config>
-        <Kp>4.5</Kp>
-        <Ki>0.02</Ki>
-      </config>
-      <min>-45.0</min>
-      <max>45.0</max>
-    </pi-simple-controller>
-
-    <!-- Calculate an intercept heading from the radial and course error -->
-
-    <filter>
-      <name>NAV1 Intercept Heading Computer</name>
-      <debug>false</debug>
-      <type>gain</type>
-      <gain>1.0</gain>
-      <input>autopilot/settings/heading-bug-deg</input>
-      <reference>autopilot/internal/nav1-course-error-deg</reference>
-      <output>autopilot/internal/intercept-heading-deg</output>
-    </filter>
-
-    <!-- Calculate the error between the current heading and the intercept -->
-
-    <filter>
-      <name>NAV1 Intercept Error Computer</name>
-      <debug>false</debug>
-      <type>gain</type>
-      <gain>1.0</gain>
-      <input>autopilot/internal/intercept-heading-deg</input>
-      <reference>instrumentation/heading-indicator/indicated-heading-deg</reference>
-      <output>autopilot/internal/nav1-intercept-error-deg</output>
-    </filter>
-
-    <!-- NAV Hold -->
-
-    <filter>
-      <name>NAV1 Course Hold Roll Computer</name>
-      <debug>false</debug>
-      <enable>
-        <condition>
-          <equals>
-            <property>autopilot/locks/heading</property>
-            <value>nav1-hold</value>
-          </equals>
-        </condition>
-      </enable>
-      <type>gain</type>
-      <gain>2.0</gain>
-      <input>
-        <property>autopilot/internal/nav1-intercept-error-deg</property>
-        <period>
-          <min>-180</min>
-          <max>180</max>
-        </period>
-      </input>
-      <output>autopilot/internal/target-roll-deg</output>
-      <min>
-        <property>autopilot/settings/bank-auto</property>
-        <scale>-1.0</scale>
-      </min>
-      <max>
-        <property>autopilot/settings/bank-auto</property>
-        <scale>+1.0</scale>
-      </max>
-    </filter>
-
-    <!-- Aileron Servo Controller -->
-
-    <!-- This servo controller translates the target roll computations from the 
-         various lateral modes into aileron movements via the servo filter. -->
-
-    <pid-controller>
-      <name>Aileron Servo Controller</name>
-      <debug>false</debug>
-      <enable>
-        <condition>
-          <not>
-            <equals>
-              <property>autopilot/locks/heading</property>
-              <value></value>
-            </equals>
-          </not>
-        </condition>
-      </enable>
-      <input>orientation/roll-deg</input>
-      <reference>autopilot/internal/target-roll-deg</reference>
-      <output>autopilot/internal/servos/aileron</output>
-      <config>
-        <Kp>0.01</Kp>
-        <Ti>25.0</Ti>
-        <Td>0.0004</Td>
-        <u_min>-1.0</u_min>
-        <u_max>1.0</u_max>
-      </config>
-    </pid-controller>
-
-    <!-- =============================================================== -->
-    <!-- Pitch Axis Modes                                                -->
-    <!-- =============================================================== -->
-
-    <filter>
-      <name>Pitch Hold Pitch Computer</name>
-      <debug>false</debug>
-      <enable>
-        <condition>
-          <equals>
-            <property>autopilot/locks/altitude</property>
-            <value>pitch-hold</value>
-          </equals>
-        </condition>
-      </enable>
-      <type>gain</type>
-      <gain>1.0</gain>
-      <input>autopilot/settings/pitch-select</input>
-      <output>autopilot/settings/target-pitch-deg</output>
-    </filter>
-
-    <filter>
-      <name>Altitude Hold Pitch Computer</name>
-      <debug>false</debug>
-      <enable>
-        <condition>
-          <or>
-            <equals>
-              <property>autopilot/locks/altitude</property>
-              <value>altitude-hold</value>
-            </equals>
-            <and>
-              <equals>
-                <property>autopilot/locks/altitude</property>
-                <value>gs1-hold</value>
-              </equals>
-              <not>
-                <property>autopilot/locks/gs-captured</property>
-              </not>
-            </and>
-          </or>
-        </condition>
-      </enable>
-      <type>gain</type>
-      <gain>-0.04</gain>
-      <input>instrumentation/altimeter/indicated-altitude-ft</input>
-      <reference>autopilot/settings/target-altitude-ft</reference>
-      <output>autopilot/settings/target-pitch-deg</output>
-      <min>-3.0</min>
-      <max>3.0</max>
-    </filter>
-
-    <!-- Glideslope -->
-
-    <flipflop>
-      <name>Glideslope Capture</name>
-      <type>SR</type>
-      <debug>false</debug>
-      <S>
+  <filter>
+    <name>Pitch Select</name>
+    <type>gain</type>
+    <gain>1.0</gain>
+    <enable>
+      <condition>
         <and>
-          <equals>
-            <property>autopilot/locks/altitude</property>
-            <value>gs1-hold</value>
-          </equals>
-          <property>instrumentation/nav/gs-in-range</property>
-          <less-than>
-            <property>instrumentation/nav/gs-needle-deflection</property>
-            <value>0.0</value>
-          </less-than>
+          <property>autopilot/locks/active</property>
+          <not>
+            <property>autopilot/locks/altitude-hold</property>
+          </not>
         </and>
-      </S>
-      <R>
-        <or>
+      </condition>
+    </enable>
+    <input>
+      <expression>
+        <sum>
+          <property>autopilot/sperry/pitch-select</property>
+          <property>autopilot/sperry/elev-trim</property>
+        </sum>
+      </expression>
+    </input>
+    <output>autopilot/internal/target-pitch-deg</output>
+  </filter>
+
+  <pid-controller>
+    <name>Altitude Hold</name>
+    <enable>
+      <condition>
+        <and>
+          <property>autopilot/locks/active</property>
+          <property>autopilot/locks/altitude-hold</property>
+        </and>
+      </condition>
+    </enable>
+    <input>autopilot/internal/target-altitude-ft</input>
+    <reference>instrumentation/altimeter/pressure-alt-ft</reference>
+    <output>autopilot/internal/target-pitch-deg</output>
+    <config>
+      <Kp>-0.05</Kp>
+      <Ti>20.0</Ti>
+      <Td>0.0001</Td>
+      <u_min>-3.0</u_min>
+      <u_max>3.0</u_max>
+    </config>
+  </pid-controller>
+
+  <filter>
+    <type>exponential</type>
+    <filter-time>2.0</filter-time>
+    <input>autopilot/internal/target-pitch-deg</input>
+    <output>autopilot/internal/target-pitch-deg-filtered</output>
+  </filter>
+
+  <pid-controller>
+    <name>Pitch Axis</name>
+    <enable>
+      <condition>
+        <property>autopilot/locks/active</property>
+      </condition>
+    </enable>
+    <input>autopilot/internal/target-pitch-deg-filtered</input>
+    <reference>instrumentation/attitude-indicator/indicated-pitch-deg</reference>
+    <output>autopilot/internal/servos/elevator</output>
+    <config>
+      <Kp>0.025</Kp>
+      <Ti>20.0</Ti>
+      <Td>0.0002</Td>
+      <u_min>-1.0</u_min>
+      <u_max>1.0</u_max>
+    </config>
+  </pid-controller>
+
+  <!-- =============================================================== -->
+  <!-- Yaw Axis                                                        -->
+  <!-- =============================================================== -->
+
+  <pid-controller>
+    <name>Yaw Axis</name>
+    <enable>
+      <condition>
+        <and>
+          <property>autopilot/locks/active</property>
           <not>
-            <equals>
-              <property>autopilot/locks/altitude</property>
-              <value>gs1-hold</value>
-            </equals>
+            <property>controls/flight/auto-coordination</property>
           </not>
-          <not><property>instrumentation/nav/gs-in-range</property></not>
-        </or>
-      </R>
-      <output>autopilot/locks/gs-captured</output>
-    </flipflop>
+        </and>
+      </condition>
+    </enable>
+    <input>instrumentation/slip-skid-ball/indicated-slip-skid</input>
+    <output>autopilot/internal/servos/rudder</output>
+    <config>
+      <Kp>0.12</Kp>
+      <Ti>20.0</Ti>
+      <Td>0.0001</Td>
+      <u_min>-0.2</u_min>
+      <u_max>0.2</u_max>
+    </config>
+  </pid-controller>
 
-    <pi-simple-controller>
-      <name>Glideslope Hold</name>
-      <debug>false</debug>
-      <enable>
-        <condition>
-          <and>
-            <equals>
-              <property>autopilot/locks/altitude</property>
-              <value>gs1-hold</value>
-            </equals>
-            <property>autopilot/locks/gs-captured</property>
-          </and>
-        </condition>
-      </enable>
-      <input>instrumentation/nav/gs-needle-deflection</input>
-      <reference>0.0</reference>
-      <output>autopilot/settings/target-pitch-deg</output>
-      <config>
-        <Kp>-4.0</Kp>
-        <Ki>-0.25</Ki>
-      </config>
-      <min>-10.0</min>
-      <max>3.0</max>
-    </pi-simple-controller>
-
-    <!-- Elevator Servo Controller -->
-
-    <!-- This servo controller translates the target pitch from the 
-         various lateral modes into aileron movements via the servo filter. -->
-
-    <pid-controller>
-      <name>Pitch Hold</name>
-      <debug>false</debug>
-      <enable>
-        <condition>
-          <not>
-            <equals>
-              <property>autopilot/locks/altitude</property>
-              <value></value>
-            </equals>
-          </not>
-        </condition>
-      </enable>
-      <input>autopilot/settings/target-pitch-deg</input>
-      <reference>instrumentation/attitude-indicator/internal-pitch-deg</reference>
-      <output>autopilot/internal/servos/elevator</output>
-      <config>
-        <Kp>0.015</Kp>
-        <Ti>10.0</Ti>
-        <Td>0.0002</Td>
-        <u_min>-1.0</u_min>
-        <u_max>1.0</u_max>
-      </config>
-    </pid-controller>
-
-  </PropertyList>
+</PropertyList>

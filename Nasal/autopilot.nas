@@ -1,8 +1,8 @@
-###############################################################################
+################################################################################
 #
-# Nonspecific Autopilot Functions
+# Beagle Pup Autopilot Helpers
 #
-# Copyright (c) 2014, Richard Senior
+# Copyright (c) 2015 Richard Senior
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -16,23 +16,35 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, 
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 #
-###############################################################################
+################################################################################
 
-# Capture the current altitude when locking altitude or glideslope
-#
-var autopilot_locks_altitude_listener = func()
-{
-    var locks_altitude = getprop("autopilot/locks/altitude");
+var status = screen.window.new(0, 0, 1, 5);
+status.fg = [0, 0.2, 0.0, 1];
 
-    if (locks_altitude != nil and (locks_altitude == "altitude-hold" or locks_altitude == "gs1-hold")) {
-        var current_altitude = getprop("instrumentation/altimeter/indicated-altitude-ft");
-        setprop("autopilot/settings/target-altitude-ft", current_altitude);        
+setlistener("autopilot/locks/heading-hold", func(node) {
+    if (node.getBoolValue()) {
+        var h = getprop("autopilot/settings/heading-bug-deg");
+        status.write(sprintf("Heading Hold: %.0f deg", h));
     }
-}
+}, 0, 0);
 
-setlistener("autopilot/locks/altitude", autopilot_locks_altitude_listener);
+setlistener("autopilot/sperry/elev-trim", func(node) {
+    status.write(sprintf("Elev Trim: %.2f deg", node.getValue()));
+}, 0, 0);
+
+setlistener("autopilot/sperry/pitch-select", func(node) {
+    status.write(sprintf("Pitch Select: %.1f deg", node.getValue()));
+}, 0, 0);
+
+setlistener("autopilot/sperry/roll-trim", func(node) {
+    status.write(sprintf("Roll Trim: %.2f deg", node.getValue()));
+}, 0, 0);
+
+setlistener("autopilot/sperry/turn-select", func(node) {
+    status.write(sprintf("Turn Select: %.0f deg", node.getValue()));
+}, 0, 0);
 
 print("Autopilot loaded");

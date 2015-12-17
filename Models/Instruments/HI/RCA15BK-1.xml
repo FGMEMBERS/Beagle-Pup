@@ -12,12 +12,15 @@ http://www.kellymfg.com/dgs.html
 	<object-name>Marks</object-name>
 	<object-name>Card</object-name>
 	<object-name>Flag</object-name>
-	<emission>
-		<red>0.7</red>
-		<green>0.7</green>
-		<blue>0.7</blue>
-		<factor-prop>controls/lighting/panel-norm</factor-prop>
-	</emission>
+    <condition>
+      <property>systems/electrical/outputs/panel-lights</property>
+    </condition>
+    <emission>
+      <red>0.7</red>
+      <green>0.7</green>
+      <blue>0.7</blue>
+      <factor-prop>controls/lighting/panel-norm</factor-prop>
+    </emission>
 </animation>
 
 <animation>

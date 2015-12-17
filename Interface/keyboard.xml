@@ -24,6 +24,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 <PropertyList>
 
+  <key n="26">
+    <name>Ctrl-z</name>
+    <desc>Toggle autopilot on/off</desc>
+    <binding>
+      <command>property-toggle</command>
+      <property>autopilot/sperry/main-switch</property>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
+    </binding>
+  </key>
   <key n="67">
     <name>C</name>
     <desc>Cruise Power</desc>

@@ -73,26 +73,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <name>Autopilot</name>
     <value>CHECK &amp; OFF</value>
     <condition>
-      <and>
-        <equals>
-          <property>autopilot/locks/heading</property>
-          <value></value>
-        </equals>
-        <equals>
-          <property>autopilot/locks/altitude</property>
-          <value></value>
-        </equals>
-      </and>
+      <not>
+        <property>autopilot/locks/active</property>
+      </not>
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>autopilot/locks/heading</property>
-      <value></value>
-    </binding>
-    <binding>
-      <command>property-assign</command>
-      <property>autopilot/locks/altitude</property>
-      <value></value>
+      <property>autopilot/locks/active</property>
+      <value>0</value>
     </binding>
     <binding>
       <command>nasal</command>

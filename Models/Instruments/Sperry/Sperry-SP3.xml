@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+**************************************************************************
+
+Sperry SP3 Autopilot Panel
+
+Copyright (c) 2015 Richard Senior
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+**************************************************************************
+-->
+
+<PropertyList>
+
+  <path>Sperry-SP3.ac</path>
+
+  <animation>
+    <type>slider</type>
+    <object-name>AltHoldButton</object-name>
+    <property>autopilot/sperry/alt-hold-button</property>
+    <factor>-0.002</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-assign</command>
+        <property>autopilot/sperry/alt-hold-button</property>
+        <value>1</value>
+      </binding>
+    </action>
+    <release>
+      <binding>
+        <command>nasal</command>
+        <script>
+          # Use a timer to make simple clicks visible as a momentary
+          # selection toggle switch
+          var t = maketimer(0.1, func {
+            setprop("autopilot/sperry/alt-hold-button", 0);
+          });
+          t.singleShot = 1;
+          t.start();
+          pup.click();
+        </script>
+      </binding>
+    </release>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>AltHoldButton</object-name>
+    <condition>
+      <and>
+        <property>autopilot/locks/active</property>
+        <property>autopilot/locks/altitude-hold</property>
+      </and>
+    </condition>
+    <emission>
+      <red>0.6</red>
+      <green>0.0</green>
+      <blue>0.0</blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>knob</type>
+    <object-name>ElevTrimKnob</object-name>
+    <property>autopilot/sperry/elev-trim</property>
+    <factor>30.0</factor>
+    <center>
+      <x-m>0.0026</x-m>
+      <y-m>-0.0236</y-m>
+      <z-m>0.0374</z-m>
+    </center>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-adjust</command>
+        <property>autopilot/sperry/elev-trim</property>
+        <factor>0.01</factor>
+        <min>-2.0</min>
+        <max>2.0</max>
+        <wrap>false</wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>knob</type>
+    <object-name>OnOffSwitch</object-name>
+    <property>autopilot/sperry/main-switch</property>
+    <factor>-60</factor>
+    <offset-deg>30</offset-deg>
+    <center>
+      <x-m>0.0064</x-m>
+      <y-m>0.0409</y-m>
+      <z-m>-0.0141</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>autopilot/sperry/main-switch</property>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>knob</type>
+    <object-name>PitchSelectWheel</object-name>
+    <property>autopilot/sperry/pitch-select</property>
+    <factor>15.0</factor>
+    <center>
+      <x-m>-0.0139</x-m>
+      <y-m>-0.0515</y-m>
+      <z-m>0.0022</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-adjust</command>
+        <property>autopilot/sperry/pitch-select</property>
+        <factor>0.1</factor>
+        <min>-8.0</min>
+        <max>8.0</max>
+        <wrap>false</wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>knob</type>
+    <object-name>RollTrimWheel</object-name>
+    <property>autopilot/sperry/roll-trim</property>
+    <factor>30</factor>
+    <center>
+      <x-m>-0.0058</x-m>
+      <y-m>0.0357</y-m>
+      <z-m>0.0257</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-adjust</command>
+        <property>autopilot/sperry/roll-trim</property>
+        <factor>0.1</factor>
+        <min>-3.0</min>
+        <max>3.0</max>
+        <wrap>false</wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>knob</type>
+    <object-name>TurnKnob</object-name>
+    <property>autopilot/sperry/turn-select</property>
+    <factor>-3</factor>
+    <center>
+      <x-m>0.0085</x-m>
+      <y-m>0.0000</y-m>
+      <z-m>0.0005</z-m>
+    </center>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-adjust</command>
+        <property>autopilot/sperry/turn-select</property>
+        <factor>1</factor>
+        <min>-20.0</min>
+        <max>20.0</max>
+        <wrap>false</wrap>
+      </binding>
+    </action>
+  </animation>
+
+</PropertyList>

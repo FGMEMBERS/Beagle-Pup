@@ -89,7 +89,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </model>
 
   <model>
-    <path>Instruments/HI/RCA15AK.xml</path>
+    <path>Instruments/HI/RCA15BK-1.xml</path>
     <offsets>
       <x-m>1.6900</x-m>
       <y-m>-0.2500</y-m>
@@ -170,11 +170,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </model>
 
   <model>
-    <path>Instruments/Navomatic/Navomatic400A.xml</path>
+    <path>Instruments/Sperry/Sperry-SP3.xml</path>
     <offsets>
-      <x-m>1.6900</x-m>
+      <x-m>1.6850</x-m>
       <y-m>0.1000</y-m>
-      <z-m>0.0200</z-m>
+      <z-m>0.0000</z-m>
     </offsets>
   </model>
 

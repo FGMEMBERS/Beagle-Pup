@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+**************************************************************************
+
+Beagle Pup Autopilot Logic (Sperry SP3)
+
+Autopilot property rules that run at frame rate.
+
+Copyright (c) 2015 Richard Senior
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+**************************************************************************
+-->
+
+<PropertyList>
+
+  <logic>
+    <name>Active</name>
+    <input>
+      <property>systems/electrical/outputs/autopilot</property>
+      <property>autopilot/sperry/main-switch</property>
+    </input>
+    <output>autopilot/locks/active</output>
+  </logic>
+
+  <logic>
+    <name>Pitch Level</name>
+    <input>
+      <greater-than>
+        <property>autopilot/sperry/pitch-select</property>
+        <value>-0.0001</value>
+      </greater-than>
+      <less-than>
+        <property>autopilot/sperry/pitch-select</property>
+        <value>0.0001</value>
+      </less-than>
+    </input>
+    <output>autopilot/internal/pitch-level</output>
+  </logic>
+
+  <flipflop>
+    <name>Altitude Hold Clear</name>
+    <type>RS</type>
+    <R>
+      <not>
+        <and>
+          <property>autopilot/locks/active</property>
+          <property>autopilot/internal/pitch-level</property>
+        </and>
+      </not>
+    </R>
+    <output>autopilot/locks/altitude-hold</output>
+  </flipflop>
+
+  <flipflop>
+    <name>Altitude Hold Button</name>
+    <type>JK</type>
+    <J>
+      <and>
+        <property>autopilot/locks/active</property>
+        <property>autopilot/internal/pitch-level</property>
+      </and>
+    </J>
+    <K>
+      <property>autopilot/locks/altitude-hold</property>
+    </K>
+    <clock>
+      <not>
+        <property>autopilot/sperry/alt-hold-button</property>
+      </not>
+    </clock>
+    <output>autopilot/locks/altitude-hold</output>
+  </flipflop>
+
+  <filter>
+    <name>Altitude Sampler</name>
+    <type>gain</type>
+    <enable>
+      <condition>
+        <not>
+          <property>autopilot/locks/altitude-hold</property>
+        </not>
+      </condition>
+    </enable>
+    <input>instrumentation/altimeter/pressure-alt-ft</input>
+    <output>autopilot/internal/target-altitude-ft</output>
+  </filter>
+
+  <filter>
+    <name>Pitch Sampler</name>
+    <type>gain</type>
+    <enable>
+      <condition>
+        <not>
+          <property>autopilot/locks/active</property>
+        </not>
+      </condition>
+    </enable>
+    <input>instrumentation/attitude-indicator/indicated-pitch-deg</input>
+    <output>autopilot/internal/target-pitch-deg</output>
+  </filter>
+
+  <logic>
+    <name>Turn Neutral</name>
+    <input>
+      <greater-than>
+        <property>autopilot/sperry/turn-select</property>
+        <value>-0.0001</value>
+      </greater-than>
+      <less-than>
+        <property>autopilot/sperry/turn-select</property>
+        <value>0.0001</value>
+      </less-than>
+    </input>
+    <output>autopilot/internal/turn-neutral</output>
+  </logic>
+
+  <logic>
+    <name>Heading Stable</name>
+    <input>
+      <greater-than>
+        <property>instrumentation/turn-indicator/indicated-turn-rate</property>
+        <value>-0.02</value>
+      </greater-than>
+      <less-than>
+        <property>instrumentation/turn-indicator/indicated-turn-rate</property>
+        <value>0.02</value>
+      </less-than>
+    </input>
+    <output>autopilot/internal/heading-stable</output>
+  </logic>
+
+  <flipflop>
+    <name>Heading Hold Clear</name>
+    <type>RS</type>
+    <R>
+      <not>
+        <and>
+          <property>autopilot/locks/active</property>
+          <property>autopilot/internal/turn-neutral</property>
+        </and>
+      </not>
+    </R>
+    <output>autopilot/locks/heading-hold</output>
+  </flipflop>
+
+  <flipflop>
+    <name>Automatic Heading Hold Timer</name>
+    <type>monostable</type>
+    <J>
+      <and>
+        <property>autopilot/locks/active</property>
+        <property>autopilot/internal/turn-neutral</property>
+      </and>
+    </J>
+    <time>
+      <value>3.0</value>
+    </time>
+    <clock>
+      <property>autopilot/internal/heading-stable</property>
+    </clock>
+    <output>autopilot/internal/heading-hold-clock</output>
+  </flipflop>
+
+  <flipflop>
+    <name>Auto Heading Hold</name>
+    <type>D</type>
+    <D>
+      <and>
+        <property>autopilot/locks/active</property>
+        <property>autopilot/internal/turn-neutral</property>
+        <property>autopilot/internal/heading-stable</property>
+      </and>
+    </D>
+    <clock>
+      <not>
+        <property>autopilot/internal/heading-hold-clock</property>
+      </not>
+    </clock>
+    <output>autopilot/locks/heading-hold</output>
+  </flipflop>
+
+  <filter>
+    <name>Heading Sampler</name>
+    <type>gain</type>
+    <enable>
+      <condition>
+        <not>
+          <property>autopilot/locks/heading-hold</property>
+        </not>
+      </condition>
+    </enable>
+    <input>instrumentation/heading-indicator/indicated-heading-deg</input>
+    <output>autopilot/settings/heading-bug-deg</output>
+  </filter>
+
+</PropertyList>
+
