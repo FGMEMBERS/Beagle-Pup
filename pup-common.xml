@@ -149,7 +149,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <menubar include="Interface/menubar.xml"/>
 
     <author>Richard Senior</author>
-    <aircraft-version>0.4.0</aircraft-version>
+    <aircraft-version>0.4.1</aircraft-version>
     <flight-model>jsb</flight-model>
 
     <aircraft-data>
@@ -179,7 +179,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </model>
 
     <rating>
-      <FDM type="int">1</FDM>
+      <FDM type="int">2</FDM>
       <systems type="int">2</systems>
       <cockpit type="int">2</cockpit>
       <model type="int">2</model>
@@ -215,6 +215,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <tag>ifr</tag>
       <tag>fixed-gear</tag>
       <tag>piston</tag>
+      <tag>1-engine</tag>
     </tags>
 
   </sim>
