@@ -24,6 +24,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 <ground_reactions>
 
+  <!-- Gear -->
+
   <contact type="BOGEY" name="NOSE">
     <location unit="IN">
       <x>  38.93 </x>
@@ -72,28 +74,178 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <retractable>1</retractable>
   </contact>
 
-  <contact type="STRUCTURE" name="LEFT_WING">
+  <!-- Structure Contacts -->
+  <!-- See also Systems/crash-detect.xml -->
+
+  <contact type="STRUCTURE" name="LEFT_WING_FRONT">
     <location unit="IN">
-      <x>  90.09 </x>
-      <y>-184.51 </y>
-      <z>   5.13 </z>
+      <x>  81.17 </x>
+      <y>-189.55 </y>
+      <z>   5.92 </z>
     </location>
     <static_friction>  0.6 </static_friction>
     <dynamic_friction> 0.5 </dynamic_friction>
-    <spring_coeff unit="LBS/FT">       10000 </spring_coeff>
-    <damping_coeff unit="LBS/FT/SEC">  10000 </damping_coeff>
+    <spring_coeff unit="LBS/FT">       2000 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">  1000 </damping_coeff>
   </contact>
 
-  <contact type="STRUCTURE" name="RIGHT_WING">
+  <contact type="STRUCTURE" name="RIGHT_WING_FRONT">
     <location unit="IN">
-      <x>  90.09 </x>
-      <y> 184.51 </y>
-      <z>   5.13 </z>
+      <x>  81.17 </x>
+      <y> 189.55 </y>
+      <z>   5.92 </z>
     </location>
     <static_friction>  0.6 </static_friction>
     <dynamic_friction> 0.5 </dynamic_friction>
-    <spring_coeff unit="LBS/FT">       10000 </spring_coeff>
-    <damping_coeff unit="LBS/FT/SEC">  10000 </damping_coeff>
+    <spring_coeff unit="LBS/FT">       2000 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">  1000 </damping_coeff>
   </contact>
+
+  <contact type="STRUCTURE" name="LEFT_WING_BACK">
+    <location unit="IN">
+      <x> 110.75 </x>
+      <y>-186.71 </y>
+      <z>   6.22 </z>
+    </location>
+    <static_friction>  0.6 </static_friction>
+    <dynamic_friction> 0.5 </dynamic_friction>
+    <spring_coeff unit="LBS/FT">       2000 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">  1000 </damping_coeff>
+  </contact>
+
+  <contact type="STRUCTURE" name="RIGHT_WING_BACK">
+    <location unit="IN">
+      <x> 110.75 </x>
+      <y> 186.71 </y>
+      <z>   6.22 </z>
+    </location>
+    <static_friction>  0.6 </static_friction>
+    <dynamic_friction> 0.5 </dynamic_friction>
+    <spring_coeff unit="LBS/FT">       2000 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">  1000 </damping_coeff>
+  </contact>
+
+  <contact type="STRUCTURE" name="LEFT_HTAIL">
+    <location unit="IN">
+      <x> 248.33 </x>
+      <y> -64.57 </y>
+      <z>   8.57 </z>
+    </location>
+    <static_friction>  0.6 </static_friction>
+    <dynamic_friction> 0.5 </dynamic_friction>
+    <spring_coeff unit="LBS/FT">       2000 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">  1000 </damping_coeff>
+  </contact>
+
+  <contact type="STRUCTURE" name="RIGHT_HTAIL">
+    <location unit="IN">
+      <x> 248.33 </x>
+      <y>  64.57 </y>
+      <z>   8.57 </z>
+    </location>
+    <static_friction>  0.6 </static_friction>
+    <dynamic_friction> 0.5 </dynamic_friction>
+    <spring_coeff unit="LBS/FT">       2000 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">  1000 </damping_coeff>
+  </contact>
+
+  <contact type="STRUCTURE" name="TAIL_GUARD">
+    <location unit="IN">
+      <x> 220.66 </x>
+      <y>   0.00 </y>
+      <z> -16.38 </z>
+    </location>
+    <static_friction>  0.6 </static_friction>
+    <dynamic_friction> 0.5 </dynamic_friction>
+    <spring_coeff unit="LBS/FT">       2000 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">  1000 </damping_coeff>
+  </contact>
+
+  <contact type="STRUCTURE" name="RUDDER_BOTTOM">
+    <location unit="IN">
+      <x> 275.20 </x>
+      <y>   0.00 </y>
+      <z>  -4.72 </z>
+    </location>
+    <static_friction>  0.6 </static_friction>
+    <dynamic_friction> 0.5 </dynamic_friction>
+    <spring_coeff unit="LBS/FT">       2000 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">  1000 </damping_coeff>
+  </contact>
+
+  <contact type="STRUCTURE" name="RUDDER_TOP">
+    <location unit="IN">
+      <x> 275.20 </x>
+      <y>   0.00 </y>
+      <z>  52.76 </z>
+    </location>
+    <static_friction>  0.6 </static_friction>
+    <dynamic_friction> 0.5 </dynamic_friction>
+    <spring_coeff unit="LBS/FT">       2000 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">  1000 </damping_coeff>
+  </contact>
+
+  <contact type="STRUCTURE" name="RUDDER_TOP_FRONT">
+    <location unit="IN">
+      <x> 248.81 </x>
+      <y>   0.00 </y>
+      <z>  52.55 </z>
+    </location>
+    <static_friction>  0.6 </static_friction>
+    <dynamic_friction> 0.5 </dynamic_friction>
+    <spring_coeff unit="LBS/FT">       2000 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">  1000 </damping_coeff>
+  </contact>
+
+  <contact type="STRUCTURE" name="FUSELAGE_TOP">
+    <location unit="IN">
+      <x>  96.37 </x>
+      <y>   0.00 </y>
+      <z>  29.25 </z>
+    </location>
+    <static_friction>  0.6 </static_friction>
+    <dynamic_friction> 0.5 </dynamic_friction>
+    <spring_coeff unit="LBS/FT">       2000 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">  1000 </damping_coeff>
+  </contact>
+
+  <contact type="STRUCTURE" name="PROPELLER_TOP">
+    <location unit="IN">
+      <x>  12.57 </x>
+      <y>   0.00 </y>
+      <z>  35.32 </z>
+    </location>
+    <static_friction>  0.6 </static_friction>
+    <dynamic_friction> 0.5 </dynamic_friction>
+    <spring_coeff unit="LBS/FT">       2000 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">  1000 </damping_coeff>
+  </contact>
+
+  <contact type="STRUCTURE" name="PROPELLER_BOTTOM">
+    <location unit="IN">
+      <x>  12.57 </x>
+      <y>   0.00 </y>
+      <z> -35.32 </z>
+    </location>
+    <static_friction>  0.6 </static_friction>
+    <dynamic_friction> 0.5 </dynamic_friction>
+    <spring_coeff unit="LBS/FT">       2000 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">  1000 </damping_coeff>
+  </contact>
+
+  <contact type="STRUCTURE" name="PROPELLER_CONE">
+    <location unit="IN">
+      <x>   2.68 </x>
+      <y>   0.00 </y>
+      <z>   0.00 </z>
+    </location>
+    <static_friction>  0.6 </static_friction>
+    <dynamic_friction> 0.5 </dynamic_friction>
+    <spring_coeff unit="LBS/FT">       2000 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">  1000 </damping_coeff>
+  </contact>
+
+  <!-- N.B. New structure contacts should be added to
+       Systems/crash-detect.xml for crash detection. -->
 
 </ground_reactions>

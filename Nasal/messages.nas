@@ -1,6 +1,6 @@
 ################################################################################
 #
-# Beagle Pup Autopilot Helpers
+# Beagle Pup Messages
 #
 # Copyright (c) 2015 Richard Senior
 #
@@ -22,7 +22,11 @@
 ################################################################################
 
 var status = screen.window.new(0, 0, 1, 5);
-status.fg = [0, 0.2, 0.0, 1];
+status.fg = [0, 0.1, 0, 1];
+
+################################################################################
+# Autopilot controls
+################################################################################
 
 setlistener("autopilot/locks/heading-hold", func(node) {
     if (node.getBoolValue()) {
@@ -47,4 +51,51 @@ setlistener("autopilot/sperry/turn-select", func(node) {
     status.write(sprintf("Turn Select: %.0f deg", node.getValue()));
 }, 0, 0);
 
-print("Autopilot loaded");
+################################################################################
+# Crash detection
+################################################################################
+
+var report_crash = func(msg)
+{
+    # Don't report multiple crashes. The crash detection system will
+    # set sim/crashed when it detects the first one.
+    if (getprop("sim/crashed")) return;
+
+    setprop("sim/messages/ai-plane", msg);
+    print(msg);
+}
+
+var start_crash_reporting = func
+{
+    var crash = "fdm/jsbsim/systems/crash-detect/";
+
+    setlistener(crash~"heavy-impact", func(node) {
+        if (node.getBoolValue())
+            report_crash("The aircraft crashed into the ground.");
+    }, 0, 0);
+
+    setlistener(crash~"wing-strike", func(node) {
+        if (node.getBoolValue())
+            report_crash("One of the main wings struck the ground.");
+    }, 0, 0);
+
+    setlistener(crash~"tail-strike", func(node) {
+        if (node.getBoolValue())
+            report_crash("Part of the tail struck the ground.");
+    }, 0, 0);
+
+    setlistener(crash~"fuselage-strike", func(node) {
+        if (node.getBoolValue())
+            report_crash("Part of the fuselage struck the ground.");
+    }, 0, 0);
+
+    setlistener(crash~"propeller-strike", func(node) {
+        if (node.getBoolValue())
+            report_crash("The propeller struck the ground.");
+    }, 0, 0);
+}
+
+setlistener("sim/signals/fdm-initialized", func {
+    start_crash_reporting();
+}, 0, 0);
+

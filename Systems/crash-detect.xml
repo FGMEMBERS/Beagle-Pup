@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+**************************************************************************
+
+Beagle Pup Crash Detection
+
+Copyright (c) 2015 Richard Senior
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+**************************************************************************
+-->
+
+<system name="Crash">
+
+  <channel name="Crash">
+
+    <!-- Strikes on the main wing -->
+    <switch name="Wing Strike">
+      <default value="0"/>
+      <output>systems/crash-detect/wing-strike</output>
+      <test logic="OR" value="1">
+        contact/unit[3]/WOW NE 0
+        contact/unit[4]/WOW NE 0
+        contact/unit[5]/WOW NE 0
+        contact/unit[6]/WOW NE 0
+      </test>
+    </switch>
+
+    <!-- Strikes on the lower tail, including HTAIL -->
+    <switch name="Tail Strike">
+      <default value="0"/>
+      <output>systems/crash-detect/tail-strike</output>
+      <test logic="OR" value="1">
+        contact/unit[7]/WOW NE 0
+        contact/unit[8]/WOW NE 0
+        contact/unit[9]/WOW NE 0
+        contact/unit[10]/WOW NE 0
+      </test>
+    </switch>
+
+    <!-- Strikes on the upper parts of the fuselage -->
+    <switch name="Fuselage Strike">
+      <default value="0"/>
+      <output>systems/crash-detect/fuselage-strike</output>
+      <test logic="OR" value="1">
+        contact/unit[11]/WOW NE 0
+        contact/unit[12]/WOW NE 0
+        contact/unit[13]/WOW NE 0
+      </test>
+    </switch>
+
+    <!-- Strikes on the propeller -->
+    <switch name="Propeller Strike">
+      <default value="0"/>
+      <output>systems/crash-detect/propeller-strike</output>
+      <test logic="OR" value="1">
+        contact/unit[14]/WOW NE 0
+        contact/unit[15]/WOW NE 0
+        contact/unit[16]/WOW NE 0
+      </test>
+    </switch>
+
+    <!-- Compute general, absolute force on the airframe -->
+    <fcs_function name="Absolute Force">
+      <function>
+        <abs>
+          <product>
+            <property>accelerations/Nz</property>
+            <property>inertia/weight-lbs</property>
+          </product>
+        </abs>
+      </function>
+      <output>systems/crash-detect/absolute-force</output>
+    </fcs_function>
+
+    <switch name="systems/crash-detect/heavy-impact">
+      <test value="1">
+        systems/crash-detect/absolute-force GT 20000
+      </test>
+    </switch>
+
+    <!-- All crashes are fatal for the time being -->
+    <switch name="Fatal Crash">
+      <test logic="OR" value="1">
+        systems/crash-detect/fuselage-strike == 1
+        systems/crash-detect/heavy-impact == 1
+        systems/crash-detect/propeller-strike == 1
+        systems/crash-detect/tail-strike == 1
+        systems/crash-detect/wing-strike == 1
+      </test>
+      <output>/sim/crashed</output>
+      <output>/sim/freeze/clock</output>
+      <output>/sim/freeze/master</output>
+    </switch>
+
+  </channel>
+
+</system>

@@ -100,6 +100,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </mass_balance>
 
   <ground_reactions file="pup-ground-reactions"/>
+  <system file="crash-detect"/>
 
   <propulsion>
 
