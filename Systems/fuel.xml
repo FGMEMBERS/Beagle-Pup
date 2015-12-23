@@ -22,44 +22,41 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **************************************************************************
 -->
 
-<system name="fuel">
+<system name="Fuel">
 
   <!-- Tank selector: 0 = OFF, 1 = LEFT, 2 = BOTH, 3 = RIGHT -->
   <property value="0">/controls/fuel/tank-selector</property>
 
-  <channel name="Fuel feed">
+  <channel name="Fuel">
 
-    <switch>
+    <switch name="propulsion/tank[0]/has-fuel-pressure">
       <default value="0"/>
       <test logic="OR" value="1">
         /engines/engine[0]/running NE 0
         /systems/electrical/outputs/fuel-pump GT 0
       </test>
-      <output>propulsion/tank[0]/has-fuel-pressure</output>
     </switch>
 
     <!-- Return into tank 1 (LEFT) -->
-    <switch>
+    <switch name="propulsion/tank[1]/inflow-rate-pps">
       <default value="0.05"/>
       <test logic="OR" value="0.00">
         propulsion/tank[0]/contents-lbs LE 0.0
         propulsion/tank[0]/has-fuel-pressure GT 0
       </test>
-      <output>propulsion/tank[1]/inflow-rate-pps</output>
     </switch>
 
     <!-- Return into tank 2 (RIGHT) -->
-    <switch>
+    <switch name="propulsion/tank[2]/inflow-rate-pps">
       <default value="0.05"/>
       <test logic="OR" value="0.00">
         propulsion/tank[0]/contents-lbs LE 0.0
         propulsion/tank[0]/has-fuel-pressure GT 0
       </test>
-      <output>propulsion/tank[2]/inflow-rate-pps</output>
     </switch>
 
     <!-- Feed from tank 1 (LEFT) -->
-    <switch>
+    <switch name="propulsion/tank[1]/outflow-rate-pps">
       <default value="0.2"/>
       <test logic="OR" value="0.0">
         /controls/fuel/tank-selector EQ 0
@@ -68,11 +65,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         propulsion/tank[0]/contents-lbs GE 0.8
         propulsion/tank[1]/contents-lbs LE 0.0
       </test>
-      <output>propulsion/tank[1]/outflow-rate-pps</output>
     </switch>
 
     <!-- Feed from tank 2 (RIGHT) -->
-    <switch>
+    <switch name="propulsion/tank[2]/outflow-rate-pps">
       <default value="0.2"/>
       <test logic="OR" value="0.0">
         /controls/fuel/tank-selector EQ 0
@@ -81,22 +77,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         propulsion/tank[0]/contents-lbs GE 0.8
         propulsion/tank[2]/contents-lbs LE 0.0
       </test>
-      <output>propulsion/tank[2]/outflow-rate-pps</output>
     </switch>
 
-    <summer>
+    <summer name="Tank 1 Net Flow">
       <input>propulsion/tank[1]/inflow-rate-pps</input>
       <input>-propulsion/tank[1]/outflow-rate-pps</input>
       <output>propulsion/tank[1]/external-flow-rate-pps</output>
     </summer>
 
-    <summer>
+    <summer name="Tank 2 Net Flow">
       <input>propulsion/tank[2]/inflow-rate-pps</input>
       <input>-propulsion/tank[2]/outflow-rate-pps</input>
       <output>propulsion/tank[2]/external-flow-rate-pps</output>
     </summer>
 
-    <summer>
+    <summer name="Manifold Net Flow">
       <input>-propulsion/tank[1]/external-flow-rate-pps</input>
       <input>-propulsion/tank[2]/external-flow-rate-pps</input>
       <output>propulsion/tank[0]/external-flow-rate-pps</output>
