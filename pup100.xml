@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **************************************************************************
 -->
 
-<fdm_config name="BeaglePup-121-1" version="2.0" release="ALPHA"
+<fdm_config name="Beagle-121-1" version="2.0" release="ALPHA"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 
@@ -31,7 +31,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <author>Richard Senior (Aeromatic v3.1.0)</author>
     <filecreationdate>30 Nov 2015</filecreationdate>
     <version>0.1</version>
-    <description>Beagle Pup 121 Series 1 (Pup 100)</description>
+    <description>Beagle 121 Series 1 (Pup 100)</description>
   </fileheader>
 
   <metrics>
@@ -40,13 +40,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <wing_incidence>          1.15 </wing_incidence>
     <chord     unit="FT" >    4.69 </chord>
     <htailarea unit="FT2">   19.12 </htailarea>
-    <htailarm  unit="FT" >    5.50 </htailarm>
+    <htailarm  unit="FT" >   11.86 </htailarm>
     <vtailarea unit="FT2">   21.70 </vtailarea>
-    <vtailarm  unit="FT" >    5.25 </vtailarm>
+    <vtailarm  unit="FT" >   12.34 </vtailarm>
     <location name="AERORP" unit="IN">
-      <x>  78.00 </x>
+      <x>  82.00 </x>
       <y>   0.00 </y>
-      <z>  -6.40 </z>
+      <z>  -6.50 </z>
     </location>
     <location name="EYEPOINT" unit="IN">
       <x>  82.00 </x>
@@ -64,9 +64,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <ixx unit="SLUG*FT2">    539.57 </ixx>
     <iyy unit="SLUG*FT2">    524.36 </iyy>
     <izz unit="SLUG*FT2">    987.49 </izz>
-    <emptywt unit="LBS" >    992.00 </emptywt>
+    <emptywt unit="LBS" >    985.00 </emptywt>
     <location name="CG" unit="IN">
-      <x>  76.00 </x>
+      <x>  78.00 </x>
       <y>   0.00 </y>
       <z>  -6.00 </z>
     </location>
@@ -144,7 +144,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <tank type="FUEL" number="1">
       <location unit="IN">
         <x>  79.00 </x>
-        <y> -40.00 </y>
+        <y> -50.00 </y>
         <z> -12.00 </z>
       </location>
       <capacity unit="LBS">  95.18 </capacity>
@@ -154,7 +154,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <tank type="FUEL" number="2">
       <location unit="IN">
         <x>  79.00 </x>
-        <y>  40.00 </y>
+        <y>  50.00 </y>
         <z> -12.00 </z>
       </location>
       <capacity unit="LBS">  95.18 </capacity>

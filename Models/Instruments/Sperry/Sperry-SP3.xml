@@ -96,8 +96,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <command>property-adjust</command>
         <property>autopilot/sperry/elev-trim</property>
         <factor>0.01</factor>
-        <min>-2.0</min>
-        <max>2.0</max>
+        <min>-5.0</min>
+        <max>5.0</max>
         <wrap>false</wrap>
       </binding>
     </action>
@@ -151,8 +151,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <command>property-adjust</command>
         <property>autopilot/sperry/pitch-select</property>
         <factor>0.1</factor>
-        <min>-8.0</min>
-        <max>8.0</max>
+        <min>-10.0</min>
+        <max>10.0</max>
         <wrap>false</wrap>
       </binding>
     </action>
@@ -178,8 +178,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <command>property-adjust</command>
         <property>autopilot/sperry/roll-trim</property>
         <factor>0.1</factor>
-        <min>-3.0</min>
-        <max>3.0</max>
+        <min>-5.0</min>
+        <max>5.0</max>
         <wrap>false</wrap>
       </binding>
     </action>

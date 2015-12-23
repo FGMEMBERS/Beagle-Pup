@@ -138,7 +138,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <menubar include="Interface/menubar.xml"/>
 
     <author>Richard Senior</author>
-    <aircraft-version>0.6.0</aircraft-version>
+    <aircraft-version>0.7.0</aircraft-version>
     <flight-model>jsb</flight-model>
 
     <aircraft-data>
@@ -148,9 +148,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <path>autopilot/sperry/roll-trim</path>
       <path>fdm/jsbsim/inertia/pointmass-weight-lbs[0]</path>
       <path>fdm/jsbsim/inertia/pointmass-weight-lbs[1]</path>
+      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[2]</path>
       <path>consumables/fuel/tank[1]/level-lbs</path>
       <path>consumables/fuel/tank[2]/level-lbs</path>
     </aircraft-data>
+
+    <airport>
+      <runways>
+        <start-offset-m>20</start-offset-m>
+      </runways>
+    </airport>
 
     <flaps>
       <setting>0.00</setting>

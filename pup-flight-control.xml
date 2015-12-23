@@ -39,7 +39,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <input>fcs/pitch-trim-sum</input>
       <gain>1.0</gain>
       <range>
-        <min>-20</min>
+        <min>-30</min>
         <max> 20</max>
       </range>
       <output>fcs/elevator-pos-deg</output>
@@ -48,7 +48,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <aerosurface_scale name="elevator normalization">
       <input>fcs/elevator-pos-deg</input>
       <domain>
-        <min>-20</min>
+        <min>-30</min>
         <max> 20</max>
       </domain>
       <range>
