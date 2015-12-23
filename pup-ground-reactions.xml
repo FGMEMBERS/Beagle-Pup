@@ -28,14 +28,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <location unit="IN">
       <x>  38.93 </x>
       <y>   0.00 </y>
-      <z> -54.00 </z>
+      <z> -51.50 </z>
     </location>
     <static_friction>  0.80 </static_friction>
     <dynamic_friction> 0.50 </dynamic_friction>
     <rolling_friction> 0.02 </rolling_friction>
-    <spring_coeff unit="LBS/FT">        1677.49 </spring_coeff>
-    <damping_coeff unit="LBS/FT/SEC">   962.48 </damping_coeff>
-    <max_steer unit="DEG"> 12.50 </max_steer>
+    <spring_coeff unit="LBS/FT">        1600.00 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">    962.48 </damping_coeff>
+    <max_steer unit="DEG"> 10.0 </max_steer>
     <brake_group>NONE</brake_group>
     <retractable>1</retractable>
   </contact>
@@ -44,12 +44,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <location unit="IN">
       <x>  95.75 </x>
       <y> -39.73 </y>
-      <z> -52.00 </z>
+      <z> -51.50 </z>
     </location>
     <static_friction>  0.80 </static_friction>
     <dynamic_friction> 0.50 </dynamic_friction>
     <rolling_friction> 0.02 </rolling_friction>
-    <spring_coeff unit="LBS/FT">       1924.97 </spring_coeff>
+    <spring_coeff unit="LBS/FT">       2000.00 </spring_coeff>
     <damping_coeff unit="LBS/FT/SEC">   962.48 </damping_coeff>
     <max_steer unit="DEG">0</max_steer>
     <brake_group>LEFT</brake_group>
@@ -60,12 +60,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <location unit="IN">
       <x>  95.75 </x>
       <y>  39.73 </y>
-      <z> -52.00 </z>
+      <z> -51.50 </z>
     </location>
     <static_friction>  0.80 </static_friction>
     <dynamic_friction> 0.50 </dynamic_friction>
     <rolling_friction> 0.02 </rolling_friction>
-    <spring_coeff unit="LBS/FT">       1924.97 </spring_coeff>
+    <spring_coeff unit="LBS/FT">       2000.00 </spring_coeff>
     <damping_coeff unit="LBS/FT/SEC">   962.48 </damping_coeff>
     <max_steer unit="DEG">0</max_steer>
     <brake_group>RIGHT</brake_group>

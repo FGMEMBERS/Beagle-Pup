@@ -211,8 +211,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <type>translate</type>
     <object-name>NoseGear</object-name>
     <property>gear/gear/compression-norm</property>
-    <factor>-0.305</factor>
-    <offset-m>0.13</offset-m>
+    <factor>-0.20</factor>
+    <offset-m>0.04</offset-m>
     <axis>
       <x1-m>1.1145</x1-m>
       <y1-m>0.0003</y1-m>
