@@ -45,6 +45,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <splash-texture>pup160-splash.png</splash-texture>
     </startup>
 
+    <variant-of>pup100</variant-of>
   </sim>
 
   <limits>
@@ -63,4 +64,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </payload>
 
 </PropertyList>
-
