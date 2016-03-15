@@ -28,50 +28,50 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <contact type="BOGEY" name="NOSE">
     <location unit="IN">
-      <x>  38.93 </x>
-      <y>   0.00 </y>
-      <z> -51.50 </z>
+      <x>  39.07</x>
+      <y>   0.00</y>
+      <z> -51.80</z> <!-- 49.30 uncompressed -->
     </location>
-    <static_friction>  0.80 </static_friction>
-    <dynamic_friction> 0.50 </dynamic_friction>
-    <rolling_friction> 0.02 </rolling_friction>
-    <spring_coeff unit="LBS/FT">        1600.00 </spring_coeff>
-    <damping_coeff unit="LBS/FT/SEC">    962.48 </damping_coeff>
-    <max_steer unit="DEG"> 10.0 </max_steer>
+    <static_friction>0.80</static_friction>
+    <dynamic_friction>0.50</dynamic_friction>
+    <rolling_friction>0.02</rolling_friction>
+    <spring_coeff unit="LBS/FT">1200.00</spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">400</damping_coeff>
+    <max_steer unit="DEG">12.5</max_steer>
     <brake_group>NONE</brake_group>
-    <retractable>1</retractable>
+    <retractable>0</retractable>
   </contact>
 
   <contact type="BOGEY" name="LEFT_MAIN">
     <location unit="IN">
-      <x>  95.75 </x>
-      <y> -39.73 </y>
-      <z> -51.50 </z>
+      <x>  95.61</x>
+      <y> -50.57</y>
+      <z> -50.56</z> <!-- 48.56 uncompressed -->
     </location>
-    <static_friction>  0.80 </static_friction>
-    <dynamic_friction> 0.50 </dynamic_friction>
-    <rolling_friction> 0.02 </rolling_friction>
-    <spring_coeff unit="LBS/FT">       2000.00 </spring_coeff>
-    <damping_coeff unit="LBS/FT/SEC">   962.48 </damping_coeff>
+    <static_friction>0.80</static_friction>
+    <dynamic_friction>0.50</dynamic_friction>
+    <rolling_friction>0.02</rolling_friction>
+    <spring_coeff unit="LBS/FT">2000</spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">500</damping_coeff>
     <max_steer unit="DEG">0</max_steer>
     <brake_group>LEFT</brake_group>
-    <retractable>1</retractable>
+    <retractable>0</retractable>
   </contact>
 
   <contact type="BOGEY" name="RIGHT_MAIN">
     <location unit="IN">
-      <x>  95.75 </x>
-      <y>  39.73 </y>
-      <z> -51.50 </z>
+      <x>  95.61 </x>
+      <y>  50.57 </y>
+      <z> -50.56 </z> <!-- 48.56 uncompressed -->
     </location>
     <static_friction>  0.80 </static_friction>
     <dynamic_friction> 0.50 </dynamic_friction>
     <rolling_friction> 0.02 </rolling_friction>
-    <spring_coeff unit="LBS/FT">       2000.00 </spring_coeff>
-    <damping_coeff unit="LBS/FT/SEC">   962.48 </damping_coeff>
+    <spring_coeff unit="LBS/FT">2000.00 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">500</damping_coeff>
     <max_steer unit="DEG">0</max_steer>
     <brake_group>RIGHT</brake_group>
-    <retractable>1</retractable>
+    <retractable>0</retractable>
   </contact>
 
   <!-- Structure Contacts -->

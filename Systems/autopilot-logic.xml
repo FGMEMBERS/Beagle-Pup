@@ -132,11 +132,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <input>
       <greater-than>
         <property>instrumentation/turn-indicator/indicated-turn-rate</property>
-        <value>-0.02</value>
+        <value>-0.03</value>
       </greater-than>
       <less-than>
         <property>instrumentation/turn-indicator/indicated-turn-rate</property>
-        <value>0.02</value>
+        <value>0.03</value>
       </less-than>
     </input>
     <output>autopilot/internal/heading-stable</output>
@@ -166,7 +166,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </and>
     </J>
     <time>
-      <value>3.0</value>
+      <value>1.0</value>
     </time>
     <clock>
       <property>autopilot/internal/heading-stable</property>

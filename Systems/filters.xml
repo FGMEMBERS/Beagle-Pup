@@ -46,7 +46,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <filter>
     <type>exponential</type>
-    <filter-time>0.5</filter-time>
+    <filter-time>0.33</filter-time>
     <input>engines/engine/egt-degf</input>
     <output>instrumentation/egt/egt-degf</output>
   </filter>
