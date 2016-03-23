@@ -160,16 +160,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <name>Automatic Heading Hold Timer</name>
     <type>monostable</type>
     <J>
-      <and>
-        <property>autopilot/locks/active</property>
-        <property>autopilot/internal/turn-neutral</property>
-      </and>
+      <value>1</value>
     </J>
     <time>
       <value>1.0</value>
     </time>
     <clock>
-      <property>autopilot/internal/heading-stable</property>
+      <and>
+        <property>autopilot/internal/heading-stable</property>
+        <property>autopilot/locks/active</property>
+        <property>autopilot/internal/turn-neutral</property>
+      </and>
     </clock>
     <output>autopilot/internal/heading-hold-clock</output>
   </flipflop>
@@ -203,7 +204,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </condition>
     </enable>
     <input>instrumentation/heading-indicator/indicated-heading-deg</input>
-    <output>autopilot/settings/heading-bug-deg</output>
+    <output>autopilot/internal/target-heading-deg</output>
   </filter>
 
 </PropertyList>

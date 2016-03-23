@@ -30,7 +30,7 @@ status.fg = [0, 0.1, 0, 1];
 
 setlistener("autopilot/locks/heading-hold", func(node) {
     if (node.getBoolValue()) {
-        var h = getprop("autopilot/settings/heading-bug-deg");
+        var h = getprop("autopilot/internal/target-heading-deg");
         status.write(sprintf("Heading Hold: %.0f deg", h));
     }
 }, 0, 0);

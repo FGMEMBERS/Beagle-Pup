@@ -109,6 +109,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </filter>
 
   <filter>
+    <name>Target Heading Error</name>
+    <type>gain</type>
+    <gain>1.0</gain>
+    <input>
+      <property>autopilot/internal/target-heading-deg</property>
+    </input>
+    <reference>
+      <property>instrumentation/heading-indicator/indicated-heading-deg</property>
+    </reference>
+    <output>autopilot/internal/target-heading-error-deg</output>
+    <period>
+      <min>-180</min>
+      <max>180</max>
+    </period>
+  </filter>
+
+  <filter>
     <name>Heading Hold</name>
     <enable>
       <condition>
@@ -117,7 +134,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </enable>
     <type>gain</type>
     <gain>2.0</gain>
-    <input>autopilot/internal/heading-bug-error-deg</input>
+    <input>autopilot/internal/target-heading-error-deg</input>
     <output>autopilot/internal/target-roll-deg</output>
   </filter>
 
