@@ -38,6 +38,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 );
                 return;
             }
+            if (!getprop("gear/gear/wow")) {
+                setprop("sim/messages/copilot",
+                    "Autostart in the air is not yet supported"
+                );
+                return;
+            }
             if (pup.is_near_runway()) {
                 setprop("sim/checklists/auto/completed-message",
                     "Checklists complete, ready for takeoff"
