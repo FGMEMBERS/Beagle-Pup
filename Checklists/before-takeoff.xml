@@ -91,4 +91,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
+  <!-- Transponder - ALT -->
+  <item>
+    <name>Transponder</name>
+    <value>ALT</value>
+    <condition>
+      <equals>
+        <property>instrumentation/transponder/inputs/knob-mode</property>
+        <value>5</value>
+      </equals>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>instrumentation/transponder/inputs/knob-mode</property>
+      <value>5</value>
+    </binding>
+  </item>
+
 </PropertyList>

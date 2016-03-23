@@ -73,14 +73,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <name>Autopilot</name>
     <value>CHECK &amp; OFF</value>
     <condition>
-      <not>
-        <property>autopilot/locks/active</property>
-      </not>
+      <and>
+        <not>
+          <property>autopilot/locks/active</property>
+        </not>
+        <greater-than>
+          <property>autopilot/sperry/pitch-select</property>
+          <value>0.0</value>
+        </greater-than>
+      </and>
     </condition>
     <binding>
       <command>property-assign</command>
       <property>autopilot/locks/active</property>
       <value>0</value>
+    </binding>
+    <binding>
+      <command>property-assign</command>
+      <property>autopilot/sperry/pitch-select</property>
+      <value>5.0</value>
     </binding>
     <binding>
       <command>nasal</command>

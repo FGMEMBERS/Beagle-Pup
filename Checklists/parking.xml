@@ -141,6 +141,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
+  <!-- Transponder - OFF -->
+  <item>
+    <name>Transponder</name>
+    <value>OFF</value>
+    <condition>
+      <equals>
+        <property>instrumentation/transponder/inputs/knob-mode</property>
+        <value>0</value>
+      </equals>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>instrumentation/transponder/inputs/knob-mode</property>
+      <value>0</value>
+    </binding>
+  </item>
+
   <!-- Main Battery - OFF -->
   <item>
     <name>Main Battery</name>

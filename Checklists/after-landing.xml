@@ -106,4 +106,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
+  <!-- Transponder - SBY -->
+  <item>
+    <name>Transponder</name>
+    <value>SBY</value>
+    <condition>
+      <equals>
+        <property>instrumentation/transponder/inputs/knob-mode</property>
+        <value>1</value>
+      </equals>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>instrumentation/transponder/inputs/knob-mode</property>
+      <value>1</value>
+    </binding>
+  </item>
+
 </PropertyList>
