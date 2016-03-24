@@ -43,6 +43,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
+  <!-- Taxi Light - OFF -->
+  <item>
+    <name>Taxi Light</name>
+    <value>OFF</value>
+    <condition>
+      <equals>
+        <property>systems/electrical/outputs/taxi-light</property>
+        <value>0</value>
+      </equals>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/lighting/taxi-light</property>
+      <value>0</value>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
+    </binding>
+  </item>
+
   <!-- Mixture - IDLE CUTOFF -->
   <item>
     <name>Mixture</name>
