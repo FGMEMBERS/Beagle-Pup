@@ -24,6 +24,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 <PropertyList include="pup-common.xml">
 
+  <nasal>
+    <load>
+      var lup = aircraft.livery_update.new("Aircraft/Beagle-Pup/Models/Liveries/pup160");
+    </load>
+    <unload>
+      lup.stop();
+    </unload>
+  </nasal>
+
   <path>pup100.ac</path>
 
 </PropertyList>

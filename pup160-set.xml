@@ -34,7 +34,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </aircraft-data>
 
     <model>
-      <path>Models/pup160.xml</path>
+      <path>Aircraft/Beagle-Pup/Models/pup160.xml</path>
+      <livery>
+        <file type="string">EP-BAH</file>
+        <name>Default</name>
+        <texture>Liveries/pup160/EP-BAH.png</texture>
+      </livery>
     </model>
 
     <sound>
@@ -46,6 +51,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </startup>
 
     <variant-of>pup100</variant-of>
+
   </sim>
 
   <limits>

@@ -33,10 +33,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <path>fdm/jsbsim/inertia/pointmass-weight-lbs[2]</path>
     </aircraft-data>
 
-    <variant-of>pup100</variant-of>
-
     <model>
-      <path>Models/pup150.xml</path>
+      <path>Aircraft/Beagle-Pup/Models/pup150.xml</path>
+      <livery>
+        <file type="string">G-AXMX</file>
+        <name>Default</name>
+        <texture>Liveries/pup150/G-AXMX.png</texture>
+      </livery>
     </model>
 
     <sound>
@@ -46,6 +49,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <startup>
       <splash-texture>pup150-splash.png</splash-texture>
     </startup>
+
+    <variant-of>pup100</variant-of>
 
   </sim>
 

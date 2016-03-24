@@ -30,7 +30,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <description>Beagle Pup 100</description>
 
     <model>
-      <path>Models/pup100.xml</path>
+      <path>Aircraft/Beagle-Pup/Models/pup100.xml</path>
+      <livery>
+        <file type="string">G-AXDV</file>
+        <name>Default</name>
+        <texture>Liveries/pup100/G-AXDV.png</texture>
+      </livery>
     </model>
 
     <sound>

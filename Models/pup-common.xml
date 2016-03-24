@@ -24,22 +24,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 <PropertyList>
 
-  <nasal>
-    <load>
-      var variant = getprop("sim/aero");
-      var lup = aircraft.livery_update.new("Models/Liveries/"~variant);
-    </load>
-    <unload>
-      lup.stop();
-    </unload>
-  </nasal>
-
   <model>
     <name>Cockpit</name>
     <path>cockpit.xml</path>
+    <usage>interior</usage>
   </model>
 
-  <!-- Ensure all material animations are after the livery initialization -->
   <animation>
     <type>material</type>
     <object-name>Exterior</object-name>
@@ -240,7 +230,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <condition>
       <and>
         <not>
-          <property>/sim/current-view/internal</property>
+          <property>sim/current-view/internal</property>
         </not>
         <greater-than-equals>
           <property>engines/engine/rpm</property>
