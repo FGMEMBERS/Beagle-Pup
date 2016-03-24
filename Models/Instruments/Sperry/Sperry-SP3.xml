@@ -27,6 +27,67 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <path>Sperry-SP3.ac</path>
 
   <animation>
+    <type>material</type>
+    <object-name>Body</object-name>
+    <object-name>ElevTrimKnob</object-name>
+    <object-name>OnOffSwitch</object-name>
+    <object-name>PitchSelectWheel</object-name>
+    <object-name>RollTrimWheel</object-name>
+    <object-name>TurnKnob</object-name>
+    <condition>
+      <greater-than>
+        <property>systems/electrical/outputs/panel-lights</property>
+        <value>0.0</value>
+      </greater-than>
+    </condition>
+    <emission>
+      <red>0.30</red>
+      <green>0.28</green>
+      <blue>0.28</blue>
+      <factor-prop>controls/lighting/panel-norm</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>AltHoldButton</object-name>
+    <condition>
+      <not>
+        <and>
+          <property>autopilot/locks/active</property>
+          <property>autopilot/locks/altitude-hold</property>
+        </and>
+      </not>
+      <greater-than>
+        <property>systems/electrical/outputs/panel-lights</property>
+        <value>0.0</value>
+      </greater-than>
+    </condition>
+    <emission>
+      <red>0.30</red>
+      <green>0.28</green>
+      <blue>0.28</blue>
+      <factor-prop>controls/lighting/panel-norm</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>AltHoldButton</object-name>
+    <condition>
+      <and>
+        <property>autopilot/locks/active</property>
+        <property>autopilot/locks/altitude-hold</property>
+      </and>
+    </condition>
+    <emission>
+      <red>0.8</red>
+      <green>0.0</green>
+      <blue>0.0</blue>
+    </emission>
+  </animation>
+
+  <animation>
     <type>slider</type>
     <object-name>AltHoldButton</object-name>
     <property>autopilot/sperry/alt-hold-button</property>
@@ -58,22 +119,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         </script>
       </binding>
     </release>
-  </animation>
-
-  <animation>
-    <type>material</type>
-    <object-name>AltHoldButton</object-name>
-    <condition>
-      <and>
-        <property>autopilot/locks/active</property>
-        <property>autopilot/locks/altitude-hold</property>
-      </and>
-    </condition>
-    <emission>
-      <red>0.6</red>
-      <green>0.0</green>
-      <blue>0.0</blue>
-    </emission>
   </animation>
 
   <animation>

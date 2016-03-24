@@ -22,7 +22,14 @@
 ################################################################################
 
 var status = screen.window.new(0, 0, 1, 5);
-status.fg = [0, 0.1, 0, 1];
+
+var message = func(s)
+{
+    var night = getprop("sim/time/sun-angle-rad") > 1.6;
+    var level = night ? 0.6 : 0.1;
+    status.fg = [level, level, level, 1.0];
+    status.write(s);
+}
 
 ################################################################################
 # Autopilot controls
@@ -31,24 +38,24 @@ status.fg = [0, 0.1, 0, 1];
 setlistener("autopilot/locks/heading-hold", func(node) {
     if (node.getBoolValue()) {
         var h = getprop("autopilot/internal/target-heading-deg");
-        status.write(sprintf("Heading Hold: %.0f deg", h));
+        message(sprintf("Heading Hold: %.0f deg", h));
     }
 }, 0, 0);
 
 setlistener("autopilot/sperry/elev-trim", func(node) {
-    status.write(sprintf("Elev Trim: %.2f deg", node.getValue()));
+    message(sprintf("Elev Trim: %.2f deg", node.getValue()));
 }, 0, 0);
 
 setlistener("autopilot/sperry/pitch-select", func(node) {
-    status.write(sprintf("Pitch Select: %.1f deg", node.getValue()));
+    message(sprintf("Pitch Select: %.1f deg", node.getValue()));
 }, 0, 0);
 
 setlistener("autopilot/sperry/roll-trim", func(node) {
-    status.write(sprintf("Roll Trim: %.2f deg", node.getValue()));
+    message(sprintf("Roll Trim: %.2f deg", node.getValue()));
 }, 0, 0);
 
 setlistener("autopilot/sperry/turn-select", func(node) {
-    status.write(sprintf("Turn Select: %.0f deg", node.getValue()));
+    message(sprintf("Turn Select: %.0f deg", node.getValue()));
 }, 0, 0);
 
 ################################################################################
