@@ -136,21 +136,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <animation>
     <type>rotate</type>
-    <object-name>TailLight</object-name>
-    <property>surface-positions/rudder-pos-norm</property>
-    <factor>-25</factor>
-    <axis>
-      <x1-m>6.6435</x1-m>
-      <y1-m>0.0019</y1-m>
-      <z1-m>1.1905</z1-m>
-      <x2-m>6.3064</x2-m>
-      <y2-m>0.0019</y2-m>
-      <z2-m>-0.1910</z2-m>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>rotate</type>
     <object-name>FlapLeft</object-name>
     <property>surface-positions/flap-pos-norm</property>
     <factor>-39.5</factor>
@@ -270,6 +255,152 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <y>0.0</y>
       <z>0.0</z>
     </axis>
+  </animation>
+
+  <!-- Procedural Lights (ALS) -->
+
+  <model>
+    <name>ProceduralBeacon</name>
+    <path>Effects/Lights/beacon.xml</path>
+    <offsets>
+      <x-m>4.1450</x-m>
+      <y-m>0.0</y-m>
+      <z-m>0.5852</z-m>
+    </offsets>
+  </model>
+
+  <animation>
+    <type>select</type>
+    <object-name>ProceduralBeacon</object-name>
+    <condition>
+      <property>systems/electrical/outputs/beacon</property>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>Beacon</object-name>
+    <condition>
+      <property>systems/electrical/outputs/beacon</property>
+    </condition>
+    <emission>
+      <!-- Intensity above 1.0 does work if factor-prop is less than 1.0 -->
+      <red>1.5</red>
+      <green>0.75</green>
+      <blue>0.75</blue>
+      <factor-prop>controls/lighting/beacon-intensity</factor-prop>
+    </emission>
+  </animation>
+
+  <model>
+    <name>ProceduralTail</name>
+    <path>Effects/Lights/tail.xml</path>
+    <offsets>
+      <x-m>6.9974</x-m>
+      <y-m>0.0</y-m>
+      <z-m>1.3133</z-m>
+    </offsets>
+  </model>
+
+  <animation>
+    <type>select</type>
+    <object-name>ProceduralTail</object-name>
+    <condition>
+      <property>systems/electrical/outputs/nav-lights</property>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>TailLight</object-name>
+    <object-name>ProceduralTail</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor>-25</factor>
+    <axis>
+      <x1-m>6.6435</x1-m>
+      <y1-m>0.0019</y1-m>
+      <z1-m>1.1905</z1-m>
+      <x2-m>6.3064</x2-m>
+      <y2-m>0.0019</y2-m>
+      <z2-m>-0.1910</z2-m>
+    </axis>
+  </animation>
+
+  <model>
+    <name>ProceduralNavLeft</name>
+    <path>Effects/Lights/nav-left.xml</path>
+    <offsets>
+      <x-m>2.1575</x-m>
+      <y-m>-4.8707</y-m>
+      <z-m>0.1680</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <name>ProceduralNavRight</name>
+    <path>Effects/Lights/nav-right.xml</path>
+    <offsets>
+      <x-m>2.1575</x-m>
+      <y-m>4.8715</y-m>
+      <z-m>0.1680</z-m>
+    </offsets>
+  </model>
+
+  <animation>
+    <type>select</type>
+    <object-name>ProceduralNavLeft</object-name>
+    <object-name>ProceduralNavRight</object-name>
+    <condition>
+      <property>systems/electrical/outputs/nav-lights</property>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>NavLightLeft</object-name>
+    <object-name>NavLightRight</object-name>
+    <object-name>TailLight</object-name>
+    <condition>
+      <not>
+        <property>systems/electrical/outputs/nav-lights</property>
+      </not>
+    </condition>
+  </animation>
+
+  <model>
+    <name>ProceduralLanding</name>
+    <path>Effects/Lights/landing.xml</path>
+    <offsets>
+      <x-m>1.80</x-m>
+      <y-m>2.6361</y-m>
+      <z-m>-0.10</z-m>
+    </offsets>
+  </model>
+
+  <animation>
+    <type>select</type>
+    <object-name>ProceduralLanding</object-name>
+    <condition>
+      <property>systems/electrical/outputs/landing-lights</property>
+    </condition>
+  </animation>
+
+  <model>
+    <name>ProceduralTaxi</name>
+    <path>Effects/Lights/taxi.xml</path>
+    <offsets>
+      <x-m>0.4200</x-m>
+      <y-m>0.0</y-m>
+      <z-m>-0.3972</z-m>
+    </offsets>
+  </model>
+
+  <animation>
+    <type>select</type>
+    <object-name>ProceduralTaxi</object-name>
+    <condition>
+      <property>systems/electrical/outputs/taxi-light</property>
+    </condition>
   </animation>
 
 </PropertyList>

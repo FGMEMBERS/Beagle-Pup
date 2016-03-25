@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+  <path>procedural-light.ac</path>
+  <nopreview/>
+
+  <effect>
+    <inherits-from>landing</inherits-from>
+    <object-name>ProceduralLight</object-name>
+  </effect>
+
+</PropertyList>

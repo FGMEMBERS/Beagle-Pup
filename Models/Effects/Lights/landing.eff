@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PropertyList>
+
+  <name>ProceduralLanding</name>
+  <inherits-from>Effects/procedural-light</inherits-from>
+
+  <parameters>
+    <light_color_base_r type="float">0.9</light_color_base_r>
+    <light_color_base_g type="float">0.9</light_color_base_g>
+    <light_color_base_b type="float">0.9</light_color_base_b>
+    <light_color_center_r type="float">1.0</light_color_center_r>
+    <light_color_center_g type="float">1.0</light_color_center_g>
+    <light_color_center_b type="float">1.0</light_color_center_b>
+    <intensity_scale type="float">1.0</intensity_scale>
+    <is_strobe type="bool">false</is_strobe>
+    <is_directional type="bool">true</is_directional>
+    <pointing_x>1.0</pointing_x>
+    <pointing_y>0.0</pointing_y>
+    <pointing_z>0.0</pointing_z>
+    <inner_angle>0.5</inner_angle>
+    <outer_angle>0.86</outer_angle>
+    <zero_angle>1.0</zero_angle>
+    <outer_gain>0.5</outer_gain>
+  </parameters>
+
+</PropertyList>

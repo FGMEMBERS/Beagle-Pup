@@ -90,4 +90,29 @@ var multi_click = func(count, delay = 0)
         click(func{click(func{click();}, delay)}, delay);
 }
 
+################################################################################
+# Beacon
+################################################################################
+
+var beacon = maketimer(1, func {
+    interpolate("controls/lighting/beacon-intensity", 0.67, 0.1);
+    var flash = maketimer(0.2, func {
+        interpolate("controls/lighting/beacon-intensity", 0.0, 0.1);
+    });
+    flash.singleShot = 1;
+    flash.start();
+});
+
+# Beacon listener
+#
+# Assumes electrical system only propagates stable values, otherwise this
+# listener will fire too often.
+#
+setlistener("systems/electrical/outputs/beacon", func (volts) {
+    if (volts.getValue() < 6.0)
+        beacon.stop();
+    else if (!beacon.isRunning)
+        beacon.start();
+}, 0, 0);
+
 print ("Utility functions loaded");

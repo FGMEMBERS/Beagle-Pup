@@ -60,8 +60,9 @@ var select_magnetos = func(n)
 setlistener("sim/signals/fdm-initialized", func(v) {
     # Sometimes the parking brake causes jumping when JSBSim initializes,
     # so parking brake is off at start and only set when JSBSim is ready
-    if (v.getValue())
-        setprop("controls/brake/parking", 1.0);
+    if (v.getBoolValue()) {
+        setprop("controls/gear/brake-parking", 1.0);
+    }
 }, 0, 0);
 
 print("Controls overrides loaded");
