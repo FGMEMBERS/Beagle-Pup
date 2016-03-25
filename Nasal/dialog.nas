@@ -21,7 +21,7 @@
 #
 ################################################################################
 
-gui.Dialog.new("sim/gui/dialogs/autopilot/dialog", "Dialogs/Navomatic.xml");
+gui.Dialog.new("sim/gui/dialogs/autopilot/dialog", "Dialogs/sperry.xml");
 
 # Show the fuel and payload dialog. Does not display the dialog if
 # automated checklists are running
