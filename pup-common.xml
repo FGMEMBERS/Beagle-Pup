@@ -141,7 +141,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <menubar include="Interface/menubar.xml"/>
 
     <author>Richard Senior</author>
-    <aircraft-version>0.12.1</aircraft-version>
+    <aircraft-version>0.12.2</aircraft-version>
     <flight-model>jsb</flight-model>
 
     <aircraft-data>
@@ -168,12 +168,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <setting>1.00</setting>
     </flaps>
 
-    <flight-recorder>
-      <replay-config>0</replay-config>
-      <config include="Aircraft/Generic/flightrecorder/generic-piston-propeller-1.xml">
-        <name>Beagle Pup Flight Recorder</name>
-      </config>
-    </flight-recorder>
+    <flight-recorder include="Systems/flightrecorder.xml"/>
 
     <model>
       <livery>
