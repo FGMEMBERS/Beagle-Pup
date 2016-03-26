@@ -360,16 +360,44 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </condition>
   </animation>
 
+
   <animation>
-    <type>select</type>
+    <type>material</type>
     <object-name>NavLightLeft</object-name>
+    <condition>
+      <property alias="../../../params/nav-light-volts"/>
+    </condition>
+    <emission>
+      <red>1.0</red>
+      <green>0.0</green>
+      <blue>0.0</blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>material</type>
     <object-name>NavLightRight</object-name>
+    <condition>
+      <property alias="../../../params/nav-light-volts"/>
+    </condition>
+    <emission>
+      <red>0.0</red>
+      <green>1.0</green>
+      <blue>0.0</blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>material</type>
     <object-name>TailLight</object-name>
     <condition>
-      <not>
-        <property alias="../../../../params/nav-light-volts"/>
-      </not>
+      <property alias="../../../params/nav-light-volts"/>
     </condition>
+    <emission>
+      <red>1.0</red>
+      <green>1.0</green>
+      <blue>1.0</blue>
+    </emission>
   </animation>
 
   <model>
