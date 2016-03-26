@@ -95,9 +95,9 @@ var multi_click = func(count, delay = 0)
 ################################################################################
 
 var beacon = maketimer(1, func {
-    interpolate("controls/lighting/beacon-intensity", 0.67, 0.1);
+    setprop("controls/lighting/beacon-state", 1);
     var flash = maketimer(0.2, func {
-        interpolate("controls/lighting/beacon-intensity", 0.0, 0.1);
+        setprop("controls/lighting/beacon-state", 0);
     });
     flash.singleShot = 1;
     flash.start();

@@ -24,6 +24,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 <PropertyList>
 
+  <params>
+    <beacon-state>sim/multiplay/generic/int[0]</beacon-state>
+    <landing-light-volts>sim/multiplay/generic/float[1]</landing-light-volts>
+    <nav-light-volts>sim/multiplay/generic/float[2]</nav-light-volts>
+    <taxi-light-volts>sim/multiplay/generic/float[4]</taxi-light-volts>
+  </params>
+
   <model>
     <name>Cockpit</name>
     <path>cockpit.xml</path>
@@ -273,7 +280,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <type>select</type>
     <object-name>ProceduralBeacon</object-name>
     <condition>
-      <property>systems/electrical/outputs/beacon</property>
+      <property alias="../../../params/beacon-state"/>
     </condition>
   </animation>
 
@@ -281,14 +288,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <type>material</type>
     <object-name>Beacon</object-name>
     <condition>
-      <property>systems/electrical/outputs/beacon</property>
+      <property alias="../../../params/beacon-state"/>
     </condition>
     <emission>
-      <!-- Intensity above 1.0 does work if factor-prop is less than 1.0 -->
-      <red>1.5</red>
-      <green>0.75</green>
-      <blue>0.75</blue>
-      <factor-prop>controls/lighting/beacon-intensity</factor-prop>
+      <red>1.0</red>
+      <green>0.5</green>
+      <blue>0.5</blue>
     </emission>
   </animation>
 
@@ -306,7 +311,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <type>select</type>
     <object-name>ProceduralTail</object-name>
     <condition>
-      <property>systems/electrical/outputs/nav-lights</property>
+      <property alias="../../../params/nav-light-volts"/>
     </condition>
   </animation>
 
@@ -351,7 +356,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <object-name>ProceduralNavLeft</object-name>
     <object-name>ProceduralNavRight</object-name>
     <condition>
-      <property>systems/electrical/outputs/nav-lights</property>
+      <property alias="../../../params/nav-light-volts"/>
     </condition>
   </animation>
 
@@ -362,7 +367,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <object-name>TailLight</object-name>
     <condition>
       <not>
-        <property>systems/electrical/outputs/nav-lights</property>
+        <property alias="../../../../params/nav-light-volts"/>
       </not>
     </condition>
   </animation>
@@ -381,7 +386,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <type>select</type>
     <object-name>ProceduralLanding</object-name>
     <condition>
-      <property>systems/electrical/outputs/landing-lights</property>
+      <property alias="../../../params/landing-light-volts"/>
     </condition>
   </animation>
 
@@ -399,7 +404,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <type>select</type>
     <object-name>ProceduralTaxi</object-name>
     <condition>
-      <property>systems/electrical/outputs/taxi-light</property>
+      <property alias="../../../params/taxi-light-volts"/>
     </condition>
   </animation>
 

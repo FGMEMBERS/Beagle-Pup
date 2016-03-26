@@ -24,6 +24,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 <PropertyList>
 
+  <params>
+    <panel-norm>sim/multiplay/generic/float[0]</panel-norm>
+    <panel-light-volts>sim/multiplay/generic/float[3]</panel-light-volts>
+  </params>
+
   <path>cockpit.ac</path>
 
   <animation>
@@ -31,7 +36,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <object-name>Cockpit</object-name>
     <condition>
       <greater-than>
-        <property>systems/electrical/outputs/panel-lights</property>
+        <property alias="../../../../params/panel-light-volts"/>
         <value>0.0</value>
       </greater-than>
     </condition>
@@ -39,7 +44,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <red>0.20</red>
       <green>0.18</green>
       <blue>0.18</blue>
-      <factor-prop>controls/lighting/panel-norm</factor-prop>
+      <factor-prop alias="../../../params/panel-norm"/>
     </emission>
   </animation>
 
