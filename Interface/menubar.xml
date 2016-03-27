@@ -59,6 +59,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         </binding>
       </item>
       <item>
+        <label>Lights</label>
+        <binding>
+          <command>dialog-show</command>
+          <dialog-name>lights</dialog-name>
+        </binding>
+      </item>
+      <item>
         <label>Select Livery</label>
         <binding>
           <command>nasal</command>
