@@ -37,6 +37,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <usage>interior</usage>
   </model>
 
+  <!--===================================================================-->
+  <!-- MATERIAL AND LIVERY                                               -->
+  <!--===================================================================-->
+
   <animation>
     <type>material</type>
     <object-name>Exterior</object-name>
@@ -47,8 +51,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <object-name>ElevatorLeft</object-name>
     <object-name>ElevatorRight</object-name>
     <object-name>Rudder</object-name>
-    <object-name>NoseGear</object-name>
     <object-name>Propeller</object-name>
+    <object-name>HubCapLeft</object-name>
+    <object-name>HubCapRight</object-name>
+    <object-name>HubCapFront</object-name>
     <property-base>sim/model/livery</property-base>
     <texture-prop>texture</texture-prop>
   </animation>
@@ -61,6 +67,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <object-name>WindowPilotRear</object-name>
     <object-name>WindowCoPilotRear</object-name>
   </effect>
+
+  <!--===================================================================-->
+  <!-- CONTROL SURFACES                                                  -->
+  <!--===================================================================-->
 
   <animation>
     <type>rotate</type>
@@ -171,9 +181,82 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </axis>
   </animation>
 
+  <!--===================================================================-->
+  <!-- GEAR                                                              -->
+  <!-- The order of animation is important in this section               -->
+  <!--===================================================================-->
+
+  <animation>
+    <type>translate</type>
+    <object-name>HubCapFront</object-name>
+    <object-name>WheelMountFront</object-name>
+    <object-name>WheelFront</object-name>
+    <property>gear/gear/compression-norm</property>
+    <factor>-0.30</factor>
+    <offset-m>0.07</offset-m>
+    <axis>
+      <x1-m>1.1145</x1-m>
+      <y1-m>0.0003</y1-m>
+      <z1-m>-0.5206</z1-m>
+      <x2-m>0.9955</x2-m>
+      <y2-m>0.0003</y2-m>
+      <z2-m>-1.0747</z2-m>
+    </axis>
+  </animation>
+
+  <!--
+       WheelMountFront
+      <x-m>1.1091</x-m>
+      <y-m>-0.0006</y-m>
+      <z-m>-0.8091</z-m>
+
+       Joint
+      <x-m>1.2427</x-m>
+      <y-m>-0.0008</y-m>
+      <z-m>-0.7485</z-m>
+
+       OleoStrutTop
+      <x-m>1.1406</x-m>
+      <y-m>-0.0006</y-m>
+      <z-m>-0.6588</z-m>
+  -->
+  <animation>
+    <type>locked-track</type>
+    <object-name>OleoStrutBottom</object-name>
+    <object-center>
+      <x-m>1.1091</x-m>
+      <y-m>-0.0006</y-m>
+      <z-m>-0.8091</z-m>
+    </object-center>
+    <lock-axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </lock-axis>
+    <track-axis>
+      <x>0.2079</x>
+      <y>0</y>
+      <z>0.9782</z>
+    </track-axis>
+    <target-name>WheelMountFront</target-name>
+    <target-center>
+      <x-m>1.1091</x-m>
+      <y-m>-0.0006</y-m>
+      <z-m>-0.8091</z-m>
+    </target-center>
+    <slave-name>OleoStrutTop</slave-name>
+    <slave-center>
+      <x-m>1.1406</x-m>
+      <y-m>-0.0006</y-m>
+      <z-m>-0.6588</z-m>
+    </slave-center>
+  </animation>
+
   <animation>
     <type>rotate</type>
-    <object-name>NoseGear</object-name>
+    <object-name>HubCapFront</object-name>
+    <object-name>WheelMountFront</object-name>
+    <object-name>WheelFront</object-name>
     <property>fdm/jsbsim/fcs/steer-pos-deg</property>
     <condition>
       <property>gear/gear/wow</property>
@@ -190,20 +273,62 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </animation>
 
   <animation>
-    <type>translate</type>
-    <object-name>NoseGear</object-name>
-    <property>gear/gear/compression-norm</property>
-    <factor>-0.20</factor>
-    <offset-m>0.04</offset-m>
+    <object-name>HubCapFront</object-name>
+    <object-name>WheelFront</object-name>
+    <type>spin</type>
+    <property>gear/gear/rollspeed-ms</property>
+    <factor>-53.6478</factor>
+    <center>
+      <x-m>0.9957</x-m>
+      <y-m>0.1412</y-m>
+      <z-m>-1.0745</z-m>
+    </center>
     <axis>
-      <x1-m>1.1145</x1-m>
-      <y1-m>0.0003</y1-m>
-      <z1-m>-0.5206</z1-m>
-      <x2-m>0.9955</x2-m>
-      <y2-m>0.0003</y2-m>
-      <z2-m>-1.0747</z2-m>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
     </axis>
   </animation>
+
+  <animation>
+    <object-name>HubCapLeft</object-name>
+    <object-name>WheelLeft</object-name>
+    <type>spin</type>
+    <property>gear/gear/rollspeed-ms</property>
+    <factor>-53.6478</factor>
+    <center>
+      <x-m>2.4311</x-m>
+      <y-m>-1.2666</y-m>
+      <z-m>-1.0583</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <object-name>HubCapRight</object-name>
+    <object-name>WheelRight</object-name>
+    <type>spin</type>
+    <property>gear/gear/rollspeed-ms</property>
+    <factor>-53.6478</factor>
+    <center>
+      <x-m>2.4309</x-m>
+      <y-m>1.2701</y-m>
+      <z-m>-1.0590</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <!--===================================================================-->
+  <!-- PROPELLER                                                         -->
+  <!--===================================================================-->
 
   <animation>
     <type>select</type>
@@ -264,7 +389,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </axis>
   </animation>
 
-  <!-- Procedural Lights (ALS) -->
+  <!--===================================================================-->
+  <!-- PROCEDURAL LIGHTS (ALS)                                           -->
+  <!--===================================================================-->
 
   <model>
     <name>ProceduralBeacon</name>
