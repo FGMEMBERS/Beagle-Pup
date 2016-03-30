@@ -109,7 +109,7 @@ var beacon = maketimer(1, func {
 # listener will fire too often.
 #
 setlistener("systems/electrical/outputs/beacon", func (volts) {
-    if (volts.getValue() < 6.0)
+    if (volts.getValue() == 0)
         beacon.stop();
     else if (!beacon.isRunning)
         beacon.start();

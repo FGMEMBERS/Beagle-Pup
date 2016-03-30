@@ -49,11 +49,89 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </animation>
 
   <model>
+    <path>Instruments/Fuel/FuelGauge24.xml</path>
+    <name>FuelGauge24</name>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>-0.2500</y-m>
+      <z-m> 0.2300</z-m>
+    </offsets>
+  </model>
+
+  <animation>
+    <type>select</type>
+    <object-name>FuelGauge24</object-name>
+    <condition>
+      <less-than>
+        <property>consumables/fuel/tank[1]/capacity-gal_imp</property>
+        <value>15</value>
+      </less-than>
+    </condition>
+  </animation>
+
+  <model>
+    <path>Instruments/Fuel/FuelGauge36.xml</path>
+    <name>FuelGauge36</name>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>-0.2500</y-m>
+      <z-m> 0.2300</z-m>
+    </offsets>
+  </model>
+
+  <animation>
+    <type>select</type>
+    <object-name>FuelGauge36</object-name>
+    <condition>
+      <greater-than>
+        <property>consumables/fuel/tank[1]/capacity-gal_imp</property>
+        <value>15</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+  <model>
     <path>Instruments/Clock/Clock.xml</path>
     <offsets>
       <x-m>1.6900</x-m>
       <y-m>-0.1500</y-m>
       <z-m> 0.2300</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Instruments/Engine/ExhaustGasTemp.xml</path>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>-0.0500</y-m>
+      <z-m> 0.2300</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Instruments/Engine/CylinderTemp.xml</path>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>0.2300</y-m>
+      <z-m>0.2300</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Instruments/Engine/OilTemp.xml</path>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>0.2300</y-m>
+      <z-m>0.1600</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Instruments/Engine/CarbTemp.xml</path>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>0.2300</y-m>
+      <z-m>0.0900</z-m>
     </offsets>
   </model>
 
@@ -108,15 +186,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <x-m>1.6900</x-m>
       <y-m>-0.1500</y-m>
       <z-m> 0.0500</z-m>
-    </offsets>
-  </model>
-
-  <model>
-    <path>Instruments/EGT/egt.xml</path>
-    <offsets>
-      <x-m>1.6900</x-m>
-      <y-m>-0.0500</y-m>
-      <z-m> 0.2300</z-m>
     </offsets>
   </model>
 

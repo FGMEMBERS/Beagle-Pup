@@ -2,7 +2,7 @@
 
 <PropertyList>
 
-  <path>egt.ac</path>
+  <path>ExhaustGasTemp.ac</path>
 
   <animation>
     <type>material</type>
@@ -26,17 +26,17 @@
     <interpolation>
       <entry>
         <ind>1100</ind>
-        <dep>-45</dep>
+        <dep>0</dep>
       </entry>
       <entry>
         <ind>1600</ind>
-        <dep>45</dep>
+        <dep>90</dep>
       </entry>
     </interpolation>
     <center>
       <x-m>0</x-m>
       <y-m>0</y-m>
-      <z-m>-0.012</z-m>
+      <z-m>-0.019</z-m>
     </center>
     <axis>
       <x>-1</x>

@@ -99,6 +99,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <mode-btn type="int">0</mode-btn>
       <power-btn type="bool">1</power-btn>
     </dme>
+    <fuel-gauge>
+      <tank-select type="int">0</tank-select>
+    </fuel-gauge>
     <transponder>
       <inputs>
         <knob-mode type="int">0</knob-mode>
@@ -141,7 +144,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <menubar include="Interface/menubar.xml"/>
 
     <author>Richard Senior</author>
-    <aircraft-version>0.13.0</aircraft-version>
+    <aircraft-version>0.14.0</aircraft-version>
     <flight-model>jsb</flight-model>
 
     <aircraft-data>
@@ -154,6 +157,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <path>fdm/jsbsim/inertia/pointmass-weight-lbs[2]</path>
       <path>consumables/fuel/tank[1]/level-lbs</path>
       <path>consumables/fuel/tank[2]/level-lbs</path>
+      <path>controls/lighting/panel-norm</path>
     </aircraft-data>
 
     <airport>
@@ -235,7 +239,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <limits>
     <max-flap-extension-speed>
-      <flaps type="double">0.38</flaps>
+      <flaps type="double">0.0</flaps>
       <speed type="double">100</speed>
     </max-flap-extension-speed>
     <vne type="double">150</vne>

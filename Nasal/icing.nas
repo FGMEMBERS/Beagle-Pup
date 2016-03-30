@@ -21,41 +21,45 @@
 #
 ################################################################################
 
-var carb_temp = "engines/engine/carb-temp-degf";
+var carb_temp = "engines/engine/carb-temp-degc";
 var timer = nil;
 
 var init = func
 {
-    var oat = getprop("environment/temperature-degf");
-    props.globals.initNode("engines/engine/carb-temp-degf", oat, "DOUBLE");
+    var oat = getprop("environment/temperature-degc");
+    props.globals.initNode(carb_temp, oat, "DOUBLE");
 }
 
 var simulate_carb_temp = func
 {
-    var temperature = getprop("environment/temperature-degf");
-    var humidity = getprop("environment/relative-humidity");
-    var pressure = getprop("environment/pressure-inhg");
+    var oat = getprop("environment/temperature-degc");
+    var target_temp = oat;
 
-    var manifold_pressure = getprop("engines/engine/mp-inhg");
-    var cylinder_temp = getprop("engines/engine/cht-degf");
-
-    var max_temp_drop = (pressure - manifold_pressure) * 70 / 30;
-    var target_temp = temperature + (cylinder_temp / 30) - max_temp_drop;
-
-    setprop("engines/engine/carb-temp-target-degf", target_temp);
+    if (getprop("engines/engine/running")) {
+        var pressure = getprop("environment/pressure-inhg");
+        var manifold_pressure = getprop("engines/engine/mp-inhg");
+        var max_temp_drop = (pressure - manifold_pressure) * 21 / (30 - 12);
+        var engine_temp = getprop("engines/engine/cht-degc");
+        var compartment_heat = engine_temp / 20;
+        target_temp = oat + compartment_heat - max_temp_drop;
+    } else {
+        # Follow the temperature directly, rather than simulating any
+        # thermal mass. User could be changing weather scenarios,
+        # or weather might not be loaded.
+        setprop(carb_temp, oat);
+        return;
+    }
 
     var ct = getprop(carb_temp);
-    ct -= (ct - target_temp) / 300; 
+    ct -= (ct - target_temp) / 120;
     setprop(carb_temp, ct);
 }
 
-setlistener("engines/engine/running", func(v) {
-    if (v.getValue()) {
+setlistener("sim/signals/fdm-initialized", func(v) {
+    if (v.getBoolValue()) {
       init();
       timer = maketimer(1.0, simulate_carb_temp);
       timer.start();
-    } else {
-      timer.stop();
     }
 }, 0, 0);
 

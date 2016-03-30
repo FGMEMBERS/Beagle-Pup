@@ -24,6 +24,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 <PropertyList>
 
+  <!--===================================================================-->
+  <!-- ALS SECONDARY LIGHTS                                              -->
+  <!--===================================================================-->
+
   <logic>
     <input>
       <and>
@@ -44,11 +48,142 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <output>sim/rendering/als-secondary-lights/use-alt-landing-light</output>
   </logic>
 
+  <!--===================================================================-->
+  <!-- PANEL GAUGES                                                      -->
+  <!--===================================================================-->
+
+  <!-- Carb Temp -->
+
+  <filter>
+    <type>gain</type>
+    <gain>1.0</gain>
+    <input>
+      <condition>
+        <greater-than>
+          <property>systems/electrical/outputs/carb-temp-gauge</property>
+          <value>0</value>
+        </greater-than>
+      </condition>
+      <property>engines/engine/carb-temp-degc</property>
+    </input>
+    <input>
+      <value>0</value>
+    </input>
+    <output>instrumentation/carb-temp/carb-temp-degc-raw</output>
+  </filter>
+
+  <filter>
+    <type>exponential</type>
+    <filter-time>0.4</filter-time>
+    <input>instrumentation/carb-temp/carb-temp-degc-raw</input>
+    <output>instrumentation/carb-temp/carb-temp-degc</output>
+  </filter>
+
+  <!-- CHT Gauge -->
+
+  <filter>
+    <type>gain</type>
+    <gain>0.5556</gain>
+    <input>
+      <condition>
+        <greater-than>
+          <property>systems/electrical/outputs/cht-gauge</property>
+          <value>0</value>
+        </greater-than>
+      </condition>
+      <property>engines/engine/cht-degf</property>
+      <offset>-32</offset>
+    </input>
+    <input>
+      <value>0</value>
+    </input>
+    <output>engines/engine/cht-degc</output>
+  </filter>
+
+  <filter>
+    <type>exponential</type>
+    <filter-time>0.4</filter-time>
+    <input>engines/engine/cht-degc</input>
+    <output>instrumentation/cht/cht-degc</output>
+  </filter>
+
+  <!-- Exhaust Gas Temperature -->
+
   <filter>
     <type>exponential</type>
     <filter-time>0.33</filter-time>
     <input>engines/engine/egt-degf</input>
     <output>instrumentation/egt/egt-degf</output>
+  </filter>
+
+  <!-- Fuel Gauge -->
+
+  <filter>
+    <type>gain</type>
+    <gain>
+      <condition>
+        <greater-than>
+          <property>systems/electrical/outputs/fuel-gauge</property>
+          <value>0</value>
+        </greater-than>
+      </condition>
+      <value>1</value>
+    </gain>
+    <gain>0</gain>
+    <input>
+      <condition>
+        <equals>
+          <property>instrumentation/fuel-gauge/tank-select</property>
+          <value>0</value>
+        </equals>
+      </condition>
+      <property>consumables/fuel/tank[1]/level-gal_imp</property>
+    </input>
+    <input>
+      <condition>
+        <equals>
+          <property>instrumentation/fuel-gauge/tank-select</property>
+          <value>1</value>
+        </equals>
+      </condition>
+      <property>consumables/fuel/tank[2]/level-gal_imp</property>
+    </input>
+    <output>instrumentation/fuel-gauge/selected-level-gal_imp</output>
+  </filter>
+
+  <filter>
+    <type>exponential</type>
+    <filter-time>0.4</filter-time>
+    <input>instrumentation/fuel-gauge/selected-level-gal_imp</input>
+    <output>instrumentation/fuel-gauge/level-gal_imp</output>
+  </filter>
+
+  <!-- Oil Temp -->
+
+  <filter>
+    <type>gain</type>
+    <gain>0.5556</gain>
+    <input>
+      <condition>
+        <greater-than>
+          <property>systems/electrical/outputs/oil-temp-gauge</property>
+          <value>0</value>
+        </greater-than>
+      </condition>
+      <property>engines/engine/oil-temperature-degf</property>
+      <offset>-32</offset>
+    </input>
+    <input>
+      <value>0</value>
+    </input>
+    <output>engines/engine/oil-temperature-degc</output>
+  </filter>
+
+  <filter>
+    <type>exponential</type>
+    <filter-time>0.4</filter-time>
+    <input>engines/engine/oil-temperature-degc</input>
+    <output>instrumentation/oil/oil-temp-degc</output>
   </filter>
 
 </PropertyList>

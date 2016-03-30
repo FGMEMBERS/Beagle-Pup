@@ -121,6 +121,30 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <component>
       <kind type="string">output</kind>
+      <name type="string">Carb Temp Gauge</name>
+      <prop type="string">systems/electrical/outputs/carb-temp-gauge</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">CHT Gauge</name>
+      <prop type="string">systems/electrical/outputs/cht-gauge</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">Fuel Gauge</name>
+      <prop type="string">systems/electrical/outputs/fuel-gauge</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">Oil Temp Gauge</name>
+      <prop type="string">systems/electrical/outputs/oil-temp-gauge</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
       <name type="string">Beacon</name>
       <prop type="string">systems/electrical/outputs/beacon</prop>
     </component>
@@ -260,6 +284,26 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <connector>
       <input type="string">Avionics Bus</input>
       <output type="string">Turn Coordinator</output>
+    </connector>
+
+    <connector>
+      <input type="string">Avionics Bus</input>
+      <output type="string">Carb Temp Gauge</output>
+    </connector>
+
+    <connector>
+      <input type="string">Avionics Bus</input>
+      <output type="string">CHT Gauge</output>
+    </connector>
+
+    <connector>
+      <input type="string">Avionics Bus</input>
+      <output type="string">Fuel Gauge</output>
+    </connector>
+
+    <connector>
+      <input type="string">Avionics Bus</input>
+      <output type="string">Oil Temp Gauge</output>
     </connector>
 
   </electrical>
