@@ -253,6 +253,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </model>
 
   <model>
+    <path>Instruments/Flaps/FlapIndicator.xml</path>
+    <offsets>
+      <pitch-deg>90</pitch-deg>
+      <x-m>1.6850</x-m>
+      <y-m>0.0250</y-m>
+      <z-m>0.0200</z-m>
+    </offsets>
+  </model>
+
+  <model>
     <path>Instruments/Compass/Compass.xml</path>
     <offsets>
       <x-m>1.6800</x-m>
