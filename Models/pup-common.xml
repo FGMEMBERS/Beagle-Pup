@@ -191,8 +191,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <object-name>HubCapFront</object-name>
     <object-name>WheelMountFront</object-name>
     <object-name>WheelFront</object-name>
+    <object-name>OleoStrutBottom</object-name>
     <property>gear/gear/compression-norm</property>
-    <factor>-0.30</factor>
+    <factor>-0.3</factor>
     <offset-m>0.07</offset-m>
     <axis>
       <x1-m>1.1145</x1-m>
@@ -204,52 +205,110 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </axis>
   </animation>
 
-  <!--
-       WheelMountFront
-      <x-m>1.1091</x-m>
-      <y-m>-0.0006</y-m>
-      <z-m>-0.8091</z-m>
-
-       Joint
-      <x-m>1.2427</x-m>
-      <y-m>-0.0008</y-m>
-      <z-m>-0.7485</z-m>
-
-       OleoStrutTop
+  <animation>
+    <type>rotate</type>
+    <object-name>OleoStrutTop</object-name>
+    <expression>
+      <rad2deg>
+        <asin>
+          <mod>
+            <div>
+              <difference>
+                <product>
+                  <property>gear/gear/compression-norm</property>
+                  <value>0.3</value> <!-- Match translate factor -->
+                </product>
+                <value>0.07</value> <!-- Match translate offset -->
+              </difference>
+              <value>0.2400</value>
+            </div>
+            <value>1</value>
+          </mod>
+        </asin>
+      </rad2deg>
+    </expression>
+    <center>
       <x-m>1.1406</x-m>
       <y-m>-0.0006</y-m>
       <z-m>-0.6588</z-m>
-  -->
+    </center>
+    <axis>
+      <x>0</x>
+      <y>-1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
   <animation>
-    <type>locked-track</type>
+    <type>rotate</type>
     <object-name>OleoStrutBottom</object-name>
-    <object-center>
+    <expression>
+      <rad2deg>
+        <asin>
+          <mod>
+            <div>
+              <difference>
+                <product>
+                  <property>gear/gear/compression-norm</property>
+                  <value>0.3</value> <!-- Match translate factor -->
+                </product>
+                <value>0.07</value> <!-- Match translate offset -->
+              </difference>
+              <value>0.2400</value>
+            </div>
+            <value>1</value>
+          </mod>
+        </asin>
+      </rad2deg>
+    </expression>
+    <center>
       <x-m>1.1091</x-m>
       <y-m>-0.0006</y-m>
       <z-m>-0.8091</z-m>
-    </object-center>
-    <lock-axis>
+    </center>
+    <axis>
       <x>0</x>
       <y>1</y>
       <z>0</z>
-    </lock-axis>
-    <track-axis>
-      <x>0.2079</x>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>WheelLeft</object-name>
+    <object-name>HubCapLeft</object-name>
+    <property>gear/gear[1]/compression-norm</property>
+    <factor>70</factor>
+    <offset-deg>-8</offset-deg>
+    <center>
+      <x-m>2.4311</x-m>
+      <y-m>-1.2079</y-m>
+      <z-m>-1.0583</z-m>
+    </center>
+    <axis>
+      <x>-1</x>
       <y>0</y>
-      <z>0.9782</z>
-    </track-axis>
-    <target-name>WheelMountFront</target-name>
-    <target-center>
-      <x-m>1.1091</x-m>
-      <y-m>-0.0006</y-m>
-      <z-m>-0.8091</z-m>
-    </target-center>
-    <slave-name>OleoStrutTop</slave-name>
-    <slave-center>
-      <x-m>1.1406</x-m>
-      <y-m>-0.0006</y-m>
-      <z-m>-0.6588</z-m>
-    </slave-center>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>WheelRight</object-name>
+    <object-name>HubCapRight</object-name>
+    <property>gear/gear[2]/compression-norm</property>
+    <factor>70</factor>
+    <offset-deg>-8</offset-deg>
+    <center>
+      <x-m>2.4309</x-m>
+      <y-m>1.2155</y-m>
+      <z-m>-1.0590</z-m>
+    </center>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
   </animation>
 
   <animation>

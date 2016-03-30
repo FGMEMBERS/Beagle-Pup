@@ -46,7 +46,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <location unit="IN">
       <x>  95.61</x>
       <y> -50.57</y>
-      <z> -50.56</z> <!-- 48.56 uncompressed -->
+      <z> -51.26</z> <!-- 48.56 uncompressed -->
     </location>
     <static_friction>0.80</static_friction>
     <dynamic_friction>0.50</dynamic_friction>
@@ -62,7 +62,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <location unit="IN">
       <x>  95.61 </x>
       <y>  50.57 </y>
-      <z> -50.56 </z> <!-- 48.56 uncompressed -->
+      <z> -51.26 </z> <!-- 48.56 uncompressed -->
     </location>
     <static_friction>  0.80 </static_friction>
     <dynamic_friction> 0.50 </dynamic_friction>
