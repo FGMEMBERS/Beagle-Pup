@@ -7,6 +7,8 @@
       <livery>
         <name>EP-BAH (Black/White)</name>
         <texture>Liveries/pup160/EP-BAH.png</texture>
+        <ambient-correction>0.1</ambient-correction>
+        <reflection-correction>-0.3</reflection-correction>
       </livery>
     </model>
   </sim>

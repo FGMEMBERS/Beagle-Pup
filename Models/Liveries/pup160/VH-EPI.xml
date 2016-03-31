@@ -7,6 +7,8 @@
       <livery>
         <name>VH-EPI (Yellow/White)</name>
         <texture>Liveries/pup160/VH-EPI.png</texture>
+        <ambient-correction>0.0</ambient-correction>
+        <reflection-correction>-0.2</reflection-correction>
       </livery>
     </model>
   </sim>

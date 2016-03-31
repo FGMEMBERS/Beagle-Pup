@@ -7,6 +7,8 @@
       <livery>
         <name>OO-WEA (Blue/White)</name>
         <texture>Liveries/pup100/OO-WEA.png</texture>
+        <ambient-correction>0.0</ambient-correction>
+        <reflection-correction>-0.2</reflection-correction>
       </livery>
     </model>
   </sim>

@@ -7,6 +7,8 @@
       <livery>
         <name>G-AVZN (Black/Blue)</name>
         <texture>Liveries/pup100/G-AVZN.png</texture>
+        <ambient-correction>0.1</ambient-correction>
+        <reflection-correction>0.1</reflection-correction>
       </livery>
     </model>
   </sim>

@@ -144,7 +144,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <menubar include="Interface/menubar.xml"/>
 
     <author>Richard Senior</author>
-    <aircraft-version>0.15.2</aircraft-version>
+    <aircraft-version>0.16.0</aircraft-version>
     <flight-model>jsb</flight-model>
 
     <aircraft-data>
@@ -178,6 +178,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <livery>
         <file type="string"/>
       </livery>
+      <shaders>
+        <chrome>
+          <ambient-correction>0.4</ambient-correction>
+        </chrome>
+        <glass>
+          <ambient-correction>0.4</ambient-correction>
+        </glass>
+      </shaders>
     </model>
 
     <multiplay>

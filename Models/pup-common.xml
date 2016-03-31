@@ -60,12 +60,34 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </animation>
 
   <effect>
+    <inherits-from>Aircraft/Beagle-Pup/Models/Effects/chrome</inherits-from>
+    <object-name>WheelMountFrontChrome</object-name>
+  </effect>
+
+  <effect>
     <inherits-from>Aircraft/Beagle-Pup/Models/Effects/glass</inherits-from>
     <object-name>Windscreen</object-name>
     <object-name>WindowPilot</object-name>
     <object-name>WindowCoPilot</object-name>
     <object-name>WindowPilotRear</object-name>
     <object-name>WindowCoPilotRear</object-name>
+  </effect>
+
+  <effect>
+    <inherits-from>Aircraft/Beagle-Pup/Models/Effects/reflect</inherits-from>
+    <object-name>Exterior</object-name>
+    <object-name>ExteriorFittings</object-name>
+    <object-name>FlapLeft</object-name>
+    <object-name>FlapRight</object-name>
+    <object-name>AileronLeft</object-name>
+    <object-name>AileronRight</object-name>
+    <object-name>ElevatorLeft</object-name>
+    <object-name>ElevatorRight</object-name>
+    <object-name>Rudder</object-name>
+    <object-name>Propeller</object-name>
+    <object-name>HubCapLeft</object-name>
+    <object-name>HubCapRight</object-name>
+    <object-name>HubCapFront</object-name>
   </effect>
 
   <!--===================================================================-->
@@ -190,8 +212,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <type>translate</type>
     <object-name>HubCapFront</object-name>
     <object-name>WheelMountFront</object-name>
+    <object-name>WheelMountFrontChrome</object-name>
     <object-name>WheelFront</object-name>
-    <object-name>OleoStrutBottom</object-name>
+    <object-name>ScissorBottom</object-name>
     <property>gear/gear/compression-norm</property>
     <factor>-0.3</factor>
     <offset-m>0.07</offset-m>
@@ -207,7 +230,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <animation>
     <type>rotate</type>
-    <object-name>OleoStrutTop</object-name>
+    <object-name>ScissorTop</object-name>
     <expression>
       <rad2deg>
         <asin>
@@ -241,7 +264,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <animation>
     <type>rotate</type>
-    <object-name>OleoStrutBottom</object-name>
+    <object-name>ScissorBottom</object-name>
     <expression>
       <rad2deg>
         <asin>
@@ -315,6 +338,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <type>rotate</type>
     <object-name>HubCapFront</object-name>
     <object-name>WheelMountFront</object-name>
+    <object-name>WheelMountFrontChrome</object-name>
     <object-name>WheelFront</object-name>
     <property>fdm/jsbsim/fcs/steer-pos-deg</property>
     <condition>

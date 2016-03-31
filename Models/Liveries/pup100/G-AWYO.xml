@@ -7,6 +7,8 @@
       <livery>
         <name>G-AWYO (Green/White)</name>
         <texture>Liveries/pup100/G-AWYO.png</texture>
+        <ambient-correction>0.1</ambient-correction>
+        <reflection-correction>-0.3</reflection-correction>
       </livery>
     </model>
   </sim>

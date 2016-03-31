@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <!--
 **************************************************************************
 
-Beagle Pup Glass Shader
+Beagle Pup Chrome Shader
 
-Copyright (c) 2015 Richard Senior
+Copyright (c) 2016 Richard Senior
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,11 +24,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
 <PropertyList>
-  <name>Effects/glass</name>
-  <inherits-from>Effects/model-combined-transparent</inherits-from>
+  <name>Effects/chrome</name>
+  <inherits-from>Effects/model-combined-deferred</inherits-from>
   <parameters>
     <reflection-enabled type="int">1</reflection-enabled>
+    <reflect-map-enabled type="int">1</reflect-map-enabled>
+    <reflection-correction type="float">1</reflection-correction>
     <reflection-dynamic type="int">1</reflection-dynamic>
+    <texture n="4">
+      <image>Aircraft/Generic/Effects/greymap.png</image>
+    </texture>
     <texture n="5">
       <type>cubemap</type>
       <images>
@@ -39,15 +45,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <negative-z>Aircraft/Generic/Effects/CubeMaps/buildings/D.png</negative-z>
       </images>
     </texture>
+    <reflection-fresnel type="float">0.05</reflection-fresnel>
+    <reflection-rainbow type="float">0.01</reflection-rainbow>
     <reflection-noise type="float">0.0</reflection-noise>
     <ambient-correction type="float">
-      <use>sim/model/shaders/glass/ambient-correction</use>
+      <use>sim/model/shaders/chrome/ambient-correction</use>
     </ambient-correction>
-    <rendering-hint>transparent</rendering-hint>
-    <transparent>true</transparent>
-    <render-bin>
-      <bin-number>10</bin-number>
-      <bin-name>DepthSortedBin</bin-name>
-    </render-bin>
   </parameters>
 </PropertyList>
