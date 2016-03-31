@@ -35,8 +35,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <static_friction>0.80</static_friction>
     <dynamic_friction>0.50</dynamic_friction>
     <rolling_friction>0.02</rolling_friction>
-    <spring_coeff unit="LBS/FT">1200.00</spring_coeff>
-    <damping_coeff unit="LBS/FT/SEC">400</damping_coeff>
+    <spring_coeff unit="LBS/FT">1800.00</spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">300</damping_coeff>
     <max_steer unit="DEG">12.5</max_steer>
     <brake_group>NONE</brake_group>
     <retractable>0</retractable>
@@ -51,8 +51,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <static_friction>0.80</static_friction>
     <dynamic_friction>0.50</dynamic_friction>
     <rolling_friction>0.02</rolling_friction>
-    <spring_coeff unit="LBS/FT">2000</spring_coeff>
-    <damping_coeff unit="LBS/FT/SEC">500</damping_coeff>
+    <spring_coeff unit="LBS/FT">2100</spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">300</damping_coeff>
     <max_steer unit="DEG">0</max_steer>
     <brake_group>LEFT</brake_group>
     <retractable>0</retractable>
@@ -67,8 +67,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <static_friction>  0.80 </static_friction>
     <dynamic_friction> 0.50 </dynamic_friction>
     <rolling_friction> 0.02 </rolling_friction>
-    <spring_coeff unit="LBS/FT">2000.00 </spring_coeff>
-    <damping_coeff unit="LBS/FT/SEC">500</damping_coeff>
+    <spring_coeff unit="LBS/FT">2100.00 </spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">300</damping_coeff>
     <max_steer unit="DEG">0</max_steer>
     <brake_group>RIGHT</brake_group>
     <retractable>0</retractable>
