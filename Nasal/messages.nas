@@ -58,6 +58,19 @@ setlistener("autopilot/sperry/turn-select", func(node) {
     message(sprintf("Turn Select: %.0f deg", node.getValue()));
 }, 0, 0);
 
+setlistener("instrumentation/adf/rotation-deg", func(node) {
+    message(sprintf("ADF: %.0f", node.getValue()));
+}, 0, 0);
+
+setlistener("instrumentation/altimeter/setting-inhg", func(node) {
+    var hpa = math.round(getprop("instrumentation/altimeter/setting-hpa"));
+    message(sprintf("Altimeter: %.2f inHg or %.0f hPa", node.getValue(), hpa));
+}, 0, 0);
+
+setlistener("instrumentation/nav/radials/selected-deg", func(node) {
+    message(sprintf("Radial: %.0f", node.getValue()));
+}, 0, 0);
+
 ################################################################################
 # Crash detection
 ################################################################################
