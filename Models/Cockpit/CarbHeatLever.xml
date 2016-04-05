@@ -2,7 +2,7 @@
 <!--
 **************************************************************************
 
-Beagle Pup Carb Temp Gauge
+Beagle Pup Carb Heat Lever
 
 Copyright (c) 2016 Richard Senior
 
@@ -24,48 +24,43 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 <PropertyList>
 
-  <path>CarbTemp.ac</path>
+  <path>CarbHeatLever.ac</path>
 
   <animation>
     <type>material</type>
-    <object-name>Face</object-name>
-    <object-name>Needle</object-name>
+    <object-name>Sheath</object-name>
+    <object-name>Lever</object-name>
     <condition>
-      <property>systems/electrical/outputs/carb-temp-gauge</property>
+      <property>systems/electrical/outputs/panel-lights</property>
     </condition>
     <emission>
-      <red>0.7</red>
-      <green>0.7</green>
-      <blue>0.7</blue>
+      <red>0.3</red>
+      <green>0.3</green>
+      <blue>0.3</blue>
       <factor-prop>controls/lighting/panel-norm</factor-prop>
     </emission>
   </animation>
 
   <animation>
-    <type>rotate</type>
-    <object-name>Needle</object-name>
-    <property>instrumentation/carb-temp/carb-temp-degc-filtered</property>
-    <interpolation>
-      <entry>
-        <ind>-30</ind>
-        <dep>0</dep>
-      </entry>
-      <entry>
-        <ind>30</ind>
-        <dep>90</dep>
-      </entry>
-    </interpolation>
-    <center>
-      <x-m>0</x-m>
-      <y-m>0</y-m>
-      <z-m>-0.0190</z-m>
-    </center>
+    <type>slider</type>
+    <object-name>Lever</object-name>
+    <property>controls/anti-ice/engine/carb-heat-norm</property>
+    <factor>0.025</factor>
     <axis>
-      <x>-1</x>
+      <x>1</x>
       <y>0</y>
       <z>0</z>
     </axis>
-
+    <action>
+      <binding>
+        <command>property-adjust</command>
+        <property>controls/anti-ice/engine/carb-heat-norm</property>
+        <factor>0.1</factor>
+        <min>0.0</min>
+        <max>1.0</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
   </animation>
 
 </PropertyList>

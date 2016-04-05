@@ -62,6 +62,10 @@ setlistener("instrumentation/adf/rotation-deg", func(node) {
     message(sprintf("ADF: %.0f", node.getValue()));
 }, 0, 0);
 
+setlistener("controls/anti-ice/engine/carb-heat-norm", func(node) {
+    message(sprintf("Carb Heat: %.0f%%", 100 * node.getValue()));
+}, 0, 0);
+
 setlistener("instrumentation/altimeter/setting-inhg", func(node) {
     var hpa = math.round(getprop("instrumentation/altimeter/setting-hpa"));
     message(sprintf("Altimeter: %.2f inHg or %.0f hPa", node.getValue(), hpa));

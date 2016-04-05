@@ -23,6 +23,7 @@
 <PropertyList>
 
   <name>autopilot</name>
+  <modal>false</modal>
   <layout>vbox</layout>
 
   <!-- TITLE BAR -->

@@ -48,6 +48,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   </sim>
 
+  <fdm>
+    <jsbsim>
+      <propulsion>
+        <engine>
+          <!-- Used by carb temp simulation -->
+          <manufacturer type="string">Continental</manufacturer>
+          <manufacturer-code type="int">0</manufacturer-code>
+        </engine>
+      </propulsion>
+    </jsbsim>
+  </fdm>
+
   <limits>
     <mass-and-balance>
       <maximum-takeoff-mass-lbs type="double">1600</maximum-takeoff-mass-lbs>

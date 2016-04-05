@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<!-- Beagle Pup Lights
+<!-- Beagle Pup Preferences
 
      Copyright (c) 2016, Richard Senior
 
@@ -22,10 +22,10 @@
 
 <PropertyList>
 
-  <name>lights</name>
+  <name>preferences</name>
   <modal>false</modal>
   <layout>vbox</layout>
-  <pref-width>250</pref-width>
+  <pref-width>200</pref-width>
 
   <!-- TITLE BAR -->
 
@@ -35,7 +35,7 @@
       <stretch>1</stretch>
     </empty>
     <text>
-      <label>Lights</label>
+      <label>Preferences</label>
     </text>
     <empty>
       <stretch>1</stretch>
@@ -65,22 +65,22 @@
       <default-padding>1</default-padding>
       <text>
         <halign>left</halign>
-        <label>EXTERIOR</label>
+        <label>REALISM</label>
       </text>
       <group>
         <layout>hbox</layout>
         <default-padding>5</default-padding>
         <text>
           <halign>left</halign>
-          <label>Navigation Lights</label>
+          <label>Carb Icing</label>
         </text>
         <checkbox>
           <halign>right</halign>
-          <property>controls/lighting/nav-lights</property>
+          <property>sim/model/preferences/realism/carb-ice</property>
           <live>true</live>
           <binding>
             <command>property-toggle</command>
-            <property>controls/lighting/nav-lights</property>
+            <property>sim/model/preferences/realism/carb-ice</property>
           </binding>
         </checkbox>
       </group>
@@ -89,83 +89,17 @@
         <default-padding>5</default-padding>
         <text>
           <halign>left</halign>
-          <label>Beacon</label>
+          <label>Pitot Icing</label>
         </text>
         <checkbox>
           <halign>right</halign>
-          <property>controls/lighting/beacon</property>
+          <property>sim/model/preferences/realism/pitot-ice</property>
           <live>true</live>
           <binding>
             <command>property-toggle</command>
-            <property>controls/lighting/beacon</property>
+            <property>sim/model/preferences/realism/pitot-ice</property>
           </binding>
         </checkbox>
-      </group>
-      <group>
-        <layout>hbox</layout>
-        <default-padding>5</default-padding>
-        <text>
-          <halign>left</halign>
-          <label>Taxi Light</label>
-        </text>
-        <checkbox>
-          <halign>right</halign>
-          <property>controls/lighting/taxi-light</property>
-          <live>true</live>
-          <binding>
-            <command>property-toggle</command>
-            <property>controls/lighting/taxi-light</property>
-          </binding>
-        </checkbox>
-      </group>
-      <group>
-        <layout>hbox</layout>
-        <default-padding>5</default-padding>
-        <text>
-          <halign>left</halign>
-          <label>Landing Light</label>
-        </text>
-        <checkbox>
-          <halign>right</halign>
-          <property>controls/lighting/landing-lights</property>
-          <live>true</live>
-          <binding>
-            <command>property-toggle</command>
-            <property>controls/lighting/landing-lights</property>
-          </binding>
-        </checkbox>
-      </group>
-    </group>
-  </group>
-
-  <hrule><dummy/></hrule>
-
-  <group>
-    <layout>hbox</layout>
-    <default-padding>10</default-padding>
-    <group>
-      <layout>vbox</layout>
-      <default-padding>1</default-padding>
-      <text>
-        <halign>left</halign>
-        <label>INTERIOR</label>
-      </text>
-      <group>
-        <layout>hbox</layout>
-        <default-padding>5</default-padding>
-        <text>
-          <halign>left</halign>
-          <label>Cockpit Lights</label>
-        </text>
-        <slider>
-          <halign>right</halign>
-          <property>controls/lighting/panel-norm</property>
-          <binding>
-            <command>dialog-apply</command>
-          </binding>
-          <min>0.0</min>
-          <max>1.0</max>
-        </slider>
       </group>
     </group>
   </group>

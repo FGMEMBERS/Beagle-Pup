@@ -69,51 +69,64 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <input>
       <value>0</value>
     </input>
-    <output>instrumentation/carb-temp/carb-temp-degc-raw</output>
+    <output>instrumentation/carb-temp/carb-temp-degc</output>
   </filter>
 
   <filter>
     <type>exponential</type>
     <filter-time>0.4</filter-time>
-    <input>instrumentation/carb-temp/carb-temp-degc-raw</input>
-    <output>instrumentation/carb-temp/carb-temp-degc</output>
+    <input>instrumentation/carb-temp/carb-temp-degc</input>
+    <output>instrumentation/carb-temp/carb-temp-degc-filtered</output>
   </filter>
 
   <!-- CHT Gauge -->
 
   <filter>
     <type>gain</type>
-    <gain>0.5556</gain>
-    <input>
+    <gain>
       <condition>
         <greater-than>
           <property>systems/electrical/outputs/cht-gauge</property>
           <value>0</value>
         </greater-than>
       </condition>
-      <property>engines/engine/cht-degf</property>
-      <offset>-32</offset>
-    </input>
-    <input>
-      <value>0</value>
-    </input>
-    <output>engines/engine/cht-degc</output>
+      <value>1</value>
+    </gain>
+    <gain>0</gain>
+    <input>engines/engine/cht-degc</input>
+    <output>instrumentation/cht/cht-degc</output>
   </filter>
 
   <filter>
     <type>exponential</type>
     <filter-time>0.4</filter-time>
-    <input>engines/engine/cht-degc</input>
-    <output>instrumentation/cht/cht-degc</output>
+    <input>instrumentation/cht/cht-degc</input>
+    <output>instrumentation/cht/cht-degc-filtered</output>
   </filter>
 
   <!-- Exhaust Gas Temperature -->
 
   <filter>
-    <type>exponential</type>
-    <filter-time>0.33</filter-time>
+    <type>gain</type>
+    <gain>
+      <condition>
+        <greater-than>
+          <property>systems/electrical/outputs/egt-gauge</property>
+          <value>0</value>
+        </greater-than>
+      </condition>
+      <value>1</value>
+    </gain>
+    <gain>0</gain>
     <input>engines/engine/egt-degf</input>
     <output>instrumentation/egt/egt-degf</output>
+  </filter>
+
+  <filter>
+    <type>exponential</type>
+    <filter-time>0.33</filter-time>
+    <input>instrumentation/egt/egt-degf</input>
+    <output>instrumentation/egt/egt-degf-filtered</output>
   </filter>
 
   <!-- Fuel Gauge -->
@@ -148,42 +161,39 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </condition>
       <property>consumables/fuel/tank[2]/level-gal_imp</property>
     </input>
-    <output>instrumentation/fuel-gauge/selected-level-gal_imp</output>
+    <output>instrumentation/fuel-gauge/level-gal_imp</output>
   </filter>
 
   <filter>
     <type>exponential</type>
     <filter-time>0.4</filter-time>
-    <input>instrumentation/fuel-gauge/selected-level-gal_imp</input>
-    <output>instrumentation/fuel-gauge/level-gal_imp</output>
+    <input>instrumentation/fuel-gauge/level-gal_imp</input>
+    <output>instrumentation/fuel-gauge/level-gal_imp-filtered</output>
   </filter>
 
   <!-- Oil Temp -->
 
   <filter>
     <type>gain</type>
-    <gain>0.5556</gain>
-    <input>
+    <gain>
       <condition>
         <greater-than>
           <property>systems/electrical/outputs/oil-temp-gauge</property>
           <value>0</value>
         </greater-than>
       </condition>
-      <property>engines/engine/oil-temperature-degf</property>
-      <offset>-32</offset>
-    </input>
-    <input>
-      <value>0</value>
-    </input>
-    <output>engines/engine/oil-temperature-degc</output>
+      <value>1</value>
+    </gain>
+    <gain>0</gain>
+    <input>engines/engine/oil-temperature-degc</input>
+    <output>instrumentation/oil/oil-temperature-degc</output>
   </filter>
 
   <filter>
     <type>exponential</type>
     <filter-time>0.4</filter-time>
-    <input>engines/engine/oil-temperature-degc</input>
-    <output>instrumentation/oil/oil-temp-degc</output>
+    <input>instrumentation/oil/oil-temperature-degc</input>
+    <output>instrumentation/oil/oil-temperature-degc-filtered</output>
   </filter>
 
 </PropertyList>

@@ -44,7 +44,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <animation>
     <type>rotate</type>
     <object-name>Needle</object-name>
-    <property>instrumentation/oil/oil-temp-degc</property>
+    <property>instrumentation/oil/oil-temperature-degc-filtered</property>
     <interpolation>
       <entry>
         <ind>0</ind>

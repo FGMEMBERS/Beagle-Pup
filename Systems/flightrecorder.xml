@@ -49,6 +49,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <signals>
       <signal>
         <type>bool</type>
+        <property>controls/anti-ice/engine/carb-heat-norm</property>
+      </signal>
+      <signal>
+        <type>bool</type>
         <property>controls/electric/battery-switch</property>
       </signal>
       <signal>

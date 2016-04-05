@@ -58,7 +58,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <controls>
     <anti-ice>
       <engine>
-        <carb-heat type="bool">false</carb-heat>
+        <carb-heat-norm type="double">0.0</carb-heat-norm>
       </engine>
     </anti-ice>
     <electric>
@@ -90,6 +90,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </lighting>
   </controls>
 
+  <engines>
+    <engine n="0">
+      <carb-temp-degc alias="/fdm/jsbsim/systems/carburettor/carb-temp-degC"/>
+      <cht-degc alias="/fdm/jsbsim/propulsion/engine/cht-degC"/>
+      <oil-temperature-degc alias="/fdm/jsbsim/propulsion/engine/oil-temperature-degC"/>
+    </engine>
+  </engines>
+
   <input>
     <keyboard include="Interface/keyboard.xml"/>
   </input>
@@ -116,7 +124,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <file>Nasal/dialog.nas</file>
       <file>Nasal/electrical.nas</file>
       <file>Nasal/fuel.nas</file>
-      <file>Nasal/icing.nas</file>
       <file>Nasal/liveries.nas</file>
       <file>Nasal/messages.nas</file>
       <file>Nasal/thunder.nas</file>
@@ -144,7 +151,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <menubar include="Interface/menubar.xml"/>
 
     <author>Richard Senior</author>
-    <aircraft-version>0.16.1</aircraft-version>
+    <aircraft-version>0.17.0</aircraft-version>
     <flight-model>jsb</flight-model>
 
     <aircraft-data>
@@ -152,12 +159,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <path>autopilot/sperry/dummy</path>
       <path>autopilot/sperry/elev-trim</path>
       <path>autopilot/sperry/roll-trim</path>
-      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[0]</path>
-      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[1]</path>
-      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[2]</path>
       <path>consumables/fuel/tank[1]/level-lbs</path>
       <path>consumables/fuel/tank[2]/level-lbs</path>
       <path>controls/lighting/panel-norm</path>
+      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[0]</path>
+      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[1]</path>
+      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[2]</path>
+      <path>sim/model/preferences/realism/carb-ice</path>
+      <path>sim/model/preferences/realism/pitot-ice</path>
     </aircraft-data>
 
     <airport>
@@ -178,12 +187,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <livery>
         <file type="string"/>
       </livery>
+      <preferences>
+        <realism>
+          <carb-ice type="bool">false</carb-ice>
+          <pitot-ice type="bool">false</pitot-ice>
+        </realism>
+      </preferences>
       <shaders>
         <chrome>
           <ambient-correction>0.4</ambient-correction>
         </chrome>
         <glass>
-          <ambient-correction>0.4</ambient-correction>
+          <ambient-correction>0.3</ambient-correction>
         </glass>
       </shaders>
     </model>

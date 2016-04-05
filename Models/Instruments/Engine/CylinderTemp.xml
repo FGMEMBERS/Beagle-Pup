@@ -44,7 +44,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <animation>
     <type>rotate</type>
     <object-name>Needle</object-name>
-    <property>instrumentation/cht/cht-degc</property>
+    <property>instrumentation/cht/cht-degc-filtered</property>
     <interpolation>
       <entry>
         <ind>0</ind>

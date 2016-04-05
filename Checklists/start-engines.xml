@@ -240,6 +240,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
+  <!-- Carb Heat - APPLY -->
+  <item>
+    <name>Carb Heat</name>
+    <value>APPLY</value>
+    <condition>
+      <and>
+        <property>engines/engine/running</property>
+        <greater-than>
+          <property>controls/anti-ice/engine/carb-heat-norm</property>
+          <value>0.05</value>
+        </greater-than>
+      </and>
+    </condition>
+    <binding>
+      <command>property-interpolate</command>
+      <property>controls/anti-ice/engine/carb-heat-norm</property>
+      <value>1.0</value>
+      <rate>1.0</rate>
+    </binding>
+  </item>
+
   <!-- Starter Master - OFF -->
   <item>
     <name>Starter Master</name>

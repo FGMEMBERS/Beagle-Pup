@@ -54,6 +54,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   </sim>
 
+  <fdm>
+    <jsbsim>
+      <propulsion>
+        <engine>
+          <!-- Used by carb temp simulation -->
+          <manufacturer type="string">Lycoming</manufacturer>
+          <manufacturer-code type="int">1</manufacturer-code>
+        </engine>
+      </propulsion>
+    </jsbsim>
+  </fdm>
+
   <limits>
     <mass-and-balance>
       <maximum-takeoff-mass-lbs type="double">1950</maximum-takeoff-mass-lbs>

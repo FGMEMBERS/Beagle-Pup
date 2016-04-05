@@ -79,12 +79,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <component>
       <kind type="string">output</kind>
-      <name type="string">Carb Heat</name>
-      <prop type="string">systems/electrical/outputs/carb-heat</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
       <name type="string">Autopilot</name>
       <prop type="string">systems/electrical/outputs/autopilot</prop>
     </component>
@@ -129,6 +123,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <kind type="string">output</kind>
       <name type="string">CHT Gauge</name>
       <prop type="string">systems/electrical/outputs/cht-gauge</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">EGT Gauge</name>
+      <prop type="string">systems/electrical/outputs/egt-gauge</prop>
     </component>
 
     <component>
@@ -217,12 +217,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <connector>
       <input type="string">DC Bus</input>
-      <output type="string">Carb Heat</output>
-      <switch type="string">controls/anti-ice/engine/carb-heat</switch>
-    </connector>
-
-    <connector>
-      <input type="string">DC Bus</input>
       <output type="string">Fuel Pump</output>
       <switch type="string">controls/electric/engine/fuel-pump</switch>
     </connector>
@@ -300,6 +294,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <connector>
       <input type="string">Avionics Bus</input>
       <output type="string">CHT Gauge</output>
+    </connector>
+
+    <connector>
+      <input type="string">Avionics Bus</input>
+      <output type="string">EGT Gauge</output>
     </connector>
 
     <connector>
