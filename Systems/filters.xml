@@ -129,6 +129,31 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <output>instrumentation/egt/egt-degf-filtered</output>
   </filter>
 
+  <!-- Outside Air Temperature -->
+
+  <filter>
+    <type>gain</type>
+    <gain>
+      <condition>
+        <greater-than>
+          <property>systems/electrical/outputs/oat-gauge</property>
+          <value>0</value>
+        </greater-than>
+      </condition>
+      <value>1</value>
+    </gain>
+    <gain>0</gain>
+    <input>environment/temperature-degc</input>
+    <output>instrumentation/oat/oat-degc</output>
+  </filter>
+
+  <filter>
+    <type>exponential</type>
+    <filter-time>0.33</filter-time>
+    <input>instrumentation/oat/oat-degc</input>
+    <output>instrumentation/oat/oat-degc-filtered</output>
+  </filter>
+
   <!-- Fuel Gauge -->
 
   <filter>

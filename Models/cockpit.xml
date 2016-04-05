@@ -136,6 +136,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </model>
 
   <model>
+    <path>Instruments/OAT/OutsideAirTemp.xml</path>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>0.3000</y-m>
+      <z-m>0.0900</z-m>
+    </offsets>
+  </model>
+
+  <model>
     <path>Instruments/ASI/EA-5174.xml</path>
     <offsets>
       <x-m>1.6900</x-m>

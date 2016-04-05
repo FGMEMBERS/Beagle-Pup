@@ -133,6 +133,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <component>
       <kind type="string">output</kind>
+      <name type="string">OAT Gauge</name>
+      <prop type="string">systems/electrical/outputs/oat-gauge</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
       <name type="string">Flap Indicator</name>
       <prop type="string">systems/electrical/outputs/flap-indicator</prop>
     </component>
@@ -299,6 +305,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <connector>
       <input type="string">Avionics Bus</input>
       <output type="string">EGT Gauge</output>
+    </connector>
+
+    <connector>
+      <input type="string">Avionics Bus</input>
+      <output type="string">OAT Gauge</output>
     </connector>
 
     <connector>
