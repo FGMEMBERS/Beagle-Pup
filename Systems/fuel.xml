@@ -300,6 +300,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </clipto>
     </pure_gain>
 
+    <!--
+    Adding hot air to the carburettor effectively leans the mixture and
+    reduces RPM and power. Model this by modifying the efficiency.
+    -->
+    <fcs_function name="Volumetric Efficiency">
+      <function>
+        <difference>
+          <value>0.82</value> <!-- Base volumetric efficiency -->
+          <product>
+            <property>systems/carburettor/carb-heat-effect-degC</property>
+            <value>0.004</value>
+          </product>
+        </difference>
+      </function>
+      <output>propulsion/engine/volumetric-efficiency</output>
+    </fcs_function>
+
   </channel>
 
 </system>
