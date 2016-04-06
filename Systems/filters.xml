@@ -49,6 +49,42 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </logic>
 
   <!--===================================================================-->
+  <!-- ADDITIONAL  PROPERTIES                                            -->
+  <!--===================================================================-->
+
+  <filter>
+    <type>gain</type>
+    <gain>1.0></gain>
+    <input>
+      <expression>
+        <fabs>
+          <difference>
+            <property>instrumentation/altimeter/indicated-altitude-ft</property>
+            <property>position/altitude-ft</property>
+          </difference>
+        </fabs>
+      </expression>
+    </input>
+    <output>instrumentation/altimeter/absolute-altitude-error-ft</output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <gain>1.0></gain>
+    <input>
+      <expression>
+        <fabs>
+          <difference>
+            <property>instrumentation/heading-indicator/indicated-heading-deg</property>
+            <property>orientation/heading-magnetic-deg</property>
+          </difference>
+        </fabs>
+      </expression>
+    </input>
+    <output>instrumentation/heading-indicator/absolute-heading-error-deg</output>
+  </filter>
+
+  <!--===================================================================-->
   <!-- PANEL GAUGES                                                      -->
   <!--===================================================================-->
 

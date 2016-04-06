@@ -78,4 +78,44 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
+  <!-- Altimeter - SET -->
+  <item>
+    <name>Altimeter</name>
+    <value>SET</value>
+    <condition>
+      <less-than>
+        <property>instrumentation/altimeter/absolute-altitude-error-ft</property>
+        <value>20</value>
+      </less-than>
+    </condition>
+    <binding>
+      <command>property-interpolate</command>
+      <property>instrumentation/altimeter/setting-inhg</property>
+      <property>environment/pressure-sea-level-inhg</property>
+      <time>0.5</time>
+    </binding>
+  </item>
+
+  <!-- Heading Indicator - SET -->
+  <item>
+    <name>Heading Indicator</name>
+    <value>ALIGN</value>
+    <condition>
+      <less-than>
+        <property>instrumentation/heading-indicator/absolute-heading-error-deg</property>
+        <value>5</value>
+      </less-than>
+    </condition>
+    <binding>
+      <command>nasal</command>
+      <script>
+        var h = getprop("orientation/heading-deg");
+        var m = getprop("orientation/heading-magnetic-deg");
+        var o = getprop("instrumentation/heading-indicator/offset-deg");
+        var d = (o > 180) ? int(m - h) + 360 : int(m - h);
+        interpolate("instrumentation/heading-indicator/offset-deg", d, 0.5);
+      </script>
+    </binding>
+  </item>
+
 </PropertyList>

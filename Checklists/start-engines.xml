@@ -83,9 +83,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
-  <!-- Fuel Pump - ON -->
+  <!-- Boost Pump - ON -->
   <item>
-    <name>Fuel Pump</name>
+    <name>Boost Pump</name>
     <value>ON</value>
     <condition>
       <or>
@@ -195,22 +195,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
-  <!-- Fuel Pump - OFF -->
+  <!-- Starter Master - OFF -->
   <item>
-    <name>Fuel Pump</name>
+    <name>Starter Master</name>
     <value>OFF</value>
     <condition>
       <and>
         <property>engines/engine/running</property>
         <equals>
-          <property>systems/electrical/outputs/fuel-pump</property>
+          <property>systems/electrical/outputs/starter</property>
           <value>0</value>
         </equals>
       </and>
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>controls/electric/engine/fuel-pump</property>
+      <property>controls/electric/engine/starter-master</property>
       <value>0</value>
     </binding>
     <binding>
@@ -261,22 +261,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
-  <!-- Starter Master - OFF -->
+  <!-- Boost Pump - OFF -->
   <item>
-    <name>Starter Master</name>
+    <name>Boost Pump</name>
     <value>OFF</value>
     <condition>
       <and>
         <property>engines/engine/running</property>
         <equals>
-          <property>systems/electrical/outputs/starter</property>
+          <property>systems/electrical/outputs/fuel-pump</property>
           <value>0</value>
         </equals>
       </and>
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>controls/electric/engine/starter-master</property>
+      <property>controls/electric/engine/fuel-pump</property>
       <value>0</value>
     </binding>
     <binding>

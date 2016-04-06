@@ -47,27 +47,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
-  <!-- Strobe Lights - ON -->
-  <item>
-    <name>Strobe Lights</name>
-    <value>ON</value>
-    <condition>
-      <greater-than>
-        <property>systems/electrical/outputs/strobe-lights</property>
-        <value>0</value>
-      </greater-than>
-    </condition>
-    <binding>
-      <command>property-assign</command>
-      <property>controls/lighting/strobe</property>
-      <value>1</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
-    </binding>
-  </item>
-
   <!-- Taxi Light - OFF -->
   <item>
     <name>Taxi Light</name>

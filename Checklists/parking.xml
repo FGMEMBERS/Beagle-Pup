@@ -121,6 +121,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
+  <!-- Alternator - OFF -->
+  <item>
+    <name>Alternator</name>
+    <value>OFF</value>
+    <condition>
+      <less-than>
+        <property>systems/electrical/outputs/bus-dc</property>
+        <value>18</value>
+      </less-than>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/electric/engine/generator</property>
+      <value>0</value>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
+    </binding>
+  </item>
+
   <!-- Carb Heat - OFF -->
   <item>
     <name>Carb Heat</name>

@@ -68,27 +68,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
-  <!-- Strobe Lights - OFF -->
-  <item>
-    <name>Strobe Lights</name>
-    <value>OFF</value>
-    <condition>
-      <equals>
-        <property>systems/electrical/outputs/strobe-lights</property>
-        <value>0</value>
-      </equals>
-    </condition>
-    <binding>
-      <command>property-assign</command>
-      <property>controls/lighting/strobe</property>
-      <value>0</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
-    </binding>
-  </item>
-
   <!-- Flaps - UP -->
   <item>
     <name>Flaps</name>
