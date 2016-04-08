@@ -49,46 +49,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </animation>
 
   <model>
-    <path>Instruments/Fuel/FuelGauge24.xml</path>
-    <name>FuelGauge24</name>
+    <path>Cockpit/StarterPanel.xml</path>
+    <name>StarterPanel</name>
     <offsets>
-      <x-m>1.6900</x-m>
-      <y-m>-0.2500</y-m>
-      <z-m> 0.2300</z-m>
+      <pitch-deg>-40</pitch-deg>
+      <x-m>1.730</x-m>
+      <y-m>0.0000</y-m>
+      <z-m>-0.14</z-m>
     </offsets>
   </model>
-
-  <animation>
-    <type>select</type>
-    <object-name>FuelGauge24</object-name>
-    <condition>
-      <less-than>
-        <property>consumables/fuel/tank[1]/capacity-gal_imp</property>
-        <value>15</value>
-      </less-than>
-    </condition>
-  </animation>
-
-  <model>
-    <path>Instruments/Fuel/FuelGauge36.xml</path>
-    <name>FuelGauge36</name>
-    <offsets>
-      <x-m>1.6900</x-m>
-      <y-m>-0.2500</y-m>
-      <z-m> 0.2300</z-m>
-    </offsets>
-  </model>
-
-  <animation>
-    <type>select</type>
-    <object-name>FuelGauge36</object-name>
-    <condition>
-      <greater-than>
-        <property>consumables/fuel/tank[1]/capacity-gal_imp</property>
-        <value>15</value>
-      </greater-than>
-    </condition>
-  </animation>
 
   <model>
     <path>Cockpit/FuelSelector.xml</path>

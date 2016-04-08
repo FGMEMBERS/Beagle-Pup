@@ -54,7 +54,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <filter>
     <type>gain</type>
-    <gain>1.0></gain>
+    <gain>1.0</gain>
     <input>
       <expression>
         <fabs>
@@ -70,7 +70,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <filter>
     <type>gain</type>
-    <gain>1.0></gain>
+    <gain>1.0</gain>
     <input>
       <expression>
         <fabs>
@@ -83,6 +83,36 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </input>
     <output>instrumentation/heading-indicator/absolute-heading-error-deg</output>
   </filter>
+
+  <logic>
+    <input>
+      <greater-than>
+        <property>systems/vacuum/suction-inhg</property>
+        <value>1.0</value>
+      </greater-than>
+    </input>
+    <output>systems/vacuum/vacuum-norm</output>
+  </logic>
+
+  <logic>
+    <input>
+      <greater-than>
+        <property>systems/electrical/outputs/bus-dc</property>
+        <value>18.0</value>
+      </greater-than>
+    </input>
+    <output>systems/electrical/outputs/generator-norm</output>
+  </logic>
+
+  <logic>
+    <input>
+      <greater-than>
+        <property>systems/electrical/outputs/starter</property>
+        <value>6.0</value>
+      </greater-than>
+    </input>
+    <output>systems/electrical/outputs/starter-norm</output>
+  </logic>
 
   <!--===================================================================-->
   <!-- PANEL GAUGES                                                      -->

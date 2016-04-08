@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+**************************************************************************
+
+Beagle Pup Starter Panel (Pedestal)
+
+Copyright (c) 2016 Richard Senior
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+**************************************************************************
+-->
+
+<PropertyList>
+
+  <path>StarterPanel.ac</path>
+
+  <animation>
+    <type>material</type>
+    <object-name>AlternatorSwitch</object-name>
+    <object-name>BasePlate</object-name>
+    <object-name>BatterySwitch</object-name>
+    <object-name>BoostPumpSwitch</object-name>
+    <object-name>MagnetoKey</object-name>
+    <object-name>FuelContentsSwitch</object-name>
+    <object-name>StarterButton</object-name>
+    <object-name>StarterMasterSwitch</object-name>
+    <condition>
+      <greater-than>
+        <property>systems/electrical/outputs/panel-lights</property>
+        <value>0.0</value>
+      </greater-than>
+    </condition>
+    <emission>
+      <red>0.30</red>
+      <green>0.28</green>
+      <blue>0.28</blue>
+      <factor-prop>controls/lighting/panel-norm</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>AlternatorLamp</object-name>
+    <condition>
+      <and>
+        <greater-than>
+          <property>systems/electrical/outputs/panel-lights</property>
+          <value>0.0</value>
+        </greater-than>
+        <not>
+          <property>systems/electrical/outputs/generator-norm</property>
+        </not>
+      </and>
+    </condition>
+    <emission>
+      <factor-prop>controls/lighting/panel-norm</factor-prop>
+      <red>0.30</red>
+      <green>0.28</green>
+      <blue>0.28</blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>StarterMasterLamp</object-name>
+    <condition>
+      <and>
+        <greater-than>
+          <property>systems/electrical/outputs/panel-lights</property>
+          <value>0.0</value>
+        </greater-than>
+        <not>
+          <property>systems/electrical/outputs/starter-norm</property>
+        </not>
+      </and>
+    </condition>
+    <emission>
+      <factor-prop>controls/lighting/panel-norm</factor-prop>
+      <red>0.30</red>
+      <green>0.28</green>
+      <blue>0.28</blue>
+    </emission>
+  </animation>
+
+  <model>
+    <path>../Instruments/Fuel/FuelGauge24.xml</path>
+    <name>FuelGauge24</name>
+    <offsets>
+      <x-m>0.0</x-m>
+      <y-m>0.0324</y-m>
+      <z-m>0.0435</z-m>
+    </offsets>
+  </model>
+
+  <animation>
+    <type>select</type>
+    <object-name>FuelGauge24</object-name>
+    <condition>
+      <less-than>
+        <property>consumables/fuel/tank[1]/capacity-gal_imp</property>
+        <value>15</value>
+      </less-than>
+    </condition>
+  </animation>
+
+  <model>
+    <path>../Instruments/Fuel/FuelGauge36.xml</path>
+    <name>FuelGauge36</name>
+    <offsets>
+      <x-m>0.0</x-m>
+      <y-m>0.0324</y-m>
+      <z-m>0.0435</z-m>
+    </offsets>
+  </model>
+
+  <animation>
+    <type>select</type>
+    <object-name>FuelGauge36</object-name>
+    <condition>
+      <greater-than>
+        <property>consumables/fuel/tank[1]/capacity-gal_imp</property>
+        <value>15</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>knob</type>
+    <object-name>AlternatorSwitch</object-name>
+    <property>controls/electric/engine/generator</property>
+    <factor>-40</factor>
+    <offset-deg>0</offset-deg>
+    <center>
+      <x-m>0.0024</x-m>
+      <y-m>-0.0173</y-m>
+      <z-m>-0.0098</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/electric/engine/generator</property>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>knob</type>
+    <object-name>BatterySwitch</object-name>
+    <property>controls/electric/battery-switch</property>
+    <factor>-40</factor>
+    <offset-deg>0</offset-deg>
+    <center>
+      <x-m>0.0024</x-m>
+      <y-m>-0.0378</y-m>
+      <z-m>-0.0098</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/electric/battery-switch</property>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>knob</type>
+    <object-name>BoostPumpSwitch</object-name>
+    <property>controls/electric/engine/fuel-pump</property>
+    <factor>-40</factor>
+    <offset-deg>0</offset-deg>
+    <center>
+      <x-m>0.0024</x-m>
+      <y-m>-0.0584</y-m>
+      <z-m>-0.0098</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/electric/engine/fuel-pump</property>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>knob</type>
+    <object-name>FuelContentsSwitch</object-name>
+    <property>instrumentation/fuel-gauge/tank-select</property>
+    <factor>40</factor>
+    <offset-deg>0</offset-deg>
+    <center>
+      <x-m>0.0024</x-m>
+      <y-m>0.0318</y-m>
+      <z-m>-0.0024</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>instrumentation/fuel-gauge/tank-select</property>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>knob</type>
+    <object-name>StarterMasterSwitch</object-name>
+    <property>controls/electric/engine/starter-master</property>
+    <factor>-40</factor>
+    <offset-deg>0</offset-deg>
+    <center>
+      <x-m>0.0024</x-m>
+      <y-m>-0.0557</y-m>
+      <z-m>0.0235</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/electric/engine/starter-master</property>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>AlternatorLamp</object-name>
+    <property>systems/electrical/outputs/generator-norm</property>
+    <bias>0.0001</bias>
+    <factor>0.078125</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>AlternatorLamp</object-name>
+    <condition>
+      <greater-than>
+        <property>systems/electrical/outputs/generator-norm</property>
+        <value>0</value>
+      </greater-than>
+    </condition>
+    <emission>
+      <red>0.6</red>
+      <green>0.8</green>
+      <blue>0.6</blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>textranslate</type>
+    <object-name>StarterMasterLamp</object-name>
+    <property>systems/electrical/outputs/starter-norm</property>
+    <bias>0.0001</bias>
+    <factor>0.078125</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>StarterMasterLamp</object-name>
+    <condition>
+      <greater-than>
+        <property>systems/electrical/outputs/starter-norm</property>
+        <value>0</value>
+      </greater-than>
+    </condition>
+    <emission>
+      <red>0.8</red>
+      <green>0.6</green>
+      <blue>0.6</blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>slider</type>
+    <object-name>StarterButton</object-name>
+    <property>controls/engines/engine/starter</property>
+    <factor>0.003</factor>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-assign</command>
+        <property>controls/engines/engine/starter</property>
+        <value>1</value>
+      </binding>
+    </action>
+    <release>
+      <binding>
+        <command>property-assign</command>
+        <property>controls/engines/engine/starter</property>
+        <value>0</value>
+      </binding>
+    </release>
+  </animation>
+
+  <animation>
+    <type>knob</type>
+    <object-name>MagnetoKey</object-name>
+    <property>controls/engines/engine/magnetos</property>
+    <factor>16</factor>
+    <center>
+      <x-m>0.0058</x-m>
+      <y-m>-0.0263</y-m>
+      <z-m>-0.0510</z-m>
+    </center>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-adjust</command>
+        <property>controls/engines/engine/magnetos</property>
+        <factor>1</factor>
+        <min>0</min>
+        <max>4</max>
+        <wrap>0</wrap>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click();</script>
+      </binding>
+    </action>
+  </animation>
+
+</PropertyList>
