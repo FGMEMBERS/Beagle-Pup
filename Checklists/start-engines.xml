@@ -83,30 +83,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
-  <!-- Boost Pump - ON -->
-  <item>
-    <name>Boost Pump</name>
-    <value>ON</value>
-    <condition>
-      <or>
-        <property>engines/engine/running</property>
-        <greater-than>
-          <property>systems/electrical/outputs/fuel-pump</property>
-          <value>0</value>
-        </greater-than>
-      </or>
-    </condition>
-    <binding>
-      <command>property-assign</command>
-      <property>controls/electric/engine/fuel-pump</property>
-      <value>1</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
-    </binding>
-  </item>
-
   <!-- Open Throttle - 1/4 -->
   <item>
     <name>Throttle</name>
@@ -149,6 +125,30 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <script>
         pup.select_magnetos(pup.Magnetos.BOTH);
       </script>
+    </binding>
+  </item>
+
+  <!-- Boost Pump - ON -->
+  <item>
+    <name>Boost Pump</name>
+    <value>ON</value>
+    <condition>
+      <or>
+        <property>engines/engine/running</property>
+        <greater-than>
+          <property>systems/electrical/outputs/fuel-pump</property>
+          <value>0</value>
+        </greater-than>
+      </or>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/electric/engine/fuel-pump</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
     </binding>
   </item>
 
@@ -195,48 +195,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
-  <!-- Starter Master - OFF -->
+  <!-- Alternator - ON -->
   <item>
-    <name>Starter Master</name>
-    <value>OFF</value>
+    <name>Alternator</name>
+    <value>ON</value>
     <condition>
-      <and>
-        <property>engines/engine/running</property>
-        <equals>
-          <property>systems/electrical/outputs/starter</property>
-          <value>0</value>
-        </equals>
-      </and>
+      <greater-than>
+        <property>systems/electrical/outputs/bus-dc</property>
+        <value>18</value>
+      </greater-than>
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>controls/electric/engine/starter-master</property>
-      <value>0</value>
+      <property>controls/electric/engine/generator</property>
+      <value>1</value>
     </binding>
     <binding>
       <command>nasal</command>
       <script>pup.click();</script>
-    </binding>
-  </item>
-
-  <!-- Throttle - IDLE -->
-  <item>
-    <name>Throttle</name>
-    <value>IDLE</value>
-    <condition>
-      <and>
-        <property>engines/engine/running</property>
-        <less-than>
-          <property>controls/engines/engine/throttle</property>
-          <value>0.1</value>
-        </less-than>
-      </and>
-    </condition>
-    <binding>
-      <command>property-interpolate</command>
-      <property>controls/engines/engine/throttle</property>
-      <value>0.0</value>
-      <rate>0.5</rate>
     </binding>
   </item>
 
@@ -261,6 +237,51 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
+  <!-- Throttle - IDLE -->
+  <item>
+    <name>Throttle</name>
+    <value>IDLE</value>
+    <condition>
+      <and>
+        <property>engines/engine/running</property>
+        <less-than>
+          <property>controls/engines/engine/throttle</property>
+          <value>0.1</value>
+        </less-than>
+      </and>
+    </condition>
+    <binding>
+      <command>property-interpolate</command>
+      <property>controls/engines/engine/throttle</property>
+      <value>0.0</value>
+      <rate>0.5</rate>
+    </binding>
+  </item>
+
+  <!-- Starter Master - OFF -->
+  <item>
+    <name>Starter Master</name>
+    <value>OFF</value>
+    <condition>
+      <and>
+        <property>engines/engine/running</property>
+        <equals>
+          <property>systems/electrical/outputs/starter</property>
+          <value>0</value>
+        </equals>
+      </and>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/electric/engine/starter-master</property>
+      <value>0</value>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
+    </binding>
+  </item>
+
   <!-- Boost Pump - OFF -->
   <item>
     <name>Boost Pump</name>
@@ -278,27 +299,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <command>property-assign</command>
       <property>controls/electric/engine/fuel-pump</property>
       <value>0</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
-    </binding>
-  </item>
-
-  <!-- Alternator - ON -->
-  <item>
-    <name>Alternator</name>
-    <value>ON</value>
-    <condition>
-      <greater-than>
-        <property>systems/electrical/outputs/bus-dc</property>
-        <value>18</value>
-      </greater-than>
-    </condition>
-    <binding>
-      <command>property-assign</command>
-      <property>controls/electric/engine/generator</property>
-      <value>1</value>
     </binding>
     <binding>
       <command>nasal</command>

@@ -103,9 +103,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </input>
 
   <instrumentation>
+    <adf>
+      <adf-btn type="bool">true</adf-btn>
+    </adf>
     <dme>
       <mode-btn type="int">0</mode-btn>
-      <power-btn type="bool">1</power-btn>
+      <power-btn type="bool">true</power-btn>
     </dme>
     <fuel-gauge>
       <tank-select type="int">0</tank-select>
@@ -151,7 +154,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <menubar include="Interface/menubar.xml"/>
 
     <author>Richard Senior</author>
-    <aircraft-version>0.17.4</aircraft-version>
+    <aircraft-version>0.17.5</aircraft-version>
     <flight-model>jsb</flight-model>
 
     <aircraft-data>

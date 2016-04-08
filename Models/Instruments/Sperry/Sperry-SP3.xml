@@ -125,7 +125,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <type>knob</type>
     <object-name>ElevTrimKnob</object-name>
     <property>autopilot/sperry/elev-trim</property>
-    <factor>30.0</factor>
+    <factor>5.0</factor>
     <center>
       <x-m>0.0026</x-m>
       <y-m>-0.0236</y-m>
@@ -180,7 +180,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <type>knob</type>
     <object-name>PitchSelectWheel</object-name>
     <property>autopilot/sperry/pitch-select</property>
-    <factor>15.0</factor>
+    <factor>5.0</factor>
     <center>
       <x-m>-0.0139</x-m>
       <y-m>-0.0515</y-m>
@@ -207,7 +207,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <type>knob</type>
     <object-name>RollTrimWheel</object-name>
     <property>autopilot/sperry/roll-trim</property>
-    <factor>30</factor>
+    <factor>10</factor>
     <center>
       <x-m>-0.0058</x-m>
       <y-m>0.0357</y-m>

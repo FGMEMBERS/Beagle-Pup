@@ -90,10 +90,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <name>Carb Heat</name>
     <value>OFF</value>
     <condition>
-      <less-than>
-        <property>controls/anti-ice/engine/carb-heat-norm</property>
-        <value>0.05</value>
-      </less-than>
+      <or>
+        <less-than>
+          <property>controls/anti-ice/engine/carb-heat-norm</property>
+          <value>0.05</value>
+        </less-than>
+        <property>engines/engine/running</property>
+      </or>
     </condition>
     <binding>
       <command>property-interpolate</command>
