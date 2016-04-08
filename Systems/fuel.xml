@@ -204,7 +204,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             <property>propulsion/engine/egt-degC</property>
             <value>860</value> <!-- Max EGT -->
           </quotient>
-          <value>30</value>
+          <value>45</value>
           <property>/controls/anti-ice/engine/carb-heat-norm</property>
         </product>
       </function>
@@ -293,10 +293,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <pure_gain name="Intake Impedance">
       <input>systems/carburettor/carb-ice-norm</input>
       <output>propulsion/engine/air-intake-impedance-factor</output>
-      <gain>5.0</gain>
+      <gain>10.0</gain>
       <clipto>
         <min>0.1</min> <!-- Should match engine definition -->
-        <max>5.0</max>
+        <max>10.0</max>
       </clipto>
     </pure_gain>
 
