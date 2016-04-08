@@ -62,6 +62,12 @@ setlistener("instrumentation/adf/rotation-deg", func(node) {
     message(sprintf("ADF: %.0f", node.getValue()));
 }, 0, 0);
 
+setlistener("instrumentation/heading-indicator/offset-deg", func(node) {
+    var h = getprop("instrumentation/heading-indicator/indicated-heading-deg");
+    var c = getprop("instrumentation/magnetic-compass/indicated-heading-deg");
+    message(sprintf("HI: %.0f, Compass: %.0f", h, c));
+}, 0, 0);
+
 setlistener("controls/anti-ice/engine/carb-heat-norm", func(node) {
     message(sprintf("Carb Heat: %.0f%%", 100 * node.getValue()));
 }, 0, 0);

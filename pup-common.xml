@@ -154,7 +154,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <menubar include="Interface/menubar.xml"/>
 
     <author>Richard Senior</author>
-    <aircraft-version>0.17.5</aircraft-version>
+    <aircraft-version>0.18.0</aircraft-version>
     <flight-model>jsb</flight-model>
 
     <aircraft-data>
@@ -162,13 +162,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <path>autopilot/sperry/dummy</path>
       <path>autopilot/sperry/elev-trim</path>
       <path>autopilot/sperry/roll-trim</path>
-      <path>consumables/fuel/tank[1]/level-lbs</path>
-      <path>consumables/fuel/tank[2]/level-lbs</path>
+      <path>consumables/fuel/tank[1]/level-gal_imp</path>
+      <path>consumables/fuel/tank[2]/level-gal_imp</path>
       <path>controls/lighting/panel-norm</path>
       <path>fdm/jsbsim/inertia/pointmass-weight-lbs[0]</path>
       <path>fdm/jsbsim/inertia/pointmass-weight-lbs[1]</path>
       <path>fdm/jsbsim/inertia/pointmass-weight-lbs[2]</path>
       <path>sim/model/preferences/realism/carb-ice</path>
+      <path>sim/model/preferences/realism/gyro-spindown</path>
       <path>sim/model/preferences/realism/pitot-ice</path>
     </aircraft-data>
 
@@ -193,6 +194,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <preferences>
         <realism>
           <carb-ice type="bool">false</carb-ice>
+          <gyro-spindown type="bool">false</gyro-spindown>
           <pitot-ice type="bool">false</pitot-ice>
         </realism>
       </preferences>

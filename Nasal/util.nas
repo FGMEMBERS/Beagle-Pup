@@ -115,4 +115,26 @@ setlistener("systems/electrical/outputs/beacon", func (volts) {
         beacon.start();
 }, 0, 0);
 
+################################################################################
+# Gyro
+################################################################################
+
+var spindown_gyro = func(time = 10)
+{
+    if (getprop("sim/model/preferences/realism/gyro-spindown")) {
+        var spin = rand() * 360;
+        interpolate("instrumentation/heading-indicator/offset-deg", spin, time);
+    }
+}
+
+setlistener("sim/signals/fdm-initialized", func(node) {
+    if (node.getBoolValue())
+        spindown_gyro(0);
+}, 0, 0);
+
+setlistener("systems/vacuum/vacuum-norm", func(node) {
+    if (!node.getBoolValue())
+        spindown_gyro();
+}, 0, 0);
+
 print ("Utility functions loaded");
