@@ -91,6 +91,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </animation>
 
   <model>
+    <path>Cockpit/FuelSelector.xml</path>
+    <offsets>
+      <x-m>2.1000</x-m>
+      <y-m>-0.2500</y-m>
+      <z-m>-0.2600</z-m>
+    </offsets>
+  </model>
+
+  <model>
     <path>Instruments/Clock/Clock.xml</path>
     <offsets>
       <x-m>1.6900</x-m>

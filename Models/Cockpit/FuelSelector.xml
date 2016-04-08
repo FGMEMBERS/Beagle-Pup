@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+**************************************************************************
+
+Beagle Pup Fuel Selector
+
+Copyright (c) 2016 Richard Senior
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+**************************************************************************
+-->
+
+<PropertyList>
+
+  <path>FuelSelector.ac</path>
+
+  <animation>
+    <type>material</type>
+    <object-name>Body</object-name>
+    <object-name>Handle</object-name>
+    <condition>
+      <property>systems/electrical/outputs/panel-lights</property>
+    </condition>
+    <emission>
+      <red>0.3</red>
+      <green>0.3</green>
+      <blue>0.3</blue>
+      <factor-prop>controls/lighting/panel-norm</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>knob</type>
+    <object-name>Handle</object-name>
+    <property>controls/fuel/tank-selector</property>
+    <factor>45</factor>
+    <center>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>-1</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-adjust</command>
+        <property>controls/fuel/tank-selector</property>
+        <factor>1</factor>
+        <min>0</min>
+        <max>4</max>
+        <wrap>1</wrap>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click();</script>
+      </binding>
+    </action>
+  </animation>
+
+</PropertyList>
+
