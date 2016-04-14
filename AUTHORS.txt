@@ -1,0 +1,4 @@
+Beagle B121 Pup for Flightgear
+
+Authors:
+Richard Senior <richard.j.senior@gmail.com>
