@@ -2,7 +2,7 @@
 <!--
 **************************************************************************
 
-Beagle Pup Fuel Gauge
+Beagle Pup Fuel Gauge (36 gallon)
 
 Copyright (c) 2016 Richard Senior
 
@@ -52,21 +52,29 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </entry>
       <entry>
         <ind>2</ind>
-        <dep>22.5</dep>
-      </entry>
-      <entry>
-        <ind>6</ind>
         <dep>45</dep>
       </entry>
       <entry>
-        <ind>12</ind>
+        <ind>6</ind>
         <dep>90</dep>
+      </entry>
+      <entry>
+        <ind>8</ind>
+        <dep>135</dep>
+      </entry>
+      <entry>
+        <ind>16</ind>
+        <dep>225</dep>
+      </entry>
+      <entry>
+        <ind>18</ind>
+        <dep>270</dep>
       </entry>
     </interpolation>
     <center>
       <x-m>0</x-m>
       <y-m>0</y-m>
-      <z-m>-0.0190</z-m>
+      <z-m>0</z-m>
     </center>
     <axis>
       <x>-1</x>
