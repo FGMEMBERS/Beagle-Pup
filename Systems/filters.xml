@@ -262,6 +262,56 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <output>instrumentation/fuel-gauge/level-gal_imp-filtered</output>
   </filter>
 
+  <!-- Fuel Pressure -->
+
+  <filter>
+    <type>gain</type>
+    <gain>
+      <condition>
+        <greater-than>
+          <property>systems/electrical/outputs/fuel-pressure-gauge</property>
+          <value>0</value>
+        </greater-than>
+      </condition>
+      <value>5</value>
+    </gain>
+    <gain>0</gain>
+    <input>fdm/jsbsim/propulsion/tank/has-fuel-pressure</input>
+    <output>instrumentation/fuel/fuel-pressure-psi</output>
+  </filter>
+
+  <filter>
+    <type>exponential</type>
+    <filter-time>0.4</filter-time>
+    <input>instrumentation/fuel/fuel-pressure-psi</input>
+    <output>instrumentation/fuel/fuel-pressure-psi-filtered</output>
+  </filter>
+
+  <!-- Oil Pressure -->
+
+  <filter>
+    <type>gain</type>
+    <gain>
+      <condition>
+        <greater-than>
+          <property>systems/electrical/outputs/oil-pressure-gauge</property>
+          <value>0</value>
+        </greater-than>
+      </condition>
+      <value>1</value>
+    </gain>
+    <gain>0</gain>
+    <input>engines/engine/oil-pressure-psi</input>
+    <output>instrumentation/oil/oil-pressure-psi</output>
+  </filter>
+
+  <filter>
+    <type>exponential</type>
+    <filter-time>0.4</filter-time>
+    <input>instrumentation/oil/oil-pressure-psi</input>
+    <output>instrumentation/oil/oil-pressure-psi-filtered</output>
+  </filter>
+
   <!-- Oil Temp -->
 
   <filter>
@@ -285,6 +335,31 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <filter-time>0.4</filter-time>
     <input>instrumentation/oil/oil-temperature-degc</input>
     <output>instrumentation/oil/oil-temperature-degc-filtered</output>
+  </filter>
+
+  <!-- Gyro Suction -->
+
+  <filter>
+    <type>gain</type>
+    <gain>
+      <condition>
+        <greater-than>
+          <property>systems/electrical/outputs/suction-gauge</property>
+          <value>0</value>
+        </greater-than>
+      </condition>
+      <value>1</value>
+    </gain>
+    <gain>0</gain>
+    <input>systems/vacuum/suction-inhg</input>
+    <output>instrumentation/vacuum/suction-inhg</output>
+  </filter>
+
+  <filter>
+    <type>exponential</type>
+    <filter-time>0.4</filter-time>
+    <input>instrumentation/vacuum/suction-inhg</input>
+    <output>instrumentation/vacuum/suction-inhg-filtered</output>
   </filter>
 
 </PropertyList>
