@@ -65,13 +65,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <condition>
       <less-than>
         <property>instrumentation/altimeter/absolute-altitude-error-ft</property>
-        <value>50</value>
+        <value>25</value>
       </less-than>
     </condition>
     <binding>
       <command>property-interpolate</command>
       <property>instrumentation/altimeter/setting-inhg</property>
-      <property>environment/pressure-sea-level-inhg</property>
+      <property>environment/metar/pressure-inhg</property>
       <time>1.0</time>
     </binding>
   </item>
