@@ -52,10 +52,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <value>5.0</value>
       <time>1.0</time>
     </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
-    </binding>
   </item>
 
   <!-- Altimeter - SET -->
@@ -69,10 +65,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </less-than>
     </condition>
     <binding>
-      <command>property-interpolate</command>
-      <property>instrumentation/altimeter/setting-inhg</property>
-      <property>environment/metar/pressure-inhg</property>
-      <time>1.0</time>
+      <command>nasal</command>
+      <script>
+        var qnh = getprop("environment/metar/pressure-inhg");
+        qnh = math.round(qnh * 100) / 100;
+        interpolate("instrumentation/altimeter/setting-inhg", qnh, 1.0);
+      </script>
     </binding>
   </item>
 
