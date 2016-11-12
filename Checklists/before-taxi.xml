@@ -67,9 +67,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <binding>
       <command>nasal</command>
       <script>
+        var rwx = getprop("environment/realwx/enabled");
         var qnh = getprop("environment/metar/pressure-inhg");
-        qnh = math.round(qnh * 100) / 100;
-        interpolate("instrumentation/altimeter/setting-inhg", qnh, 1.0);
+        <!-- This is probably a bug in weather scenarios. If the altimeter
+             setting is taken from the METAR string in the scenario, the altitude
+             is wrong, but if it is set from sea level pressure, it comes out
+             correct. At some point this will be fixed in FG and this fudge will
+             need removing.
+        -->
+        var slp = getprop("environment/pressure-sea-level-inhg");
+        var setting = rwx ? qnh : slp;
+        setting = math.round(setting * 100) / 100;
+        interpolate("instrumentation/altimeter/setting-inhg", setting, 1.0);
       </script>
     </binding>
   </item>
