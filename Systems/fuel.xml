@@ -29,20 +29,39 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <channel name="Fuel">
 
-    <switch name="propulsion/tank[0]/has-fuel-pressure">
-      <default value="0"/>
-      <test logic="OR" value="1">
-        /engines/engine[0]/running NE 0
-        /systems/electrical/outputs/fuel-pump GT 0
-      </test>
-    </switch>
+    <fcs_function name="propulsion/tank[0]/fuel-pressure-psi">
+      <function>
+        <sum>
+          <product>
+            <gt>
+              <property>/systems/electrical/outputs/fuel-pump</property>
+              <value>0</value>
+            </gt>
+            <!--
+            Should produce a PSI slightly higher than the engine
+            driven pump, limited by its relief valve.
+            -->
+            <value>1.67</value>
+          </product>
+          <quotient>
+            <property>propulsion/engine/engine-rpm</property>
+            <value>400</value>
+          </quotient>
+        </sum>
+      </function>
+      <clipto>
+        <!-- Pressure relief valve -->
+        <min>0.0</min>
+        <max>7.8</max>
+      </clipto>
+    </fcs_function>
 
     <!-- Return into tank 1 (LEFT) -->
     <switch name="propulsion/tank[1]/inflow-rate-pps">
       <default value="0.05"/>
       <test logic="OR" value="0.00">
         propulsion/tank[0]/contents-lbs LE 0.0
-        propulsion/tank[0]/has-fuel-pressure GT 0
+        propulsion/tank[0]/fuel-pressure-psi GT 1
       </test>
     </switch>
 
@@ -51,7 +70,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <default value="0.05"/>
       <test logic="OR" value="0.00">
         propulsion/tank[0]/contents-lbs LE 0.0
-        propulsion/tank[0]/has-fuel-pressure GT 0
+        propulsion/tank[0]/fuel-pressure-psi GT 1
       </test>
     </switch>
 
@@ -61,7 +80,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <test logic="OR" value="0.0">
         /controls/fuel/tank-selector EQ 0
         /controls/fuel/tank-selector EQ 3
-        propulsion/tank[0]/has-fuel-pressure EQ 0
+        propulsion/tank[0]/fuel-pressure-psi LE 1
         propulsion/tank[0]/contents-lbs GE 0.8
         propulsion/tank[1]/contents-lbs LE 0.0
       </test>
@@ -73,7 +92,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <test logic="OR" value="0.0">
         /controls/fuel/tank-selector EQ 0
         /controls/fuel/tank-selector EQ 1
-        propulsion/tank[0]/has-fuel-pressure EQ 0
+        propulsion/tank[0]/fuel-pressure-psi LE 1
         propulsion/tank[0]/contents-lbs GE 0.8
         propulsion/tank[2]/contents-lbs LE 0.0
       </test>

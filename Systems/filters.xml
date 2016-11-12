@@ -273,16 +273,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
           <value>0</value>
         </greater-than>
       </condition>
-      <value>5</value>
+      <value>1</value>
     </gain>
     <gain>0</gain>
-    <input>fdm/jsbsim/propulsion/tank/has-fuel-pressure</input>
+    <input>fdm/jsbsim/propulsion/tank/fuel-pressure-psi</input>
     <output>instrumentation/fuel/fuel-pressure-psi</output>
   </filter>
 
   <filter>
-    <type>exponential</type>
-    <filter-time>0.4</filter-time>
+    <type>double-exponential</type>
+    <filter-time>0.67</filter-time>
     <input>instrumentation/fuel/fuel-pressure-psi</input>
     <output>instrumentation/fuel/fuel-pressure-psi-filtered</output>
   </filter>
@@ -306,8 +306,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </filter>
 
   <filter>
-    <type>exponential</type>
-    <filter-time>0.4</filter-time>
+    <type>double-exponential</type>
+    <filter-time>0.67</filter-time>
     <input>instrumentation/oil/oil-pressure-psi</input>
     <output>instrumentation/oil/oil-pressure-psi-filtered</output>
   </filter>
