@@ -72,7 +72,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <path>Instruments/Clock/Clock.xml</path>
     <offsets>
       <x-m>1.6900</x-m>
-      <y-m>-0.1500</y-m>
+      <y-m>-0.2500</y-m>
       <z-m> 0.2300</z-m>
     </offsets>
   </model>
@@ -81,10 +81,52 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <path>Instruments/Engine/ExhaustGasTemp.xml</path>
     <offsets>
       <x-m>1.6900</x-m>
-      <y-m>-0.0500</y-m>
+      <y-m>-0.1500</y-m>
       <z-m> 0.2300</z-m>
     </offsets>
   </model>
+
+  <model>
+    <path>Instruments/Engine/Tachometer2700.xml</path>
+    <name>Tachometer2700</name>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>-0.0500</y-m>
+      <z-m> 0.2400</z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Instruments/Engine/Tachometer2750.xml</path>
+    <name>Tachometer2750</name>
+    <offsets>
+      <x-m>1.6900</x-m>
+      <y-m>-0.0500</y-m>
+      <z-m> 0.2400</z-m>
+    </offsets>
+  </model>
+
+  <animation>
+    <type>select</type>
+    <object-name>Tachometer2700</object-name>
+    <condition>
+      <equals>
+        <property>fdm/jsbsim/propulsion/engine/manufacturer-code</property>
+        <value>1</value>
+      </equals>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>Tachometer2750</object-name>
+    <condition>
+      <equals>
+        <property>fdm/jsbsim/propulsion/engine/manufacturer-code</property>
+        <value>0</value>
+      </equals>
+    </condition>
+  </animation>
 
   <model>
     <path>Instruments/Engine/CylinderTemp.xml</path>
