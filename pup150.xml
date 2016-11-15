@@ -61,15 +61,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </metrics>
 
   <mass_balance>
-    <ixx unit="SLUG*FT2">    539.57 </ixx>
-    <iyy unit="SLUG*FT2">    524.36 </iyy>
-    <izz unit="SLUG*FT2">    987.49 </izz>
-    <emptywt unit="LBS" >   1090.00 </emptywt>
+    <ixx unit="SLUG*FT2">    592.87 </ixx>
+    <iyy unit="SLUG*FT2">    576.16 </iyy>
+    <izz unit="SLUG*FT2">   1085.05 </izz>
+    <!-- Quoted empty weight (1090) minus engine (272), which is below -->
+    <emptywt unit="LBS" >   818.00 </emptywt>
     <location name="CG" unit="IN">
-      <x>  78.00 </x>
+      <x>  74.00 </x>
       <y>   0.00 </y>
       <z>  -6.00 </z>
     </location>
+    <pointmass name="Engine">
+      <description>Engine and associated components</description>
+      <weight unit="LBS">272</weight>
+      <location name="POINTMASS" unit="IN">
+        <x>  36.00 </x>
+        <y>   0.00 </y>
+        <z>  -2.00 </z>
+      </location>
+    </pointmass>
     <pointmass name="Pilot">
       <description>Pilot</description>
       <weight unit="LBS">170</weight>
