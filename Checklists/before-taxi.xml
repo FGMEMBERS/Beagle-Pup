@@ -54,15 +54,59 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
+  <!-- Magnetos - CHECK DEAD CUT -->
+  <!-- Suction - CHECK -->
+  <item>
+    <name>Suction</name>
+    <value>MINIMUM 3 INCHES</value>
+    <condition>
+      <or>
+        <property>sim/checklists/auto/active</property>
+        <greater-than>
+          <property>systems/vacuum/suction-inhg</property>
+          <value>3</value>
+        </greater-than>
+      </or>
+    </condition>
+  </item>
+
+  <!-- Heading Indicator - ALIGN -->
+  <item>
+    <name>Heading Indicator</name>
+    <value>ALIGN</value>
+    <condition>
+      <or>
+        <property>sim/checklists/auto/active</property>
+        <less-than>
+          <property>instrumentation/heading-indicator/absolute-heading-error-deg</property>
+          <value>5</value>
+        </less-than>
+      </or>
+    </condition>
+    <binding>
+      <command>nasal</command>
+      <script>
+        var h = getprop("orientation/heading-deg");
+        var m = getprop("orientation/heading-magnetic-deg");
+        var o = getprop("instrumentation/heading-indicator/offset-deg");
+        var d = (o > 180) ? int(m - h) + 360 : int(m - h);
+        interpolate("instrumentation/heading-indicator/offset-deg", d, 1.0);
+      </script>
+    </binding>
+  </item>
+
   <!-- Altimeter - SET -->
   <item>
     <name>Altimeter</name>
     <value>SET</value>
     <condition>
-      <less-than>
-        <property>instrumentation/altimeter/absolute-altitude-error-ft</property>
-        <value>25</value>
-      </less-than>
+      <or>
+        <property>sim/checklists/auto/active</property>
+        <less-than>
+          <property>instrumentation/altimeter/absolute-altitude-error-ft</property>
+          <value>25</value>
+        </less-than>
+      </or>
     </condition>
     <binding>
       <command>nasal</command>
@@ -79,28 +123,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         var setting = rwx ? qnh : slp;
         setting = math.round(setting * 100) / 100;
         interpolate("instrumentation/altimeter/setting-inhg", setting, 1.0);
-      </script>
-    </binding>
-  </item>
-
-  <!-- Heading Indicator - SET -->
-  <item>
-    <name>Heading Indicator</name>
-    <value>ALIGN</value>
-    <condition>
-      <less-than>
-        <property>instrumentation/heading-indicator/absolute-heading-error-deg</property>
-        <value>5</value>
-      </less-than>
-    </condition>
-    <binding>
-      <command>nasal</command>
-      <script>
-        var h = getprop("orientation/heading-deg");
-        var m = getprop("orientation/heading-magnetic-deg");
-        var o = getprop("instrumentation/heading-indicator/offset-deg");
-        var d = (o > 180) ? int(m - h) + 360 : int(m - h);
-        interpolate("instrumentation/heading-indicator/offset-deg", d, 1.0);
       </script>
     </binding>
   </item>

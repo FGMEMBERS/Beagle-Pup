@@ -64,24 +64,49 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
-  <!-- Alternator - OFF -->
+  <!-- Transponder - OFF -->
   <item>
-    <name>Alternator</name>
+    <name>Transponder</name>
     <value>OFF</value>
     <condition>
-      <less-than>
-        <property>systems/electrical/outputs/bus-dc</property>
-        <value>18</value>
-      </less-than>
+      <equals>
+        <property>instrumentation/transponder/inputs/knob-mode</property>
+        <value>0</value>
+      </equals>
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>controls/electric/engine/generator</property>
+      <property>instrumentation/transponder/inputs/knob-mode</property>
       <value>0</value>
     </binding>
+  </item>
+
+  <!-- Throttle - TICK OVER -->
+  <item>
+    <name>Tick Over</name>
+    <value>Approx 1000 RPM</value>
+    <condition>
+      <or>
+        <not>
+          <property>engines/engine/running</property>
+        </not>
+        <and>
+          <greater-than>
+            <property>engines/engine/rpm</property>
+            <value>800</value>
+          </greater-than>
+          <less-than>
+            <property>engines/engine/rpm</property>
+            <value>1200</value>
+          </less-than>
+        </and>
+      </or>
+    </condition>
     <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
+      <command>property-interpolate</command>
+      <property>controls/engines/engine/throttle</property>
+      <value>0.30</value>
+      <rate>0.5</rate>
     </binding>
   </item>
 
@@ -100,24 +125,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <property>controls/engines/engine/mixture</property>
       <value>0</value>
       <rate>0.5</rate>
-    </binding>
-  </item>
-
-  <!-- Magnetos - OFF -->
-  <item>
-    <name>Magnetos</name>
-    <value>OFF</value>
-    <condition>
-      <equals>
-        <property>controls/engines/engine/magnetos</property>
-        <value>0</value>
-      </equals>
-    </condition>
-    <binding>
-      <command>nasal</command>
-      <script>
-        pup.select_magnetos(pup.Magnetos.OFF);
-      </script>
     </binding>
   </item>
 
@@ -142,44 +149,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
-  <!-- Carb Heat - OFF -->
-  <item>
-    <name>Carb Heat</name>
-    <value>OFF</value>
-    <condition>
-      <less-than>
-        <property>controls/anti-ice/engine/carb-heat-norm</property>
-        <value>0.05</value>
-      </less-than>
-    </condition>
-    <binding>
-      <command>property-interpolate</command>
-      <property>controls/anti-ice/engine/carb-heat-norm</property>
-      <value>0.0</value>
-      <rate>1.0</rate>
-    </binding>
-  </item>
-
-  <!-- Fuel Tank Selector - OFF -->
-  <item>
-    <name>Fuel Tank Selector</name>
-    <value>OFF</value>
-    <condition>
-      <not>
-        <or>
-          <property>consumables/fuel/tank[1]/selected</property>
-          <property>consumables/fuel/tank[2]/selected</property>
-        </or>
-    </not>
-    </condition>
-    <binding>
-      <command>nasal</command>
-      <script>
-          pup.select_fuel_tank(pup.Tank.OFF);
-      </script>
-    </binding>
-  </item>
-
   <!-- Navigation Lights - OFF -->
   <item>
     <name>Navigation Lights</name>
@@ -201,20 +170,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
-  <!-- Transponder - OFF -->
+  <!-- Alternator - OFF -->
   <item>
-    <name>Transponder</name>
+    <name>Alternator</name>
     <value>OFF</value>
     <condition>
       <equals>
-        <property>instrumentation/transponder/inputs/knob-mode</property>
+        <property>controls/electric/engine/generator</property>
         <value>0</value>
       </equals>
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>instrumentation/transponder/inputs/knob-mode</property>
+      <property>controls/electric/engine/generator</property>
       <value>0</value>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
     </binding>
   </item>
 
@@ -236,6 +209,44 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <binding>
       <command>nasal</command>
       <script>pup.click();</script>
+    </binding>
+  </item>
+
+  <!-- Magnetos - OFF -->
+  <item>
+    <name>Magnetos</name>
+    <value>OFF</value>
+    <condition>
+      <equals>
+        <property>controls/engines/engine/magnetos</property>
+        <value>0</value>
+      </equals>
+    </condition>
+    <binding>
+      <command>nasal</command>
+      <script>
+        pup.select_magnetos(pup.Magnetos.OFF);
+      </script>
+    </binding>
+  </item>
+
+  <!-- Fuel Tank Selector - OFF -->
+  <item>
+    <name>Fuel Tank Selector</name>
+    <value>OFF</value>
+    <condition>
+      <not>
+        <or>
+          <property>consumables/fuel/tank[1]/selected</property>
+          <property>consumables/fuel/tank[2]/selected</property>
+        </or>
+    </not>
+    </condition>
+    <binding>
+      <command>nasal</command>
+      <script>
+          pup.select_fuel_tank(pup.Tank.OFF);
+      </script>
     </binding>
   </item>
 

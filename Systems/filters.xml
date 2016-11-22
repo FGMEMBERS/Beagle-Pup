@@ -96,12 +96,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <logic>
     <input>
-      <greater-than>
-        <property>systems/electrical/outputs/bus-dc</property>
-        <value>18.0</value>
-      </greater-than>
+      <and>
+        <greater-than>
+          <property>systems/electrical/outputs/bus-dc</property>
+          <value>6.0</value>
+        </greater-than>
+        <less-than>
+          <property>systems/electrical/outputs/bus-dc</property>
+          <value>24.0</value>
+        </less-than>
+      </and>
     </input>
-    <output>systems/electrical/outputs/generator-norm</output>
+    <output>systems/electrical/outputs/generator-warn</output>
   </logic>
 
   <logic>

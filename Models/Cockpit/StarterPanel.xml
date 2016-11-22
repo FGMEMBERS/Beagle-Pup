@@ -60,7 +60,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
           <value>0.0</value>
         </greater-than>
         <not>
-          <property>systems/electrical/outputs/generator-norm</property>
+          <property>systems/electrical/outputs/generator-warn</property>
         </not>
       </and>
     </condition>
@@ -279,7 +279,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <animation>
     <type>textranslate</type>
     <object-name>AlternatorLamp</object-name>
-    <property>systems/electrical/outputs/generator-norm</property>
+    <property>systems/electrical/outputs/generator-warn</property>
     <bias>0.0001</bias>
     <factor>0.078125</factor>
     <axis>
@@ -294,7 +294,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <object-name>AlternatorLamp</object-name>
     <condition>
       <greater-than>
-        <property>systems/electrical/outputs/generator-norm</property>
+        <property>systems/electrical/outputs/generator-warn</property>
         <value>0</value>
       </greater-than>
     </condition>

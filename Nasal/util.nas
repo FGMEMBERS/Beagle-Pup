@@ -109,10 +109,22 @@ var beacon = maketimer(1, func {
 # listener will fire too often.
 #
 setlistener("systems/electrical/outputs/beacon", func (volts) {
-    if (volts.getValue() == 0)
+    if (volts.getValue() == 0) {
         beacon.stop();
-    else if (!beacon.isRunning)
+    } else if (!beacon.isRunning) {
         beacon.start();
+        setprop("sim/checklists/status/beacon", 1);
+    }
+}, 0, 0);
+
+################################################################################
+# Navigation Lights
+################################################################################
+
+setlistener("systems/electrical/outputs/nav-lights", func (volts) {
+    if (volts.getValue() > 0) {
+        setprop("sim/checklists/status/nav-lights", 1);
+    }
 }, 0, 0);
 
 ################################################################################

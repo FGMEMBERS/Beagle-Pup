@@ -26,6 +26,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <title>Before Starting Engines</title>
 
+  <!-- Magnetos - OFF -->
+  <item>
+    <name>Magnetos</name>
+    <value>OFF</value>
+    <condition>
+      <equals>
+        <property>controls/engines/engine/magnetos</property>
+        <value>0</value>
+      </equals>
+    </condition>
+    <binding>
+      <command>nasal</command>
+      <script>
+        pup.select_magnetos(pup.Magnetos.OFF);
+      </script>
+    </binding>
+  </item>
+
   <!-- Parking Brake - ON -->
   <item>
     <name>Parking Brake</name>
@@ -48,10 +66,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <name>Main Battery</name>
     <value>ON</value>
     <condition>
-      <greater-than>
-        <property>systems/electrical/outputs/bus-dc</property>
-        <value>10</value>
-      </greater-than>
+      <or>
+        <and>
+          <property>sim/checklists/status/nav-lights</property>
+          <property>sim/checklists/status/beacon</property>
+        </and>
+        <greater-than>
+          <property>systems/electrical/outputs/bus-dc</property>
+          <value>6</value>
+        </greater-than>
+      </or>
     </condition>
     <binding>
       <command>property-assign</command>
@@ -61,48 +85,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <binding>
       <command>nasal</command>
       <script>pup.click();</script>
-    </binding>
-  </item>
-
-  <!-- Navigation Lights - ON -->
-  <item>
-    <name>Navigation Lights</name>
-    <value>ON</value>
-    <condition>
-      <greater-than>
-        <property>systems/electrical/outputs/nav-lights</property>
-        <value>0</value>
-      </greater-than>
-    </condition>
-    <binding>
-      <command>property-assign</command>
-      <property>controls/lighting/nav-lights</property>
-      <value>1</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
-    </binding>
-  </item>
-
-  <!-- Carb Heat - OFF -->
-  <item>
-    <name>Carb Heat</name>
-    <value>OFF</value>
-    <condition>
-      <or>
-        <less-than>
-          <property>controls/anti-ice/engine/carb-heat-norm</property>
-          <value>0.05</value>
-        </less-than>
-        <property>engines/engine/running</property>
-      </or>
-    </condition>
-    <binding>
-      <command>property-interpolate</command>
-      <property>controls/anti-ice/engine/carb-heat-norm</property>
-      <value>0.0</value>
-      <rate>1.0</rate>
     </binding>
   </item>
 
@@ -116,16 +98,120 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
-  <!-- Gross Weight and CG - CHECK -->
+  <!-- Navigation Lights - ON -->
   <item>
-    <name>Gross Weight</name>
-    <value>BELOW MTOW</value>
+    <name>Navigation Lights</name>
+    <value>ON and CHECK</value>
     <condition>
-      <less-than-equals>
-        <property>fdm/jsbsim/inertia/weight-lbs</property>
-        <property>limits/mass-and-balance/maximum-takeoff-mass-lbs</property>
-      </less-than-equals>
+      <or>
+        <property>sim/checklists/status/nav-lights</property>
+        <greater-than>
+          <property>systems/electrical/outputs/nav-lights</property>
+          <value>0</value>
+        </greater-than>
+      </or>
     </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/lighting/nav-lights</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
+    </binding>
+  </item>
+
+  <!-- Beacon - ON -->
+  <item>
+    <name>Beacon</name>
+    <value>ON and CHECK</value>
+    <condition>
+      <or>
+        <property>sim/checklists/status/beacon</property>
+        <greater-than>
+          <property>systems/electrical/outputs/beacon</property>
+          <value>0</value>
+        </greater-than>
+      </or>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/lighting/beacon</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
+    </binding>
+  </item>
+
+  <!-- Beacon - OFF -->
+  <item>
+    <name>Beacon</name>
+    <value>OFF</value>
+    <condition>
+      <and>
+        <property>sim/checklists/status/beacon</property>
+        <less-than>
+          <property>systems/electrical/outputs/beacon</property>
+          <value>1</value>
+        </less-than>
+      </and>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/lighting/beacon</property>
+      <value>0</value>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
+    </binding>
+  </item>
+
+  <!-- Flaps - TAKEOFF -->
+  <item>
+    <name>Flaps</name>
+    <value>FULL</value>
+    <condition>
+      <greater-than>
+        <property>fdm/jsbsim/fcs/flap-pos-norm</property>
+        <value>0.99</value>
+      </greater-than>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/flight/flaps</property>
+      <value>1.0</value>
+    </binding>
+  </item>
+
+  <!-- Main Battery - OFF -->
+  <item>
+    <name>Main Battery</name>
+    <value>OFF</value>
+    <condition>
+      <less-than>
+        <property>systems/electrical/outputs/bus-dc</property>
+        <value>6</value>
+      </less-than>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/electric/battery-switch</property>
+      <value>0</value>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
+    </binding>
+  </item>
+
+  <!-- Refuel -->
+  <item>
+    <name>Refuel</name>
+    <value>AS REQUIRED</value>
     <binding>
       <command>nasal</command>
       <script>pup.show_weight_dialog();</script>

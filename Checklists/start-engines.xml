@@ -26,36 +26,74 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <title>Start Engines</title>
 
-  <!-- Beacon - ON -->
+  <!-- Magnetos - OFF -->
   <item>
-    <name>Beacon</name>
-    <value>ON</value>
+    <name>Magnetos</name>
+    <value>OFF</value>
     <condition>
-      <greater-than>
-        <property>systems/electrical/outputs/beacon</property>
-        <value>0</value>
-      </greater-than>
+      <or>
+        <property>engines/engine/running</property>
+        <equals>
+          <property>controls/engines/engine/magnetos</property>
+          <value>0</value>
+        </equals>
+      </or>
     </condition>
     <binding>
-      <command>property-assign</command>
-      <property>controls/lighting/beacon</property>
-      <value>1</value>
-    </binding>
-    <binding>
       <command>nasal</command>
-      <script>pup.click();</script>
+      <script>
+        pup.select_magnetos(pup.Magnetos.OFF);
+      </script>
     </binding>
   </item>
 
-  <!-- Fuel Tank Selector - EITHER -->
+  <!-- Parking Brake - ON -->
   <item>
-    <name>Fuel Tank Selector</name>
-    <value>EITHER</value>
+    <name>Parking Brake</name>
+    <value>ON</value>
+    <condition>
+      <equals>
+        <property>controls/gear/brake-parking</property>
+        <value>1</value>
+      </equals>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/gear/brake-parking</property>
+      <value>1</value>
+    </binding>
+  </item>
+
+  <!-- Carb Heat - COLD -->
+  <item>
+    <name>Carb Heat</name>
+    <value>COLD</value>
     <condition>
       <or>
+        <less-than>
+          <property>controls/anti-ice/engine/carb-heat-norm</property>
+          <value>0.05</value>
+        </less-than>
+        <property>engines/engine/running</property>
+      </or>
+    </condition>
+    <binding>
+      <command>property-interpolate</command>
+      <property>controls/anti-ice/engine/carb-heat-norm</property>
+      <value>0.0</value>
+      <rate>1.0</rate>
+    </binding>
+  </item>
+
+  <!-- Fuel Tank Selector - BOTH -->
+  <item>
+    <name>Fuel Tank Selector</name>
+    <value>BOTH</value>
+    <condition>
+      <and>
         <property>consumables/fuel/tank[1]/selected</property>
         <property>consumables/fuel/tank[2]/selected</property>
-      </or>
+      </and>
     </condition>
     <binding>
       <command>nasal</command>
@@ -82,6 +120,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <rate>0.5</rate>
     </binding>
   </item>
+
+  <!-- Circuit Breakers - ALL IN -->
+  <!-- Prime with Throttle - 1 to 4 STROKES -->
 
   <!-- Open Throttle - 1/4 -->
   <item>
@@ -110,21 +151,87 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
-  <!-- Magnetos - BOTH -->
+  <!-- Main Battery - ON -->
   <item>
-    <name>Magnetos</name>
-    <value>BOTH</value>
+    <name>Main Battery</name>
+    <value>ON</value>
+    <condition>
+      <greater-than>
+        <property>systems/electrical/outputs/bus-dc</property>
+        <value>6</value>
+      </greater-than>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/electric/battery-switch</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
+    </binding>
+  </item>
+
+  <!-- Navigation Lights - ON -->
+  <item>
+    <name>Navigation Lights</name>
+    <value>ON</value>
+    <condition>
+      <greater-than>
+        <property>systems/electrical/outputs/nav-lights</property>
+        <value>0</value>
+      </greater-than>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/lighting/nav-lights</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
+    </binding>
+  </item>
+
+  <!-- Alternator - ON -->
+  <item>
+    <name>Alternator</name>
+    <value>ON</value>
     <condition>
       <equals>
-        <property>controls/engines/engine/magnetos</property>
-        <value>3</value>
+        <property>controls/electric/engine/generator</property>
+        <value>1</value>
       </equals>
     </condition>
     <binding>
+      <command>property-assign</command>
+      <property>controls/electric/engine/generator</property>
+      <value>1</value>
+    </binding>
+    <binding>
       <command>nasal</command>
-      <script>
-        pup.select_magnetos(pup.Magnetos.BOTH);
-      </script>
+      <script>pup.click();</script>
+    </binding>
+  </item>
+
+  <!-- Starter Master - ON -->
+  <item>
+    <name>Starter Master</name>
+    <value>ON</value>
+    <condition>
+      <or>
+        <property>systems/electrical/outputs/starter</property>
+        <property>engines/engine/running</property>
+      </or>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/electric/engine/starter-master</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
     </binding>
   </item>
 
@@ -152,19 +259,43 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
-  <!-- Starter Master - ON -->
+  <!-- Magnetos - BOTH -->
   <item>
-    <name>Starter Master</name>
+    <name>Magnetos</name>
+    <value>BOTH</value>
+    <condition>
+      <equals>
+        <property>controls/engines/engine/magnetos</property>
+        <value>3</value>
+      </equals>
+    </condition>
+    <binding>
+      <command>nasal</command>
+      <script>
+        pup.select_magnetos(pup.Magnetos.BOTH);
+      </script>
+    </binding>
+  </item>
+
+  <!-- Propeller - CLEAR -->
+  <item>
+    <name>Propeller</name>
+    <value>CLEAR</value>
+  </item>
+
+  <!-- Beacon - ON -->
+  <item>
+    <name>Beacon</name>
     <value>ON</value>
     <condition>
-      <or>
-        <property>systems/electrical/outputs/starter</property>
-        <property>engines/engine/running</property>
-      </or>
+      <greater-than>
+        <property>systems/electrical/outputs/beacon</property>
+        <value>0</value>
+      </greater-than>
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>controls/electric/engine/starter-master</property>
+      <property>controls/lighting/beacon</property>
       <value>1</value>
     </binding>
     <binding>
@@ -195,31 +326,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
-  <!-- Alternator - ON -->
-  <item>
-    <name>Alternator</name>
-    <value>ON</value>
-    <condition>
-      <greater-than>
-        <property>systems/electrical/outputs/bus-dc</property>
-        <value>18</value>
-      </greater-than>
-    </condition>
-    <binding>
-      <command>property-assign</command>
-      <property>controls/electric/engine/generator</property>
-      <value>1</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
-    </binding>
-  </item>
-
-  <!-- Carb Heat - APPLY -->
+  <!-- Carb Heat - AS REQUIRED -->
   <item>
     <name>Carb Heat</name>
-    <value>APPLY</value>
+    <value>AS REQUIRED</value>
     <condition>
       <and>
         <property>engines/engine/running</property>
@@ -232,30 +342,51 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <binding>
       <command>property-interpolate</command>
       <property>controls/anti-ice/engine/carb-heat-norm</property>
-      <value>1.0</value>
+      <value>0.5</value>
       <rate>1.0</rate>
     </binding>
   </item>
 
-  <!-- Throttle - IDLE -->
+  <!-- Throttle - TICK OVER -->
   <item>
-    <name>Throttle</name>
-    <value>IDLE</value>
+    <name>Tick Over</name>
+    <value>800-1000 RPM</value>
     <condition>
-      <and>
-        <property>engines/engine/running</property>
-        <less-than>
-          <property>controls/engines/engine/throttle</property>
-          <value>0.1</value>
-        </less-than>
-      </and>
+      <or>
+        <property>sim/checklists/auto/active</property>
+        <and>
+          <greater-than>
+            <property>engines/engine/rpm</property>
+            <value>800</value>
+          </greater-than>
+          <less-than>
+            <property>engines/engine/rpm</property>
+            <value>1000</value>
+          </less-than>
+        </and>
+      </or>
     </condition>
     <binding>
       <command>property-interpolate</command>
       <property>controls/engines/engine/throttle</property>
-      <value>0.0</value>
+      <value>0.28</value>
       <rate>0.5</rate>
     </binding>
+  </item>
+
+  <!-- Oil Pressure - CHECK -->
+  <item>
+    <name>Oil Pressure</name>
+    <value>MINIMUM 25psi</value>
+    <condition>
+      <or>
+        <property>sim/checklists/auto/active</property>
+        <greater-than>
+          <property>engines/engine/oil-pressure-psi</property>
+          <value>25</value>
+        </greater-than>
+      </or>
+    </condition>
   </item>
 
   <!-- Starter Master - OFF -->
@@ -304,6 +435,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <command>nasal</command>
       <script>pup.click();</script>
     </binding>
+  </item>
+
+  <!-- Alternator Warning - OUT -->
+  <item>
+    <name>Alternator Warning</name>
+    <value>OFF</value>
+    <condition>
+      <or>
+        <property>sim/checklists/auto/active</property>
+        <equals>
+          <property>systems/electrical/outputs/generator-warn</property>
+          <value>0</value>
+        </equals>
+      </or>
+    </condition>
   </item>
 
   <!-- Transponder - STANDBY -->

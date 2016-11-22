@@ -24,22 +24,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 <PropertyList>
 
-  <title>Traffic Pattern</title>
+  <title>Traffic Pattern Downwind</title>
 
-  <!-- Flaps - APPROACH -->
+  <!-- Parking Brake - OFF -->
   <item>
-    <name>Flaps</name>
-    <value>APPROACH</value>
+    <name>Parking Brake</name>
+    <value>OFF</value>
     <condition>
-      <greater-than>
-        <property>controls/flight/flaps</property>
+      <equals>
+        <property>controls/gear/brake-parking</property>
         <value>0</value>
-      </greater-than>
+      </equals>
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>controls/flight/flaps</property>
-      <value>0.38</value>
+      <property>controls/gear/brake-parking</property>
+      <value>0</value>
     </binding>
   </item>
 
@@ -58,6 +58,143 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <property>controls/engines/engine/mixture</property>
       <value>1</value>
       <rate>0.5</rate>
+    </binding>
+  </item>
+
+  <!-- Magnetos - BOTH -->
+  <item>
+    <name>Magnetos</name>
+    <value>BOTH</value>
+    <condition>
+      <equals>
+        <property>controls/engines/engine/magnetos</property>
+        <value>3</value>
+      </equals>
+    </condition>
+    <binding>
+      <command>nasal</command>
+      <script>
+        pup.select_magnetos(pup.Magnetos.BOTH);
+      </script>
+    </binding>
+  </item>
+
+  <!-- Boost Pump - ON -->
+  <item>
+    <name>Boost Pump</name>
+    <value>ON</value>
+    <condition>
+      <or>
+        <property>engines/engine/running</property>
+        <greater-than>
+          <property>systems/electrical/outputs/fuel-pump</property>
+          <value>0</value>
+        </greater-than>
+      </or>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/electric/engine/fuel-pump</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
+    </binding>
+  </item>
+
+  <!-- Heading Indicator - ALIGN -->
+  <item>
+    <name>Heading Indicator</name>
+    <value>ALIGN</value>
+    <condition>
+      <less-than>
+        <property>instrumentation/heading-indicator/absolute-heading-error-deg</property>
+        <value>5</value>
+      </less-than>
+    </condition>
+    <binding>
+      <command>nasal</command>
+      <script>
+        var h = getprop("orientation/heading-deg");
+        var m = getprop("orientation/heading-magnetic-deg");
+        var o = getprop("instrumentation/heading-indicator/offset-deg");
+        var d = (o > 180) ? int(m - h) + 360 : int(m - h);
+        interpolate("instrumentation/heading-indicator/offset-deg", d, 1.0);
+      </script>
+    </binding>
+  </item>
+
+  <!-- Carb Heat - HOT -->
+  <item>
+    <name>Carb Heat</name>
+    <value>HOT</value>
+    <condition>
+      <and>
+        <property>engines/engine/running</property>
+        <greater-than>
+          <property>controls/anti-ice/engine/carb-heat-norm</property>
+          <value>0.5</value>
+        </greater-than>
+      </and>
+    </condition>
+    <binding>
+      <command>property-interpolate</command>
+      <property>controls/anti-ice/engine/carb-heat-norm</property>
+      <value>1.0</value>
+      <rate>1.0</rate>
+    </binding>
+  </item>
+
+  <!-- Altimeter - SET -->
+  <item>
+    <name>Altimeter</name>
+    <value>SET</value>
+    <condition>
+      <less-than>
+        <property>instrumentation/altimeter/absolute-altitude-error-ft</property>
+        <value>25</value>
+      </less-than>
+    </condition>
+    <binding>
+      <command>nasal</command>
+      <script>
+        var rwx = getprop("environment/realwx/enabled");
+        var qnh = getprop("environment/metar/pressure-inhg");
+        <!-- This is probably a bug in weather scenarios. If the altimeter
+             setting is taken from the METAR string in the scenario, the altitude
+             is wrong, but if it is set from sea level pressure, it comes out
+             correct. At some point this will be fixed in FG and this fudge will
+             need removing.
+        -->
+        var slp = getprop("environment/pressure-sea-level-inhg");
+        var setting = rwx ? qnh : slp;
+        setting = math.round(setting * 100) / 100;
+        interpolate("instrumentation/altimeter/setting-inhg", setting, 1.0);
+      </script>
+    </binding>
+  </item>
+
+  <!-- Flaps - APPROACH -->
+  <item>
+    <name>Flaps</name>
+    <value>APPROACH</value>
+    <condition>
+      <and>
+        <greater-than>
+          <property>fdm/jsbsim/fcs/flap-pos-norm</property>
+          <value>0.36</value>
+        </greater-than>
+        <less-than>
+          <property>fdm/jsbsim/fcs/flap-pos-norm</property>
+          <value>0.40</value>
+        </less-than>
+      </and>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/flight/flaps</property>
+      <value>0.38</value>
     </binding>
   </item>
 

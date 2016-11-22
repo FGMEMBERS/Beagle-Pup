@@ -44,7 +44,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <volts type="float">28</volts>
       <prop type="string">systems/electrical/suppliers/alternator</prop>
       <source-prop type="string">engines/engine/rpm</source-prop>
-      <source-min type="float">500</source-min>
+      <source-min type="float">800</source-min>
     </component>
 
     <component>

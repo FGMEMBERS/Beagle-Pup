@@ -47,20 +47,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
-  <!-- Carb Heat - APPLY -->
+  <!-- Carb Heat - AS REQUIRED -->
   <item>
     <name>Carb Heat</name>
-    <value>APPLY</value>
-    <condition>
-      <greater-than>
-        <property>controls/anti-ice/engine/carb-heat-norm</property>
-        <value>0.05</value>
-      </greater-than>
-    </condition>
+    <value>AS REQUIRED</value>
     <binding>
       <command>property-interpolate</command>
       <property>controls/anti-ice/engine/carb-heat-norm</property>
-      <value>1.0</value>
+      <value>0.5</value>
       <rate>1.0</rate>
     </binding>
   </item>

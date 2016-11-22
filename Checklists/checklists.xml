@@ -39,14 +39,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <wait-sec>1</wait-sec>
   </auto>
 
+  <status>
+    <beacon type="bool">false</beacon>
+    <nav-lights type="bool">false</nav-lights>
+  </status>
+
   <apron-start>
-    <index n="0">0</index>  <!-- Before Starting Engines -->
     <index n="1">1</index>  <!-- Start Engines -->
     <index n="2">2</index>  <!-- Before Taxi -->
   </apron-start>
 
   <runway-start>
-    <index n="0">0</index>  <!-- Before Starting Engines -->
     <index n="1">1</index>  <!-- Start Engines -->
     <index n="2">2</index>  <!-- Before Taxi -->
     <index n="3">3</index>  <!-- Before Takeoff -->

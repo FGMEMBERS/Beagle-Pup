@@ -32,7 +32,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <value>UP</value>
     <condition>
       <equals>
-        <property>controls/flight/flaps</property>
+        <property>fdm/jsbsim/fcs/flap-pos-norm</property>
         <value>0</value>
       </equals>
     </condition>
@@ -40,6 +40,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <command>property-assign</command>
       <property>controls/flight/flaps</property>
       <value>0</value>
+    </binding>
+  </item>
+
+  <!-- Boost Pump - OFF -->
+  <item>
+    <name>Boost Pump</name>
+    <value>OFF</value>
+    <condition>
+      <equals>
+        <property>systems/electrical/outputs/fuel-pump</property>
+        <value>0</value>
+      </equals>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/electric/engine/fuel-pump</property>
+      <value>0</value>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
     </binding>
   </item>
 
