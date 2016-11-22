@@ -69,7 +69,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <payload>
     <weight n="2">
       <name type="string">Baggage</name>
-      <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]"/>
+      <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[3]"/>
       <min-lb type="double">0</min-lb>
       <max-lb type="double">85</max-lb>
     </weight>

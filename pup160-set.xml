@@ -29,10 +29,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <aero>pup160</aero>
     <description>Beagle Pup 160</description>
 
-    <aircraft-data>
-      <path>fdm/jsbsim/inertia/pointmass-weight-lbs[2]</path>
-    </aircraft-data>
-
     <model>
       <path>Aircraft/Beagle-Pup/Models/pup160.xml</path>
       <livery>
@@ -75,7 +71,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <payload>
     <weight n="2">
       <name type="string">Rear Seat</name>
-      <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]"/>
+      <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[3]"/>
       <min-lb type="double">0</min-lb>
       <max-lb type="double">120</max-lb>
     </weight>
