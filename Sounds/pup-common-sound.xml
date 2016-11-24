@@ -143,6 +143,25 @@
       <max-dist>3.0</max-dist>
     </flap>
 
+    <stall>
+      <name>stall</name>
+      <mode>looped</mode>
+      <path>stall-horn.wav</path>
+      <condition>
+        <property>hazards/stall/stall-warning</property>
+      </condition>
+      <reference-dist>5.0</reference-dist>
+      <max-dist>10.0</max-dist>
+      <position>
+        <x>0.8</x>
+        <y>1.0</y>
+        <z>0.6</z>
+      </position>
+      <volume>
+        <property>sim/sound/cabin-volume</property>
+      </volume>
+    </stall>
+
     <click>
       <name>click</name>
       <mode>once</mode>

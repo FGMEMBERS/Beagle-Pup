@@ -49,6 +49,64 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </logic>
 
   <!--===================================================================-->
+  <!-- STALL WARNING                                                     -->
+  <!--===================================================================-->
+
+  <!-- The reason for these filters is that Flightgear seems to record
+       spurious values of airspeed when switching views. Only consider
+       a stall warning if the conditions are met for a duration
+  -->
+  <logic>
+    <input>
+      <and>
+        <not>
+          <and>
+            <property>gear/gear[1]/wow</property>
+            <property>gear/gear[2]/wow</property>
+          </and>
+        </not>
+        <or>
+          <and>
+            <greater-than>
+              <property>fdm/jsbsim/fcs/flap-pos-norm</property>
+              <value>0.36</value>
+            </greater-than>
+            <less-than>
+              <property>velocities/airspeed-kt</property>
+              <value>55</value>
+            </less-than>
+          </and>
+          <and>
+            <less-than>
+              <property>fdm/jsbsim/fcs/flap-pos-norm</property>
+              <value>0.36</value>
+            </less-than>
+            <less-than>
+              <property>velocities/airspeed-kt</property>
+              <value>65</value>
+            </less-than>
+          </and>
+        </or>
+      </and>
+    </input>
+    <output>hazards/stall/conditions-met</output>
+  </logic>
+
+  <flipflop>
+    <type>monostable</type>
+    <inverted type="bool">true</inverted>
+    <S>
+      <not>
+        <property>hazards/stall/conditions-met</property>
+      </not>
+    </S>
+    <time>
+      <value>0.2</value>
+    </time>
+    <output>hazards/stall/stall-warning</output>
+  </flipflop>
+
+  <!--===================================================================-->
   <!-- ADDITIONAL  PROPERTIES                                            -->
   <!--===================================================================-->
 
