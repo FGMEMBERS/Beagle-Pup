@@ -101,7 +101,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </not>
     </S>
     <time>
-      <value>0.2</value>
+      <value>0.5</value>
     </time>
     <output>hazards/stall/stall-warning</output>
   </flipflop>
