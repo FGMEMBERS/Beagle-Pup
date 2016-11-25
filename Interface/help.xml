@@ -27,12 +27,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <title>Beagle Pup</title>
 
   <key>
-    <name>Ctrl-z</name>
-    <desc>Toggle Autopilot On/Off</desc>
+    <name>Ctrl-a</name>
+    <desc>Toggle Altitude Hold</desc>
   </key>
   <key>
-    <name>C</name>
-    <desc>Cruise Power</desc>
+    <name>Ctrl-z</name>
+    <desc>Toggle Autopilot On/Off</desc>
   </key>
   <key>
     <name>F</name>
@@ -41,6 +41,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <key>
     <name>L</name>
     <desc>After Landing Checklist</desc>
+  </key>
+  <key>
+    <name>R</name>
+    <desc>Before Takeoff Checklist</desc>
   </key>
   <key>
     <name>Alt-b</name>
