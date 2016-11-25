@@ -1,0 +1,44 @@
+
+
+
+pup160
+
+0
+0                             ; Type of aircraft
+63                            ; Stall speed VS1 (clean, no flaps)
+1925                          ; Maximum takeoff weight
+1193                          ; Empty weight
+                              ; Inertia Ixx
+                              ; Inertia Iyy
+                              ; Inertia Izz
+23.17                         ; Length
+0                             ; Select a wing shape
+31.0                          ; Wing span
+119.5                         ; Wing area
+8.04                          ; Wing aspect ratio
+0.56                          ; Wing taper ratio
+4.77                          ; Wing mean chord
+2.00                          ; Wing incidence
+6.67                          ; Wing dihedral
+3.00                          ; Wing sweep (quarter chord)
+38.4                          ; Htail area
+11.86                         ; Htail arm
+28.46                         ; Vtail area
+12.34                         ; Vtail arm
+
+Lycoming_0-320-D2C
+1                             ; Number of engines
+0                             ; Engine layout
+0                             ; Engine type
+160                           ; Engine power
+2750                          ; Maximum engine rpm
+Sensenich_M74DMS-0-62
+6.16                          ; Propeller diameter
+
+
+no
+0                             ; Nose or tail wheel type
+
+
+
+

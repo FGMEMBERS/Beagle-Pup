@@ -314,7 +314,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <output>propulsion/engine/air-intake-impedance-factor</output>
       <gain>10.0</gain>
       <clipto>
-        <min>0.1</min> <!-- Should match engine definition -->
+        <min>0.05</min> <!-- Should match engine definition -->
         <max>10.0</max>
       </clipto>
     </pure_gain>
@@ -326,7 +326,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <fcs_function name="Volumetric Efficiency">
       <function>
         <difference>
-          <value>0.82</value> <!-- Base volumetric efficiency -->
+          <value>0.89</value> <!-- Base volumetric efficiency -->
           <product>
             <property>systems/carburettor/carb-heat-effect-degC</property>
             <value>0.004</value>

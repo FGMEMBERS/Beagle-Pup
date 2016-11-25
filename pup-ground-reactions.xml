@@ -30,13 +30,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <location unit="IN">
       <x>  39.07</x>
       <y>   0.00</y>
-      <z> -51.80</z> <!-- 49.30 uncompressed -->
+      <z> -52.80</z>
     </location>
-    <static_friction>0.80</static_friction>
+    <static_friction>0.75</static_friction>
     <dynamic_friction>0.50</dynamic_friction>
     <rolling_friction>0.02</rolling_friction>
-    <spring_coeff unit="LBS/FT">2100</spring_coeff>
-    <damping_coeff unit="LBS/FT/SEC">450</damping_coeff>
+    <spring_coeff unit="LBS/FT">3200</spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">1000</damping_coeff>
     <damping_coeff_rebound type="SQUARE" unit="LBS/FT2/SEC2">1000</damping_coeff_rebound>
     <max_steer unit="DEG">12.5</max_steer>
     <brake_group>NONE</brake_group>
@@ -47,14 +47,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <location unit="IN">
       <x>  95.61</x>
       <y> -50.57</y>
-      <z> -51.26</z> <!-- 48.56 uncompressed -->
+      <z> -50.76</z>
     </location>
-    <static_friction>0.80</static_friction>
+    <static_friction>0.75</static_friction>
     <dynamic_friction>0.50</dynamic_friction>
     <rolling_friction>0.02</rolling_friction>
     <spring_coeff unit="LBS/FT">3000</spring_coeff>
-    <damping_coeff unit="LBS/FT/SEC">1000</damping_coeff>
-    <damping_coeff_rebound type="SQUARE" unit="LBS/FT2/SEC2">1000</damping_coeff_rebound>
+    <damping_coeff unit="LBS/FT/SEC">500</damping_coeff>
     <max_steer unit="DEG">0</max_steer>
     <brake_group>LEFT</brake_group>
     <retractable>0</retractable>
@@ -64,14 +63,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <location unit="IN">
       <x>  95.61 </x>
       <y>  50.57 </y>
-      <z> -51.26 </z> <!-- 48.56 uncompressed -->
+      <z> -50.76 </z>
     </location>
-    <static_friction>  0.80 </static_friction>
-    <dynamic_friction> 0.50 </dynamic_friction>
-    <rolling_friction> 0.02 </rolling_friction>
+    <static_friction>0.75</static_friction>
+    <dynamic_friction>0.50</dynamic_friction>
+    <rolling_friction>0.02</rolling_friction>
     <spring_coeff unit="LBS/FT">3000 </spring_coeff>
-    <damping_coeff unit="LBS/FT/SEC">1000</damping_coeff>
-    <damping_coeff_rebound type="SQUARE" unit="LBS/FT2/SEC2">1000</damping_coeff_rebound>
+    <damping_coeff unit="LBS/FT/SEC">500</damping_coeff>
     <max_steer unit="DEG">0</max_steer>
     <brake_group>RIGHT</brake_group>
     <retractable>0</retractable>

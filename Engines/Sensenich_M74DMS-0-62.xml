@@ -23,103 +23,157 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
 <!--
-Configuration notes:
+Sensenich 74DM655-0-62
 
-Original configuration generated with Aeromatic:
+Created using JavaProp. Blade angle scaled to achieve 19.6* pitch. Chord
+scaled to achieve 2300 static RPM.
 
-Inputs:
-                horsepower: 150
-                     pitch: fixed
-            max engine rpm: 2700
-        prop diameter (in): 74
+Blades:             2
+RPM (max):          2750
+Diameter:           74" (6.16', 1.880m)
+Spinner Diameter:   5 1/4" (0.13m)
+Velocity (max):     120kt (62m/s)
+Power (max):        160hp (119kW)
+Weight:             34.5lb (1.072slug)
+Geometric Pitch:    62" (1.575m, 19.6*)
+Static RPM:         2200-2400
+Moment of Inertia:  3.390slug*ft2
 
-The first two numeric digits in the desgination of a Sensenich propeller give
-the diameter in inches. The last two digits give the geometric pitch of 
-the propeller.
+Notes:
 
-The geometric pitch is the circumference of the propeller disc at the blade
-station multiplied by the tangent of the blade angle at that point. The blade
-station is the point at 0.75 of the radius.
-
-The blade pitch angle can be calculated using this Python snippet:
-
-GP = 60 
-D = 74
+Geometric pitch calculated as
+GP = 53
+D = 70
 (180 / math.pi) * math.atan((GP) / (D * 0.75 * math.pi))
 
-The pitch angle has been rounded to the nearest degree.
+Inertia calculated as m/12*D^2.
 
 References:
-
-1. Lycoming 0-320 Operators Manual
-  http://www.7ts0.com/manuals/lycoming/320/O-320-IO-320-AIO-320-LIO-320_OM.pdf
-
-2. Sensenich Propeller Application Guide
-  http://www.sensenich.com/files/documents/    Application_Guides_Aluminum_Propeller_Applications_1349891787.pdf
-
+https://www.easa.europa.eu/system/files/dfu/SAS%20A%20082%20Iss%205%20final.pdf
+http://www.pilotfriend.com/aircraft%20performance/Beagle/Beagle%20Pup%20150.htm
+http://www.mh-aerotools.de/airfoils/prop_precession_english.htm
+http://hyperphysics.phy-astr.gsu.edu/hbase/mi2.html
+http://www.sensenich.com/files/documents/Application_Guides_Metal_Propeller_Weights_1297535087.pdf
 -->
 
 <propeller name="Sensenich_M74DMS-0-62">
-  <ixx>3.01</ixx>
+
+  <ixx unit="SLUG*FT2">3.39</ixx>
   <constspeed>0</constspeed>
   <diameter unit="IN">74.0</diameter>
-  <minpitch>19.6</minpitch>
-  <maxpitch>19.6</maxpitch>
   <numblades>2</numblades>
   <gearratio>1.00</gearratio>
-  <p_factor>5.85</p_factor>
+
+  <ct_factor>1.0</ct_factor>
+  <cp_factor>1.0</cp_factor>
 
   <table name="C_THRUST" type="internal">
-     <tableData>
-       0.0   0.0455
-       0.1   0.0436
-       0.2   0.0418
-       0.3   0.0384
-       0.4   0.0345
-       0.5   0.0304
-       0.6   0.0246
-       0.7   0.0187
-       0.8   0.0101
-       1.0  -0.0034
-       1.2  -0.0179
-       1.4  -0.0322
-     </tableData>
+    <tableData>
+      0.000 0.116047
+      0.050 0.111000
+      0.100 0.116828
+      0.150 0.116253
+      0.200 0.115461
+      0.250 0.114502
+      0.300 0.113909
+      0.350 0.112523
+      0.400 0.109821
+      0.450 0.105350
+      0.500 0.099567
+      0.550 0.092893
+      0.600 0.085381
+      0.650 0.077609
+      0.700 0.069721
+      0.750 0.061617
+      0.800 0.053318
+      0.850 0.044841
+      0.900 0.036198
+      0.910 0.034449
+      0.920 0.032695
+      0.930 0.030934
+      0.940 0.029167
+      0.950 0.027397
+      0.960 0.025614
+      0.970 0.023828
+      0.980 0.022028
+      0.990 0.020234
+      1.000 0.018434
+      1.010 0.016620
+      1.020 0.014804
+      1.030 0.012988
+      1.040 0.011164
+      1.050 0.009350
+      1.060 0.007519
+      1.070 0.005737
+      1.080 0.003868
+      1.090 0.002089
+      1.100 0.000296
+      1.110 -0.001482
+      1.120 -0.003232
+    </tableData>
   </table>
-
 
   <table name="C_POWER" type="internal">
-     <tableData>
-       0.0   0.0306
-       0.1   0.0306
-       0.2   0.0298
-       0.3   0.0291
-       0.4   0.0274
-       0.5   0.0251
-       0.6   0.0231
-       0.7   0.0194
-       0.8   0.0158
-       1.0   0.0057
-       1.2  -0.0090
-       1.4  -0.0272
-       1.6  -0.0462
-     </tableData>
+    <tableData>
+      0.000 0.073680
+      0.050 0.060712
+      0.100 0.072812
+      0.150 0.074122
+      0.200 0.075605
+      0.250 0.077234
+      0.300 0.074571
+      0.350 0.074545
+      0.400 0.075455
+      0.450 0.075320
+      0.500 0.074230
+      0.550 0.072307
+      0.600 0.069494
+      0.650 0.066050
+      0.700 0.062046
+      0.750 0.057406
+      0.800 0.052110
+      0.850 0.046139
+      0.900 0.039472
+      0.910 0.038054
+      0.920 0.036606
+      0.930 0.035130
+      0.940 0.033625
+      0.950 0.032094
+      0.960 0.030527
+      0.970 0.028933
+      0.980 0.027302
+      0.990 0.025653
+      1.000 0.023974
+      1.010 0.022257
+      1.020 0.020513
+      1.030 0.018746
+      1.040 0.016946
+      1.050 0.015133
+      1.060 0.013279
+      1.070 0.011453
+      1.080 0.009513
+      1.090 0.007645
+      1.100 0.005741
+      1.110 0.003832
+      1.120 0.001932
+    </tableData>
   </table>
 
-<!-- thrust effects of helical tip Mach -->
-<table name="CT_MACH" type="internal">
-  <tableData>
-    0.85   1.0
-    1.05   0.8
-  </tableData>
-</table>
+  <!-- thrust effects of helical tip Mach -->
+  <table name="CT_MACH" type="internal">
+    <tableData>
+      0.85   1.0
+      1.05   0.8
+    </tableData>
+  </table>
 
-<!-- power-required effects of helical tip Mach -->
-<table name="CP_MACH" type="internal">
-  <tableData>
-    0.85   1.0
-    1.05   1.8
-    2.00   1.4
-  </tableData>
-</table>
+  <!-- power-required effects of helical tip Mach -->
+  <table name="CP_MACH" type="internal">
+    <tableData>
+      0.85   1.0
+      1.05   1.8
+      2.00   1.4
+    </tableData>
+  </table>
 
 </propeller>

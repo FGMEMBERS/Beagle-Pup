@@ -28,25 +28,63 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 
   <fileheader>
-    <author>Richard Senior (Aeromatic v3.1.0)</author>
-    <filecreationdate>30 Nov 2015</filecreationdate>
-    <version>0.1</version>
+    <author>Richard Senior (Aeromatic v3.3.8)</author>
+    <filecreationdate>23 Nov 2016</filecreationdate>
+    <version>0.2</version>
     <description>Beagle Pup Series 3 (Pup 160)</description>
   </fileheader>
+
+<!--
+  File:     pup160.xml
+  Inputs:
+    name:          pup160
+    type:          Single engine Glider, Small Commuter
+    stall speed:   63.00kts
+    max weight:    1925.00 lb
+    length:        23.17 ft
+    wing:
+     span:         31.00 ft
+     area:         119.50 sq-ft
+     mean chord:   3.82 ft
+     aspect ratio: 8.04:1
+     taper ratio:  0.56:1
+     incidence:    2.00 degrees
+     dihedral:     6.67 degrees
+     sweep:        3.00 degrees
+
+    no. engines:   1
+    engine type:   Piston Engine
+    engine layout: forward fuselage
+
+    gear type:     tricycle
+    steering type: steering
+    retractable?:  no
+
+  Outputs:
+    wing loading:       16.11 lb/sq-ft
+     - thickness ratio: 5.69%
+    payload:            447.10 lbs
+    CL-alpha:           5.66 per radian
+    CL-0:               0.25
+    CL-max:             1.20
+    CD-0:               0.02
+    K:                  0.04
+    Mcrit:              0.70
+-->
 
   <metrics>
     <wingarea  unit="FT2">  119.50 </wingarea>
     <wingspan  unit="FT" >   31.00 </wingspan>
-    <wing_incidence>          1.15 </wing_incidence>
-    <chord     unit="FT" >    4.69 </chord>
-    <htailarea unit="FT2">   19.12 </htailarea>
-    <htailarm  unit="FT" >   11.86 </htailarm>
-    <vtailarea unit="FT2">   21.70 </vtailarea>
-    <vtailarm  unit="FT" >   12.34 </vtailarm>
+    <wing_incidence unit="DEG"> 2.00 </wing_incidence>
+    <chord     unit="FT" >    3.82 </chord>
+    <htailarea unit="FT2">    38.40 </htailarea>
+    <htailarm  unit="FT" >    11.86 </htailarm>
+    <vtailarea  unit="FT2">   28.46 </vtailarea>
+    <vtailarm  unit="FT" >    12.34 </vtailarm>
     <location name="AERORP" unit="IN">
-      <x>  82.00 </x>
+      <x>  86.00 </x>
       <y>   0.00 </y>
-      <z>  -6.50 </z>
+      <z>  -3.50 </z>
     </location>
     <location name="EYEPOINT" unit="IN">
       <x>  82.00 </x>
@@ -61,21 +99,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </metrics>
 
   <mass_balance>
-    <ixx unit="SLUG*FT2">    599.40 </ixx>
-    <iyy unit="SLUG*FT2">    582.51 </iyy>
-    <izz unit="SLUG*FT2">   1096.99 </izz>
+   <ixx unit="SLUG*FT2">    648.90 </ixx>
+   <iyy unit="SLUG*FT2">    644.44 </iyy>
+   <izz unit="SLUG*FT2">   1198.62 </izz>
     <!-- Copied from the 150 with a small addition for larger fuel tanks -->
-    <emptywt unit="LBS" >   824.00 </emptywt>
+    <emptywt unit="LBS" >   931.00 </emptywt>
     <location name="CG" unit="IN">
-      <x>  74.00 </x>
+      <x>  72.00 </x>
       <y>   0.00 </y>
-      <z>  -6.00 </z>
+      <z> -9.00 </z>
     </location>
     <pointmass name="Engine">
       <description>Engine and associated components</description>
       <weight unit="LBS">278</weight>
       <location name="POINTMASS" unit="IN">
-        <x>  36.00 </x>
+        <x>  32.00 </x>
         <y>   0.00 </y>
         <z>  -2.00 </z>
       </location>
@@ -84,18 +122,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <description>Pilot</description>
       <weight unit="LBS">170</weight>
       <location name="POINTMASS" unit="IN">
-        <x>  82.00 </x>
+        <x>  92.00 </x>
         <y> -12.00 </y>
-        <z>  -6.00 </z>
+        <z>  -7.00 </z>
       </location>
     </pointmass> 
     <pointmass name="Co-Pilot">
       <description>Co-Pilot</description>
-      <weight unit="LBS">0</weight>
+      <weight unit="LBS">140</weight>
       <location name="POINTMASS" unit="IN">
-        <x>  82.00 </x>
+        <x>  92.00 </x>
         <y>  12.00 </y>
-        <z>  -6.00 </z>
+        <z>  -7.00 </z>
       </location>
     </pointmass> 
     <pointmass name="Rear Seat">
@@ -104,17 +142,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <location name="POINTMASS" unit="IN">
         <x> 122.00 </x>
         <y>   0.00 </y>
-        <z>   0.00 </z>
+        <z>  -4.00 </z>
       </location>
     </pointmass> 
   </mass_balance>
 
   <ground_reactions file="pup-ground-reactions"/>
-  <system file="crash-detect"/>
 
   <propulsion>
 
-    <engine file="Lycoming_0-320-D2C">
+    <engine file="Lycoming_O-320-D2C">
       <location unit="IN">
         <x>  28.98 </x>
         <y>   0.00 </y>
@@ -155,8 +192,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <tank type="FUEL" number="1">
       <location unit="IN">
         <x>  79.00 </x>
-        <y> -68.00 </y>
-        <z> -12.00 </z>
+        <y> -48.00 </y>
+        <z> -11.00 </z>
       </location>
       <capacity unit="LBS"> 138.60 </capacity>
       <contents unit="LBS">  34.65 </contents>
@@ -165,8 +202,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <tank type="FUEL" number="2">
       <location unit="IN">
         <x>  79.00 </x>
-        <y>  68.00 </y>
-        <z> -12.00 </z>
+        <y>  48.00 </y>
+        <z> -11.00 </z>
       </location>
       <capacity unit="LBS"> 138.60 </capacity>
       <contents unit="LBS">  34.65 </contents>
@@ -174,7 +211,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   </propulsion>
 
+  <system file="analysis"/>
+  <system file="crash-detect"/>
   <system file="fuel"/>
+
+  <!-- Required for aeromatic generated FDM -->
+  <system name="Landing Gear">
+    <channel name="Landing Gear">
+      <switch name="fcs/gear-no-wow">
+        <default value="1"/>
+        <test logic="AND" value="0">
+          gear/unit[1]/WOW eq 1
+          gear/unit[2]/WOW eq 1
+        </test>
+      </switch>
+    </channel>
+  </system>
+
   <flight_control name="FCS: BeaglePup-121-3" file="pup-flight-control"/>
   <aerodynamics file="pup-aerodynamics"/>
 

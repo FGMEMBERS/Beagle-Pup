@@ -75,10 +75,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <mixture type="double">0.0</mixture>
       </engine>
     </engines>
+    <flight>
+      <!-- Temporary, until trim tab is implemented properly -->
+      <aileron-trim>0.075</aileron-trim>
+      <elevator-trim>-0.18</elevator-trim>
+      <rudder-trim>0.006</rudder-trim>
+    </flight>
     <gear>
-      <!-- Parking brake set in controls.nas, in an attempt to avoid
-           spurious forces when JSBSim initializes -->
-      <brake-parking type="double">0.0</brake-parking>
+      <brake-parking type="double">1.0</brake-parking>
     </gear>
     <lighting>
       <beacon type="bool">false</beacon>
@@ -97,6 +101,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <oil-temperature-degc alias="/fdm/jsbsim/propulsion/engine/oil-temperature-degC"/>
     </engine>
   </engines>
+
+  <fdm>
+    <jsbsim>
+      <tuning>
+        <elevator>1.0</elevator>
+        <flap>0.85</flap>
+        <pitch-damp>1.0</pitch-damp>
+        <propwash>1.0</propwash>
+        <roll-damp>1.0</roll-damp>
+        <yaw-damp>1.0</yaw-damp>
+      </tuning>
+    </jsbsim>
+  </fdm>
 
   <input>
     <keyboard include="Interface/keyboard.xml"/>
@@ -154,7 +171,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <menubar include="Interface/menubar.xml"/>
 
     <author>Richard Senior</author>
-    <aircraft-version>0.25.2</aircraft-version>
+    <aircraft-version>0.26.0</aircraft-version>
     <flight-model>jsb</flight-model>
 
     <aircraft-data>

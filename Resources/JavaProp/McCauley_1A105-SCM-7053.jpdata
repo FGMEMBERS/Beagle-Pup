@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<JavaProp>
+   <OptionsCard>
+      <Count value="5"/>
+      <Density value="1.221"/>
+      <Viscosity value="1.4607E-5"/>
+      <SpeedOfSound value="340.29"/>
+      <Language value="en"/>
+      <Country value="US"/>
+   </OptionsCard>
+   <DesignCard>
+      <Count value="9"/>
+      <Name value="McCauley_1A105-SCM-7053"/>
+      <Blades value="2"/>
+      <RPM value="2750.0"/>
+      <Diameter value="1.778"/>
+      <Velocity value="57.0"/>
+      <PowerThrust value="75000.0"/>
+      <Spinner value="0.13"/>
+      <Design value="Power"/>
+      <Shrouded value="No"/>
+      <SquareTip value="No"/>
+      <OpenHub value="No"/>
+   </DesignCard>
+   <AirfoilsCard>
+      <Count value="4"/>
+      <AirfoilIndex value="9"/>
+      <AngleOfAttack value="3.0"/>
+      <AirfoilIndex value="10"/>
+      <AngleOfAttack value="3.0"/>
+      <AirfoilIndex value="11"/>
+      <AngleOfAttack value="3.0"/>
+      <AirfoilIndex value="13"/>
+      <AngleOfAttack value="3.0"/>
+      <ZeroDrag value="No"/>
+   </AirfoilsCard>
+   <GeometryCard>
+      <Count value="21"/>
+      <beta value="0.0"/>
+      <beta value="0.0"/>
+      <beta value="1.0470223799940044"/>
+      <beta value="0.9085645086788687"/>
+      <beta value="0.7931993616555554"/>
+      <beta value="0.6988623028323309"/>
+      <beta value="0.6220547139504232"/>
+      <beta value="0.5592639393709082"/>
+      <beta value="0.5075017508311436"/>
+      <beta value="0.4643962683778196"/>
+      <beta value="0.4281183883825201"/>
+      <beta value="0.39727059142975313"/>
+      <beta value="0.3707843216392971"/>
+      <beta value="0.3478377253031364"/>
+      <beta value="0.32779332762336066"/>
+      <beta value="0.31015190107157753"/>
+      <beta value="0.2945185762470889"/>
+      <beta value="0.2805779325512062"/>
+      <beta value="0.2680755990680819"/>
+      <beta value="0.2568045652492013"/>
+      <beta value="0.24659490937698567"/>
+      <chord value="0.002064300999705208"/>
+      <chord value="0.002064300999705208"/>
+      <chord value="0.10077500535611766"/>
+      <chord value="0.15474180891918415"/>
+      <chord value="0.1821128859928583"/>
+      <chord value="0.18745241215092232"/>
+      <chord value="0.1796114947688514"/>
+      <chord value="0.1698190733238442"/>
+      <chord value="0.16482938414116918"/>
+      <chord value="0.15725041581569887"/>
+      <chord value="0.1482983760950536"/>
+      <chord value="0.13865571775466698"/>
+      <chord value="0.12866806812306802"/>
+      <chord value="0.11846846282865274"/>
+      <chord value="0.11178931933041882"/>
+      <chord value="0.10616941801535719"/>
+      <chord value="0.09923280953893075"/>
+      <chord value="0.09023687830290696"/>
+      <chord value="0.07776347572104904"/>
+      <chord value="0.05835781196661071"/>
+      <chord value="0.0029178905983305364"/>
+   </GeometryCard>
+   <ModifyCard>
+      <Count value="9"/>
+      <AngleDelta value="0.000"/>
+      <AngleScale value="1"/>
+      <ChordDelta value="0.0"/>
+      <ChordScale value="1.0"/>
+      <ChordTaper value="1.0"/>
+      <VelocityRoot value="1.0"/>
+      <RadiusRoot value="0.5"/>
+      <ThreadingLine value="33.0"/>
+      <ThicknessTE value="0.5"/>
+   </ModifyCard>
+</JavaProp>

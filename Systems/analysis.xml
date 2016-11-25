@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+**************************************************************************
+
+FDM Analysis (JSBSim)
+
+Copyright (c) 2016 Richard Senior
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+**************************************************************************
+-->
+
+<system name="Analysis">
+
+  <channel name="Analysis">
+
+    <!-- Aerodynamic Axes -->
+
+    <summer name="Total Lift">
+      <input>aero/force/Lift_propwash</input>
+      <input>aero/force/Lift_alpha</input>
+      <input>aero/force/Lift_pitch_rate</input>
+      <input>aero/force/Lift_alpha_rate</input>
+      <input>aero/force/Lift_elevator</input>
+      <input>aero/force/Lift_flap</input>
+      <output>analysis/total-lift</output>
+    </summer>
+
+    <summer name="Total Drag">
+      <input>aero/force/Drag_minimum</input>
+      <input>aero/force/Drag_alpha</input>
+      <input>aero/force/Drag_induced</input>
+      <input>aero/force/Drag_mach</input>
+      <input>aero/force/Drag_beta</input>
+      <input>aero/force/Drag_elevator</input>
+      <input>aero/force/Drag_flap</input>
+      <output>analysis/total-drag</output>
+    </summer>
+
+    <summer name="Total Side">
+      <input>aero/force/Side_beta</input>
+      <input>aero/force/Side_roll_rate</input>
+      <input>aero/force/Side_yaw_rate</input>
+      <input>aero/force/Side_rudder</input>
+      <output>analysis/total-side</output>
+    </summer>
+
+    <summer name="Total Pitch">
+      <input>aero/moment/Pitch_propwash</input>
+      <input>aero/moment/Pitch_alpha</input>
+      <input>aero/moment/Pitch_elevator</input>
+      <input>aero/moment/Pitch_damp</input>
+      <input>aero/moment/Pitch_alphadot</input>
+      <output>analysis/total-pitch</output>
+    </summer>
+
+    <summer name="Total Roll">
+      <input>aero/moment/Roll_differential_propwash</input>
+      <input>aero/moment/Roll_beta</input>
+      <input>aero/moment/Roll_damp</input>
+      <input>aero/moment/Roll_yaw</input>
+      <input>aero/moment/Roll_aileron</input>
+      <input>aero/moment/Roll_rudder</input>
+      <output>analysis/total-roll</output>
+    </summer>
+
+    <summer name="Total Yaw">
+      <input>aero/moment/Yaw_alpha</input>
+      <input>aero/moment/Yaw_beta</input>
+      <input>aero/moment/Yaw_roll_rate</input>
+      <input>aero/moment/Yaw_damp</input>
+      <input>aero/moment/Yaw_rudder</input>
+      <input>aero/moment/Yaw_aileron</input>
+      <output>analysis/total-yaw</output>
+    </summer>
+
+    <!-- Metrics -->
+
+    <fcs_function name="analysis/ld-ratio">
+      <description>Lift to drag ratio</description>
+      <function>
+        <quotient>
+          <property>analysis/total-lift</property>
+          <property>analysis/total-drag</property>
+        </quotient>
+      </function>
+    </fcs_function>
+
+    <!-- CoG and AeroRP -->
+
+    <fcs_function name="analysis/cg-moment-x">
+      <description>CG to AeroRP moment X</description>
+      <function>
+        <difference>
+          <property>inertia/cg-x-in</property>
+          <property>metrics/aero-rp-x-in</property>
+        </difference>
+      </function>
+    </fcs_function>
+
+    <fcs_function name="analysis/cg-moment-y">
+      <description>CG to AeroRP moment Y</description>
+      <function>
+        <difference>
+          <property>inertia/cg-y-in</property>
+          <property>metrics/aero-rp-y-in</property>
+        </difference>
+      </function>
+    </fcs_function>
+
+    <fcs_function name="analysis/cg-moment-z">
+      <description>CG to AeroRP moment Z</description>
+      <function>
+        <difference>
+          <property>inertia/cg-z-in</property>
+          <property>metrics/aero-rp-z-in</property>
+        </difference>
+      </function>
+    </fcs_function>
+
+  </channel>
+
+</system>
+

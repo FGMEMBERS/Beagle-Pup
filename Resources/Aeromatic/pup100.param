@@ -1,0 +1,44 @@
+
+
+
+pup100
+
+0
+0                             ; Type of aircraft
+62                            ; Stall speed VS1 (clean, no flaps)
+1600                          ; Maximum takeoff weight
+1083                          ; Empty weight
+                              ; Inertia Ixx
+                              ; Inertia Iyy
+                              ; Inertia Izz
+22.92                         ; Length
+0                             ; Select a wing shape
+31.0                          ; Wing span
+119.5                         ; Wing area
+8.04                          ; Wing aspect ratio
+0.56                          ; Wing taper ratio
+4.77                          ; Wing mean chord
+2.00                          ; Wing incidence
+6.67                          ; Wing dihedral
+3.00                          ; Wing sweep (quarter chord)
+38.40                         ; Htail area
+11.86                         ; Htail arm
+28.46                         ; Vtail area
+12.34                         ; Vtail arm
+
+Continental_0-200-A
+1                             ; Number of engines
+0                             ; Engine layout
+0                             ; Engine type
+100                           ; Engine power
+2750                          ; Maximum engine rpm
+McCauley_1A105-SCM-7053
+5.86                          ; Propeller diameter
+
+
+no
+0                             ; Nose or tail wheel type
+
+
+
+

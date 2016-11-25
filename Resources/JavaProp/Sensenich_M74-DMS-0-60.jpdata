@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<JavaProp>
+   <OptionsCard>
+      <Count value="5"/>
+      <Density value="1.221"/>
+      <Viscosity value="1.4607E-5"/>
+      <SpeedOfSound value="340.29"/>
+      <Language value="en"/>
+      <Country value="US"/>
+   </OptionsCard>
+   <DesignCard>
+      <Count value="9"/>
+      <Name value="Sensenich_M74-DMS-0-60"/>
+      <Blades value="2"/>
+      <RPM value="2700.0"/>
+      <Diameter value="1.88"/>
+      <Velocity value="62.0"/>
+      <PowerThrust value="112000.0"/>
+      <Spinner value="0.13"/>
+      <Design value="Power"/>
+      <Shrouded value="No"/>
+      <SquareTip value="No"/>
+      <OpenHub value="No"/>
+   </DesignCard>
+   <AirfoilsCard>
+      <Count value="4"/>
+      <AirfoilIndex value="9"/>
+      <AngleOfAttack value="3.0"/>
+      <AirfoilIndex value="10"/>
+      <AngleOfAttack value="3.0"/>
+      <AirfoilIndex value="11"/>
+      <AngleOfAttack value="3.0"/>
+      <AirfoilIndex value="13"/>
+      <AngleOfAttack value="3.0"/>
+      <ZeroDrag value="No"/>
+   </AirfoilsCard>
+   <GeometryCard>
+      <Count value="21"/>
+      <beta value="0.0"/>
+      <beta value="0.0"/>
+      <beta value="0.8082974059097249"/>
+      <beta value="0.8082974059097249"/>
+      <beta value="0.8082974059097249"/>
+      <beta value="0.7384180703615121"/>
+      <beta value="0.659357389702829"/>
+      <beta value="0.5941781312373516"/>
+      <beta value="0.540086979630474"/>
+      <beta value="0.4948039109096303"/>
+      <beta value="0.45653384152622184"/>
+      <beta value="0.4238833921571346"/>
+      <beta value="0.39577398412032017"/>
+      <beta value="0.37136794088553265"/>
+      <beta value="0.35001041897225826"/>
+      <beta value="0.3311853217455037"/>
+      <beta value="0.3144822993756616"/>
+      <beta value="0.29957213951214257"/>
+      <beta value="0.28618837993902"/>
+      <beta value="0.2741135002245182"/>
+      <beta value="0.2631684812010856"/>
+      <chord value="0.0019530895656010387"/>
+      <chord value="0.0019530895656010387"/>
+      <chord value="0.10349746752346412"/>
+      <chord value="0.1620396504189883"/>
+      <chord value="0.19432251778911475"/>
+      <chord value="0.20325021814895464"/>
+      <chord value="0.19725266579914183"/>
+      <chord value="0.188344847948849"/>
+      <chord value="0.1841791200415427"/>
+      <chord value="0.17669116227989845"/>
+      <chord value="0.16731560876221993"/>
+      <chord value="0.15689706032767328"/>
+      <chord value="0.14589187815903823"/>
+      <chord value="0.13450354169964238"/>
+      <chord value="0.12701427738149523"/>
+      <chord value="0.12066261598801846"/>
+      <chord value="0.11276899525327326"/>
+      <chord value="0.1025071030747117"/>
+      <chord value="0.08828462252899054"/>
+      <chord value="0.06620304530390994"/>
+      <chord value="0.0033101522651954973"/>
+   </GeometryCard>
+   <ModifyCard>
+      <Count value="9"/>
+      <AngleDelta value="0.000"/>
+      <AngleScale value="1"/>
+      <ChordDelta value="0.0"/>
+      <ChordScale value="1.001"/>
+      <ChordTaper value="1.0"/>
+      <VelocityRoot value="1.0"/>
+      <RadiusRoot value="0.5"/>
+      <ThreadingLine value="33.0"/>
+      <ThicknessTE value="0.5"/>
+   </ModifyCard>
+</JavaProp>

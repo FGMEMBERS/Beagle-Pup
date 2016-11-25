@@ -23,101 +23,145 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
 <!--
-Configuration notes:
+McCauley 1A105-SCM-7053
 
-Original configuration generated with Aeromatic:
+Created using JavaProp. Blade angle scaled to achieve 17.8* pitch. Chord
+scaled to achieve 2350 static RPM.
 
-Inputs:
-                horsepower: 100
-                     pitch: fixed
-            max engine rpm: 2800
-        prop diameter (in): 70
+Blades:             2
+RPM (max):          2750
+Diameter:           70" (5.83', 1.778m)
+Spinner Diameter:   5 1/4" (0.13m)
+Velocity (max):     110kt (57m/s)
+Power (max):        100hp (75kW)
+Weight:             19.5lb (0.606slug)
+Geometric Pitch:    53" (1.346m, 17.8*)
+Static RPM:         2300-2400
+Moment of Inertia:  1.716slug*ft2
 
-The last four digits in the designation of a McCauley propeller give the 
-diameter in inches and the geometric pitch of the propeller.
+Notes:
 
-The geometric pitch is the circumference of the propeller disc at the blade
-station multiplied by the tangent of the blade angle at that point. The blade
-station is the point at 0.75 of the radius.
-
-The blade pitch angle can be calculated using this Python snippet:
-
+Geometric pitch calculated as
 GP = 53 
 D = 70
 (180 / math.pi) * math.atan((GP) / (D * 0.75 * math.pi))
 
-The pitch angle has been rounded to the nearest degree.
+Inertia calculated as m/12*D^2.
 
 References:
-
-1. Continental Overhaul Manual for Aircraft Engine Models C75, C85, C90 & O-200
-  http://www.culvercadet.com/manuals/C85_overhaul_manual.pdf
-
-2. McCauley Propeller Systems Owner/Operator Information Manual
-  http://www.mccauley.textron.com/mpc26ow.pdf
-
+https://www.easa.europa.eu/system/files/dfu/SAS%20A%20082%20Iss%205%20final.pdf
+http://www.pilotfriend.com/aircraft%20performance/Beagle/Beagle%20Pup%20100.htm
+http://www.grummanpilotsassociation.com/wp-content/uploads/2015/10/P-918.pdf
+http://www.mh-aerotools.de/airfoils/prop_precession_english.htm
+http://hyperphysics.phy-astr.gsu.edu/hbase/mi2.html
 -->
 
 <propeller name="McCauley_1A105-SCM-7053">
-  <ixx>2.31</ixx>
+
+  <ixx unit="SLUG*FT2">1.716</ixx>
   <constspeed>0</constspeed>
   <diameter unit="IN">70.0</diameter>
-  <minpitch>18.0</minpitch>
-  <maxpitch>18.0</maxpitch>
   <numblades>2</numblades>
   <gearratio>1.0</gearratio>
-  <p_factor>5.53</p_factor>
+
+  <ct_factor>1.0</ct_factor>
+  <cp_factor>1.0</cp_factor>
 
   <table name="C_THRUST" type="internal">
-     <tableData>
-       0.0   0.0339
-       0.1   0.0325
-       0.2   0.0311
-       0.3   0.0286
-       0.4   0.0257
-       0.5   0.0227
-       0.6   0.0183
-       0.7   0.0139
-       0.8   0.0075
-       1.0  -0.0026
-       1.2  -0.0133
-       1.4  -0.0240
-     </tableData>
+    <tableData>
+      0.000 0.100104
+      0.050 0.099527
+      0.100 0.100509
+      0.150 0.099775
+      0.200 0.098900
+      0.250 0.098332
+      0.300 0.096692
+      0.350 0.093719
+      0.400 0.089375
+      0.450 0.083793
+      0.500 0.077544
+      0.550 0.070565
+      0.600 0.063478
+      0.650 0.056202
+      0.700 0.048724
+      0.750 0.041065
+      0.800 0.033239
+      0.850 0.025254
+      0.860 0.023637
+      0.870 0.022015
+      0.880 0.020388
+      0.890 0.018762
+      0.900 0.017115
+      0.910 0.015471
+      0.920 0.013821
+      0.930 0.012164
+      0.940 0.010507
+      0.950 0.008851
+      0.960 0.007197
+      0.970 0.005543
+      0.980 0.003891
+      0.990 0.002257
+      1.000 0.000617
+      1.010 -0.001000
+      1.020 -0.002615
+    </tableData>
   </table>
 
   <table name="C_POWER" type="internal">
-     <tableData>
-       0.0   0.0228
-       0.1   0.0228
-       0.2   0.0222
-       0.3   0.0217
-       0.4   0.0204
-       0.5   0.0187
-       0.6   0.0172
-       0.7   0.0144
-       0.8   0.0118
-       1.0   0.0042
-       1.2  -0.0067
-       1.4  -0.0203
-       1.6  -0.0344
-     </tableData>
+    <tableData>
+      0.000 0.057528
+      0.050 0.047825
+      0.100 0.057011
+      0.150 0.058209
+      0.200 0.059606
+      0.250 0.056091
+      0.300 0.057050
+      0.350 0.057622
+      0.400 0.057472
+      0.450 0.056484
+      0.500 0.054884
+      0.550 0.052508
+      0.600 0.049643
+      0.650 0.046232
+      0.700 0.042237
+      0.750 0.037638
+      0.800 0.032413
+      0.850 0.026541
+      0.860 0.025286
+      0.870 0.024005
+      0.880 0.022698
+      0.890 0.021369
+      0.900 0.020000
+      0.910 0.018611
+      0.920 0.017195
+      0.930 0.015749
+      0.940 0.014281
+      0.950 0.012793
+      0.960 0.011284
+      0.970 0.009753
+      0.980 0.008204
+      0.990 0.006652
+      1.000 0.005072
+      1.010 0.003496
+      1.020 0.001902
+    </tableData>
   </table>
 
-<!-- thrust effects of helical tip Mach -->
-<table name="CT_MACH" type="internal">
-  <tableData>
-    0.85   1.0
-    1.05   0.8
-  </tableData>
-</table>
+  <!-- thrust effects of helical tip Mach -->
+  <table name="CT_MACH" type="internal">
+    <tableData>
+      0.85   1.0
+      1.05   0.8
+    </tableData>
+  </table>
 
-<!-- power-required effects of helical tip Mach -->
-<table name="CP_MACH" type="internal">
-  <tableData>
-    0.85   1.0
-    1.05   1.8
-    2.00   1.4
-  </tableData>
-</table>
+  <!-- power-required effects of helical tip Mach -->
+  <table name="CP_MACH" type="internal">
+    <tableData>
+      0.85   1.0
+      1.05   1.8
+      2.00   1.4
+    </tableData>
+  </table>
 
 </propeller>

@@ -2,7 +2,7 @@
 <!--
 **************************************************************************
 
-Continental 0-200-A Piston Engine
+Lycoming O-320-D2C Piston Engine
 
 Copyright (c) 2015 Richard Senior
 
@@ -25,30 +25,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <!--
 References:
 
-1. Continental Overhaul Manual For Aircraft Engine Models C75, C85, C90 & C200
-www.culvercadet.com/manuals/C85_overhaul_manual.pdf
-
-2. Beagle Pup 100 Specifications
-www.pilotfriend.com/aircraft%20performance/Beagle/Beagle%20Pup%20100.htm
-
-3. Beagle Pup Performace
-www.flightglobal.com/FlightPDFArchive/1968/1968%20-%200659.PDF
+1. Lycoming O-320 Operator's Manual
+http://grummanpilotsassociation.com/wp-content/uploads/2015/01/Lycoming-O-320-Operators-Manual.pdf
 -->
 
-<piston_engine name="Continental 0-200-A">
+<piston_engine name="Lycoming O-320-D2C">
 
-  <!-- Basic Parameters -->
-  <minmp unit="INHG">11.42</minmp>
-  <maxmp unit="INHG">29.42</maxmp>
+  <!-- Basic Paremeters -->
+  <minmp unit="INHG">12.0</minmp>
+  <maxmp unit="INHG">28.5</maxmp>
   <man-press-lag>1.0</man-press-lag>
-  <starter-torque>50</starter-torque>
+  <starter-torque>75</starter-torque>
   <starter-rpm>800</starter-rpm>
-  <idlerpm>400</idlerpm>
-  <maxrpm>2750</maxrpm>
-  <maxhp>100</maxhp>
-  <displacement unit="IN3">201</displacement>
+  <idlerpm>400.0</idlerpm>
+  <maxrpm>2750.0</maxrpm>
+  <maxhp>160.00</maxhp>
+  <displacement unit="IN3">319.8</displacement>
   <cycles>4.0</cycles>
-  <bore unit="IN">4.0625</bore>
+  <bore unit="IN">5.125</bore>
   <stroke unit="IN">3.875</stroke>
   <compression-ratio>7.0</compression-ratio>
   <sparkfaildrop>0.1</sparkfaildrop>
@@ -62,8 +56,7 @@ www.flightglobal.com/FlightPDFArchive/1968/1968%20-%200659.PDF
 
   <!-- Cooling Control -->
   <cylinders>4.0</cylinders>
-  <cylinder-head-mass unit="LBS">10</cylinder-head-mass>
+  <cylinder-head-mass unit="LBS">12</cylinder-head-mass>
   <cooling-factor>0.6</cooling-factor>
 
 </piston_engine>
-
