@@ -45,6 +45,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <input>aero/force/Drag_mach</input>
       <input>aero/force/Drag_beta</input>
       <input>aero/force/Drag_elevator</input>
+      <input>aero/force/Drag_gear</input>
       <input>aero/force/Drag_flap</input>
       <output>analysis/total-drag</output>
     </summer>

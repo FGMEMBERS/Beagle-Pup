@@ -21,9 +21,9 @@ pup150
 2.00                          ; Wing incidence
 6.67                          ; Wing dihedral
 3.00                          ; Wing sweep (quarter chord)
-38.40                         ; Htail area
+27.50                         ; Htail area
 11.86                         ; Htail arm
-28.46                         ; Vtail area
+21.70                         ; Vtail area
 12.34                         ; Vtail arm
 
 Lycoming_0-320-A2B

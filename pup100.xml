@@ -29,7 +29,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <fileheader>
     <author>Richard Senior (Aeromatic v3.3.8)</author>
-    <filecreationdate>23 Nov 2016</filecreationdate>
+    <filecreationdate>25 Nov 2016</filecreationdate>
     <version>0.2</version>
     <description>Beagle 121 Series 1 (Pup 100)</description>
   </fileheader>
@@ -64,7 +64,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     wing loading:       13.39 lb/sq-ft
      - thickness ratio: 5.78%
     payload:            280.20 lbs
-    CL-alpha:           5.66 per radian
+    CL-alpha:           5.43 per radian
     CL-0:               0.22
     CL-max:             1.03
     CD-0:               0.02
@@ -77,9 +77,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <wingspan  unit="FT" >   31.00 </wingspan>
     <wing_incidence unit="DEG"> 2.00 </wing_incidence>
     <chord     unit="FT" >    3.82 </chord>
-    <htailarea unit="FT2">    38.40 </htailarea>
+    <htailarea unit="FT2">    27.50 </htailarea>
     <htailarm  unit="FT" >    11.86 </htailarm>
-    <vtailarea  unit="FT2">   28.46 </vtailarea>
+    <vtailarea  unit="FT2">   21.70 </vtailarea>
     <vtailarm  unit="FT" >    12.34 </vtailarm>
     <location name="AERORP" unit="IN">
       <x>  86.00 </x>

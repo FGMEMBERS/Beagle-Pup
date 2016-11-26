@@ -105,12 +105,41 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <fdm>
     <jsbsim>
       <tuning>
-        <elevator>1.0</elevator>
-        <flap>0.85</flap>
+        <lift-propwash>1.0</lift-propwash>
+        <lift-alpha>1.0</lift-alpha>
+        <lift-pitch-rate>1.0</lift-pitch-rate>
+        <lift-alpha-rate>1.0</lift-alpha-rate>
+        <lift-elevator>1.0</lift-elevator>
+        <lift-flap>1.0</lift-flap>
+        <drag-minimum>1.8</drag-minimum>
+        <drag-alpha>1.0</drag-alpha>
+        <drag-induced>1.0</drag-induced>
+        <drag-mach>1.0</drag-mach>
+        <drag-beta>1.0</drag-beta>
+        <drag-elevator>1.0</drag-elevator>
+        <drag-gear>1.0</drag-gear>
+        <drag-flap>1.0</drag-flap>
+        <side-beta>1.0</side-beta>
+        <side-roll-rate>1.0</side-roll-rate>
+        <side-yaw-rate>1.0</side-yaw-rate>
+        <side-rudder>1.0</side-rudder>
+        <pitch-propwash>1.0</pitch-propwash>
+        <pitch-alpha>1.0</pitch-alpha>
+        <pitch-elevator>1.0</pitch-elevator>
         <pitch-damp>1.0</pitch-damp>
-        <propwash>1.0</propwash>
+        <pitch-alphadot>1.0</pitch-alphadot>
+        <roll-differential-propwash>1.0</roll-differential-propwash>
+        <roll-beta>1.0</roll-beta>
         <roll-damp>1.0</roll-damp>
+        <roll-yaw>1.0</roll-yaw>
+        <roll-aileron>1.0</roll-aileron>
+        <roll-rudder>1.0</roll-rudder>
+        <yaw-alpha>1.0</yaw-alpha>
+        <yaw-beta>1.0</yaw-beta>
+        <yaw-roll-rate>1.0</yaw-roll-rate>
         <yaw-damp>1.0</yaw-damp>
+        <yaw-rudder>1.0</yaw-rudder>
+        <yaw-aileron>1.0</yaw-aileron>
       </tuning>
     </jsbsim>
   </fdm>
@@ -171,7 +200,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <menubar include="Interface/menubar.xml"/>
 
     <author>Richard Senior</author>
-    <aircraft-version>0.26.0</aircraft-version>
+    <aircraft-version>0.26.1</aircraft-version>
     <flight-model>jsb</flight-model>
 
     <aircraft-data>
