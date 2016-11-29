@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim>
+    <model>
+      <livery>
+        <name>G-AXOZ (White/Blue)</name>
+        <texture>Liveries/pup100/G-AXOZ.png</texture>
+        <ambient-correction>0.1</ambient-correction>
+        <reflection-correction>-0.3</reflection-correction>
+      </livery>
+    </model>
+  </sim>
+
+</PropertyList>

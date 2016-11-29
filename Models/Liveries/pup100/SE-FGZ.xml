@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim>
+    <model>
+      <livery>
+        <name>SE-FGZ (Yellow/Black)</name>
+        <texture>Liveries/pup100/SE-FGZ.png</texture>
+        <ambient-correction>0.1</ambient-correction>
+        <reflection-correction>-0.2</reflection-correction>
+      </livery>
+    </model>
+  </sim>
+
+</PropertyList>
