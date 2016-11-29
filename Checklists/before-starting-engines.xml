@@ -170,23 +170,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
-  <!-- Flaps - TAKEOFF -->
-  <item>
-    <name>Flaps</name>
-    <value>FULL</value>
-    <condition>
-      <greater-than>
-        <property>fdm/jsbsim/fcs/flap-pos-norm</property>
-        <value>0.99</value>
-      </greater-than>
-    </condition>
-    <binding>
-      <command>property-assign</command>
-      <property>controls/flight/flaps</property>
-      <value>1.0</value>
-    </binding>
-  </item>
-
   <!-- Main Battery - OFF -->
   <item>
     <name>Main Battery</name>

@@ -175,6 +175,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <component>
       <kind type="string">output</kind>
+      <name type="string">Stall Warning</name>
+      <prop type="string">systems/electrical/outputs/stall-warning</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
       <name type="string">Beacon</name>
       <prop type="string">systems/electrical/outputs/beacon</prop>
     </component>
@@ -243,6 +249,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <input type="string">DC Bus</input>
       <output type="string">Fuel Pump</output>
       <switch type="string">controls/electric/engine/fuel-pump</switch>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">Stall Warning</output>
     </connector>
 
     <connector>

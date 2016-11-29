@@ -98,8 +98,6 @@ var kr87 = {
     aircraft.data.add(
       m.adfButtonN,
       m.bfoButtonN,
-      m.volumeNormN, 
-      m.powerButtonN,
       m.standbyFrequencyN,
       m.baseN.getNode( "frequencies/selected-khz", 1 )
     );
@@ -173,6 +171,8 @@ var kr87 = {
       me.displayModeN.setIntValue( 0 );
     }
     me.power = me.powerButtonN.getValue();
+
+    me.baseN.getNode("ident-audible").setBoolValue(me.volumeNormN.getValue() >= 0.2);
 
     settimer( func { me.update() }, 0.1 );
   }

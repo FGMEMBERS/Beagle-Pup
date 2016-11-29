@@ -60,10 +60,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <input>
       <and>
         <not>
-          <and>
+          <or>
             <property>gear/gear[1]/wow</property>
             <property>gear/gear[2]/wow</property>
-          </and>
+          </or>
         </not>
         <or>
           <and>

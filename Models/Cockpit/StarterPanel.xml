@@ -140,7 +140,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <type>knob</type>
     <object-name>AlternatorSwitch</object-name>
     <property>controls/electric/engine/generator</property>
-    <factor>-40</factor>
+    <factor>-25</factor>
     <offset-deg>0</offset-deg>
     <center>
       <x-m>0.0024</x-m>
@@ -168,7 +168,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <type>knob</type>
     <object-name>BatterySwitch</object-name>
     <property>controls/electric/battery-switch</property>
-    <factor>-40</factor>
+    <factor>-25</factor>
     <offset-deg>0</offset-deg>
     <center>
       <x-m>0.0024</x-m>
@@ -196,7 +196,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <type>knob</type>
     <object-name>BoostPumpSwitch</object-name>
     <property>controls/electric/engine/fuel-pump</property>
-    <factor>-40</factor>
+    <factor>-25</factor>
     <offset-deg>0</offset-deg>
     <center>
       <x-m>0.0024</x-m>
@@ -224,8 +224,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <type>knob</type>
     <object-name>FuelContentsSwitch</object-name>
     <property>instrumentation/fuel-gauge/tank-select</property>
-    <factor>40</factor>
-    <offset-deg>0</offset-deg>
+    <factor>30</factor>
+    <offset-deg>-15</offset-deg>
     <center>
       <x-m>0.0024</x-m>
       <y-m>0.0318</y-m>
@@ -252,7 +252,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <type>knob</type>
     <object-name>StarterMasterSwitch</object-name>
     <property>controls/electric/engine/starter-master</property>
-    <factor>-40</factor>
+    <factor>-25</factor>
     <offset-deg>0</offset-deg>
     <center>
       <x-m>0.0024</x-m>

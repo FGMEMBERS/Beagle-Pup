@@ -34,7 +34,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <z-offset-m type="double">2.3</z-offset-m>
       <target-z-offset-m type="double">2.4</target-z-offset-m>
       <pitch-offset-deg>-15</pitch-offset-deg>
-      <default-field-of-view-deg type="double">65.0</default-field-of-view-deg>
+      <default-field-of-view-deg type="double">70.0</default-field-of-view-deg>
     </config>
   </view>
 

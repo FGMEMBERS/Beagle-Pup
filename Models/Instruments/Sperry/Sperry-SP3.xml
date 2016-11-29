@@ -152,10 +152,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <type>knob</type>
     <object-name>OnOffSwitch</object-name>
     <property>autopilot/sperry/main-switch</property>
-    <factor>-60</factor>
-    <offset-deg>30</offset-deg>
+    <factor>-25</factor>
+    <offset-deg>0</offset-deg>
     <center>
-      <x-m>0.0064</x-m>
+      <x-m>0.0059</x-m>
       <y-m>0.0409</y-m>
       <z-m>-0.0141</z-m>
     </center>

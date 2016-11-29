@@ -26,7 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <title>Before Taxi</title>
 
-  <!-- Autopilot - OFF -->
+  <!-- Autopilot - CHECK -->
   <item>
     <name>Autopilot</name>
     <value>CHECK</value>
@@ -51,6 +51,46 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <property>autopilot/sperry/pitch-select</property>
       <value>4.0</value>
       <time>1.0</time>
+    </binding>
+  </item>
+
+  <!-- Radios - ON -->
+  <item>
+    <name>Radios</name>
+    <value>ON</value>
+    <condition>
+      <and>
+        <property>instrumentation/adf/power-btn</property>
+        <property>instrumentation/comm/power-btn</property>
+        <property>instrumentation/dme/power-btn</property>
+      </and>
+    </condition>
+    <binding>
+      <command>property-interpolate</command>
+      <property>instrumentation/adf/volume-norm</property>
+      <value>0.1</value>
+      <time>0.5</time>
+    </binding>
+    <binding>
+      <command>property-assign</command>
+      <property>instrumentation/adf/power-btn</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>property-interpolate</command>
+      <property>instrumentation/comm/volume</property>
+      <value>0.5</value>
+      <time>0.5</time>
+    </binding>
+    <binding>
+      <command>property-assign</command>
+      <property>instrumentation/comm/power-btn</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>property-assign</command>
+      <property>instrumentation/dme/power-btn</property>
+      <value>1</value>
     </binding>
   </item>
 
@@ -104,7 +144,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <property>sim/checklists/auto/active</property>
         <less-than>
           <property>instrumentation/altimeter/absolute-altitude-error-ft</property>
-          <value>25</value>
+          <value>50</value>
         </less-than>
       </or>
     </condition>

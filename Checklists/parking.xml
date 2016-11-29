@@ -81,6 +81,52 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
+  <!-- Radios - OFF -->
+  <item>
+    <name>Radios</name>
+    <value>OFF</value>
+    <condition>
+      <and>
+        <not>
+          <property>instrumentation/adf/power-btn</property>
+        </not>
+        <not>
+          <property>instrumentation/comm/power-btn</property>
+        </not>
+        <not>
+          <property>instrumentation/dme/power-btn</property>
+        </not>
+      </and>
+    </condition>
+    <binding>
+      <command>property-interpolate</command>
+      <property>instrumentation/adf/volume-norm</property>
+      <value>0.0</value>
+      <time>0.5</time>
+    </binding>
+    <binding>
+      <command>property-assign</command>
+      <property>instrumentation/adf/power-btn</property>
+      <value>0</value>
+    </binding>
+    <binding>
+      <command>property-interpolate</command>
+      <property>instrumentation/comm/volume</property>
+      <value>0.0</value>
+      <time>0.5</time>
+    </binding>
+    <binding>
+      <command>property-assign</command>
+      <property>instrumentation/comm/power-btn</property>
+      <value>0</value>
+    </binding>
+    <binding>
+      <command>property-assign</command>
+      <property>instrumentation/dme/power-btn</property>
+      <value>0</value>
+    </binding>
+  </item>
+
   <!-- Throttle - TICK OVER -->
   <item>
     <name>Tick Over</name>

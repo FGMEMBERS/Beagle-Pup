@@ -84,13 +84,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <name>Boost Pump</name>
     <value>ON</value>
     <condition>
-      <or>
-        <property>engines/engine/running</property>
-        <greater-than>
-          <property>systems/electrical/outputs/fuel-pump</property>
-          <value>0</value>
-        </greater-than>
-      </or>
+      <greater-than>
+        <property>systems/electrical/outputs/fuel-pump</property>
+        <value>0</value>
+      </greater-than>
     </condition>
     <binding>
       <command>property-assign</command>
@@ -153,7 +150,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <condition>
       <less-than>
         <property>instrumentation/altimeter/absolute-altitude-error-ft</property>
-        <value>25</value>
+        <value>50</value>
       </less-than>
     </condition>
     <binding>
