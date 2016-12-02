@@ -346,16 +346,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </axis>
     <action>
       <binding>
-        <command>property-assign</command>
-        <property>controls/engines/engine/starter</property>
-        <value>1</value>
+        <command>nasal</command>
+        <script>controls.startEngine(1);</script>
       </binding>
     </action>
     <release>
       <binding>
-        <command>property-assign</command>
-        <property>controls/engines/engine/starter</property>
-        <value>0</value>
+        <command>nasal</command>
+        <script>controls.startEngine(0);</script>
       </binding>
     </release>
   </animation>

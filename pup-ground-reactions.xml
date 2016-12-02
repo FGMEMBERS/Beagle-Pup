@@ -38,7 +38,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <spring_coeff unit="LBS/FT">3200</spring_coeff>
     <damping_coeff unit="LBS/FT/SEC">1000</damping_coeff>
     <damping_coeff_rebound type="SQUARE" unit="LBS/FT2/SEC2">1000</damping_coeff_rebound>
-    <max_steer unit="DEG">12.5</max_steer>
+    <max_steer unit="DEG">10</max_steer>
     <brake_group>NONE</brake_group>
     <retractable>0</retractable>
   </contact>

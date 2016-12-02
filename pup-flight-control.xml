@@ -35,8 +35,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </clipto>
     </summer>
 
-    <aerosurface_scale name="Elevator Control">
+    <kinematic name="Pitch Trim Kinematic">
       <input>fcs/pitch-trim-sum</input>
+      <traverse>
+        <setting>
+          <position>-1</position>
+          <time>0.2</time>
+        </setting>
+        <setting>
+          <position>1</position>
+          <time>0.2</time>
+        </setting>
+      </traverse>
+      <output>fcs/pitch-trim-kinematic</output>
+    </kinematic>
+
+    <aerosurface_scale name="Elevator Control">
+      <input>fcs/pitch-trim-kinematic</input>
       <gain>1.0</gain>
       <range>
         <min>-30</min>
@@ -71,8 +86,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </clipto>
     </summer>
 
-    <aerosurface_scale name="Left Aileron Control">
+    <kinematic name="Roll Trim Kinematic">
       <input>fcs/roll-trim-sum</input>
+      <traverse>
+        <setting>
+          <position>-1</position>
+          <time>0.2</time>
+        </setting>
+        <setting>
+          <position>1</position>
+          <time>0.2</time>
+        </setting>
+      </traverse>
+      <output>fcs/roll-trim-kinematic</output>
+    </kinematic>
+
+    <aerosurface_scale name="Left Aileron Control">
+      <input>fcs/roll-trim-kinematic</input>
       <range>
         <min>-28</min>
         <max> 12</max>
@@ -94,7 +124,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </aerosurface_scale>
 
     <aerosurface_scale name="Right Aileron Control">
-      <input>fcs/roll-trim-sum</input>
+      <input>fcs/roll-trim-kinematic</input>
       <range>
         <min>-28</min>
         <max> 12</max>
@@ -128,8 +158,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </clipto>
     </summer>
 
-    <aerosurface_scale name="Rudder Control">
+    <kinematic name="Rudder Kinematic">
       <input>fcs/rudder-command-sum</input>
+      <traverse>
+        <setting>
+          <position>-1</position>
+          <time>0.2</time>
+        </setting>
+        <setting>
+          <position>1</position>
+          <time>0.2</time>
+        </setting>
+      </traverse>
+      <output>fcs/rudder-trim-kinematic</output>
+    </kinematic>
+
+    <aerosurface_scale name="Rudder Control">
+      <input>fcs/rudder-trim-kinematic</input>
       <range>
         <min>-25</min>
         <max> 25</max>

@@ -110,7 +110,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <lift-pitch-rate>1.0</lift-pitch-rate>
         <lift-alpha-rate>1.0</lift-alpha-rate>
         <lift-elevator>1.0</lift-elevator>
-        <lift-flap>1.0</lift-flap>
+        <lift-flap>0.85</lift-flap>
         <drag-minimum>1.8</drag-minimum>
         <drag-alpha>1.0</drag-alpha>
         <drag-induced>1.0</drag-induced>
@@ -124,9 +124,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <side-yaw-rate>1.0</side-yaw-rate>
         <side-rudder>1.0</side-rudder>
         <pitch-propwash>1.0</pitch-propwash>
-        <pitch-alpha>1.0</pitch-alpha>
+        <pitch-alpha>0.03</pitch-alpha>
         <pitch-elevator>1.0</pitch-elevator>
-        <pitch-damp>1.0</pitch-damp>
+        <pitch-damp>1.2</pitch-damp>
         <pitch-alphadot>1.0</pitch-alphadot>
         <roll-differential-propwash>1.0</roll-differential-propwash>
         <roll-beta>1.0</roll-beta>
@@ -206,7 +206,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <menubar include="Interface/menubar.xml"/>
 
     <author>Richard Senior</author>
-    <aircraft-version>0.26.3</aircraft-version>
+    <aircraft-version>0.26.4</aircraft-version>
     <flight-model>jsb</flight-model>
 
     <aircraft-data>

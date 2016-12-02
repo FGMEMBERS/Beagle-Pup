@@ -47,9 +47,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <value>0</value>
     </binding>
     <binding>
+      <condition>
+        <equals>
+          <property>sim/aero</property>
+          <value>pup100</value>
+        </equals>
+      </condition>
       <command>property-interpolate</command>
       <property>autopilot/sperry/pitch-select</property>
-      <value>4.0</value>
+      <value>4.5</value>
+      <time>1.0</time>
+    </binding>
+    <binding>
+      <condition>
+        <not-equals>
+          <property>sim/aero</property>
+          <value>pup100</value>
+        </not-equals>
+      </condition>
+      <command>property-interpolate</command>
+      <property>autopilot/sperry/pitch-select</property>
+      <value>6.0</value>
       <time>1.0</time>
     </binding>
   </item>

@@ -111,8 +111,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <object-name>Tachometer2700</object-name>
     <condition>
       <equals>
-        <property>sim/aero</property>
-        <value>pup150</value>
+        <property>fdm/jsbsim/propulsion/engine/manufacturer-code</property>
+        <value>1</value>
       </equals>
     </condition>
   </animation>
@@ -121,10 +121,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <type>select</type>
     <object-name>Tachometer2750</object-name>
     <condition>
-      <not-equals>
-        <property>sim/aero</property>
-        <value>pup150</value>
-      </not-equals>
+      <equals>
+        <property>fdm/jsbsim/propulsion/engine/manufacturer-code</property>
+        <value>0</value>
+      </equals>
     </condition>
   </animation>
 
