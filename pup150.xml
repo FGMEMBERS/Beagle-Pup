@@ -214,6 +214,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <system file="analysis"/>
   <system file="crash-detect"/>
   <system file="fuel"/>
+  <system file="icing"/>
 
   <!-- Required for aeromatic generated FDM -->
   <system name="Landing Gear">

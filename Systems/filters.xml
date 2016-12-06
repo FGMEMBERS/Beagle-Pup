@@ -508,4 +508,29 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <output>instrumentation/vacuum/suction-inhg-filtered</output>
   </filter>
 
+  <!-- Airspeed Indicator -->
+
+  <filter>
+    <type>gain</type>
+    <gain>
+      <condition>
+        <greater-than>
+          <property>systems/electrical/outputs/lvoltrelay-fuelconts-bus-dc</property>
+          <value>0</value>
+        </greater-than>
+      </condition>
+      <value>1</value>
+    </gain>
+    <gain>0</gain>
+    <input>instrumentation/airspeed-indicator/indicated-speed-kt</input>
+    <output>instrumentation/airspeed-indicator/indicated-speed-kt-switched</output>
+  </filter>
+
+  <filter>
+    <type>exponential</type>
+    <filter-time>0.8</filter-time>
+    <input>instrumentation/airspeed-indicator/indicated-speed-kt-switched</input>
+    <output>instrumentation/airspeed-indicator/indicated-speed-kt-filtered</output>
+  </filter>
+
 </PropertyList>

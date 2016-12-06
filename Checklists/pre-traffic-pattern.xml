@@ -59,4 +59,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
+  <!-- Pitot Heater - AS REQUIRED -->
+  <item>
+    <name>Pitot Heater</name>
+    <value>AS REQUIRED</value>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/switches/circuit-breakers/pitot-heater</property>
+      <value>1</value>
+    </binding>
+  </item>
+
 </PropertyList>

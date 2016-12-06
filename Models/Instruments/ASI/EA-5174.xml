@@ -37,7 +37,7 @@ License: GPL
   <animation>
     <type>rotate</type>
     <object-name>Gauge</object-name>
-    <property>/velocities/airspeed-kt</property>
+    <property>instrumentation/airspeed-indicator/indicated-speed-kt-filtered</property>
     <interpolation>
       <entry><ind>   0</ind><dep>    0</dep></entry>
       <entry><ind>  40</ind><dep>   27</dep></entry>

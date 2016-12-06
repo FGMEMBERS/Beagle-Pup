@@ -227,7 +227,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <menubar include="Interface/menubar.xml"/>
 
     <author>Richard Senior</author>
-    <aircraft-version>0.27.0</aircraft-version>
+    <aircraft-version>0.27.1</aircraft-version>
     <flight-model>jsb</flight-model>
 
     <aircraft-data>
@@ -339,6 +339,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </tags>
 
   </sim>
+
+  <systems>
+    <pitot>
+      <total-pressure-inhg-icing alias="/fdm/jsbsim/systems/pitot/total-pressure-inhg"/>
+    </pitot>
+  </systems>
 
   <limits>
     <max-flap-extension-speed>

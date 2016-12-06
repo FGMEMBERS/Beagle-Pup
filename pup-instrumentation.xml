@@ -34,7 +34,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <airspeed-indicator>
     <name>airspeed-indicator</name>
     <number>0</number>
-    <total-pressure>/systems/pitot/total-pressure-inhg</total-pressure>
+    <total-pressure>/systems/pitot/total-pressure-inhg-icing</total-pressure>
     <static-pressure>/systems/static/pressure-inhg</static-pressure>
   </airspeed-indicator>
 
