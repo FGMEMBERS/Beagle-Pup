@@ -197,8 +197,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>controls/lighting/taxi-light</property>
-      <value>1</value>
+      <property>controls/switches/land-taxi</property>
+      <value>0</value>
     </binding>
     <binding>
       <command>nasal</command>

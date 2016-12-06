@@ -122,6 +122,105 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </item>
 
   <!-- Circuit Breakers - ALL IN -->
+  <item>
+    <name>Circuit Breakers (ex. Beacon/Pitot)</name>
+    <value>ALL IN</value>
+    <condition>
+      <and>
+        <property>controls/switches/circuit-breakers/adf</property>
+        <property>controls/switches/circuit-breakers/alt</property>
+        <property>controls/switches/circuit-breakers/alt-field</property>
+        <property>controls/switches/circuit-breakers/am-dg</property>
+        <property>controls/switches/circuit-breakers/ap</property>
+        <property>controls/switches/circuit-breakers/comm</property>
+        <property>controls/switches/circuit-breakers/dme</property>
+        <property>controls/switches/circuit-breakers/flaps</property>
+        <property>controls/switches/circuit-breakers/landtaxi-nav</property>
+        <property>controls/switches/circuit-breakers/lvrelay-fuelconts</property>
+        <property>controls/switches/circuit-breakers/pilot1flood</property>
+        <property>controls/switches/circuit-breakers/pilot2flood</property>
+        <property>controls/switches/circuit-breakers/stallwarning-boostpump</property>
+        <property>controls/switches/circuit-breakers/tb</property>
+        <property>controls/switches/circuit-breakers/txp</property>
+      </and>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/switches/circuit-breakers/adf</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/switches/circuit-breakers/alt</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/switches/circuit-breakers/alt-field</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/switches/circuit-breakers/am-dg</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/switches/circuit-breakers/ap</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/switches/circuit-breakers/comm</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/switches/circuit-breakers/dme</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/switches/circuit-breakers/flaps</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/switches/circuit-breakers/landtaxi-nav</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/switches/circuit-breakers/lvrelay-fuelconts</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/switches/circuit-breakers/pilot1flood</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/switches/circuit-breakers/pilot2flood</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/switches/circuit-breakers/stallwarning-boostpump</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/switches/circuit-breakers/tb</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/switches/circuit-breakers/txp</property>
+      <value>1</value>
+    </binding>
+  </item>
+
   <!-- Prime with Throttle - 1 to 4 STROKES -->
 
   <!-- Open Throttle - 1/4 -->
@@ -184,7 +283,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>controls/lighting/nav-lights</property>
+      <property>controls/switches/circuit-breakers/landtaxi-nav</property>
       <value>1</value>
     </binding>
     <binding>
@@ -295,7 +394,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>controls/lighting/beacon</property>
+      <property>controls/switches/circuit-breakers/beacon</property>
       <value>1</value>
     </binding>
     <binding>

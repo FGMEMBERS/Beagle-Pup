@@ -34,12 +34,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <property>systems/electrical/outputs/flap-indicator</property>
     </condition>
     <emission>
-      <red>0.7</red>
-      <green>0.7</green>
-      <blue>0.7</blue>
-      <factor-prop>controls/lighting/panel-norm</factor-prop>
+      <red>0.40</red>
+      <green>0.35</green>
+      <blue>0.35</blue>
+      <factor-prop>controls/lighting/flood-norm</factor-prop>
     </emission>
   </animation>
+
+  <effect>
+    <inherits-from>Aircraft/Beagle-Pup/Models/Effects/Lights/headtorch</inherits-from>
+    <object-name>Face</object-name>
+    <object-name>Needle</object-name>
+  </effect>
 
   <animation>
     <type>translate</type>

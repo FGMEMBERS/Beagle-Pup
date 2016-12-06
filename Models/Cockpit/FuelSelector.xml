@@ -28,24 +28,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <animation>
     <type>material</type>
-    <object-name>Body</object-name>
+    <object-name>Base</object-name>
     <object-name>Handle</object-name>
-    <condition>
-      <property>systems/electrical/outputs/panel-lights</property>
-    </condition>
     <emission>
-      <red>0.3</red>
-      <green>0.3</green>
-      <blue>0.3</blue>
-      <factor-prop>controls/lighting/panel-norm</factor-prop>
+      <red>0.40</red>
+      <green>0.35</green>
+      <blue>0.35</blue>
+      <factor-prop>controls/lighting/flood-norm</factor-prop>
     </emission>
   </animation>
+
+  <effect>
+    <inherits-from>Aircraft/Beagle-Pup/Models/Effects/Lights/headtorch</inherits-from>
+    <object-name>Base</object-name>
+    <object-name>Handle</object-name>
+  </effect>
 
   <animation>
     <type>knob</type>
     <object-name>Handle</object-name>
     <property>controls/fuel/tank-selector</property>
-    <factor>45</factor>
+    <factor>90</factor>
     <center>
       <x-m>0</x-m>
       <y-m>0</y-m>

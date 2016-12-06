@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+**************************************************************************
+
+Beagle Pup Electrical Panel
+
+Copyright (c) 2016 Richard Senior
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+**************************************************************************
+-->
+
+<PropertyList>
+
+  <path>ElectricalPanel.ac</path>
+
+  <animation>
+    <type>material</type>
+    <object-name>Base</object-name>
+    <object-name>CB-Alt</object-name>
+    <object-name>CB-AltField</object-name>
+    <object-name>CB-AMDG</object-name>
+    <object-name>CB-TB</object-name>
+    <object-name>CB-LVoltRelayFuelConts</object-name>
+    <object-name>CB-StallWarningBoostPump</object-name>
+    <object-name>CB-Flaps</object-name>
+    <object-name>CB-Comm</object-name>
+    <object-name>CB-DME</object-name>
+    <object-name>CB-ADF</object-name>
+    <object-name>CB-AP</object-name>
+    <object-name>CB-1PilotFlood</object-name>
+    <object-name>CB-2PilotFlood</object-name>
+    <object-name>CB-TXP</object-name>
+    <object-name>CB-LandTaxiNav</object-name>
+    <object-name>SW-LandTaxi</object-name>
+    <object-name>CB-Beacon</object-name>
+    <object-name>CB-PitotHeater</object-name>
+    <emission>
+      <red>0.40</red>
+      <green>0.35</green>
+      <blue>0.35</blue>
+      <factor-prop>controls/lighting/flood-norm</factor-prop>
+    </emission>
+  </animation>
+
+  <effect>
+    <inherits-from>Aircraft/Beagle-Pup/Models/Effects/Lights/headtorch</inherits-from>
+    <object-name>Base</object-name>
+    <object-name>CB-Alt</object-name>
+    <object-name>CB-AltField</object-name>
+    <object-name>CB-AMDG</object-name>
+    <object-name>CB-TB</object-name>
+    <object-name>CB-LVoltRelayFuelConts</object-name>
+    <object-name>CB-StallWarningBoostPump</object-name>
+    <object-name>CB-Flaps</object-name>
+    <object-name>CB-Comm</object-name>
+    <object-name>CB-DME</object-name>
+    <object-name>CB-ADF</object-name>
+    <object-name>CB-AP</object-name>
+    <object-name>CB-1PilotFlood</object-name>
+    <object-name>CB-2PilotFlood</object-name>
+    <object-name>CB-TXP</object-name>
+    <object-name>CB-LandTaxiNav</object-name>
+    <object-name>SW-LandTaxi</object-name>
+    <object-name>CB-Beacon</object-name>
+    <object-name>CB-PitotHeater</object-name>
+  </effect>
+
+  <animation>
+    <type>slider</type>
+    <object-name>CB-Alt</object-name>
+    <property>controls/switches/circuit-breakers/alt</property>
+    <factor>-0.015</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/switches/circuit-breakers/alt</property>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>slider</type>
+    <object-name>CB-AltField</object-name>
+    <property>controls/switches/circuit-breakers/alt-field</property>
+    <factor>-0.015</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/switches/circuit-breakers/alt-field</property>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>slider</type>
+    <object-name>CB-AMDG</object-name>
+    <property>controls/switches/circuit-breakers/am-dg</property>
+    <factor>-0.015</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/switches/circuit-breakers/am-dg</property>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>slider</type>
+    <object-name>CB-TB</object-name>
+    <property>controls/switches/circuit-breakers/tb</property>
+    <factor>-0.015</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/switches/circuit-breakers/tb</property>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>slider</type>
+    <object-name>CB-LVoltRelayFuelConts</object-name>
+    <property>controls/switches/circuit-breakers/lvrelay-fuelconts</property>
+    <factor>-0.015</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/switches/circuit-breakers/lvrelay-fuelconts</property>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>slider</type>
+    <object-name>CB-StallWarningBoostPump</object-name>
+    <property>controls/switches/circuit-breakers/stallwarning-boostpump</property>
+    <factor>-0.015</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/switches/circuit-breakers/stallwarning-boostpump</property>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>slider</type>
+    <object-name>CB-Flaps</object-name>
+    <property>controls/switches/circuit-breakers/flaps</property>
+    <factor>-0.015</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/switches/circuit-breakers/flaps</property>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>slider</type>
+    <object-name>CB-Comm</object-name>
+    <property>controls/switches/circuit-breakers/comm</property>
+    <factor>-0.015</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/switches/circuit-breakers/comm</property>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>slider</type>
+    <object-name>CB-DME</object-name>
+    <property>controls/switches/circuit-breakers/dme</property>
+    <factor>-0.015</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/switches/circuit-breakers/dme</property>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>slider</type>
+    <object-name>CB-ADF</object-name>
+    <property>controls/switches/circuit-breakers/adf</property>
+    <factor>-0.015</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/switches/circuit-breakers/adf</property>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>slider</type>
+    <object-name>CB-AP</object-name>
+    <property>controls/switches/circuit-breakers/ap</property>
+    <factor>-0.015</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/switches/circuit-breakers/ap</property>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>slider</type>
+    <object-name>CB-1PilotFlood</object-name>
+    <property>controls/switches/circuit-breakers/pilot1flood</property>
+    <factor>-0.015</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/switches/circuit-breakers/pilot1flood</property>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>slider</type>
+    <object-name>CB-2PilotFlood</object-name>
+    <property>controls/switches/circuit-breakers/pilot2flood</property>
+    <factor>-0.015</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/switches/circuit-breakers/pilot2flood</property>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>slider</type>
+    <object-name>CB-TXP</object-name>
+    <property>controls/switches/circuit-breakers/txp</property>
+    <factor>-0.015</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/switches/circuit-breakers/txp</property>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>slider</type>
+    <object-name>CB-LandTaxiNav</object-name>
+    <property>controls/switches/circuit-breakers/landtaxi-nav</property>
+    <factor>-0.015</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/switches/circuit-breakers/landtaxi-nav</property>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>knob</type>
+    <object-name>SW-LandTaxi</object-name>
+    <property>controls/switches/land-taxi</property>
+    <factor>-30</factor>
+    <offset-deg>30</offset-deg>
+    <center>
+      <x-m>0.0037</x-m>
+      <y-m>0.1573</y-m>
+      <z-m>0.0040</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-adjust</command>
+        <property>controls/switches/land-taxi</property>
+        <factor>1</factor>
+        <min>0</min>
+        <max>2</max>
+        <wrap>0</wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>slider</type>
+    <object-name>CB-Beacon</object-name>
+    <property>controls/switches/circuit-breakers/beacon</property>
+    <factor>-0.015</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/switches/circuit-breakers/beacon</property>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>slider</type>
+    <object-name>CB-PitotHeater</object-name>
+    <property>controls/switches/circuit-breakers/pitot-heater</property>
+    <factor>-0.015</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <action>
+      <binding>
+        <command>property-toggle</command>
+        <property>controls/switches/circuit-breakers/pitot-heater</property>
+      </binding>
+    </action>
+  </animation>
+
+</PropertyList>

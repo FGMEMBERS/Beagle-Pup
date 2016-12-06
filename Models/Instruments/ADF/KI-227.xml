@@ -37,6 +37,16 @@ License: GPL
     </emission>
   </animation>
 
+  <effect>
+    <inherits-from>Aircraft/Beagle-Pup/Models/Effects/Lights/headtorch</inherits-from>
+    <object-name>Ring</object-name>
+    <object-name>Base_02</object-name>
+    <object-name>Marker</object-name>
+    <object-name>Knob</object-name>
+    <object-name>Aircraft</object-name>
+    <object-name>Needle</object-name>
+  </effect>
+
   <animation>
     <type>rotate</type>
     <object-name>Ring</object-name>

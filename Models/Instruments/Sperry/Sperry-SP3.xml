@@ -34,19 +34,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <object-name>PitchSelectWheel</object-name>
     <object-name>RollTrimWheel</object-name>
     <object-name>TurnKnob</object-name>
-    <condition>
-      <greater-than>
-        <property>systems/electrical/outputs/panel-lights</property>
-        <value>0.0</value>
-      </greater-than>
-    </condition>
     <emission>
-      <red>0.30</red>
-      <green>0.28</green>
-      <blue>0.28</blue>
-      <factor-prop>controls/lighting/panel-norm</factor-prop>
+      <red>0.40</red>
+      <green>0.35</green>
+      <blue>0.35</blue>
+      <factor-prop>controls/lighting/flood-norm</factor-prop>
     </emission>
   </animation>
+
+  <effect>
+    <inherits-from>Aircraft/Beagle-Pup/Models/Effects/Lights/headtorch</inherits-from>
+    <object-name>Body</object-name>
+    <object-name>ElevTrimKnob</object-name>
+    <object-name>OnOffSwitch</object-name>
+    <object-name>PitchSelectWheel</object-name>
+    <object-name>RollTrimWheel</object-name>
+    <object-name>TurnKnob</object-name>
+  </effect>
 
   <animation>
     <type>material</type>
@@ -234,7 +238,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <type>knob</type>
     <object-name>TurnKnob</object-name>
     <property>autopilot/sperry/turn-select</property>
-    <factor>-3</factor>
+    <factor>-6</factor>
     <center>
       <x-m>0.0085</x-m>
       <y-m>0.0000</y-m>

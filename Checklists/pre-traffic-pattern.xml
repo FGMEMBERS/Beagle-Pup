@@ -38,8 +38,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>controls/lighting/landing-lights</property>
-      <value>1</value>
+      <property>controls/switches/land-taxi</property>
+      <value>2</value>
     </binding>
     <binding>
       <command>nasal</command>

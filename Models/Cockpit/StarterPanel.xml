@@ -36,39 +36,39 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <object-name>FuelContentsSwitch</object-name>
     <object-name>StarterButton</object-name>
     <object-name>StarterMasterSwitch</object-name>
-    <condition>
-      <greater-than>
-        <property>systems/electrical/outputs/panel-lights</property>
-        <value>0.0</value>
-      </greater-than>
-    </condition>
     <emission>
-      <red>0.30</red>
-      <green>0.28</green>
-      <blue>0.28</blue>
-      <factor-prop>controls/lighting/panel-norm</factor-prop>
+      <red>0.40</red>
+      <green>0.35</green>
+      <blue>0.35</blue>
+      <factor-prop>controls/lighting/flood-norm</factor-prop>
     </emission>
   </animation>
+
+  <effect>
+    <inherits-from>Aircraft/Beagle-Pup/Models/Effects/Lights/headtorch</inherits-from>
+    <object-name>AlternatorSwitch</object-name>
+    <object-name>BasePlate</object-name>
+    <object-name>BatterySwitch</object-name>
+    <object-name>BoostPumpSwitch</object-name>
+    <object-name>MagnetoKey</object-name>
+    <object-name>FuelContentsSwitch</object-name>
+    <object-name>StarterButton</object-name>
+    <object-name>StarterMasterSwitch</object-name>
+  </effect>
 
   <animation>
     <type>material</type>
     <object-name>AlternatorLamp</object-name>
     <condition>
-      <and>
-        <greater-than>
-          <property>systems/electrical/outputs/panel-lights</property>
-          <value>0.0</value>
-        </greater-than>
-        <not>
-          <property>systems/electrical/outputs/generator-warn</property>
-        </not>
-      </and>
+      <not>
+        <property>systems/electrical/outputs/generator-warn</property>
+      </not>
     </condition>
     <emission>
-      <factor-prop>controls/lighting/panel-norm</factor-prop>
-      <red>0.30</red>
-      <green>0.28</green>
-      <blue>0.28</blue>
+      <factor-prop>controls/lighting/flood-norm</factor-prop>
+      <red>0.40</red>
+      <green>0.35</green>
+      <blue>0.35</blue>
     </emission>
   </animation>
 
@@ -76,21 +76,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <type>material</type>
     <object-name>StarterMasterLamp</object-name>
     <condition>
-      <and>
-        <greater-than>
-          <property>systems/electrical/outputs/panel-lights</property>
-          <value>0.0</value>
-        </greater-than>
-        <not>
-          <property>systems/electrical/outputs/starter-norm</property>
-        </not>
-      </and>
+      <not>
+        <property>systems/electrical/outputs/starter-norm</property>
+      </not>
     </condition>
     <emission>
-      <factor-prop>controls/lighting/panel-norm</factor-prop>
-      <red>0.30</red>
-      <green>0.28</green>
-      <blue>0.28</blue>
+      <factor-prop>controls/lighting/flood-norm</factor-prop>
+      <red>0.40</red>
+      <green>0.35</green>
+      <blue>0.35</blue>
     </emission>
   </animation>
 
@@ -323,7 +317,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <object-name>StarterMasterLamp</object-name>
     <condition>
       <greater-than>
-        <property>systems/electrical/outputs/starter-norm</property>
+        <property>systems/electrical/outputs/starter</property>
         <value>0</value>
       </greater-than>
     </condition>
@@ -362,7 +356,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <type>knob</type>
     <object-name>MagnetoKey</object-name>
     <property>controls/engines/engine/magnetos</property>
-    <factor>16</factor>
+    <factor>32</factor>
     <center>
       <x-m>0.0058</x-m>
       <y-m>-0.0263</y-m>

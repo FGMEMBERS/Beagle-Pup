@@ -24,6 +24,15 @@ http://www.kellymfg.com/dgs.html
     </emission>
   </animation>
 
+  <effect>
+    <inherits-from>Aircraft/Beagle-Pup/Models/Effects/Lights/headtorch</inherits-from>
+    <object-name>Aircraft</object-name>
+    <object-name>Marks</object-name>
+    <object-name>Card</object-name>
+    <object-name>Flag</object-name>
+    <object-name>HDGmarker</object-name>
+  </effect>
+
   <animation>
     <type>rotate</type>
     <object-name>Card</object-name>

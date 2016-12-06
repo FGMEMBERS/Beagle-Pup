@@ -128,25 +128,16 @@ setlistener("systems/electrical/outputs/nav-lights", func (volts) {
 }, 0, 0);
 
 ################################################################################
-# Gyro
+# Circuit Breakers
 ################################################################################
 
-var spindown_gyro = func(time = 10)
-{
-    if (getprop("sim/model/preferences/realism/gyro-spindown")) {
-        var spin = rand() * 360;
-        interpolate("instrumentation/heading-indicator/offset-deg", spin, time);
+# If the battery is turned off while the alternator is charging, the alt-field
+# circuit breaker trips to protect the output diodes of the alternator.
+setlistener("controls/electric/battery-switch", func(node) {
+    if (!node.getBoolValue()) {
+        if (getprop("systems/electrical/outputs/alternator-field"))
+            setprop("controls/switches/circuit-breakers/alt-field", 0);
     }
-}
-
-setlistener("sim/signals/fdm-initialized", func(node) {
-    if (node.getBoolValue())
-        spindown_gyro(0);
-}, 0, 0);
-
-setlistener("systems/vacuum/vacuum-norm", func(node) {
-    if (!node.getBoolValue())
-        spindown_gyro();
-}, 0, 0);
+});
 
 print ("Utility functions loaded");

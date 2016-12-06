@@ -19,6 +19,12 @@
     </emission>
   </animation>
 
+  <effect>
+    <inherits-from>Aircraft/Beagle-Pup/Models/Effects/Lights/headtorch</inherits-from>
+    <object-name>Meter</object-name>
+    <object-name>Needle</object-name>
+  </effect>
+
   <animation>
     <type>rotate</type>
     <object-name>Needle</object-name>

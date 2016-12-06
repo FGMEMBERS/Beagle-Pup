@@ -113,7 +113,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>controls/lighting/nav-lights</property>
+      <property>controls/switches/circuit-breakers/landtaxi-nav</property>
       <value>1</value>
     </binding>
     <binding>
@@ -137,7 +137,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>controls/lighting/beacon</property>
+      <property>controls/switches/circuit-breakers/beacon</property>
       <value>1</value>
     </binding>
     <binding>
@@ -161,7 +161,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>controls/lighting/beacon</property>
+      <property>controls/switches/circuit-breakers/beacon</property>
       <value>0</value>
     </binding>
     <binding>

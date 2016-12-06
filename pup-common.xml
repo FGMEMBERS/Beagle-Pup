@@ -85,13 +85,34 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <brake-parking type="double">1.0</brake-parking>
     </gear>
     <lighting>
-      <beacon type="bool">false</beacon>
       <beacon-state type="bool">false</beacon-state>
-      <nav-lights type="bool">false</nav-lights>
+      <headtorch type="bool">false</headtorch>
+      <pilot1-flood type="bool">false</pilot1-flood>
+      <pilot2-flood type="bool">false</pilot2-flood>
       <panel-norm>0.3</panel-norm>
-      <landing-lights type="bool">false</landing-lights>
-      <taxi-light type="bool">false</taxi-light>
     </lighting>
+    <switches>
+      <land-taxi type="int">1</land-taxi>
+      <circuit-breakers>
+        <alt type="bool">true</alt>
+        <alt-field type="bool">true</alt-field>
+        <am-dg type="bool">true</am-dg>
+        <tb type="bool">true</tb>
+        <lvrelay-fuelconts type="bool">true</lvrelay-fuelconts>
+        <stallwarning-boostpump type="bool">true</stallwarning-boostpump>
+        <flaps type="bool">true</flaps>
+        <comm type="bool">true</comm>
+        <dme type="bool">true</dme>
+        <adf type="bool">true</adf>
+        <txp type="bool">true</txp>
+        <ap type="bool">true</ap>
+        <pilot1flood type="bool">true</pilot1flood>
+        <pilot2flood type="bool">true</pilot2flood>
+        <landtaxi-nav type="bool">true</landtaxi-nav>
+        <beacon type="bool">false</beacon>
+        <pitot-heater type="bool">false</pitot-heater>
+      </circuit-breakers>
+    </switches>
   </controls>
 
   <engines>
@@ -206,7 +227,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <menubar include="Interface/menubar.xml"/>
 
     <author>Richard Senior</author>
-    <aircraft-version>0.26.4</aircraft-version>
+    <aircraft-version>0.27.0</aircraft-version>
     <flight-model>jsb</flight-model>
 
     <aircraft-data>
@@ -216,12 +237,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <path>autopilot/sperry/roll-trim</path>
       <path>consumables/fuel/tank[1]/level-gal_imp</path>
       <path>consumables/fuel/tank[2]/level-gal_imp</path>
-      <path>controls/lighting/panel-norm</path>
+      <path>controls/switches/circuit-breakers/alt-field</path>
       <path>fdm/jsbsim/inertia/pointmass-weight-lbs[1]</path>
       <path>fdm/jsbsim/inertia/pointmass-weight-lbs[2]</path>
       <path>fdm/jsbsim/inertia/pointmass-weight-lbs[3]</path>
       <path>sim/model/preferences/realism/carb-ice</path>
-      <path>sim/model/preferences/realism/gyro-spindown</path>
       <path>sim/model/preferences/realism/pitot-ice</path>
     </aircraft-data>
 
@@ -239,6 +259,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <flight-recorder include="Systems/flightrecorder.xml"/>
 
+    <instrumentation>
+      <path>Aircraft/Beagle-Pup/pup-instrumentation.xml</path>
+    </instrumentation>
+
     <model>
       <livery>
         <file type="string"/>
@@ -246,7 +270,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <preferences>
         <realism>
           <carb-ice type="bool">false</carb-ice>
-          <gyro-spindown type="bool">false</gyro-spindown>
           <pitot-ice type="bool">false</pitot-ice>
         </realism>
       </preferences>
@@ -263,11 +286,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <multiplay>
       <generic>
         <int n="0" alias="/controls/lighting/beacon-state"/>
-        <float n="0" alias="/controls/lighting/panel-norm"/>
-        <float n="1" alias="/systems/electrical/outputs/landing-lights"/>
-        <float n="2" alias="/systems/electrical/outputs/nav-lights"/>
-        <float n="3" alias="/systems/electrical/outputs/panel-lights"/>
-        <float n="4" alias="/systems/electrical/outputs/taxi-light"/>
+        <float n="0" alias="/systems/electrical/outputs/landing-lights"/>
+        <float n="1" alias="/systems/electrical/outputs/nav-lights"/>
+        <float n="2" alias="/systems/electrical/outputs/taxi-light"/>
+        <float n="3" alias="/controls/lighting/flood-norm"/>
       </generic>
     </multiplay>
 
@@ -293,6 +315,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </sound>
 
     <systems include="Systems/electrical.xml">
+      <path>Aircraft/Beagle-Pup/pup-systems.xml</path>
       <autopilot>
         <path>Systems/autopilot.xml</path>
       </autopilot>

@@ -26,6 +26,14 @@ License: GPL
     </emission>
   </animation>
 
+  <effect>
+    <inherits-from>Aircraft/Beagle-Pup/Models/Effects/Lights/headtorch</inherits-from>
+    <object-name>Base</object-name>
+    <object-name>Fondo</object-name>
+    <object-name>Gauge</object-name>
+    <object-name>Ring</object-name>
+  </effect>
+
   <animation>
     <type>rotate</type>
     <object-name>Gauge</object-name>

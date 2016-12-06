@@ -26,9 +26,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <params>
     <beacon-state>sim/multiplay/generic/int[0]</beacon-state>
-    <landing-light-volts>sim/multiplay/generic/float[1]</landing-light-volts>
-    <nav-light-volts>sim/multiplay/generic/float[2]</nav-light-volts>
-    <taxi-light-volts>sim/multiplay/generic/float[4]</taxi-light-volts>
+    <landing-light-volts>sim/multiplay/generic/float[0]</landing-light-volts>
+    <nav-light-volts>sim/multiplay/generic/float[1]</nav-light-volts>
+    <taxi-light-volts>sim/multiplay/generic/float[2]</taxi-light-volts>
   </params>
 
   <model>

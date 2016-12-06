@@ -23,6 +23,14 @@ z -0.019
       </emission>
     </animation>
 
+    <effect>
+      <inherits-from>Aircraft/Beagle-Pup/Models/Effects/Lights/headtorch</inherits-from>
+      <object-name>Meter</object-name>
+      <object-name>Needle_Hours</object-name>
+      <object-name>Needle_Minutes</object-name>
+      <object-name>Needle_Seconds</object-name>
+    </effect>
+
     <animation>
       <type>material</type>
       <object-name>Base</object-name>

@@ -25,8 +25,28 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <PropertyList>
 
   <!--===================================================================-->
-  <!-- ALS SECONDARY LIGHTS                                              -->
+  <!-- LIGHTS                                              -->
   <!--===================================================================-->
+
+  <logic>
+    <input>
+      <equals>
+        <property>controls/switches/land-taxi</property>
+        <value>0</value>
+      </equals>
+    </input>
+    <output>controls/lighting/taxi-light</output>
+  </logic>
+
+  <logic>
+    <input>
+      <equals>
+        <property>controls/switches/land-taxi</property>
+        <value>2</value>
+      </equals>
+    </input>
+    <output>controls/lighting/landing-lights</output>
+  </logic>
 
   <logic>
     <input>
@@ -47,6 +67,62 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </input>
     <output>sim/rendering/als-secondary-lights/use-alt-landing-light</output>
   </logic>
+
+  <logic>
+    <input>
+      <and>
+        <property>controls/lighting/headtorch</property>
+        <property>sim/current-view/internal</property>
+      </and>
+    </input>
+    <output>sim/rendering/als-secondary-lights/use-flashlight</output>
+  </logic>
+
+  <logic>
+    <input>
+      <and>
+        <property>controls/lighting/headtorch</property>
+        <property>sim/current-view/internal</property>
+      </and>
+    </input>
+    <output>sim/rendering/als-secondary-lights/use-searchlight</output>
+  </logic>
+
+  <!-- Temporary rules until lightmaps are created for floods -->
+
+  <logic>
+    <input>
+      <greater-than>
+        <property>systems/electrical/outputs/pilot1-flood</property>
+        <value>0</value>
+      </greater-than>
+    </input>
+    <output>systems/electrical/outputs/pilot1-flood-norm</output>
+  </logic>
+
+  <logic>
+    <input>
+      <greater-than>
+        <property>systems/electrical/outputs/pilot2-flood</property>
+        <value>0</value>
+      </greater-than>
+    </input>
+    <output>systems/electrical/outputs/pilot2-flood-norm</output>
+  </logic>
+
+  <filter>
+    <type>gain</type>
+    <gain>0.33</gain>
+    <input>
+      <expression>
+        <sum>
+          <property>systems/electrical/outputs/pilot1-flood-norm</property>
+          <property>systems/electrical/outputs/pilot2-flood-norm</property>
+        </sum>
+      </expression>
+    </input>
+    <output>controls/lighting/flood-norm</output>
+  </filter>
 
   <!--===================================================================-->
   <!-- STALL WARNING                                                     -->
@@ -152,17 +228,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <output>systems/vacuum/vacuum-norm</output>
   </logic>
 
+  <!-- TODO: Implement proper battery discharge and disconnect via the
+       alt-field circuit breaker 
+  -->
   <logic>
     <input>
       <and>
-        <greater-than>
-          <property>systems/electrical/outputs/bus-dc</property>
-          <value>6.0</value>
-        </greater-than>
-        <less-than>
-          <property>systems/electrical/outputs/bus-dc</property>
-          <value>24.0</value>
-        </less-than>
+        <property>systems/electrical/outputs/bus-dc</property>
+        <property>controls/electric/engine/generator</property>
+        <not>
+          <and>
+            <property>controls/switches/circuit-breakers/alt-field</property>
+            <greater-than>
+              <property>engines/engine/rpm</property>
+              <value>800</value>
+            </greater-than>
+          </and>
+        </not>
       </and>
     </input>
     <output>systems/electrical/outputs/generator-warn</output>

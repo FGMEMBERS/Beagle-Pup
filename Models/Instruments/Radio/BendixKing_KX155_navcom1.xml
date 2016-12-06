@@ -90,16 +90,26 @@ Settings for use as COMM1/NAV1
     <object-name>Knob_NAV03</object-name>
     <object-name>Btn_COMM</object-name>
     <object-name>Btn_NAV</object-name>
-    <condition>
-      <property>systems/electrical/outputs/panel-lights</property>
-    </condition>
     <emission>
-      <red>0.7</red>
-      <green>0.7</green>
-      <blue>0.7</blue>
-      <factor-prop>controls/lighting/panel-norm</factor-prop>  <!-- <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop> -->
+      <red>0.40</red>
+      <green>0.35</green>
+      <blue>0.35</blue>
+      <factor-prop>controls/lighting/flood-norm</factor-prop>
     </emission>
   </animation>
+
+  <effect>
+    <inherits-from>Aircraft/Beagle-Pup/Models/Effects/Lights/headtorch</inherits-from>
+    <object-name>Base</object-name>
+    <object-name>Knob_COMM01</object-name>
+    <object-name>Knob_COMM02</object-name>
+    <object-name>Knob_COMM03</object-name>
+    <object-name>Knob_NAV01</object-name>
+    <object-name>Knob_NAV02</object-name>
+    <object-name>Knob_NAV03</object-name>
+    <object-name>Btn_COMM</object-name>
+    <object-name>Btn_NAV</object-name>
+  </effect>
 
   <animation>
     <type>material</type>

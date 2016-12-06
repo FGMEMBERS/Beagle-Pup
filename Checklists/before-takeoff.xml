@@ -38,29 +38,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>controls/lighting/landing-lights</property>
-      <value>1</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
-    </binding>
-  </item>
-
-  <!-- Taxi Light - OFF -->
-  <item>
-    <name>Taxi Light</name>
-    <value>OFF</value>
-    <condition>
-      <equals>
-        <property>systems/electrical/outputs/taxi-light</property>
-        <value>0</value>
-      </equals>
-    </condition>
-    <binding>
-      <command>property-assign</command>
-      <property>controls/lighting/taxi-light</property>
-      <value>0</value>
+      <property>controls/switches/land-taxi</property>
+      <value>2</value>
     </binding>
     <binding>
       <command>nasal</command>
@@ -185,6 +164,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <command>property-assign</command>
       <property>controls/flight/flaps</property>
       <value>0.38</value>
+    </binding>
+  </item>
+
+  <!-- Pitot Heater - AS REQUIRED -->
+  <item>
+    <name>Pitot Heater</name>
+    <value>AS REQUIRED</value>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/switches/circuit-breakers/pitot-heater</property>
+      <value>1</value>
     </binding>
   </item>
 

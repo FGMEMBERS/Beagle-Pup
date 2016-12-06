@@ -64,30 +64,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </binding>
   </item>
 
-  <!-- Taxi Light - OFF -->
+  <!-- Landing and Taxi Lights - OFF -->
   <item>
-    <name>Taxi Light</name>
-    <value>OFF</value>
-    <condition>
-      <equals>
-        <property>systems/electrical/outputs/taxi-light</property>
-        <value>0</value>
-      </equals>
-    </condition>
-    <binding>
-      <command>property-assign</command>
-      <property>controls/lighting/taxi-light</property>
-      <value>0</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
-    </binding>
-  </item>
-
-  <!-- Landing Lights - OFF -->
-  <item>
-    <name>Landing Lights</name>
+    <name>Landing &amp; Taxi Lights</name>
     <value>OFF</value>
     <condition>
       <equals>
@@ -97,7 +76,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>controls/lighting/landing-lights</property>
+      <property>controls/switches/land-taxi</property>
       <value>0</value>
     </binding>
     <binding>

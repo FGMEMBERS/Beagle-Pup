@@ -260,7 +260,7 @@ var KT76A = {
     hasPower: func {
         var n = props.globals.getNode('systems/electrical/outputs/transponder');
         var volts = n.getValue();
-        return volts != nil and volts > 14.0;
+        return volts != nil and volts > 6.0;
     },
 
     # Basic configuration of on/off light and ident light. Pings from the

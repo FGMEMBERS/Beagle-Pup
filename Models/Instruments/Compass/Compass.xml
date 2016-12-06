@@ -20,6 +20,13 @@
     </emission>
   </animation> 
 
+  <effect>
+    <inherits-from>Aircraft/Beagle-Pup/Models/Effects/Lights/headtorch</inherits-from>
+    <object-name>Compass</object-name>
+    <object-name>Needle</object-name>
+    <object-name>Interior</object-name>
+  </effect>
+
   <animation>
     <type>rotate</type>
     <object-name>Compass</object-name>

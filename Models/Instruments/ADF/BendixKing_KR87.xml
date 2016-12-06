@@ -47,6 +47,16 @@
     </condition>
   </animation>
 
+  <effect>
+    <inherits-from>Aircraft/Beagle-Pup/Models/Effects/Lights/headtorch</inherits-from>
+    <object-name>Base</object-name>
+    <object-name>Btn_ADF</object-name>
+    <object-name>Btn_BFO</object-name>
+    <object-name>Btn_FRQ</object-name>
+    <object-name>Btn_FLT</object-name>
+    <object-name>Btn_SET</object-name>
+  </effect>
+
   <animation>
     <type>range</type>
     <min-m>0</min-m>
@@ -60,14 +70,11 @@
     <object-name>Btn_FRQ</object-name>
     <object-name>Btn_FLT</object-name>
     <object-name>Btn_SET</object-name>
-    <condition>
-      <property>systems/electrical/outputs/panel-lights</property>
-    </condition>
     <emission>
-      <red>0.7</red>  <!-- <red-prop>/sim/model/instrument-lighting/emission/red</red-prop> -->
-      <green>0.7</green>  <!-- <green-prop>/sim/model/instrument-lighting/emission/green</green-prop> -->
-      <blue>0.7</blue>  <!-- <blue-prop>/sim/model/instrument-lighting/emission/blue</blue-prop> -->
-      <factor-prop>controls/lighting/panel-norm</factor-prop>  <!-- <factor-prop>/controls/lighting/instruments-norm</factor-prop> -->
+      <red>0.40</red>
+      <green>0.35</green>
+      <blue>0.35</blue>
+      <factor-prop>controls/lighting/flood-norm</factor-prop>
     </emission>
   </animation> 
 

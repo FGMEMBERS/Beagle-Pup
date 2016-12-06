@@ -23,6 +23,16 @@
     </emission>
   </animation>
 
+  <effect>
+    <inherits-from>Aircraft/Beagle-Pup/Models/Effects/Lights/headtorch</inherits-from>
+    <object-name>Background</object-name>
+    <object-name>Pitch</object-name>
+    <object-name>Markers</object-name>
+    <object-name>Ring</object-name>
+    <object-name>Base_01</object-name>
+    <object-name>Base_02</object-name>
+  </effect>
+
   <animation>
     <name>PitchTranslation</name>
     <type>translate</type>

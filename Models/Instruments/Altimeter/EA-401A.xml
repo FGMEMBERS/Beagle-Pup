@@ -32,6 +32,19 @@ License: GPL
     </emission>
   </animation>
 
+  <effect>
+    <inherits-from>Aircraft/Beagle-Pup/Models/Effects/Lights/headtorch</inherits-from>
+    <object-name>Meter</object-name>
+    <object-name>Needle</object-name>
+    <object-name>Counter_100</object-name>
+    <object-name>Counter_1000</object-name>
+    <object-name>Counter_10000</object-name>
+    <object-name>inHg_10-00</object-name>
+    <object-name>inHg_01-00</object-name>
+    <object-name>inHg_00-10</object-name>
+    <object-name>inHg_00-01</object-name>
+  </effect>
+
   <animation>
     <type>select</type>
     <object-name>Flag_01</object-name>

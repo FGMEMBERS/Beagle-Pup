@@ -58,29 +58,29 @@
   <hrule><dummy/></hrule>
 
   <group>
-    <layout>vbox</layout>
+    <layout>hbox</layout>
     <default-padding>10</default-padding>
     <group>
       <layout>vbox</layout>
       <default-padding>1</default-padding>
       <text>
         <halign>left</halign>
-        <label>EXTERIOR</label>
+        <label>INTERIOR</label>
       </text>
       <group>
         <layout>hbox</layout>
         <default-padding>5</default-padding>
         <text>
           <halign>left</halign>
-          <label>Navigation Lights</label>
+          <label>Pilot 1 Flood</label>
         </text>
         <checkbox>
           <halign>right</halign>
-          <property>controls/lighting/nav-lights</property>
+          <property>controls/lighting/pilot1-flood</property>
           <live>true</live>
           <binding>
             <command>property-toggle</command>
-            <property>controls/lighting/nav-lights</property>
+            <property>controls/lighting/pilot1-flood</property>
           </binding>
         </checkbox>
       </group>
@@ -89,15 +89,15 @@
         <default-padding>5</default-padding>
         <text>
           <halign>left</halign>
-          <label>Beacon</label>
+          <label>Pilot 2 Flood</label>
         </text>
         <checkbox>
           <halign>right</halign>
-          <property>controls/lighting/beacon</property>
+          <property>controls/lighting/pilot2-flood</property>
           <live>true</live>
           <binding>
             <command>property-toggle</command>
-            <property>controls/lighting/beacon</property>
+            <property>controls/lighting/pilot2-flood</property>
           </binding>
         </checkbox>
       </group>
@@ -106,32 +106,15 @@
         <default-padding>5</default-padding>
         <text>
           <halign>left</halign>
-          <label>Taxi Light</label>
+          <label>Headtorch</label>
         </text>
         <checkbox>
           <halign>right</halign>
-          <property>controls/lighting/taxi-light</property>
+          <property>controls/lighting/headtorch</property>
           <live>true</live>
           <binding>
             <command>property-toggle</command>
-            <property>controls/lighting/taxi-light</property>
-          </binding>
-        </checkbox>
-      </group>
-      <group>
-        <layout>hbox</layout>
-        <default-padding>5</default-padding>
-        <text>
-          <halign>left</halign>
-          <label>Landing Light</label>
-        </text>
-        <checkbox>
-          <halign>right</halign>
-          <property>controls/lighting/landing-lights</property>
-          <live>true</live>
-          <binding>
-            <command>property-toggle</command>
-            <property>controls/lighting/landing-lights</property>
+            <property>controls/lighting/headtorch</property>
           </binding>
         </checkbox>
       </group>
@@ -148,14 +131,14 @@
       <default-padding>1</default-padding>
       <text>
         <halign>left</halign>
-        <label>INTERIOR</label>
+        <label>INSTRUMENTS</label>
       </text>
       <group>
         <layout>hbox</layout>
         <default-padding>5</default-padding>
         <text>
           <halign>left</halign>
-          <label>Cockpit Lights</label>
+          <label>Panel Brightness</label>
         </text>
         <slider>
           <halign>right</halign>

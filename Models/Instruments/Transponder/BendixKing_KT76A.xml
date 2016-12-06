@@ -8,456 +8,470 @@ License: GPL
 
 <PropertyList>
 
-<path>BendixKing_KT76A.ac</path>
-	
-<!-- PANEL LIGHTING -->
+  <path>BendixKing_KT76A.ac</path>
 
-<animation>
-  <type>material</type>
-  <object-name>PerillaCod_01</object-name>
-  <object-name>PerillaCod_02</object-name>
-  <object-name>PerillaCod_03</object-name>
-  <object-name>PerillaCod_04</object-name>
-  <object-name>Digit_01</object-name>
-  <object-name>Digit_02</object-name>
-  <object-name>Digit_03</object-name>
-  <object-name>Digit_04</object-name>
-  <object-name>PerillaON</object-name>
-  <condition>
-    <property>systems/electrical/outputs/panel-lights</property>
-  </condition>
-  <emission>
-    <red>0.7</red>
-    <green>0.7</green>
-    <blue>0.7</blue>
-    <factor-prop>controls/lighting/panel-norm</factor-prop>
-  </emission>
-</animation> 	
+  <!-- PANEL LIGHTING -->
 
-<animation>
-  <type>material</type>
-  <object-name>BtnIdent</object-name>
-  <condition>
-    <property>systems/electrical/outputs/panel-lights</property>
-  </condition>
-  <emission>
-    <red>0.5</red>
-    <green>0.5</green>
-    <blue>0.5</blue>
-    <factor-prop>controls/lighting/panel-norm</factor-prop>
-  </emission>
-</animation> 	
+  <animation>
+    <type>material</type>
+    <object-name>BtnIdent</object-name>
+    <object-name>PerillaCod_01</object-name>
+    <object-name>PerillaCod_02</object-name>
+    <object-name>PerillaCod_03</object-name>
+    <object-name>PerillaCod_04</object-name>
+    <object-name>PerillaON</object-name>
+    <emission>
+      <red>0.40</red>
+      <green>0.35</green>
+      <blue>0.35</blue>
+      <factor-prop>controls/lighting/flood-norm</factor-prop>
+    </emission>
+  </animation> 	
 
-<!-- FUNCTION SELECTOR -->
+  <animation>
+    <type>material</type>
+    <object-name>Digit_01</object-name>
+    <object-name>Digit_02</object-name>
+    <object-name>Digit_03</object-name>
+    <object-name>Digit_04</object-name>
+    <condition>
+      <and>
+        <property>systems/electrical/outputs/transponder</property>
+        <property>instrumentation/transponder/inputs/knob-mode</property>
+      </and>
+    </condition>
+    <emission>
+      <red>0.7</red>
+      <green>0.7</green>
+      <blue>0.7</blue>
+      <factor-prop>controls/lighting/panel-norm</factor-prop>
+    </emission>
+  </animation> 	
 
-<animation>
-  <type>knob</type>
-  <object-name>PerillaON</object-name>
-  <visible>true</visible>
-  <drag-scale-px>20</drag-scale-px>
-  <action>
-    <binding>
-      <command>property-cycle</command>
-      <property>/instrumentation/transponder/inputs/knob-mode</property>
-      <wrap>0</wrap>
-      <value>0</value> <!-- OFF -->
-      <value>1</value> <!-- SBY -->
-      <value>4</value> <!-- ON  -->
-      <value>5</value> <!-- ALT -->
-      <value>2</value> <!-- TST -->
-    </binding>
-  </action>
-</animation>        
+  <effect>
+    <inherits-from>Aircraft/Beagle-Pup/Models/Effects/Lights/headtorch</inherits-from>
+    <object-name>Base</object-name>
+    <object-name>PerillaCod_01</object-name>
+    <object-name>PerillaCod_02</object-name>
+    <object-name>PerillaCod_03</object-name>
+    <object-name>PerillaCod_04</object-name>
+    <object-name>Digit_01</object-name>
+    <object-name>Digit_02</object-name>
+    <object-name>Digit_03</object-name>
+    <object-name>Digit_04</object-name>
+    <object-name>PerillaON</object-name>
+  </effect>
 
-<animation>
-  <type>rotate</type>
-  <object-name>PerillaON</object-name>
-  <property>instrumentation/transponder/inputs/knob-mode</property>
-  <factor>1</factor>
-  <interpolation>
-    <entry>
-      <ind>0</ind><dep>-90</dep>
-    </entry>
-    <entry>
-      <ind>1</ind><dep>-45</dep>
-    </entry>
-    <entry>
-      <ind>4</ind><dep>0</dep>
-    </entry>
-    <entry>
-      <ind>5</ind><dep>45</dep>
-    </entry>
-    <entry>
-      <ind>2</ind><dep>90</dep>
-    </entry>
-  </interpolation>
-  <axis>
-    <x>-1</x>
-    <y>0</y>
-    <z>0</z>
-  </axis>
-  <center>
-    <x-m>0.00483</x-m>
-    <y-m>-0.05936</y-m>
-    <z-m>0.00254</z-m>
-  </center>
-</animation>
+  <!-- FUNCTION SELECTOR -->
 
-<!-- IDENT BUTTON -->
+  <animation>
+    <type>knob</type>
+    <object-name>PerillaON</object-name>
+    <visible>true</visible>
+    <drag-scale-px>20</drag-scale-px>
+    <action>
+      <binding>
+        <command>property-cycle</command>
+        <property>/instrumentation/transponder/inputs/knob-mode</property>
+        <wrap>0</wrap>
+        <value>0</value> <!-- OFF -->
+        <value>1</value> <!-- SBY -->
+        <value>4</value> <!-- ON  -->
+        <value>5</value> <!-- ALT -->
+        <value>2</value> <!-- TST -->
+      </binding>
+    </action>
+  </animation>        
 
-<animation>
-  <type>pick</type>
-  <object-name>BtnIdent</object-name>
-  <visible>true</visible>
-  <action>
-    <button>0</button>
-    <repeatable>false</repeatable>
-    <binding>
-      <command>property-assign</command>
-      <property>instrumentation/transponder/inputs/ident-btn</property>
-      <value type="int">1</value>
-    </binding>
-    <mod-up>
+  <animation>
+    <type>rotate</type>
+    <object-name>PerillaON</object-name>
+    <property>instrumentation/transponder/inputs/knob-mode</property>
+    <factor>1</factor>
+    <interpolation>
+      <entry>
+        <ind>0</ind><dep>-90</dep>
+      </entry>
+      <entry>
+        <ind>1</ind><dep>-45</dep>
+      </entry>
+      <entry>
+        <ind>4</ind><dep>0</dep>
+      </entry>
+      <entry>
+        <ind>5</ind><dep>45</dep>
+      </entry>
+      <entry>
+        <ind>2</ind><dep>90</dep>
+      </entry>
+    </interpolation>
+    <axis>
+      <x>-1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m>0.00483</x-m>
+      <y-m>-0.05936</y-m>
+      <z-m>0.00254</z-m>
+    </center>
+  </animation>
+
+  <!-- IDENT BUTTON -->
+
+  <animation>
+    <type>pick</type>
+    <object-name>BtnIdent</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
       <binding>
         <command>property-assign</command>
         <property>instrumentation/transponder/inputs/ident-btn</property>
-        <value type="int">0</value>
+        <value type="int">1</value>
       </binding>
-    </mod-up>
-  </action>
-</animation>
+      <mod-up>
+        <binding>
+          <command>property-assign</command>
+          <property>instrumentation/transponder/inputs/ident-btn</property>
+          <value type="int">0</value>
+        </binding>
+      </mod-up>
+    </action>
+  </animation>
 
-<animation>
-  <type>translate</type>
-  <object-name>BtnIdent</object-name>
-  <property>instrumentation/transponder/inputs/ident-btn</property>
-  <factor>-0.0015</factor>
-  <axis>
-    <x>1.0</x>
-    <y>0.0</y>
-    <z>0.0</z>
-  </axis>
-</animation>
+  <animation>
+    <type>translate</type>
+    <object-name>BtnIdent</object-name>
+    <property>instrumentation/transponder/inputs/ident-btn</property>
+    <factor>-0.0015</factor>
+    <axis>
+      <x>1.0</x>
+      <y>0.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
 
-<!-- LIGHTS -->
+  <!-- LIGHTS -->
 
-<!-- See Nasal/transponder.nas -->
+  <!-- See Nasal/transponder.nas -->
 
-<animation>
-  <object-name>PowerLightOff</object-name>
-  <type>select</type>
-  <condition>
-    <not>
+  <animation>
+    <object-name>PowerLightOff</object-name>
+    <type>select</type>
+    <condition>
+      <not>
+        <property>instrumentation/transponder/outputs/power-light-on</property>
+      </not>
+    </condition>
+  </animation>
+
+  <animation>
+    <object-name>PowerLightOn</object-name>
+    <type>select</type>
+    <condition>
       <property>instrumentation/transponder/outputs/power-light-on</property>
-    </not>
-  </condition>
-</animation>
+    </condition>
+  </animation>
 
-<animation>
-  <object-name>PowerLightOn</object-name>
-  <type>select</type>
-  <condition>
-    <property>instrumentation/transponder/outputs/power-light-on</property>
-  </condition>
-</animation>
+  <animation>
+    <object-name>IdentLightOff</object-name>
+    <type>select</type>
+    <condition>
+      <not>
+        <property>instrumentation/transponder/outputs/ident-light-on</property>
+      </not>
+    </condition>
+  </animation>
 
-<animation>
-  <object-name>IdentLightOff</object-name>
-  <type>select</type>
-  <condition>
-    <not>
+  <animation>
+    <object-name>IdentLightOn</object-name>
+    <type>select</type>
+    <condition>
       <property>instrumentation/transponder/outputs/ident-light-on</property>
-    </not>
-  </condition>
-</animation>
+    </condition>
+  </animation>
 
-<animation>
-  <object-name>IdentLightOn</object-name>
-  <type>select</type>
-  <condition>
-    <property>instrumentation/transponder/outputs/ident-light-on</property>
-  </condition>
-</animation>
+  <!-- KNOBS AND DIGITS -->
 
-<!-- KNOBS AND DIGITS -->
+  <animation>
+    <type>pick</type>
+    <object-name>PerillaCod_01</object-name>
+    <visible>true</visible>
+    <action>
+      <button>3</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/transponder/inputs/digit[3]</property>
+        <step>1</step>
+        <min>0</min>
+        <max>7</max>
+      </binding>
+    </action>
+    <action>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/transponder/inputs/digit[3]</property>
+        <step>-1</step>
+        <min>0</min>
+        <max>7</max>
+      </binding>
+    </action>
+  </animation>        
 
-<animation>
-  <type>pick</type>
-  <object-name>PerillaCod_01</object-name>
-  <visible>true</visible>
-  <action>
-    <button>3</button>
-    <repeatable>false</repeatable>
-    <binding>
-      <command>property-adjust</command>
-      <property>instrumentation/transponder/inputs/digit[3]</property>
-      <step>1</step>
-      <min>0</min>
-      <max>7</max>
-    </binding>
-  </action>
-  <action>
-    <button>4</button>
-    <repeatable>false</repeatable>
-    <binding>
-      <command>property-adjust</command>
-      <property>instrumentation/transponder/inputs/digit[3]</property>
-      <step>-1</step>
-      <min>0</min>
-      <max>7</max>
-    </binding>
-  </action>
-</animation>        
+  <animation>
+    <type>rotate</type>
+    <object-name>PerillaCod_01</object-name>
+    <property>instrumentation/transponder/inputs/digit[3]</property>
+    <offset-deg>0</offset-deg>
+    <factor>-10</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m>0.00480</x-m>
+      <y-m>-0.01079</y-m>
+      <z-m>0.00078</z-m>
+    </center>
+  </animation>
 
-<animation>
-  <type>rotate</type>
-  <object-name>PerillaCod_01</object-name>
-  <property>instrumentation/transponder/inputs/digit[3]</property>
-  <offset-deg>0</offset-deg>
-  <factor>-10</factor>
-  <axis>
-    <x>1</x>
-    <y>0</y>
-    <z>0</z>
-  </axis>
-  <center>
-    <x-m>0.00480</x-m>
-    <y-m>-0.01079</y-m>
-    <z-m>0.00078</z-m>
-  </center>
-</animation>
+  <animation>
+    <type>textranslate</type>
+    <object-name>Digit_01</object-name>
+    <property>instrumentation/transponder/inputs/digit[3]</property>
+    <factor>0.0703</factor>
+    <step>1</step>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
 
-<animation>
-  <type>textranslate</type>
-  <object-name>Digit_01</object-name>
-  <property>instrumentation/transponder/inputs/digit[3]</property>
-  <factor>0.0703</factor>
-  <step>1</step>
-  <axis>
-    <x>1</x>
-    <y>0</y>
-    <z>0</z>
-  </axis>
-</animation>
+  <animation>
+    <type>pick</type>
+    <object-name>PerillaCod_02</object-name>
+    <visible>true</visible>
+    <action>
+      <button>3</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/transponder/inputs/digit[2]</property>
+        <step>1</step>
+        <min>0</min>
+        <max>9</max>
+      </binding>
+    </action>
+    <action>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/transponder/inputs/digit[2]</property>
+        <step>-1</step>
+        <min>0</min>
+        <max>9</max>
+      </binding>
+    </action>
+  </animation>        
 
-<animation>
-  <type>pick</type>
-  <object-name>PerillaCod_02</object-name>
-  <visible>true</visible>
-  <action>
-    <button>3</button>
-    <repeatable>false</repeatable>
-    <binding>
-      <command>property-adjust</command>
-      <property>instrumentation/transponder/inputs/digit[2]</property>
-      <step>1</step>
-      <min>0</min>
-      <max>9</max>
-    </binding>
-  </action>
-  <action>
-    <button>4</button>
-    <repeatable>false</repeatable>
-    <binding>
-      <command>property-adjust</command>
-      <property>instrumentation/transponder/inputs/digit[2]</property>
-      <step>-1</step>
-      <min>0</min>
-      <max>9</max>
-    </binding>
-  </action>
-</animation>        
+  <animation>
+    <type>rotate</type>
+    <object-name>PerillaCod_02</object-name>
+    <property>instrumentation/transponder/inputs/digit[2]</property>
+    <offset-deg>0</offset-deg>
+    <factor>-10</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m>0.00480</x-m>
+      <y-m>0.01181</y-m>
+      <z-m>0.00078</z-m>
+    </center>
+  </animation>
 
-<animation>
-  <type>rotate</type>
-  <object-name>PerillaCod_02</object-name>
-  <property>instrumentation/transponder/inputs/digit[2]</property>
-  <offset-deg>0</offset-deg>
-  <factor>-10</factor>
-  <axis>
-    <x>1</x>
-    <y>0</y>
-    <z>0</z>
-  </axis>
-  <center>
-    <x-m>0.00480</x-m>
-    <y-m>0.01181</y-m>
-    <z-m>0.00078</z-m>
-  </center>
-</animation>
+  <animation>
+    <type>textranslate</type>
+    <object-name>Digit_02</object-name>
+    <property>instrumentation/transponder/inputs/digit[2]</property>
+    <factor>0.0703</factor>
+    <step>1</step>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
 
-<animation>
-  <type>textranslate</type>
-  <object-name>Digit_02</object-name>
-  <property>instrumentation/transponder/inputs/digit[2]</property>
-  <factor>0.0703</factor>
-  <step>1</step>
-  <axis>
-    <x>1</x>
-    <y>0</y>
-    <z>0</z>
-  </axis>
-</animation>
+  <animation>
+    <type>pick</type>
+    <object-name>PerillaCod_03</object-name>
+    <visible>true</visible>
+    <action>
+      <button>3</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/transponder/inputs/digit[1]</property>
+        <step>1</step>
+        <min>0</min>
+        <max>9</max>
+      </binding>
+    </action>
+    <action>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/transponder/inputs/digit[1]</property>
+        <step>-1</step>
+        <min>0</min>
+        <max>9</max>
+      </binding>
+    </action>
+  </animation>        
 
-<animation>
-  <type>pick</type>
-  <object-name>PerillaCod_03</object-name>
-  <visible>true</visible>
-  <action>
-    <button>3</button>
-    <repeatable>false</repeatable>
-    <binding>
-      <command>property-adjust</command>
-      <property>instrumentation/transponder/inputs/digit[1]</property>
-      <step>1</step>
-      <min>0</min>
-      <max>9</max>
-    </binding>
-  </action>
-  <action>
-    <button>4</button>
-    <repeatable>false</repeatable>
-    <binding>
-      <command>property-adjust</command>
-      <property>instrumentation/transponder/inputs/digit[1]</property>
-      <step>-1</step>
-      <min>0</min>
-      <max>9</max>
-    </binding>
-  </action>
-</animation>        
+  <animation>
+    <type>rotate</type>
+    <object-name>PerillaCod_03</object-name>
+    <property>instrumentation/transponder/inputs/digit[1]</property>
+    <offset-deg>0</offset-deg>
+    <factor>-10</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m>0.00480</x-m>
+      <y-m>0.03441</y-m>
+      <z-m>0.00078</z-m>
+    </center>
+  </animation>
 
-<animation>
-  <type>rotate</type>
-  <object-name>PerillaCod_03</object-name>
-  <property>instrumentation/transponder/inputs/digit[1]</property>
-  <offset-deg>0</offset-deg>
-  <factor>-10</factor>
-  <axis>
-    <x>1</x>
-    <y>0</y>
-    <z>0</z>
-  </axis>
-  <center>
-    <x-m>0.00480</x-m>
-    <y-m>0.03441</y-m>
-    <z-m>0.00078</z-m>
-  </center>
-</animation>
+  <animation>
+    <type>textranslate</type>
+    <object-name>Digit_03</object-name>
+    <property>instrumentation/transponder/inputs/digit[1]</property>
+    <factor>0.0703</factor>
+    <step>1</step>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
 
-<animation>
-  <type>textranslate</type>
-  <object-name>Digit_03</object-name>
-  <property>instrumentation/transponder/inputs/digit[1]</property>
-  <factor>0.0703</factor>
-  <step>1</step>
-  <axis>
-    <x>1</x>
-    <y>0</y>
-    <z>0</z>
-  </axis>
-</animation>
+  <animation>
+    <type>pick</type>
+    <object-name>PerillaCod_04</object-name>
+    <visible>true</visible>
+    <action>
+      <button>3</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/transponder/inputs/digit[0]</property>
+        <step>1</step>
+        <min>0</min>
+        <max>9</max>
+      </binding>
+    </action>
+    <action>
+      <button>4</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/transponder/inputs/digit[0]</property>
+        <step>-1</step>
+        <min>0</min>
+        <max>9</max>
+      </binding>
+    </action>
+  </animation>        
 
-<animation>
-  <type>pick</type>
-  <object-name>PerillaCod_04</object-name>
-  <visible>true</visible>
-  <action>
-    <button>3</button>
-    <repeatable>false</repeatable>
-    <binding>
-      <command>property-adjust</command>
-      <property>instrumentation/transponder/inputs/digit[0]</property>
-      <step>1</step>
-      <min>0</min>
-      <max>9</max>
-    </binding>
-  </action>
-  <action>
-    <button>4</button>
-    <repeatable>false</repeatable>
-    <binding>
-      <command>property-adjust</command>
-      <property>instrumentation/transponder/inputs/digit[0]</property>
-      <step>-1</step>
-      <min>0</min>
-      <max>9</max>
-    </binding>
-  </action>
-</animation>        
+  <animation>
+    <type>rotate</type>
+    <object-name>PerillaCod_04</object-name>
+    <property>instrumentation/transponder/inputs/digit[0]</property>
+    <offset-deg>0</offset-deg>
+    <factor>-10</factor>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <center>
+      <x-m>0.00480</x-m>
+      <y-m>0.05721</y-m>
+      <z-m>0.00078</z-m>
+    </center>
+  </animation>
 
-<animation>
-  <type>rotate</type>
-  <object-name>PerillaCod_04</object-name>
-  <property>instrumentation/transponder/inputs/digit[0]</property>
-  <offset-deg>0</offset-deg>
-  <factor>-10</factor>
-  <axis>
-    <x>1</x>
-    <y>0</y>
-    <z>0</z>
-  </axis>
-  <center>
-    <x-m>0.00480</x-m>
-    <y-m>0.05721</y-m>
-    <z-m>0.00078</z-m>
-  </center>
-</animation>
+  <animation>
+    <type>textranslate</type>
+    <object-name>Digit_04</object-name>
+    <property>instrumentation/transponder/inputs/digit[0]</property>
+    <factor>0.0703</factor>
+    <step>1</step>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
 
-<animation>
-  <type>textranslate</type>
-  <object-name>Digit_04</object-name>
-  <property>instrumentation/transponder/inputs/digit[0]</property>
-  <factor>0.0703</factor>
-  <step>1</step>
-  <axis>
-    <x>1</x>
-    <y>0</y>
-    <z>0</z>
-  </axis>
-</animation>
+  <!-- Label Text -->
 
-<!-- Label Text -->
+  <text>
+    <name>LabelText</name>
+    <type type="string">literal</type>
+    <text type="string">Transponder</text>
+    <draw-text type="bool">true</draw-text>
+    <font>Helvetica.txf</font>
+    <character-size type="double">0.012</character-size>
+    <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+    <axis-alignment>yz-plane</axis-alignment>
+    <max-height>0.2</max-height>
+    <max-width>0.07</max-width>
+    <font-resolution>
+      <width type="int">32</width>
+      <height type="int">32</height>
+    </font-resolution>
+    <alignment>center-center</alignment>
+    <offsets>
+      <x-m> 0.01</x-m>
+      <y-m> 0.0 </y-m>
+      <z-m> 0.0 </z-m>
+    </offsets>
+  </text>
 
-<text>
-  <name>LabelText</name>
-  <type type="string">literal</type>
-  <text type="string">Transponder</text>
-  <draw-text type="bool">true</draw-text>
-  <font>Helvetica.txf</font>
-  <character-size type="double">0.012</character-size>
-  <character-aspect-ratio type="double">1.0</character-aspect-ratio>
-  <axis-alignment>yz-plane</axis-alignment>
-  <max-height>0.2</max-height>
-  <max-width>0.07</max-width>
-  <font-resolution>
-    <width type="int">32</width>
-    <height type="int">32</height>
-  </font-resolution>
-  <alignment>center-center</alignment>
-  <offsets>
-    <x-m> 0.01</x-m>
-    <y-m> 0.0 </y-m>
-    <z-m> 0.0 </z-m>
-  </offsets>
-</text>
+  <animation>
+    <type>material</type>
+    <object-name>LabelText</object-name>
+    <emission>
+      <red>1.0</red>
+      <green>0.8</green>
+      <blue>0.0</blue>
+    </emission>
+  </animation>
 
-<animation>
-  <type>material</type>
-  <object-name>LabelText</object-name>
-  <emission>
-    <red>1.0</red>
-    <green>0.8</green>
-    <blue>0.0</blue>
-  </emission>
-</animation>
-
-<animation>
-  <type>select</type>
-  <object-name>LabelText</object-name>
-  <condition>
-    <property>/sim/panel-hotspots</property>
-  </condition>
-</animation>
+  <animation>
+    <type>select</type>
+    <object-name>LabelText</object-name>
+    <condition>
+      <property>/sim/panel-hotspots</property>
+    </condition>
+  </animation>
 
 </PropertyList>

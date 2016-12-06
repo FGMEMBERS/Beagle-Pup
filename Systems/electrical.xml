@@ -47,6 +47,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <source-min type="float">800</source-min>
     </component>
 
+    <!-- Busses -->
+
     <component>
       <kind type="string">output</kind>
       <name type="string">DC Bus</name>
@@ -55,8 +57,52 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <component>
       <kind type="string">output</kind>
-      <name type="string">Avionics Bus</name>
-      <prop type="string">systems/electrical/outputs/bus-avionics</prop>
+      <name type="string">AM/DG Circuit</name>
+      <prop type="string">systems/electrical/outputs/am-dg-bus-dc</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">LVoltRelay/FuelConts Circuit</name>
+      <prop type="string">systems/electrical/outputs/lvoltrelay-fuelconts-bus-dc</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">Stall Warning/Boost Pump Circuit</name>
+      <prop type="string">systems/electrical/outputs/stallwarning-boostpump-bus-dc</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">LandTaxi/Nav Circuit</name>
+      <prop type="string">systems/electrical/outputs/landtaxi-nav-bus-dc</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">Alternator Field</name>
+      <prop type="string">systems/electrical/outputs/alternator-field</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">Pilot 1 Flood Circuit</name>
+      <prop type="string">systems/electrical/outputs/pilot1-flood-circuit</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">Pilot 2 Flood Circuit</name>
+      <prop type="string">systems/electrical/outputs/pilot2-flood-circuit</prop>
+    </component>
+
+    <!-- Other components -->
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">Battery Charger</name>
+      <prop type="string">systems/electrical/outputs/battery-charger</prop>
     </component>
 
     <component>
@@ -79,8 +125,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <component>
       <kind type="string">output</kind>
+      <name type="string">Pitot Heater</name>
+      <prop type="string">systems/electrical/outputs/pitot-heater</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
       <name type="string">Autopilot</name>
       <prop type="string">systems/electrical/outputs/autopilot</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">Directional Gyro</name>
+      <prop type="string">systems/electrical/outputs/DG</prop>
     </component>
 
     <component>
@@ -97,7 +155,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <component>
       <kind type="string">output</kind>
-      <name type="string">NAV</name>
+      <name type="string">COMMNAV</name>
       <prop type="string">systems/electrical/outputs/nav</prop>
     </component>
 
@@ -193,12 +251,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <component>
       <kind type="string">output</kind>
-      <name type="string">Strobe Lights</name>
-      <prop type="string">systems/electrical/outputs/strobe-lights</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
       <name type="string">Taxi Light</name>
       <prop type="string">systems/electrical/outputs/taxi-light</prop>
     </component>
@@ -211,11 +263,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <component>
       <kind type="string">output</kind>
+      <name type="string">Pilot 1 Flood</name>
+      <prop type="string">systems/electrical/outputs/pilot1-flood</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
+      <name type="string">Pilot 2 Flood</name>
+      <prop type="string">systems/electrical/outputs/pilot2-flood</prop>
+    </component>
+
+    <component>
+      <kind type="string">output</kind>
       <name type="string">Panel Lights</name>
       <prop type="string">systems/electrical/outputs/panel-lights</prop>
     </component>
 
     <!-- Connectors -->
+
+    <!-- Connections from suppliers to the main bus -->
 
     <connector>
       <input type="string">Battery</input>
@@ -226,18 +292,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <connector>
       <input type="string">Alternator</input>
       <output type="string">DC Bus</output>
-      <switch type="string">controls/electric/engine/generator</switch>
+      <switch type="string">controls/switches/circuit-breakers/alt</switch>
     </connector>
 
     <connector>
-      <input type="string">DC Bus</input>
-      <output type="string">Avionics Bus</output>
+      <input type="string">Alternator</input>
+      <output type="string">Alternator Field</output>
+      <switch type="string">controls/switches/circuit-breakers/alt-field</switch>
     </connector>
 
-    <connector>
-      <input type="string">DC Bus</input>
-      <output type="string">Flaps</output>
-    </connector>
+    <!-- Switched connections from the main bus  -->
 
     <connector>
       <input type="string">DC Bus</input>
@@ -245,130 +309,208 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <switch type="string">controls/electric/engine/starter-master</switch>
     </connector>
 
+    <!-- Connections from main bus to isolation circuits -->
+
     <connector>
       <input type="string">DC Bus</input>
+      <output type="string">AM/DG Circuit</output>
+      <switch type="string">controls/switches/circuit-breakers/am-dg</switch>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">LVoltRelay/FuelConts Circuit</output>
+      <switch type="string">controls/switches/circuit-breakers/lvrelay-fuelconts</switch>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">Stall Warning/Boost Pump Circuit</output>
+      <switch type="string">controls/switches/circuit-breakers/stallwarning-boostpump</switch>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">LandTaxi/Nav Circuit</output>
+      <switch type="string">controls/switches/circuit-breakers/landtaxi-nav</switch>
+    </connector>
+
+    <!-- Alternator Field -->
+
+    <connector>
+      <input type="string">Alternator Field</input>
+      <output type="string">Battery Charger</output>
+      <switch type="string">controls/electric/engine/generator</switch>
+    </connector>
+
+    <!-- Connnections from the main bus -->
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">Beacon</output>
+      <switch type="string">controls/switches/circuit-breakers/beacon</switch>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">Autopilot</output>
+      <switch type="string">controls/switches/circuit-breakers/ap</switch>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">Turn Coordinator</output>
+      <switch type="string">controls/switches/circuit-breakers/tb</switch>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">Pilot 1 Flood Circuit</output>
+      <switch type="string">controls/switches/circuit-breakers/pilot1flood</switch>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">Pilot 2 Flood Circuit</output>
+      <switch type="string">controls/switches/circuit-breakers/pilot2flood</switch>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">Flaps</output>
+      <switch type="string">controls/switches/circuit-breakers/flaps</switch>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">COMMNAV</output>
+      <switch type="string">controls/switches/circuit-breakers/comm</switch>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">DME</output>
+      <switch type="string">controls/switches/circuit-breakers/dme</switch>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">ADF</output>
+      <switch type="string">controls/switches/circuit-breakers/adf</switch>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">Transponder</output>
+      <switch type="string">controls/switches/circuit-breakers/txp</switch>
+    </connector>
+
+    <connector>
+      <input type="string">DC Bus</input>
+      <output type="string">Pitot Heater</output>
+      <switch type="string">controls/switches/circuit-breakers/pitot-heater</switch>
+    </connector>
+
+    <!-- Connections from isolation circuits -->
+
+    <connector>
+      <input type="string">AM/DG Circuit</input>
+      <output type="string">Directional Gyro</output>
+    </connector>
+
+    <connector>
+      <input type="string">Stall Warning/Boost Pump Circuit</input>
       <output type="string">Fuel Pump</output>
       <switch type="string">controls/electric/engine/fuel-pump</switch>
     </connector>
 
     <connector>
-      <input type="string">DC Bus</input>
+      <input type="string">Stall Warning/Boost Pump Circuit</input>
       <output type="string">Stall Warning</output>
     </connector>
 
     <connector>
-      <input type="string">DC Bus</input>
-      <output type="string">Panel Lights</output>
-    </connector>
-
-    <connector>
-      <input type="string">DC Bus</input>
+      <input type="string">LandTaxi/Nav Circuit</input>
       <output type="string">Navigation Lights</output>
-      <switch type="string">controls/lighting/nav-lights</switch>
     </connector>
 
     <connector>
-      <input type="string">DC Bus</input>
-      <output type="string">Strobe Lights</output>
-      <switch type="string">controls/lighting/strobe</switch>
-    </connector>
-
-    <connector>
-      <input type="string">DC Bus</input>
-      <output type="string">Beacon</output>
-      <switch type="string">controls/lighting/beacon</switch>
-    </connector>
-
-    <connector>
-      <input type="string">DC Bus</input>
+      <input type="string">LandTaxi/Nav Circuit</input>
       <output type="string">Taxi Light</output>
       <switch type="string">controls/lighting/taxi-light</switch>
     </connector>
 
     <connector>
-      <input type="string">DC Bus</input>
+      <input type="string">LandTaxi/Nav Circuit</input>
       <output type="string">Landing Lights</output>
       <switch type="string">controls/lighting/landing-lights</switch>
     </connector>
 
     <connector>
-      <input type="string">Avionics Bus</input>
-      <output type="string">Autopilot</output>
+      <input type="string">LVoltRelay/FuelConts Circuit</input>
+      <output type="string">Panel Lights</output>
     </connector>
 
     <connector>
-      <input type="string">Avionics Bus</input>
-      <output type="string">ADF</output>
-    </connector>
-
-    <connector>
-      <input type="string">Avionics Bus</input>
-      <output type="string">DME</output>
-    </connector>
-
-    <connector>
-      <input type="string">Avionics Bus</input>
-      <output type="string">NAV</output>
-    </connector>
-
-    <connector>
-      <input type="string">Avionics Bus</input>
-      <output type="string">Transponder</output>
-    </connector>
-
-    <connector>
-      <input type="string">Avionics Bus</input>
-      <output type="string">Turn Coordinator</output>
-    </connector>
-
-    <connector>
-      <input type="string">Avionics Bus</input>
+      <input type="string">LVoltRelay/FuelConts Circuit</input>
       <output type="string">Carb Temp Gauge</output>
     </connector>
 
     <connector>
-      <input type="string">Avionics Bus</input>
+      <input type="string">LVoltRelay/FuelConts Circuit</input>
       <output type="string">CHT Gauge</output>
     </connector>
 
     <connector>
-      <input type="string">Avionics Bus</input>
+      <input type="string">LVoltRelay/FuelConts Circuit</input>
       <output type="string">EGT Gauge</output>
     </connector>
 
     <connector>
-      <input type="string">Avionics Bus</input>
+      <input type="string">LVoltRelay/FuelConts Circuit</input>
       <output type="string">Suction Gauge</output>
     </connector>
 
     <connector>
-      <input type="string">Avionics Bus</input>
+      <input type="string">LVoltRelay/FuelConts Circuit</input>
       <output type="string">OAT Gauge</output>
     </connector>
 
     <connector>
-      <input type="string">Avionics Bus</input>
+      <input type="string">LVoltRelay/FuelConts Circuit</input>
       <output type="string">Flap Indicator</output>
     </connector>
 
     <connector>
-      <input type="string">Avionics Bus</input>
+      <input type="string">LVoltRelay/FuelConts Circuit</input>
       <output type="string">Fuel Gauge</output>
     </connector>
 
     <connector>
-      <input type="string">Avionics Bus</input>
+      <input type="string">LVoltRelay/FuelConts Circuit</input>
       <output type="string">Fuel Pressure Gauge</output>
     </connector>
 
     <connector>
-      <input type="string">Avionics Bus</input>
+      <input type="string">LVoltRelay/FuelConts Circuit</input>
       <output type="string">Oil Temp Gauge</output>
     </connector>
 
     <connector>
-      <input type="string">Avionics Bus</input>
+      <input type="string">LVoltRelay/FuelConts Circuit</input>
       <output type="string">Oil Pressure Gauge</output>
+    </connector>
+
+    <connector>
+      <input type="string">Pilot 1 Flood Circuit</input>
+      <output type="string">Pilot 1 Flood</output>
+      <switch type="string">controls/lighting/pilot1-flood</switch>
+    </connector>
+
+    <connector>
+      <input type="string">Pilot 2 Flood Circuit</input>
+      <output type="string">Pilot 2 Flood</output>
+      <switch type="string">controls/lighting/pilot2-flood</switch>
     </connector>
 
   </electrical>

@@ -25,8 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <PropertyList>
 
   <params>
-    <panel-norm>sim/multiplay/generic/float[0]</panel-norm>
-    <panel-light-volts>sim/multiplay/generic/float[3]</panel-light-volts>
+    <flood-norm>sim/multiplay/generic/float[3]</flood-norm>
   </params>
 
   <path>cockpit.ac</path>
@@ -34,23 +33,31 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <animation>
     <type>material</type>
     <object-name>Cockpit</object-name>
-    <condition>
-      <greater-than>
-        <property alias="../../../../params/panel-light-volts"/>
-        <value>0.0</value>
-      </greater-than>
-    </condition>
     <emission>
-      <red>0.20</red>
-      <green>0.18</green>
-      <blue>0.18</blue>
-      <factor-prop alias="../../../params/panel-norm"/>
+      <red>0.40</red>
+      <green>0.35</green>
+      <blue>0.35</blue>
+      <factor-prop alias="../../../params/flood-norm"/>
     </emission>
   </animation>
 
+  <effect>
+    <inherits-from>Aircraft/Beagle-Pup/Models/Effects/Lights/headtorch</inherits-from>
+    <object-name>Cockpit</object-name>
+  </effect>
+
+  <model>
+    <path>Cockpit/ElectricalPanel.xml</path>
+    <offsets>
+      <pitch-deg>-40</pitch-deg>
+      <x-m>1.700</x-m>
+      <y-m>-0.310</y-m>
+      <z-m>-0.10</z-m>
+    </offsets>
+  </model>
+
   <model>
     <path>Cockpit/StarterPanel.xml</path>
-    <name>StarterPanel</name>
     <offsets>
       <pitch-deg>-40</pitch-deg>
       <x-m>1.730</x-m>

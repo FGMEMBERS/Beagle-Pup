@@ -72,23 +72,6 @@
         <default-padding>5</default-padding>
         <text>
           <halign>left</halign>
-          <label>Gyro Spindown</label>
-        </text>
-        <checkbox>
-          <halign>right</halign>
-          <property>sim/model/preferences/realism/gyro-spindown</property>
-          <live>true</live>
-          <binding>
-            <command>property-toggle</command>
-            <property>sim/model/preferences/realism/gyro-spindown</property>
-          </binding>
-        </checkbox>
-      </group>
-      <group>
-        <layout>hbox</layout>
-        <default-padding>5</default-padding>
-        <text>
-          <halign>left</halign>
           <label>Carb Icing</label>
         </text>
         <checkbox>

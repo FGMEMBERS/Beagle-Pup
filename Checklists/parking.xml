@@ -55,8 +55,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>controls/lighting/taxi-light</property>
-      <value>0</value>
+      <property>controls/switches/land-taxi</property>
+      <value>1</value>
     </binding>
     <binding>
       <command>nasal</command>
@@ -186,28 +186,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>controls/lighting/beacon</property>
-      <value>0</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
-    </binding>
-  </item>
-
-  <!-- Navigation Lights - OFF -->
-  <item>
-    <name>Navigation Lights</name>
-    <value>OFF</value>
-    <condition>
-      <equals>
-        <property>systems/electrical/outputs/nav-lights</property>
-        <value>0</value>
-      </equals>
-    </condition>
-    <binding>
-      <command>property-assign</command>
-      <property>controls/lighting/nav-lights</property>
+      <property>controls/switches/circuit-breakers/beacon</property>
       <value>0</value>
     </binding>
     <binding>

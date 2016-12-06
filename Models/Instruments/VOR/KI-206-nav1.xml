@@ -34,6 +34,21 @@ License: GPL
     </emission>
   </animation>
 
+  <effect>
+    <inherits-from>Aircraft/Beagle-Pup/Models/Effects/Lights/headtorch</inherits-from>
+    <object-name>Flag_GS</object-name>
+    <object-name>Flag_NAV</object-name>
+    <object-name>Flag_TO</object-name>
+    <object-name>Flag_FROM</object-name>
+    <object-name>Cross</object-name>
+    <object-name>Ring</object-name>
+    <object-name>Needle_LOC</object-name>
+    <object-name>Needle_GS</object-name>
+    <object-name>Arrows</object-name>
+    <object-name>Knob</object-name>
+    <object-name>Base_02</object-name>
+  </effect>
+
   <animation>
     <type>select</type>
     <object-name>Flag_NAV</object-name>

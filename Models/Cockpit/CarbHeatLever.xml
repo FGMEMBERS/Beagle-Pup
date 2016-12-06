@@ -30,22 +30,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <type>material</type>
     <object-name>Sheath</object-name>
     <object-name>Lever</object-name>
-    <condition>
-      <property>systems/electrical/outputs/panel-lights</property>
-    </condition>
     <emission>
-      <red>0.3</red>
-      <green>0.3</green>
-      <blue>0.3</blue>
-      <factor-prop>controls/lighting/panel-norm</factor-prop>
+      <red>0.40</red>
+      <green>0.35</green>
+      <blue>0.35</blue>
+      <factor-prop>controls/lighting/flood-norm</factor-prop>
     </emission>
   </animation>
+
+  <effect>
+    <inherits-from>Aircraft/Beagle-Pup/Models/Effects/Lights/headtorch</inherits-from>
+    <object-name>Sheath</object-name>
+    <object-name>Lever</object-name>
+  </effect>
 
   <animation>
     <type>slider</type>
     <object-name>Lever</object-name>
     <property>controls/anti-ice/engine/carb-heat-norm</property>
-    <factor>0.025</factor>
+    <factor>0.040</factor>
     <axis>
       <x>1</x>
       <y>0</y>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+**************************************************************************
+
+Beagle Pup Torch (Flashlight)
+
+Copyright (c) 2016 Richard Senior
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+**************************************************************************
+-->
+
+<PropertyList>
+  <name>torch</name>
+  <inherits-from>Effects/model-interior</inherits-from>
+  <parameters>
+    <texture n="4">
+      <type>cubemap</type>
+      <images>
+        <positive-x>Aircraft/Beagle-Pup/Models/Effects/Lights/white.png</positive-x>
+        <negative-x>Aircraft/Beagle-Pup/Models/Effects/Lights/white.png</negative-x>
+        <positive-y>Aircraft/Beagle-Pup/Models/Effects/Lights/white.png</positive-y>
+        <negative-y>Aircraft/Beagle-Pup/Models/Effects/Lights/white.png</negative-y>
+        <positive-z>Aircraft/Beagle-Pup/Models/Effects/Lights/white.png</positive-z>
+        <negative-z>Aircraft/Beagle-Pup/Models/Effects/Lights/white.png</negative-z>
+      </images>
+    </texture>
+    <light-filter-one type="vec3d">0.6 0.6 0.6</light-filter-one>
+    <light-filter-two type="vec3d">1.0 0.3 0.3</light-filter-two>
+    <light-radius type="float">15</light-radius>
+  </parameters>
+</PropertyList>

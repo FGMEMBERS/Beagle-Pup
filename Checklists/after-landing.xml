@@ -38,28 +38,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </condition>
     <binding>
       <command>property-assign</command>
-      <property>controls/lighting/taxi-light</property>
-      <value>1</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
-    </binding>
-  </item>
-
-  <!-- Landing Lights - OFF -->
-  <item>
-    <name>Landing Lights</name>
-    <value>OFF</value>
-    <condition>
-      <equals>
-        <property>systems/electrical/outputs/landing-lights</property>
-        <value>0</value>
-      </equals>
-    </condition>
-    <binding>
-      <command>property-assign</command>
-      <property>controls/lighting/landing-lights</property>
+      <property>controls/switches/land-taxi</property>
       <value>0</value>
     </binding>
     <binding>
@@ -125,6 +104,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </item>
 
   <!-- Pitot Heater - OFF -->
+  <item>
+    <name>Pitot Heater</name>
+    <value>OFF</value>
+    <condition>
+      <equals>
+        <property>systems/electrical/outputs/pitot-heater</property>
+        <value>0.0</value>
+      </equals>
+    </condition>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/switches/circuit-breakers/pitot-heater</property>
+      <value>0</value>
+    </binding>
+  </item>
 
   <!-- Transponder - SBY -->
   <item>
