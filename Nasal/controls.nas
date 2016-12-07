@@ -27,7 +27,7 @@ var defaultStartEngine = controls.startEngine;
 
 controls.startEngine = func(v = 1, which...)
 {
-    if (getprop("systems/electrical/outputs/starter") > 0.0)
+    if (!v or getprop("systems/electrical/outputs/starter") > 0.0)
         defaultStartEngine(v, size(which) ? which : 0);
 }
 

@@ -68,6 +68,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <property>controls/switches/circuit-breakers/pitot-heater</property>
       <value>1</value>
     </binding>
+    <binding>
+      <command>nasal</command>
+      <script>pup.click();</script>
+    </binding>
   </item>
 
 </PropertyList>

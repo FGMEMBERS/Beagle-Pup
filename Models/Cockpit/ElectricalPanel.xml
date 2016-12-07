@@ -93,6 +93,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <command>property-toggle</command>
         <property>controls/switches/circuit-breakers/alt</property>
       </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
+      </binding>
     </action>
   </animation>
 
@@ -110,6 +114,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <binding>
         <command>property-toggle</command>
         <property>controls/switches/circuit-breakers/alt-field</property>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
       </binding>
     </action>
   </animation>
@@ -129,6 +137,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <command>property-toggle</command>
         <property>controls/switches/circuit-breakers/am-dg</property>
       </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
+      </binding>
     </action>
   </animation>
 
@@ -146,6 +158,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <binding>
         <command>property-toggle</command>
         <property>controls/switches/circuit-breakers/tb</property>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
       </binding>
     </action>
   </animation>
@@ -165,6 +181,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <command>property-toggle</command>
         <property>controls/switches/circuit-breakers/lvrelay-fuelconts</property>
       </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
+      </binding>
     </action>
   </animation>
 
@@ -182,6 +202,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <binding>
         <command>property-toggle</command>
         <property>controls/switches/circuit-breakers/stallwarning-boostpump</property>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
       </binding>
     </action>
   </animation>
@@ -201,6 +225,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <command>property-toggle</command>
         <property>controls/switches/circuit-breakers/flaps</property>
       </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
+      </binding>
     </action>
   </animation>
 
@@ -218,6 +246,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <binding>
         <command>property-toggle</command>
         <property>controls/switches/circuit-breakers/comm</property>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
       </binding>
     </action>
   </animation>
@@ -237,6 +269,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <command>property-toggle</command>
         <property>controls/switches/circuit-breakers/dme</property>
       </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
+      </binding>
     </action>
   </animation>
 
@@ -254,6 +290,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <binding>
         <command>property-toggle</command>
         <property>controls/switches/circuit-breakers/adf</property>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
       </binding>
     </action>
   </animation>
@@ -273,6 +313,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <command>property-toggle</command>
         <property>controls/switches/circuit-breakers/ap</property>
       </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
+      </binding>
     </action>
   </animation>
 
@@ -290,6 +334,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <binding>
         <command>property-toggle</command>
         <property>controls/switches/circuit-breakers/pilot1flood</property>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
       </binding>
     </action>
   </animation>
@@ -309,6 +357,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <command>property-toggle</command>
         <property>controls/switches/circuit-breakers/pilot2flood</property>
       </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
+      </binding>
     </action>
   </animation>
 
@@ -327,6 +379,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <command>property-toggle</command>
         <property>controls/switches/circuit-breakers/txp</property>
       </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
+      </binding>
     </action>
   </animation>
 
@@ -344,6 +400,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <binding>
         <command>property-toggle</command>
         <property>controls/switches/circuit-breakers/landtaxi-nav</property>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
       </binding>
     </action>
   </animation>
@@ -373,6 +433,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <max>2</max>
         <wrap>0</wrap>
       </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
+      </binding>
     </action>
   </animation>
 
@@ -391,6 +455,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <command>property-toggle</command>
         <property>controls/switches/circuit-breakers/beacon</property>
       </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
+      </binding>
     </action>
   </animation>
 
@@ -408,6 +476,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <binding>
         <command>property-toggle</command>
         <property>controls/switches/circuit-breakers/pitot-heater</property>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>pup.click()</script>
       </binding>
     </action>
   </animation>
