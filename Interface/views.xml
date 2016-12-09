@@ -31,10 +31,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <config>
       <x-offset-m type="double">-0.25</x-offset-m>
       <y-offset-m type="double">0.45</y-offset-m>
-      <z-offset-m type="double">2.3</z-offset-m>
-      <target-z-offset-m type="double">2.4</target-z-offset-m>
-      <pitch-offset-deg>-15</pitch-offset-deg>
-      <default-field-of-view-deg type="double">70.0</default-field-of-view-deg>
+      <z-offset-m type="double">2.5</z-offset-m>
+      <pitch-offset-deg>-12</pitch-offset-deg>
+      <field-of-view type="double">60.0</field-of-view>
+      <default-field-of-view-deg type="double">60.0</default-field-of-view-deg>
+      <from-model type="bool">true</from-model>
+      <from-model-idx type="int">0</from-model-idx>
     </config>
   </view>
 
@@ -67,6 +69,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <config>
       <target-z-offset-m type="double">2.4</target-z-offset-m>
       <default-field-of-view-deg type="double">40.0</default-field-of-view-deg>
+    </config>
+  </view>
+
+  <view n="100">
+    <name>Co-pilot</name>
+    <type>lookfrom</type>
+    <internal type="bool">true</internal>
+    <config>
+      <x-offset-m type="double">0.25</x-offset-m>
+      <y-offset-m type="double">0.45</y-offset-m>
+      <z-offset-m type="double">2.5</z-offset-m>
+      <pitch-offset-deg>-12</pitch-offset-deg>
+      <field-of-view-deg type="double">60.0</field-of-view-deg>
+      <default-field-of-view-deg type="double">60.0</default-field-of-view-deg>
+      <from-model type="bool">true</from-model>
+      <from-model-idx type="int">0</from-model-idx>
     </config>
   </view>
 
