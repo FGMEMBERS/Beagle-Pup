@@ -187,6 +187,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </location>
       <capacity unit="LBS">1.00</capacity>
       <contents unit="LBS">0.00</contents>
+      <type>AVGAS</type>
     </tank>
 
     <tank type="FUEL" number="1">
@@ -195,8 +196,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <y> -48.00 </y>
         <z> -11.00 </z>
       </location>
-      <capacity unit="LBS"> 138.60 </capacity>
-      <contents unit="LBS">  34.65 </contents>
+      <capacity unit="LBS"> 122.91 </capacity>
+      <contents unit="LBS">  61.45 </contents>
+      <type>AVGAS</type>
     </tank>
 
     <tank type="FUEL" number="2">
@@ -205,8 +207,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <y>  48.00 </y>
         <z> -11.00 </z>
       </location>
-      <capacity unit="LBS"> 138.60 </capacity>
-      <contents unit="LBS">  34.65 </contents>
+      <capacity unit="LBS"> 122.91 </capacity>
+      <contents unit="LBS">  61.45 </contents>
+      <type>AVGAS</type>
     </tank>
 
   </propulsion>
