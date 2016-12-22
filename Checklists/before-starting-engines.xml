@@ -94,7 +94,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <value>CHECK</value>
     <binding>
       <command>nasal</command>
-      <script>pup.show_weight_dialog();</script>
+      <script>gui.showWeightDialog();</script>
     </binding>
   </item>
 
@@ -196,8 +196,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <name>Refuel</name>
     <value>AS REQUIRED</value>
     <binding>
+      <condition>
+        <property>engines/engine/running</property>
+      </condition>
       <command>nasal</command>
-      <script>pup.show_weight_dialog();</script>
+      <script>gui.showWeightDialog();</script>
+    </binding>
+    <binding>
+      <condition>
+        <not>
+          <property>engines/engine/running</property>
+        </not>
+      </condition>
+      <command>nasal</command>
+      <script>pup.RefuellingDialog.new().show();</script>
     </binding>
   </item>
 

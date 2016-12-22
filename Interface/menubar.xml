@@ -73,6 +73,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         </binding>
       </item>
       <item>
+        <label>Refuelling</label>
+        <binding>
+          <condition>
+            <property>engines/engine/running</property>
+          </condition>
+          <command>nasal</command>
+          <script>gui.showWeightDialog();</script>
+        </binding>
+        <binding>
+          <condition>
+            <not>
+              <property>engines/engine/running</property>
+            </not>
+          </condition>
+          <command>nasal</command>
+          <script>pup.RefuellingDialog.new().show();</script>
+        </binding>
+      </item>
+      <item>
         <label>Select Livery</label>
         <binding>
           <command>nasal</command>

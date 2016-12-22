@@ -197,7 +197,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <pup>
       <!-- Eventually these will be rationalized into a smaller set -->
       <file>Nasal/controls.nas</file>
-      <file>Nasal/dialog.nas</file>
       <file>Nasal/electrical.nas</file>
       <file>Nasal/fuel.nas</file>
       <file>Nasal/liveries.nas</file>
@@ -227,7 +226,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <menubar include="Interface/menubar.xml"/>
 
     <author>Richard Senior</author>
-    <aircraft-version>0.28.3</aircraft-version>
+    <aircraft-version>0.29.0</aircraft-version>
     <flight-model>jsb</flight-model>
 
     <aircraft-data>

@@ -27,6 +27,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <!-- Tank selector: 0 = OFF, 1 = LEFT, 2 = BOTH, 3 = RIGHT -->
   <property value="0">/controls/fuel/tank-selector</property>
 
+  <!-- Refuelling switches -->
+  <property value="0">propulsion/tank[1]/fill</property>
+  <property value="0">propulsion/tank[2]/fill</property>
+
   <channel name="Fuel">
 
     <fcs_function name="propulsion/tank[0]/fuel-pressure-psi">
@@ -59,6 +63,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <!-- Return into tank 1 (LEFT) -->
     <switch name="propulsion/tank[1]/inflow-rate-pps">
       <default value="0.05"/>
+      <test logic="AND" value="3.00">
+        propulsion/tank[1]/pct-full LT 100
+        propulsion/tank[1]/fill NE 0
+      </test>
       <test logic="OR" value="0.00">
         propulsion/tank[0]/contents-lbs LE 0.0
         propulsion/tank[0]/fuel-pressure-psi GT 1
@@ -68,6 +76,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <!-- Return into tank 2 (RIGHT) -->
     <switch name="propulsion/tank[2]/inflow-rate-pps">
       <default value="0.05"/>
+      <test logic="AND" value="3.00">
+        propulsion/tank[2]/pct-full LT 100.0
+        propulsion/tank[2]/fill NE 0
+      </test>
       <test logic="OR" value="0.00">
         propulsion/tank[0]/contents-lbs LE 0.0
         propulsion/tank[0]/fuel-pressure-psi GT 1
