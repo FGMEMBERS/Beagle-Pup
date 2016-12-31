@@ -109,22 +109,22 @@ var Wing = {Left: 1, Right: 2};
 
 var RefuellingController = {
 
+    _propulsion: props.globals.getNode("fdm/jsbsim/propulsion"),
     _totalFuelProperty: "consumables/fuel/total-fuel-gal_imp",
-    _leftFillProperty: "fdm/jsbsim/propulsion/tank[1]/fill",
-    _leftPctFullProperty: "fdm/jsbsim/propulsion/tank[1]/pct-full",
-    _rightFillProperty: "fdm/jsbsim/propulsion/tank[2]/fill",
-    _rightPctFullProperty: "fdm/jsbsim/propulsion/tank[2]/pct-full",
 
     new: func {
         var m = {
             parents: [RefuellingController]
         };
+        m.setFilling(Wing.Left, 0);
+        m.setFilling(Wing.Right, 0);
+        m._initialFuel = getprop(m._totalFuelProperty);
         return m;
     },
 
     isFull: func(tank) {
-        var pctFull = getprop(tank == Wing.Left ? me._leftPctFullProperty : me._rightPctFullProperty);
-        return pctFull >= 100;
+        var tankNode = me._propulsion.getChild("tank", tank);
+        return tankNode.getChild("pct-full").getValue() >= 100;
     },
 
     isFilling: func {
@@ -132,26 +132,24 @@ var RefuellingController = {
     },
 
     getFilling: func(tank) {
-        return getprop(tank == Wing.Left ? me._leftFillProperty : me._rightFillProperty);
+        var tankNode = me._propulsion.getChild("tank", tank);
+        return tankNode.getChild("fill").getBoolValue();
     },
 
     setFilling: func(tank, filling) {
-        setprop(tank == Wing.Left ? me._leftFillProperty : me._rightFillProperty, filling);
+        var tankNode = me._propulsion.getChild("tank", tank);
+        tankNode.getChild("fill").setValue(filling);
         if (filling) {
             # Stop filling the other tank
-            setprop(tank == Wing.Left ? me._rightFillProperty : me._leftFillProperty, 0);
+            var otherTank = tank == 1 ? 2 : 1;
+            var otherNode = me._propulsion.getChild("tank", otherTank);
+            otherNode.getChild("fill").setValue(0);
         }
     },
 
     quantity: func {
         return getprop(me._totalFuelProperty) - me._initialFuel;
     },
-
-    reset: func {
-        me.setFilling(Wing.Left, 0);
-        me.setFilling(Wing.Right, 0);
-        me._initialFuel = getprop(me._totalFuelProperty);
-    }
 
 };
 
@@ -171,15 +169,14 @@ var RefuellingDialog = {
             parents: [RefuellingDialog]
         };
         m._title = title;
-        m._controller = RefuellingController.new();
         return m;
     },
 
     show: func {
-        me._controller.reset();
+        me._controller = RefuellingController.new();
 
-        var window = canvas.Window.new([me._width, me._height], "Refuelling")
-            .set("title", me._title);
+        var window = canvas.Window.new([me._width, me._height], "Refuelling");
+        window.set("title", me._title);
         window.owner = me;
 
         var dialog = window.createCanvas();
@@ -247,6 +244,7 @@ var RefuellingDialog = {
             me._timer.stop();
         me._controller.setFilling(Wing.Left, 0);
         me._controller.setFilling(Wing.Right, 0);
+        me._controller = nil;
     },
 
 };
