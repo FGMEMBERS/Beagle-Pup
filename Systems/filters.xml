@@ -268,18 +268,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <filter>
     <type>gain</type>
-    <gain>1.0</gain>
+    <gain>1</gain>
     <input>
       <condition>
-        <greater-than>
+        <less-than>
           <property>systems/electrical/outputs/carb-temp-gauge</property>
-          <value>0</value>
-        </greater-than>
+          <value>1</value>
+        </less-than>
       </condition>
-      <property>engines/engine/carb-temp-degc</property>
+      <value>-30</value>
     </input>
     <input>
-      <value>0</value>
+      <property>engines/engine/carb-temp-degc</property>
+      <min>-30</min>
+      <max>30</max>
     </input>
     <output>instrumentation/carb-temp/carb-temp-degc</output>
   </filter>
@@ -345,16 +347,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <filter>
     <type>gain</type>
-    <gain>
+    <gain>1</gain>
+    <input>
       <condition>
-        <greater-than>
+        <less-than>
           <property>systems/electrical/outputs/oat-gauge</property>
-          <value>0</value>
-        </greater-than>
+          <value>1</value>
+        </less-than>
       </condition>
-      <value>1</value>
-    </gain>
-    <gain>0</gain>
+      <value>-50</value>
+    </input>
     <input>environment/temperature-degc</input>
     <output>instrumentation/oat/oat-degc</output>
   </filter>

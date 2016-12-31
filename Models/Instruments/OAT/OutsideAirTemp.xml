@@ -53,6 +53,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <property>instrumentation/oat/oat-degc-filtered</property>
     <interpolation>
       <entry>
+        <ind>-50</ind>
+        <dep>5</dep>
+      </entry>
+      <entry>
         <ind>-40</ind>
         <dep>10</dep>
       </entry>
