@@ -31,10 +31,6 @@ var message = func(s)
     status.write(s);
 }
 
-################################################################################
-# Autopilot controls
-################################################################################
-
 setlistener("autopilot/locks/heading-hold", func(node) {
     if (node.getBoolValue()) {
         var h = getprop("autopilot/internal/target-heading-deg");
@@ -87,7 +83,7 @@ var report_crash = func(msg)
         return;
 
     setprop("sim/messages/ai-plane", msg);
-    print(msg);
+    printlog("alert", msg);
 }
 
 var start_crash_reporting = func

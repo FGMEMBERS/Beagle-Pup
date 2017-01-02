@@ -37,10 +37,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </equals>
     </condition>
     <binding>
-      <command>nasal</command>
-      <script>
-        pup.select_magnetos(pup.Magnetos.OFF);
-      </script>
+      <command>magnetos-off</command>
     </binding>
   </item>
 
@@ -78,13 +75,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </or>
     </condition>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/electric/battery-switch</property>
       <value>1</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
     </binding>
   </item>
 
@@ -93,8 +86,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <name>Fuel Quantity</name>
     <value>CHECK</value>
     <binding>
-      <command>nasal</command>
-      <script>gui.showWeightDialog();</script>
+      <command>fuel-and-payload-dialog</command>
     </binding>
   </item>
 
@@ -112,13 +104,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </or>
     </condition>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/switches/circuit-breakers/landtaxi-nav</property>
       <value>1</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
     </binding>
   </item>
 
@@ -136,13 +124,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </or>
     </condition>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/switches/circuit-breakers/beacon</property>
       <value>1</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
     </binding>
   </item>
 
@@ -160,13 +144,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </and>
     </condition>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/switches/circuit-breakers/beacon</property>
       <value>0</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
     </binding>
   </item>
 
@@ -181,13 +161,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </less-than>
     </condition>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/electric/battery-switch</property>
       <value>0</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
     </binding>
   </item>
 
@@ -196,20 +172,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <name>Refuel</name>
     <value>AS REQUIRED</value>
     <binding>
-      <condition>
-        <property>engines/engine/running</property>
-      </condition>
-      <command>nasal</command>
-      <script>gui.showWeightDialog();</script>
-    </binding>
-    <binding>
-      <condition>
-        <not>
-          <property>engines/engine/running</property>
-        </not>
-      </condition>
-      <command>nasal</command>
-      <script>pup.RefuellingDialog.new().show();</script>
+      <command>refuelling-dialog</command>
     </binding>
   </item>
 

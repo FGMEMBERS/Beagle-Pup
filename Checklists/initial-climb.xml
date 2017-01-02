@@ -54,13 +54,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </equals>
     </condition>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/electric/engine/fuel-pump</property>
       <value>0</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
     </binding>
   </item>
 
@@ -75,13 +71,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </equals>
     </condition>
     <binding>
-      <command>property-assign</command>
-      <property>controls/switches/land-taxi</property>
-      <value>1</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
+      <command>land-taxi-off</command>
     </binding>
   </item>
 

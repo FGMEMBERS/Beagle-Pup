@@ -40,10 +40,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </or>
     </condition>
     <binding>
-      <command>nasal</command>
-      <script>
-        pup.select_magnetos(pup.Magnetos.OFF);
-      </script>
+      <command>magnetos-off</command>
     </binding>
   </item>
 
@@ -96,10 +93,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </and>
     </condition>
     <binding>
-      <command>nasal</command>
-      <script>
-        pup.select_fuel_tank(pup.Tank.BOTH);
-      </script>
+      <command>tank-select-both</command>
     </binding>
   </item>
 
@@ -145,77 +139,77 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </and>
     </condition>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/switches/circuit-breakers/adf</property>
       <value>1</value>
     </binding>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/switches/circuit-breakers/alt</property>
       <value>1</value>
     </binding>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/switches/circuit-breakers/alt-field</property>
       <value>1</value>
     </binding>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/switches/circuit-breakers/am-dg</property>
       <value>1</value>
     </binding>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/switches/circuit-breakers/ap</property>
       <value>1</value>
     </binding>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/switches/circuit-breakers/comm</property>
       <value>1</value>
     </binding>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/switches/circuit-breakers/dme</property>
       <value>1</value>
     </binding>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/switches/circuit-breakers/flaps</property>
       <value>1</value>
     </binding>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/switches/circuit-breakers/landtaxi-nav</property>
       <value>1</value>
     </binding>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/switches/circuit-breakers/lvrelay-fuelconts</property>
       <value>1</value>
     </binding>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/switches/circuit-breakers/pilot1flood</property>
       <value>1</value>
     </binding>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/switches/circuit-breakers/pilot2flood</property>
       <value>1</value>
     </binding>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/switches/circuit-breakers/stallwarning-boostpump</property>
       <value>1</value>
     </binding>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/switches/circuit-breakers/tb</property>
       <value>1</value>
     </binding>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/switches/circuit-breakers/txp</property>
       <value>1</value>
     </binding>
@@ -261,13 +255,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </greater-than>
     </condition>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/electric/battery-switch</property>
       <value>1</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
     </binding>
   </item>
 
@@ -282,13 +272,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </greater-than>
     </condition>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/switches/circuit-breakers/landtaxi-nav</property>
       <value>1</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
     </binding>
   </item>
 
@@ -303,13 +289,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </equals>
     </condition>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/electric/engine/generator</property>
       <value>1</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
     </binding>
   </item>
 
@@ -324,13 +306,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </or>
     </condition>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/electric/engine/starter-master</property>
       <value>1</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
     </binding>
   </item>
 
@@ -348,13 +326,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </or>
     </condition>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/electric/engine/fuel-pump</property>
       <value>1</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
     </binding>
   </item>
 
@@ -369,10 +343,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </equals>
     </condition>
     <binding>
-      <command>nasal</command>
-      <script>
-        pup.select_magnetos(pup.Magnetos.BOTH);
-      </script>
+      <command>magnetos-both</command>
     </binding>
   </item>
 
@@ -393,13 +364,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </greater-than>
     </condition>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/switches/circuit-breakers/beacon</property>
       <value>1</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
     </binding>
   </item>
 
@@ -411,17 +378,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <property>engines/engine/running</property>
     </condition>
     <binding>
-      <command>nasal</command>
-      <script>
-        if (!getprop("engines/engine/cranking")) {
-          controls.startEngine(1);
-          var t = maketimer(3, func {
-            controls.startEngine(0);
-          });
-          t.singleShot = 1;
-          t.start();
-        }
-      </script>
+      <command>start-engine</command>
     </binding>
   </item>
 
@@ -502,13 +459,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </and>
     </condition>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/electric/engine/starter-master</property>
       <value>0</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
     </binding>
   </item>
 
@@ -526,13 +479,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </and>
     </condition>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/electric/engine/fuel-pump</property>
       <value>0</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
     </binding>
   </item>
 

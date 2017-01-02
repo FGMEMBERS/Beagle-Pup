@@ -42,8 +42,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </and>
     </condition>
     <binding>
-      <command>property-assign</command>
-      <property>autopilot/locks/active</property>
+      <command>switch-assign</command>
+      <property>autopilot/sperry/main-switch</property>
       <value>0</value>
     </binding>
     <binding>
@@ -55,7 +55,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </condition>
       <command>property-interpolate</command>
       <property>autopilot/sperry/pitch-select</property>
-      <value>4.5</value>
+      <value>5.0</value>
       <time>1.0</time>
     </binding>
     <binding>
@@ -142,14 +142,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </or>
     </condition>
     <binding>
-      <command>nasal</command>
-      <script>
-        var h = getprop("orientation/heading-deg");
-        var m = getprop("orientation/heading-magnetic-deg");
-        var o = getprop("instrumentation/heading-indicator/offset-deg");
-        var d = (o > 180) ? int(m - h) + 360 : int(m - h);
-        interpolate("instrumentation/heading-indicator/offset-deg", d, 1.0);
-      </script>
+      <command>align-heading-indicator</command>
     </binding>
   </item>
 
@@ -167,21 +160,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </or>
     </condition>
     <binding>
-      <command>nasal</command>
-      <script>
-        var rwx = getprop("environment/realwx/enabled");
-        var qnh = getprop("environment/metar/pressure-inhg");
-        <!-- This is probably a bug in weather scenarios. If the altimeter
-             setting is taken from the METAR string in the scenario, the altitude
-             is wrong, but if it is set from sea level pressure, it comes out
-             correct. At some point this will be fixed in FG and this fudge will
-             need removing.
-        -->
-        var slp = getprop("environment/pressure-sea-level-inhg");
-        var setting = rwx ? qnh : slp;
-        setting = math.round(setting * 100) / 100;
-        interpolate("instrumentation/altimeter/setting-inhg", setting, 1.0);
-      </script>
+      <command>set-altimeter-qnh</command>
     </binding>
   </item>
 
@@ -196,13 +175,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </greater-than>
     </condition>
     <binding>
-      <command>property-assign</command>
-      <property>controls/switches/land-taxi</property>
-      <value>0</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
+      <command>land-taxi-taxi</command>
     </binding>
   </item>
 

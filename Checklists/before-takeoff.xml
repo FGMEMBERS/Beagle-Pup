@@ -37,13 +37,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </greater-than>
     </condition>
     <binding>
-      <command>property-assign</command>
-      <property>controls/switches/land-taxi</property>
-      <value>2</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
+      <command>land-taxi-land</command>
     </binding>
   </item>
 
@@ -93,10 +87,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </and>
     </condition>
     <binding>
-      <command>nasal</command>
-      <script>
-        pup.select_fuel_tank(pup.Tank.BOTH);
-      </script>
+      <command>tank-select-both</command>
     </binding>
   </item>
 
@@ -111,13 +102,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </greater-than>
     </condition>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/electric/engine/fuel-pump</property>
       <value>1</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
     </binding>
   </item>
 
@@ -172,13 +159,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <name>Pitot Heater</name>
     <value>AS REQUIRED</value>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/switches/circuit-breakers/pitot-heater</property>
       <value>1</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
     </binding>
   </item>
 

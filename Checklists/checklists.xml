@@ -36,7 +36,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <auto>
     <timeout-sec>10</timeout-sec>
-    <wait-sec>0.2</wait-sec>
+    <wait-sec>0</wait-sec>
   </auto>
 
   <status>

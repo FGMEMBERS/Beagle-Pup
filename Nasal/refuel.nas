@@ -1,8 +1,8 @@
 ################################################################################
 #
-# Beagle Pup Fuel System Helpers
+# Beagle Pup Refuelling Dialog
 #
-# Copyright (c) 2015 Richard Senior
+# Copyright (c) 2016 Richard Senior
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -19,90 +19,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 #
-################################################################################
-
-################################################################################
-# Aircraft Fuel System
-################################################################################
-
-var _lock = 0;
-
-var Tank = {OFF: 0, LEFT: 1, BOTH: 2, RIGHT: 3};
-
-# Lock changes through listeners. If a function is wrapped in this lock
-# function, listeners will not fire and cause an endless loop.
-#
-var lock = func(f)
-{
-    if (_lock) return;
-    _lock = 1;
-    call(f);
-    _lock = 0;
-}
-
-# Select a position on the fuel tank selector
-#
-var select_fuel_tank = func(n)
-{
-    var s = getprop("controls/fuel/tank-selector");
-    var steps = abs(n - s);
-    multi_click(steps == 3 ? 1 : steps);
-    setprop("controls/fuel/tank-selector", n);
-}
-
-# Infer the position of the fuel tank selector from the checkboxes in the 
-# fuel and payload dialog
-#
-var infer_fuel_tank_selector = func
-{
-    var l = getprop("consumables/fuel/tank[1]/selected");
-    var r = getprop("consumables/fuel/tank[2]/selected");
-
-    if (!l and !r)
-        select_fuel_tank(Tank.OFF);
-    elsif (l and !r)
-        select_fuel_tank(Tank.LEFT);
-    elsif (!l and r)
-        select_fuel_tank(Tank.RIGHT);
-    else
-        select_fuel_tank(Tank.BOTH);
-}
-
-var start_listeners = func()
-{
-    # Update the fuel and payload dialog from the fuel selection
-    #
-    setlistener("controls/fuel/tank-selector", func(node) {
-        lock(func {
-            var selection = node != nil and node.getValue();
-            var l = selection == Tank.LEFT or selection == Tank.BOTH;
-            var r = selection == Tank.RIGHT or selection == Tank.BOTH;
-            setprop("consumables/fuel/tank[1]/selected", l);
-            setprop("consumables/fuel/tank[2]/selected", r);
-        });
-    }, startup = 1, runtime = 0);
-
-    # Update the fuel selection from the fuel and payload dialog (left tank)
-    #
-    setlistener("consumables/fuel/tank[1]/selected", func(node) {
-        lock(func {
-            infer_fuel_tank_selector();
-        });
-    }, startup = 1, runtime = 0);
-
-    # Update the fuel selection from the fuel and payload dialog (right tank)
-    #
-    setlistener("consumables/fuel/tank[2]/selected", func(node) {
-        lock(func {
-            infer_fuel_tank_selector();
-        });
-    }, startup = 1, runtime = 0);
-}
-
-setlistener("sim/signals/fdm-initialized", start_listeners, 0, 0);
-
-################################################################################
-# Refuelling Dialog
 ################################################################################
 
 var Wing = {Left: 1, Right: 2};
@@ -183,7 +99,7 @@ var RefuellingDialog = {
         var root = dialog.createGroup();
 
         var svg = root.createChild("group");
-        canvas.parsesvg(svg, "Aircraft/Beagle-Pup/Nasal/fuel.svg");
+        canvas.parsesvg(svg, "Aircraft/Beagle-Pup/Nasal/refuel.svg");
         me._quantityLabel = svg.getElementById("quantityLabel");
         me._fillingLamp = svg.getElementById("fillingLamp");
 
@@ -248,5 +164,3 @@ var RefuellingDialog = {
     },
 
 };
-
-print("Fuel system loaded");

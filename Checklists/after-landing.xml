@@ -37,13 +37,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </greater-than>
     </condition>
     <binding>
-      <command>property-assign</command>
-      <property>controls/switches/land-taxi</property>
-      <value>0</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
+      <command>land-taxi-taxi</command>
     </binding>
   </item>
 
@@ -75,13 +69,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </equals>
     </condition>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/electric/engine/fuel-pump</property>
       <value>0</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
     </binding>
   </item>
 
@@ -114,13 +104,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       </equals>
     </condition>
     <binding>
-      <command>property-assign</command>
+      <command>switch-assign</command>
       <property>controls/switches/circuit-breakers/pitot-heater</property>
       <value>0</value>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
     </binding>
   </item>
 
