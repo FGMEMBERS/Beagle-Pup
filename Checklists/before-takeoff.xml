@@ -26,21 +26,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <title>Before Takeoff</title>
 
-  <!-- Landing Light - ON -->
-  <item>
-    <name>Landing Lights</name>
-    <value>ON</value>
-    <condition>
-      <greater-than>
-        <property>systems/electrical/outputs/landing-lights</property>
-        <value>0</value>
-      </greater-than>
-    </condition>
-    <binding>
-      <command>land-taxi-land</command>
-    </binding>
-  </item>
-
   <!-- Transponder - ALT -->
   <item>
     <name>Transponder</name>
@@ -180,6 +165,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <property>controls/anti-ice/engine/carb-heat-norm</property>
       <value>0.0</value>
       <rate>1.0</rate>
+    </binding>
+  </item>
+
+  <!-- Landing Light - ON -->
+  <item>
+    <name>Landing Lights</name>
+    <value>ON</value>
+    <condition>
+      <greater-than>
+        <property>systems/electrical/outputs/landing-lights</property>
+        <value>0</value>
+      </greater-than>
+    </condition>
+    <binding>
+      <command>land-taxi-land</command>
     </binding>
   </item>
 
