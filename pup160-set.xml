@@ -27,7 +27,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <sim>
 
     <aero>pup160</aero>
+    <author>Richard Senior</author>
     <description>Beagle Pup 160</description>
+    <long-description>
+      The Beagle Pup is a low-wing, light sport and general aviation aircraft
+      designed and built during the 1960s by Beagle Aircraft Ltd at Shoreham and
+      Rearsby in the United Kingdom. Three variants were built: the Pup 100, Pup
+      150 and Pup 160, all of which share the same airframe and cockpit. The
+      numeric suffix indicates rated horsepower.
+    </long-description>
 
     <model>
       <path>Aircraft/Beagle-Pup/Models/pup160.xml</path>

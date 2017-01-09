@@ -222,8 +222,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <help include="Interface/help.xml"/>
     <menubar include="Interface/menubar.xml"/>
 
-    <author>Richard Senior</author>
-    <aircraft-version>0.29.4</aircraft-version>
+    <aircraft-version>0.29.5</aircraft-version>
     <flight-model>jsb</flight-model>
 
     <aircraft-data>
