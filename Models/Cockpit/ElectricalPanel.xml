@@ -279,7 +279,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <animation>
     <type>slider</type>
     <object-name>CB-1PilotFlood</object-name>
-    <property>controls/switches/circuit-breakers/pilot1flood</property>
+    <property>controls/switches/circuit-breakers/pilot1-flood</property>
     <factor>-0.015</factor>
     <axis>
       <x>1</x>
@@ -289,7 +289,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <action>
       <binding>
         <command>switch-toggle</command>
-        <property>controls/switches/circuit-breakers/pilot1flood</property>
+        <property>controls/switches/circuit-breakers/pilot1-flood</property>
       </binding>
     </action>
   </animation>
@@ -297,7 +297,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <animation>
     <type>slider</type>
     <object-name>CB-2PilotFlood</object-name>
-    <property>controls/switches/circuit-breakers/pilot2flood</property>
+    <property>controls/switches/circuit-breakers/pilot2-flood</property>
     <factor>-0.015</factor>
     <axis>
       <x>1</x>
@@ -307,7 +307,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <action>
       <binding>
         <command>switch-toggle</command>
-        <property>controls/switches/circuit-breakers/pilot2flood</property>
+        <property>controls/switches/circuit-breakers/pilot2-flood</property>
       </binding>
     </action>
   </animation>

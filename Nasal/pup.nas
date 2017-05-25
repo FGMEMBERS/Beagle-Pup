@@ -175,6 +175,12 @@ setlistener("systems/electrical/outputs/beacon", func (volts) {
     }
 }, 0, 0);
 
+setlistener("systems/electrical/outputs/bus-dc", func (volts) {
+    if (volts.getValue() > 0) {
+        setprop("sim/checklists/status/battery", 1);
+    }
+}, 0, 0);
+
 setlistener("systems/electrical/outputs/nav-lights", func (volts) {
     if (volts.getValue() > 0) {
         setprop("sim/checklists/status/nav-lights", 1);
@@ -366,6 +372,15 @@ addcommand("release-starter", func {controls.startEngine(0);});
 addcommand("switch-adjust", func(node) {switch("property-adjust", node);});
 addcommand("switch-assign", func(node) {switch("property-assign", node);});
 addcommand("switch-toggle", func(node) {switch("property-toggle", node);});
+
+addcommand("switch-check", func(node) {
+    fgcommand("property-toggle", node);
+    var t = maketimer(1.0, func {
+        switch("property-toggle", node);
+    });
+    t.singleShot = 1;
+    t.start();
+});
 
 addcommand("switch-momentary", func(node) {
     fgcommand("property-toggle", node);

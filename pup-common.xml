@@ -106,8 +106,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <adf type="bool">true</adf>
         <txp type="bool">true</txp>
         <ap type="bool">true</ap>
-        <pilot1flood type="bool">true</pilot1flood>
-        <pilot2flood type="bool">true</pilot2flood>
+        <pilot1-flood type="bool">true</pilot1-flood>
+        <pilot2-flood type="bool">true</pilot2-flood>
         <landtaxi-nav type="bool">true</landtaxi-nav>
         <beacon type="bool">false</beacon>
         <pitot-heater type="bool">false</pitot-heater>
@@ -218,11 +218,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <sim include="Interface/views.xml">
 
-    <checklists include="Checklists/checklists.xml"/>
+    <checklists include="Checklists/pup-checklists.xml"/>
     <help include="Interface/help.xml"/>
     <menubar include="Interface/menubar.xml"/>
 
-    <aircraft-version>0.30.1</aircraft-version>
+    <aircraft-version>0.30.2</aircraft-version>
     <flight-model>jsb</flight-model>
 
     <aircraft-data>

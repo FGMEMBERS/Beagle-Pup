@@ -366,13 +366,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <connector>
       <input type="string">DC Bus</input>
       <output type="string">Pilot 1 Flood Circuit</output>
-      <switch type="string">controls/switches/circuit-breakers/pilot1flood</switch>
+      <switch type="string">controls/switches/circuit-breakers/pilot1-flood</switch>
     </connector>
 
     <connector>
       <input type="string">DC Bus</input>
       <output type="string">Pilot 2 Flood Circuit</output>
-      <switch type="string">controls/switches/circuit-breakers/pilot2flood</switch>
+      <switch type="string">controls/switches/circuit-breakers/pilot2-flood</switch>
     </connector>
 
     <connector>

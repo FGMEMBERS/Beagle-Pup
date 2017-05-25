@@ -1,0 +1,422 @@
+#-------------------------------------------------------------------------------
+# Beagle Pup Checklists
+#-------------------------------------------------------------------------------
+
+project("Beagle Pup Checklists") {
+    author("Richard Senior");
+}
+
+#-------------------------------------------------------------------------------
+# Globals
+#-------------------------------------------------------------------------------
+
+AUTO_ACTIVE = "sim/checklists/auto/active";
+CHECKED_BATTERY = "sim/checklists/status/battery";
+CHECKED_BEACON = "sim/checklists/status/beacon";
+CHECKED_NAV = "sim/checklists/status/nav-lights";
+VARIANT = "sim/aero";
+
+#-------------------------------------------------------------------------------
+# Item Definitions
+#-------------------------------------------------------------------------------
+
+item("Alternator") {
+    alternatorSwitch = "controls/electric/engine/generator";
+    state("OFF", !alternatorSwitch) {
+        fgcommand("switch-assign", property=alternatorSwitch, value=false);
+    }
+    state("ON", alternatorSwitch) {
+        fgcommand("switch-assign", property=alternatorSwitch, value=true);
+    }
+}
+
+item("Alternator Warning") {
+    alternatorWarning = "systems/electrical/outputs/generator-warn";
+    state("OFF", !alternatorWarning);
+}
+
+item("Altimeter") {
+    error = "instrumentation/altimeter/absolute-altitude-error-ft";
+    state("SET", AUTO_ACTIVE || error < 50) fgcommand("set-altimeter-qnh");
+}
+
+item("Autopilot") {
+    active = "autopilot/locks/active";
+    pitch = "autopilot/sperry/pitch-select";
+    turn = "autopilot/sperry/turn-select";
+    switch = "autopilot/sperry/main-switch";
+    state("CHECK", !active && pitch > 0 && turn == 0) {
+        fgcommand("switch-assign", property=switch, value=false);
+        fgcommand("property-interpolate", property=turn, value=0, rate=20);
+        if (VARIANT == "pup100")
+            fgcommand("property-interpolate", property=pitch, value=5, rate=2);
+        if (VARIANT == "pup150" || VARIANT == "pup160")
+            fgcommand("property-interpolate", property=pitch, value=6, rate=2);
+    }
+}
+
+item("Beacon") {
+    volts = "systems/electrical/outputs/beacon";
+    breaker = "controls/switches/circuit-breakers/beacon";
+    state("OFF", volts == 0 && CHECKED_BEACON) {
+        fgcommand("switch-assign", property=breaker, value=false);
+    }
+    state("ON", volts > 0) {
+        fgcommand("switch-assign", property=breaker, value=true);
+    }
+    state("CHECK", volts > 0 || CHECKED_BEACON) {
+        fgcommand("switch-assign", property=breaker, value=true);
+    }
+}
+
+item("Boost Pump") {
+    volts = "systems/electrical/outputs/fuel-pump";
+    boostPumpSwitch = "controls/electric/engine/fuel-pump";
+    state("OFF", volts == 0) {
+        fgcommand("switch-assign", property=boostPumpSwitch, value=false);
+    }
+    state("ON", volts > 0) {
+        fgcommand("switch-assign", property=boostPumpSwitch, value=true);
+    }
+}
+
+item("Carb Heat") {
+    manufacturerCode = "fdm/jsbsim/propulsion/engine/manufacturer-code";
+    carbHeat = "controls/anti-ice/engine/carb-heat-norm";
+    state("AS REQUIRED") {
+        if (manufacturerCode == 0) # Continental
+            fgcommand("property-interpolate", property=carbHeat, value=0.5, rate=0.5);
+        if (manufacturerCode == 1) # Lycoming
+            fgcommand("property-interpolate", property=carbHeat, value=0.2, rate=0.5);
+    }
+    state("COLD", carbHeat < 0.05) {
+        fgcommand("property-interpolate", property=carbHeat, value=0.0, rate=0.5);
+    }
+    state("HOT", carbHeat > 0.5) {
+        fgcommand("property-interpolate", property=carbHeat, value=1.0, rate=0.5);
+    }
+}
+
+item("Carburettor") {
+    min = "fdm/jsbsim/propulsion/engine/prime-min";
+    primeLevel= "fdm/jsbsim/propulsion/engine/prime-norm";
+    state("PRIME", primeLevel >= min) primeLevel = 1;
+}
+
+item("Circuit Breakers") {
+    adf = "controls/switches/circuit-breakers/adf";
+    alt = "controls/switches/circuit-breakers/alt";
+    altf = "controls/switches/circuit-breakers/alt-field";
+    amdg = "controls/switches/circuit-breakers/am-dg";
+    ap = "controls/switches/circuit-breakers/ap";
+    comm = "controls/switches/circuit-breakers/comm";
+    dme = "controls/switches/circuit-breakers/dme";
+    flaps = "controls/switches/circuit-breakers/flaps";
+    ltn = "controls/switches/circuit-breakers/landtaxi-nav";
+    lvr = "controls/switches/circuit-breakers/lvrelay-fuelconts";
+    p1f = "controls/switches/circuit-breakers/pilot1-flood";
+    p2f = "controls/switches/circuit-breakers/pilot2-flood";
+    stw = "controls/switches/circuit-breakers/stallwarning-boostpump";
+    tb = "controls/switches/circuit-breakers/tb";
+    txp = "controls/switches/circuit-breakers/txp";
+
+    state("ALL IN", adf && alt && altf && amdg && ap && comm && dme && flaps &&
+        ltn && lvr && p1f && p2f && stw && tb && txp) {
+        fgcommand("switch-assign", property=adf, value=true);
+        fgcommand("switch-assign", property=alt, value=true);
+        fgcommand("switch-assign", property=altf, value=true);
+        fgcommand("switch-assign", property=amdg, value=true);
+        fgcommand("switch-assign", property=ap, value=true);
+        fgcommand("switch-assign", property=comm, value=true);
+        fgcommand("switch-assign", property=dme, value=true);
+        fgcommand("switch-assign", property=flaps, value=true);
+        fgcommand("switch-assign", property=ltn, value=true);
+        fgcommand("switch-assign", property=lvr, value=true);
+        fgcommand("switch-assign", property=p1f, value=true);
+        fgcommand("switch-assign", property=p2f, value=true);
+        fgcommand("switch-assign", property=stw, value=true);
+        fgcommand("switch-assign", property=tb, value=true);
+        fgcommand("switch-assign", property=txp, value=true);
+    }
+}
+
+item("Engine") {
+    running = "engines/engine/running";
+    state("START", running) fgcommand("start-engine");
+}
+
+item("Flaps") {
+    flapPosition = "fdm/jsbsim/fcs/flap-pos-norm";
+    flaps = "controls/flight/flaps";
+    state("APPROACH", flapPosition > 0.36 && flapPosition < 0.40) flaps = 0.38;
+    state("TAKEOFF", flapPosition > 0.36 && flapPosition < 0.40) flaps = 0.38;
+    state("UP", flapPosition == 0.0) flaps = 0;
+}
+
+item("Fuel Tank Selector") {
+    tank1 = "consumables/fuel/tank[1]/selected";
+    tank2 = "consumables/fuel/tank[2]/selected";
+    state("EITHER", tank1 || tank2) fgcommand("tank-select-left");
+    state("BOTH", tank1 && tank2) fgcommand("tank-select-both");
+    state("OFF", !(tank1 || tank2)) fgcommand("tank-select-off");
+}
+
+item("Heading Indicator") {
+    error = "instrumentation/heading-indicator/absolute-heading-error-deg";
+    state("ALIGN", AUTO_ACTIVE || error < 5) fgcommand("align-heading-indicator");
+}
+
+item("Landing Light") {
+    volts = "systems/electrical/outputs/landing-lights";
+    state("OFF", volts == 0.0) fgcommand("land-taxi-off");
+    state("ON", volts > 0.0) fgcommand("land-taxi-land");
+}
+
+item("Magnetos") {
+    magnetos = "controls/engines/engine/magnetos";
+    state("OFF", magnetos == 0) fgcommand("magnetos-off");
+    state("BOTH", magnetos == 3) fgcommand("magnetos-both");
+}
+
+item("Main Battery") {
+    volts = "systems/electrical/outputs/bus-dc";
+    batterySwitch = "controls/electric/battery-switch";
+    state("OFF", volts == 0 && CHECKED_BATTERY) {
+        fgcommand("switch-assign", property=batterySwitch, value=false);
+    }
+    state("ON", volts > 0) {
+        fgcommand("switch-assign", property=batterySwitch, value=true);
+    }
+    state("CHECK", volts > 0 || CHECKED_BATTERY) {
+        fgcommand("switch-assign", property=batterySwitch, value=true);
+    }
+}
+
+item("Mixture") {
+    mixture = "controls/engines/engine/mixture";
+    state("IDLE CUTOFF", mixture < 0.05) {
+        fgcommand("property-interpolate", property=mixture, value=0, rate=0.5);
+    }
+    state("FULL RICH", mixture > 0.95) {
+        fgcommand("property-interpolate", property=mixture, value=1, rate=0.5);
+    }
+}
+
+item("Navigation Lights") {
+    volts = "systems/electrical/outputs/nav-lights";
+    breaker = "controls/switches/circuit-breakers/landtaxi-nav";
+    state("ON", volts > 0) {
+        fgcommand("switch-assign", property=breaker, value=true);
+    }
+    state("CHECK", volts > 0 || CHECKED_NAV) {
+        fgcommand("switch-assign", property=breaker, value=true);
+    }
+}
+
+item("Oil Pressure") {
+    oilPressure = "engines/engine/oil-pressure-psi";
+    state("CHECK", oilPressure >= 25.0);
+}
+
+item("Parking Brake") {
+    parkingBrake = "controls/gear/brake-parking";
+    state("OFF", parkingBrake == 0) parkingBrake = 0;
+    state("ON", parkingBrake == 1) parkingBrake = 1;
+}
+
+item("Pitot Heater") {
+    breaker = "controls/switches/circuit-breakers/pitot-heater";
+    oat = "environment/temperature-degc";
+    state("APPLY", oat > 0) {
+        if (oat <= 0)
+            fgcommand("switch-assign", property=breaker, value=true);
+    }
+    state("OFF", !breaker) {
+        fgcommand("switch-assign", property=breaker, value=false);
+    }
+}
+
+item("Propeller") {
+    state("CLEAR");
+}
+
+item("Radios") {
+    adf = "instrumentation/adf/power-btn";
+    com = "instrumentation/comm/power-btn";
+    dme = "instrumentation/dme/power-btn";
+    adfv = "instrumentation/adf/volume-norm";
+    comv = "instrumentation/comm/volume";
+    state("ON", adf && com && dme) {
+        adf = true; com = true; dme = true;
+        fgcommand("property-interpolate", property=adfv, value=0.1, rate=0.5);
+        fgcommand("property-interpolate", property=comv, value=0.5, rate=0.5);
+    }
+    state("OFF", !(adf || com || dme)) {
+        adf = false; com = false; dme = false;
+    }
+}
+
+item("Refuel") {
+    state("AS REQUIRED") fgcommand("refuelling-dialog");
+}
+
+item("Starter Master") {
+    volts = "systems/electrical/outputs/starter";
+    starterMasterSwitch = "controls/electric/engine/starter-master";
+    state("OFF", volts == 0.0) {
+        fgcommand("switch-assign", property=starterMasterSwitch, value=false);
+    }
+    state("ON", volts > 0.0) {
+        fgcommand("switch-assign", property=starterMasterSwitch, value=true);
+    }
+}
+
+item("Suction") {
+    suction = "systems/vacuum/suction-inhg";
+    state("CHECK", suction > 3);
+}
+
+item("Taxi Light") {
+    volts = "systems/electrical/outputs/taxi-light";
+    state("OFF", volts == 0.0) fgcommand("land-taxi-off");
+    state("ON", volts > 0.0) fgcommand("land-taxi-taxi");
+}
+
+item("Throttle") {
+    auto = "sim/checklists/auto/active";
+    throttle = "controls/engines/engine/throttle";
+    rpm = "engines/engine/rpm";
+    state("APPROX 1/4", throttle > 0.1 && throttle <= 0.5) {
+        fgcommand("property-interpolate", property=throttle, value=0.25, rate=0.5);
+    }
+    state("TICK OVER", auto || rpm > 800 && rpm < 1200) {
+        if (VARIANT == "pup100")
+            fgcommand("property-interpolate", property=throttle, value=0.33, rate=0.5);
+        if (VARIANT == "pup150" || VARIANT == "pup160")
+            fgcommand("property-interpolate", property=throttle, value=0.30, rate=0.5);
+    }
+}
+
+item("Transponder") {
+    mode = "instrumentation/transponder/inputs/knob-mode";
+    state("OFF", mode == 0) mode = 0;
+    state("SBY", mode == 1) mode = 1;
+    state("ALT", mode == 5) mode = 5;
+}
+
+item("Trim") {
+    trim = "controls/flight/elevator-trim";
+    state("CHECK", trim > -0.20 && trim < -0.16) trim = -0.18;
+}
+
+#-------------------------------------------------------------------------------
+# Checklists
+#-------------------------------------------------------------------------------
+
+checklist("Before Starting Engines") {
+    check("Magnetos", "OFF");
+    check("Parking Brake", "ON");
+    check("Main Battery", "CHECK");
+    check("Navigation Lights", "CHECK");
+    check("Beacon", "CHECK");
+    check("Beacon", "OFF");
+    check("Main Battery", "OFF");
+    check("Refuel", "AS REQUIRED");
+}
+
+checklist("Start Engines") {
+    check("Parking Brake", "ON");
+    check("Carb Heat", "COLD");
+    check("Fuel Tank Selector", "EITHER");
+    check("Mixture", "FULL RICH");
+    check("Circuit Breakers", "ALL IN");
+    check("Carburettor", "PRIME", "(1-4 strokes of throttle)");
+    check("Throttle", "APPROX 1/4");
+    check("Main Battery", "ON");
+    check("Navigation Lights", "ON");
+    check("Alternator", "ON");
+    check("Starter Master", "ON");
+    check("Boost Pump", "ON");
+    check("Magnetos", "BOTH");
+    check("Propeller", "CLEAR");
+    check("Beacon", "ON");
+    check("Engine", "START");
+}
+
+checklist("During Warm Up") {
+    check("Throttle", "TICK OVER", "(800-1200rpm)");
+    check("Oil Pressure", "CHECK", "(minimum 25psi)");
+    check("Suction", "CHECK", "(minimum 3\")");
+    check("Starter Master", "OFF");
+    check("Boost Pump", "OFF");
+    check("Alternator Warning", "OFF");
+    check("Carb Heat", "AS REQUIRED");
+}
+
+checklist("Before Taxi") {
+    check("Autopilot", "CHECK");
+    check("Transponder", "SBY");
+    check("Radios", "ON");
+    check("Heading Indicator", "ALIGN");
+    check("Altimeter", "SET");
+    check("Taxi Light", "ON");
+    check("Carb Heat", "COLD");
+}
+
+checklist("Before Takeoff") {
+    check("Transponder", "ALT");
+    check("Mixture", "FULL RICH");
+    check("Fuel Tank Selector", "BOTH");
+    check("Boost Pump", "ON");
+    check("Trim", "CHECK");
+    check("Flaps", "TAKEOFF");
+    check("Pitot Heater", "APPLY", "(if icing is expected)");
+    check("Landing Light", "ON");
+    check("Carb Heat", "COLD");
+}
+
+checklist("Initial Climb") {
+    check("Flaps", "UP");
+    check("Boost Pump", "OFF");
+    check("Landing Light", "OFF");
+}
+
+checklist("Pre Traffic Pattern") {
+    check("Landing Light", "ON");
+    check("Carb Heat", "AS REQUIRED");
+    check("Pitot Heater", "APPLY", "(if icing is expected)");
+}
+
+checklist("Traffic Pattern") {
+    check("Parking Brake", "OFF");
+    check("Mixture", "FULL RICH");
+    check("Magnetos", "BOTH");
+    check("Boost Pump", "ON");
+    check("Heading Indicator", "ALIGN");
+    check("Carb Heat", "HOT");
+    check("Altimeter", "SET");
+    check("Flaps", "APPROACH");
+}
+
+checklist("After Landing") {
+    check("Pitot Heater", "OFF");
+    check("Carb Heat", "COLD");
+    check("Boost Pump", "OFF");
+    check("Flaps", "UP");
+    check("Taxi Light", "ON");
+    check("Transponder", "SBY");
+}
+
+checklist("Parking") {
+    check("Parking Brake", "ON");
+    check("Taxi Light", "OFF");
+    check("Transponder", "OFF");
+    check("Radios", "OFF");
+    check("Throttle", "TICK OVER", "(800-1200rpm)");
+    check("Mixture", "IDLE CUTOFF");
+    check("Beacon", "OFF");
+    check("Alternator", "OFF");
+    check("Main Battery", "OFF");
+    check("Magnetos", "OFF");
+    check("Fuel Tank Selector", "OFF");
+}
