@@ -428,15 +428,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <type>select</type>
     <object-name>PropellerBlur</object-name>
     <condition>
-      <and>
-        <not>
-          <property>sim/current-view/internal</property>
-        </not>
-        <greater-than-equals>
-          <property>engines/engine/rpm</property>
-          <value>500</value>
-        </greater-than-equals>
-      </and>
+      <greater-than-equals>
+        <property>engines/engine/rpm</property>
+        <value>500</value>
+      </greater-than-equals>
     </condition>
   </animation>
 
