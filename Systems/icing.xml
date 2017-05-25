@@ -39,7 +39,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     Values are no more than wild guesses.
     -->
     <switch name="systems/carburettor/compartment-coefficient">
-      <default value="15"/>
+      <default value="10"/>
       <test value="5">
         propulsion/engine/manufacturer-code EQ 0
       </test>
@@ -56,8 +56,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             <!-- Compartment heat buildup at low airspeeds -->
             <independentVar lookup="row">velocities/vt-fps</independentVar>
             <tableData>
-                0 2.0
-               20 1.0
+                0 4.0
+               25 2.0
+               50 1.0
             </tableData>
           </table>
           <property>systems/carburettor/compartment-coefficient</property>
@@ -73,7 +74,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             <property>/environment/pressure-inhg</property>
           </difference>
           <quotient>
-            <value>21</value>   <!-- Max temp drop ~ 70*F -->
+            <value>20</value>   <!-- Max temp drop ~ 70*F -->
             <difference>
               <value>29.5</value> <!-- Max MP -->
               <value>8.5</value>  <!-- Min MP -->
@@ -82,7 +83,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         </product>
       </function>
       <clipto>
-        <min>-21.0</min>
+        <min>-20.0</min>
         <max>0.0</max>
       </clipto>
     </fcs_function>
@@ -166,7 +167,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
               <value>-1.0</value>
             </product>
             <product>
-              <value>600</value>
+              <value>300</value>
               <value>120</value>
             </product>
           </quotient>
@@ -183,10 +184,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <pure_gain name="Intake Impedance">
       <input>systems/carburettor/carb-ice-norm</input>
       <output>propulsion/engine/air-intake-impedance-factor</output>
-      <gain>10.0</gain>
+      <gain>20.0</gain>
       <clipto>
         <min>0.05</min> <!-- Should match engine definition -->
-        <max>10.0</max>
+        <max>20.0</max>
       </clipto>
     </pure_gain>
 

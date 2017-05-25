@@ -183,6 +183,89 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </flipflop>
 
   <!--===================================================================-->
+  <!-- PRIMER                                                            -->
+  <!--===================================================================-->
+
+  <state-machine>
+    <branch>controls/engines/engine/priming</branch>
+    <state>
+      <name>off</name>
+    </state>
+    <state>
+      <name>on</name>
+    </state>
+    <state>
+      <name>running</name>
+    </state>
+    <transition>
+      <name>prime</name>
+      <source>off</source>
+      <target>on</target>
+      <condition>
+        <not>
+          <property>engines/engine/running</property>
+        </not>
+        <greater-than>
+          <property>controls/engines/engine/throttle</property>
+          <value>0.4</value>
+        </greater-than>
+      </condition>
+      <binding>
+        <command>property-adjust</command>
+        <property>fdm/jsbsim/propulsion/engine/prime-norm</property>
+        <step type="double">0.2</step>
+        <max>1.0</max>
+      </binding>
+    </transition>
+    <transition>
+      <name>release</name>
+      <source>on</source>
+      <target>off</target>
+      <condition>
+        <not>
+          <property>engines/engine/running</property>
+        </not>
+        <less-than>
+          <property>controls/engines/engine/throttle</property>
+          <value>0.1</value>
+        </less-than>
+      </condition>
+    </transition>
+    <transition>
+      <name>running</name>
+      <target>running</target>
+      <condition>
+        <property>engines/engine/running</property>
+      </condition>
+      <binding>
+        <command>property-assign</command>
+        <property>fdm/jsbsim/propulsion/engine/prime-norm</property>
+        <value>1.0</value>
+      </binding>
+    </transition>
+    <transition>
+      <name>decay</name>
+      <target>off</target>
+      <exclude-target>false</exclude-target>
+      <condition>
+        <not>
+          <property>engines/engine/running</property>
+        </not>
+        <greater-than>
+          <property>controls/engines/engine/priming/elapsed-time-msec</property>
+          <value>36000</value>
+        </greater-than>
+      </condition>
+      <binding>
+        <command>property-adjust</command>
+        <property>fdm/jsbsim/propulsion/engine/prime-norm</property>
+        <step>-0.01</step>
+        <min>0.0</min>
+      </binding>
+    </transition>
+  </state-machine>
+
+  <!--===================================================================-->
   <!-- ADDITIONAL  PROPERTIES                                            -->
   <!--===================================================================-->
 

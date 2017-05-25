@@ -216,11 +216,30 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </item>
 
   <!-- Prime with Throttle - 1 to 4 STROKES -->
+  <item>
+    <name>Prime (with throttle)</name>
+    <value>1-4 STROKES</value>
+    <condition>
+      <or>
+        <property>engines/engine/running</property>
+        <greater-than-equals>
+          <property>fdm/jsbsim/propulsion/engine/prime-norm</property>
+          <property>fdm/jsbsim/propulsion/engine/prime-min</property>
+        </greater-than-equals>
+      </or>
+    </condition>
+    <binding>
+      <!-- Instant priming -->
+      <command>property-assign</command>
+      <property>fdm/jsbsim/propulsion/engine/prime-norm</property>
+      <value>1.0</value>
+    </binding>
+  </item>
 
   <!-- Open Throttle - 1/4 -->
   <item>
     <name>Throttle</name>
-    <value>Approx 1/4</value>
+    <value>APPROX 1/4</value>
     <condition>
       <or>
         <property>engines/engine/running</property>
@@ -398,7 +417,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <binding>
       <command>property-interpolate</command>
       <property>controls/anti-ice/engine/carb-heat-norm</property>
-      <value>0.5</value>
+      <value>1.0</value>
       <rate>1.0</rate>
     </binding>
   </item>
