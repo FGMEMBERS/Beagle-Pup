@@ -222,7 +222,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <help include="Interface/help.xml"/>
     <menubar include="Interface/menubar.xml"/>
 
-    <aircraft-version>0.30.2</aircraft-version>
+    <aircraft-version>0.30.3</aircraft-version>
     <flight-model>jsb</flight-model>
 
     <aircraft-data>

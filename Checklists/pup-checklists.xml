@@ -36,22 +36,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </status>
 
   <apron-start>
-    <index n="0">1</index>  <!-- Start Engines -->
-    <index n="1">2</index>  <!-- Before Taxi -->
+    <index>1</index>  <!-- Start Engines -->
+    <index>2</index>  <!-- During Warmup -->
+    <index>3</index>  <!-- Before Taxi -->
   </apron-start>
 
   <runway-start>
-    <index n="0">1</index>  <!-- Start Engines -->
-    <index n="1">2</index>  <!-- Before Taxi -->
-    <index n="2">3</index>  <!-- Before Takeoff -->
+    <index>1</index>  <!-- Start Engines -->
+    <index>2</index>  <!-- During Warmup -->
+    <index>3</index>  <!-- Before Taxi -->
+    <index>4</index>  <!-- Before Takeoff -->
   </runway-start>
 
   <after-landing>
-    <index n="0">7</index>  <!-- After Landing -->
+    <index>8</index>  <!-- After Landing -->
   </after-landing>
 
   <before-takeoff>
-    <index n="0">3</index>  <!-- Before Takeoff -->
+    <index>4</index>  <!-- Before Takeoff -->
   </before-takeoff>
 
 </PropertyList>
