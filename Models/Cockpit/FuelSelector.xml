@@ -61,16 +61,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </axis>
     <action>
       <binding>
-        <command>property-adjust</command>
+        <command>switch-adjust</command>
         <property>controls/fuel/tank-selector</property>
         <factor>1</factor>
         <min>0</min>
         <max>4</max>
         <wrap>1</wrap>
-      </binding>
-      <binding>
-        <command>nasal</command>
-        <script>pup.click();</script>
       </binding>
     </action>
   </animation>

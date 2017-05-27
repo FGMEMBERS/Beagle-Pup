@@ -103,26 +103,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </axis>
     <action>
       <binding>
-        <command>property-assign</command>
+        <command>switch-momentary</command>
         <property>autopilot/sperry/alt-hold-button</property>
-        <value>1</value>
       </binding>
     </action>
-    <release>
-      <binding>
-        <command>nasal</command>
-        <script>
-          # Use a timer to make simple clicks visible as a momentary
-          # selection toggle switch
-          var t = maketimer(0.1, func {
-            setprop("autopilot/sperry/alt-hold-button", 0);
-          });
-          t.singleShot = 1;
-          t.start();
-          pup.click();
-        </script>
-      </binding>
-    </release>
   </animation>
 
   <animation>
@@ -170,12 +154,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </axis>
     <action>
       <binding>
-        <command>property-toggle</command>
+        <command>switch-toggle</command>
         <property>autopilot/sperry/main-switch</property>
-      </binding>
-      <binding>
-        <command>nasal</command>
-        <script>pup.click()</script>
       </binding>
     </action>
   </animation>

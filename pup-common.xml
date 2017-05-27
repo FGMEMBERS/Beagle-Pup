@@ -106,8 +106,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <adf type="bool">true</adf>
         <txp type="bool">true</txp>
         <ap type="bool">true</ap>
-        <pilot1flood type="bool">true</pilot1flood>
-        <pilot2flood type="bool">true</pilot2flood>
+        <pilot1-flood type="bool">true</pilot1-flood>
+        <pilot2-flood type="bool">true</pilot2-flood>
         <landtaxi-nav type="bool">true</landtaxi-nav>
         <beacon type="bool">false</beacon>
         <pitot-heater type="bool">false</pitot-heater>
@@ -195,24 +195,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <nasal>
     <pup>
-      <!-- Eventually these will be rationalized into a smaller set -->
-      <file>Nasal/controls.nas</file>
-      <file>Nasal/dialog.nas</file>
       <file>Nasal/electrical.nas</file>
-      <file>Nasal/fuel.nas</file>
-      <file>Nasal/liveries.nas</file>
       <file>Nasal/messages.nas</file>
+      <file>Nasal/pup.nas</file>
+      <file>Nasal/refuel.nas</file>
       <file>Nasal/thunder.nas</file>
-      <file>Nasal/util.nas</file>
     </pup>
     <instruments>
       <file>Aircraft/Beagle-Pup/Models/Instruments/ADF/KR87.nas</file>
       <file>Aircraft/Beagle-Pup/Models/Instruments/DME/KN62A.nas</file>
       <file>Aircraft/Beagle-Pup/Models/Instruments/Transponder/KT76A.nas</file>
-      <script><![CDATA[
+      <script>
         KN62A.new();
         KT76A.new();
-        ]]></script>
+      </script>
     </instruments>
     <generic>
       <file>Aircraft/Generic/autochecklist.nas</file>
@@ -222,12 +218,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <sim include="Interface/views.xml">
 
-    <checklists include="Checklists/checklists.xml"/>
+    <checklists include="Checklists/pup-checklists.xml"/>
     <help include="Interface/help.xml"/>
     <menubar include="Interface/menubar.xml"/>
 
-    <author>Richard Senior</author>
-    <aircraft-version>0.28.1</aircraft-version>
+    <aircraft-version>0.30.3</aircraft-version>
     <flight-model>jsb</flight-model>
 
     <aircraft-data>
@@ -258,6 +253,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </flaps>
 
     <flight-recorder include="Systems/flightrecorder.xml"/>
+
+    <hud>
+      <enable3d n="1" type="bool">false</enable3d>
+    </hud>
 
     <instrumentation>
       <path>Aircraft/Beagle-Pup/pup-instrumentation.xml</path>

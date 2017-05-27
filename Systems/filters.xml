@@ -183,6 +183,89 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </flipflop>
 
   <!--===================================================================-->
+  <!-- PRIMER                                                            -->
+  <!--===================================================================-->
+
+  <state-machine>
+    <branch>controls/engines/engine/priming</branch>
+    <state>
+      <name>off</name>
+    </state>
+    <state>
+      <name>on</name>
+    </state>
+    <state>
+      <name>running</name>
+    </state>
+    <transition>
+      <name>prime</name>
+      <source>off</source>
+      <target>on</target>
+      <condition>
+        <not>
+          <property>engines/engine/running</property>
+        </not>
+        <greater-than>
+          <property>controls/engines/engine/throttle</property>
+          <value>0.4</value>
+        </greater-than>
+      </condition>
+      <binding>
+        <command>property-adjust</command>
+        <property>fdm/jsbsim/propulsion/engine/prime-norm</property>
+        <step type="double">0.2</step>
+        <max>1.0</max>
+      </binding>
+    </transition>
+    <transition>
+      <name>release</name>
+      <source>on</source>
+      <target>off</target>
+      <condition>
+        <not>
+          <property>engines/engine/running</property>
+        </not>
+        <less-than>
+          <property>controls/engines/engine/throttle</property>
+          <value>0.1</value>
+        </less-than>
+      </condition>
+    </transition>
+    <transition>
+      <name>running</name>
+      <target>running</target>
+      <condition>
+        <property>engines/engine/running</property>
+      </condition>
+      <binding>
+        <command>property-assign</command>
+        <property>fdm/jsbsim/propulsion/engine/prime-norm</property>
+        <value>1.0</value>
+      </binding>
+    </transition>
+    <transition>
+      <name>decay</name>
+      <target>off</target>
+      <exclude-target>false</exclude-target>
+      <condition>
+        <not>
+          <property>engines/engine/running</property>
+        </not>
+        <greater-than>
+          <property>controls/engines/engine/priming/elapsed-time-msec</property>
+          <value>36000</value>
+        </greater-than>
+      </condition>
+      <binding>
+        <command>property-adjust</command>
+        <property>fdm/jsbsim/propulsion/engine/prime-norm</property>
+        <step>-0.01</step>
+        <min>0.0</min>
+      </binding>
+    </transition>
+  </state-machine>
+
+  <!--===================================================================-->
   <!-- ADDITIONAL  PROPERTIES                                            -->
   <!--===================================================================-->
 
@@ -268,18 +351,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <filter>
     <type>gain</type>
-    <gain>1.0</gain>
+    <gain>1</gain>
     <input>
       <condition>
-        <greater-than>
+        <less-than>
           <property>systems/electrical/outputs/carb-temp-gauge</property>
-          <value>0</value>
-        </greater-than>
+          <value>1</value>
+        </less-than>
       </condition>
-      <property>engines/engine/carb-temp-degc</property>
+      <value>-30</value>
     </input>
     <input>
-      <value>0</value>
+      <property>engines/engine/carb-temp-degc</property>
+      <min>-30</min>
+      <max>30</max>
     </input>
     <output>instrumentation/carb-temp/carb-temp-degc</output>
   </filter>
@@ -345,16 +430,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <filter>
     <type>gain</type>
-    <gain>
+    <gain>1</gain>
+    <input>
       <condition>
-        <greater-than>
+        <less-than>
           <property>systems/electrical/outputs/oat-gauge</property>
-          <value>0</value>
-        </greater-than>
+          <value>1</value>
+        </less-than>
       </condition>
-      <value>1</value>
-    </gain>
-    <gain>0</gain>
+      <value>-50</value>
+    </input>
     <input>environment/temperature-degc</input>
     <output>instrumentation/oat/oat-degc</output>
   </filter>

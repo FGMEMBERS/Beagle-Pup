@@ -27,6 +27,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   <!-- Tank selector: 0 = OFF, 1 = LEFT, 2 = BOTH, 3 = RIGHT -->
   <property value="0">/controls/fuel/tank-selector</property>
 
+  <!-- Refuelling switches -->
+  <property value="0">propulsion/tank[1]/fill</property>
+  <property value="0">propulsion/tank[2]/fill</property>
+
+  <!-- Primer -->
+  <property value="0">propulsion/engine[0]/prime-norm</property>
+
   <channel name="Fuel">
 
     <fcs_function name="propulsion/tank[0]/fuel-pressure-psi">
@@ -37,40 +44,74 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
               <property>/systems/electrical/outputs/fuel-pump</property>
               <value>0</value>
             </gt>
-            <!--
-            Should produce a PSI slightly higher than the engine
-            driven pump, limited by its relief valve.
-            -->
-            <value>1.67</value>
+            <value>7.2</value>
           </product>
           <quotient>
             <property>propulsion/engine/engine-rpm</property>
-            <value>400</value>
+            <value>250</value>
           </quotient>
         </sum>
       </function>
       <clipto>
         <!-- Pressure relief valve -->
         <min>0.0</min>
-        <max>7.8</max>
+        <max>8.2</max>
       </clipto>
     </fcs_function>
+
+    <!-- Required prime level for engine to start -->
+    <fcs_function name="propulsion/engine[0]/prime-min">
+      <function>
+        <difference>
+          <value>0.5</value>
+          <quotient>
+            <difference>
+              <property>/environment/temperature-degc</property>
+              <value>15</value>
+            </difference>
+            <value>20</value>
+          </quotient>
+        </difference>
+      </function>
+      <clipto>
+        <min>0.0</min>
+        <max>0.8</max>
+      </clipto>
+    </fcs_function>
+
+    <!-- Disable manifold unless primed -->
+    <switch name="primer">
+      <default value="0"/>
+      <test logic="OR" value="1">
+        /engines/engine/running GT 0
+        propulsion/engine[0]/prime-norm GE propulsion/engine[0]/prime-min
+      </test>
+      <output>propulsion/tank[0]/priority</output>
+    </switch>
 
     <!-- Return into tank 1 (LEFT) -->
     <switch name="propulsion/tank[1]/inflow-rate-pps">
       <default value="0.05"/>
+      <test logic="AND" value="3.00">
+        propulsion/tank[1]/pct-full LT 100
+        propulsion/tank[1]/fill NE 0
+      </test>
       <test logic="OR" value="0.00">
         propulsion/tank[0]/contents-lbs LE 0.0
-        propulsion/tank[0]/fuel-pressure-psi GT 1
+        propulsion/tank[0]/fuel-pressure-psi GT 2
       </test>
     </switch>
 
     <!-- Return into tank 2 (RIGHT) -->
     <switch name="propulsion/tank[2]/inflow-rate-pps">
       <default value="0.05"/>
+      <test logic="AND" value="3.00">
+        propulsion/tank[2]/pct-full LT 100.0
+        propulsion/tank[2]/fill NE 0
+      </test>
       <test logic="OR" value="0.00">
         propulsion/tank[0]/contents-lbs LE 0.0
-        propulsion/tank[0]/fuel-pressure-psi GT 1
+        propulsion/tank[0]/fuel-pressure-psi GT 2
       </test>
     </switch>
 
@@ -80,7 +121,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <test logic="OR" value="0.0">
         /controls/fuel/tank-selector EQ 0
         /controls/fuel/tank-selector EQ 3
-        propulsion/tank[0]/fuel-pressure-psi LE 1
+        propulsion/tank[0]/fuel-pressure-psi LE 2
         propulsion/tank[0]/contents-lbs GE 0.8
         propulsion/tank[1]/contents-lbs LE 0.0
       </test>
@@ -92,7 +133,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <test logic="OR" value="0.0">
         /controls/fuel/tank-selector EQ 0
         /controls/fuel/tank-selector EQ 1
-        propulsion/tank[0]/fuel-pressure-psi LE 1
+        propulsion/tank[0]/fuel-pressure-psi LE 2
         propulsion/tank[0]/contents-lbs GE 0.8
         propulsion/tank[2]/contents-lbs LE 0.0
       </test>

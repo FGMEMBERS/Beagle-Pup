@@ -30,32 +30,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <item>
         <label>Autostart</label>
         <binding>
-          <command>nasal</command>
-          <script><![CDATA[
-            if (props.globals.getNode("sim/checklists/auto") == nil) {
-                setprop("sim/messages/copilot",
-                    "Automated checklists need FGDATA 3.5 or higher"
-                );
-                return;
-            }
-            if (!getprop("gear/gear/wow")) {
-                setprop("sim/messages/copilot",
-                    "Autostart in the air is not yet supported"
-                );
-                return;
-            }
-            if (pup.is_near_runway()) {
-                setprop("sim/checklists/auto/completed-message",
-                    "Checklists complete, ready for takeoff"
-                );
-                generic.complete_checklists("runway-start");
-            } else {
-                setprop("sim/checklists/auto/completed-message",
-                    "Checklists complete, ready to taxi"
-                );
-                generic.complete_checklists("apron-start");
-            }
-          ]]></script>
+          <command>autostart</command>
         </binding>
       </item>
       <item>
@@ -73,10 +48,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         </binding>
       </item>
       <item>
+        <label>Refuelling</label>
+        <binding>
+          <command>refuelling-dialog</command>
+        </binding>
+      </item>
+      <item>
         <label>Select Livery</label>
         <binding>
-          <command>nasal</command>
-          <script>aircraft.livery.dialog.open();</script>
+          <command>livery-dialog</command>
         </binding>
       </item>
     </menu>

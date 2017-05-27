@@ -148,12 +148,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </axis>
     <action>
       <binding>
-        <command>property-toggle</command>
+        <command>switch-toggle</command>
         <property>controls/electric/engine/generator</property>
-      </binding>
-      <binding>
-        <command>nasal</command>
-        <script>pup.click()</script>
       </binding>
     </action>
   </animation>
@@ -176,12 +172,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </axis>
     <action>
       <binding>
-        <command>property-toggle</command>
+        <command>switch-toggle</command>
         <property>controls/electric/battery-switch</property>
-      </binding>
-      <binding>
-        <command>nasal</command>
-        <script>pup.click()</script>
       </binding>
     </action>
   </animation>
@@ -204,12 +196,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </axis>
     <action>
       <binding>
-        <command>property-toggle</command>
+        <command>switch-toggle</command>
         <property>controls/electric/engine/fuel-pump</property>
-      </binding>
-      <binding>
-        <command>nasal</command>
-        <script>pup.click()</script>
       </binding>
     </action>
   </animation>
@@ -232,12 +220,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </axis>
     <action>
       <binding>
-        <command>property-toggle</command>
+        <command>switch-toggle</command>
         <property>instrumentation/fuel-gauge/tank-select</property>
-      </binding>
-      <binding>
-        <command>nasal</command>
-        <script>pup.click()</script>
       </binding>
     </action>
   </animation>
@@ -260,12 +244,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </axis>
     <action>
       <binding>
-        <command>property-toggle</command>
+        <command>switch-toggle</command>
         <property>controls/electric/engine/starter-master</property>
-      </binding>
-      <binding>
-        <command>nasal</command>
-        <script>pup.click()</script>
       </binding>
     </action>
   </animation>
@@ -340,14 +320,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </axis>
     <action>
       <binding>
-        <command>nasal</command>
-        <script>controls.startEngine(1);</script>
+        <command>engage-starter</command>
       </binding>
     </action>
     <release>
       <binding>
-        <command>nasal</command>
-        <script>controls.startEngine(0);</script>
+        <command>release-starter</command>
       </binding>
     </release>
   </animation>
@@ -369,16 +347,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </axis>
     <action>
       <binding>
-        <command>property-adjust</command>
+        <command>switch-adjust</command>
         <property>controls/engines/engine/magnetos</property>
         <factor>1</factor>
         <min>0</min>
         <max>4</max>
         <wrap>0</wrap>
-      </binding>
-      <binding>
-        <command>nasal</command>
-        <script>pup.click();</script>
       </binding>
     </action>
   </animation>

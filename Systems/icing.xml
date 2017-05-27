@@ -36,9 +36,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     heat of the engine and are prone to carb icing, whereas the
     Lycoming engines fitted to the Pup 150 and 160 have the
     carburettor mounted close to the engine, which keeps it warm.
+    Values are no more than wild guesses.
     -->
     <switch name="systems/carburettor/compartment-coefficient">
-      <default value="15"/>
+      <default value="10"/>
       <test value="5">
         propulsion/engine/manufacturer-code EQ 0
       </test>
@@ -48,19 +49,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <function>
         <product>
           <quotient>
-            <difference>
-              <property>propulsion/engine/cht-degC</property>
-              <property>/environment/temperature-degc</property>
-            </difference>
-            <value>220</value> <!-- Max CHT -->
+            <property>propulsion/engine/cht-degC</property>
+            <value>260</value> <!-- Max CHT -->
           </quotient>
+          <table>
+            <!-- Compartment heat buildup at low airspeeds -->
+            <independentVar lookup="row">velocities/vt-fps</independentVar>
+            <tableData>
+                0 4.0
+               25 2.0
+               50 1.0
+            </tableData>
+          </table>
           <property>systems/carburettor/compartment-coefficient</property>
         </product>
       </function>
-      <clipto>
-        <min>0.0</min>
-        <max>30.0</max>
-      </clipto>
     </fcs_function>
 
     <fcs_function name="systems/carburettor/venturi-effect-degC">
@@ -71,16 +74,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             <property>/environment/pressure-inhg</property>
           </difference>
           <quotient>
-            <value>21</value>   <!-- Max temp drop -->
+            <value>20</value>   <!-- Max temp drop ~ 70*F -->
             <difference>
-              <value>30</value> <!-- Max MP -->
-              <value>10</value> <!-- Min MP -->
+              <value>29.5</value> <!-- Max MP -->
+              <value>8.5</value>  <!-- Min MP -->
             </difference>
           </quotient>
         </product>
       </function>
       <clipto>
-        <min>-21.0</min>
+        <min>-20.0</min>
         <max>0.0</max>
       </clipto>
     </fcs_function>
@@ -92,7 +95,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             <property>propulsion/engine/egt-degC</property>
             <value>860</value> <!-- Max EGT -->
           </quotient>
-          <value>45</value>
+          <value>30</value>
           <property>/controls/anti-ice/engine/carb-heat-norm</property>
         </product>
       </function>
@@ -164,7 +167,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
               <value>-1.0</value>
             </product>
             <product>
-              <value>600</value>
+              <value>300</value>
               <value>120</value>
             </product>
           </quotient>
@@ -181,17 +184,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <pure_gain name="Intake Impedance">
       <input>systems/carburettor/carb-ice-norm</input>
       <output>propulsion/engine/air-intake-impedance-factor</output>
-      <gain>10.0</gain>
+      <gain>20.0</gain>
       <clipto>
         <min>0.05</min> <!-- Should match engine definition -->
-        <max>10.0</max>
+        <max>20.0</max>
       </clipto>
     </pure_gain>
 
     <!--
     Adding hot air to the carburettor effectively leans the mixture and
     reduces RPM and power. Model this by modifying the efficiency. RPM
-    drop at full carb heat should be around 100rpm.
+    drop at full carb heat should be around 100rpm, less so with the
+    mixture leaned.
     -->
     <fcs_function name="Volumetric Efficiency">
       <function>
@@ -200,6 +204,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
           <product>
             <property>systems/carburettor/carb-heat-effect-degC</property>
             <value>0.0035</value>
+            <table>
+              <independentVar lookup="row">propulsion/engine/egt-degC</independentVar>
+              <tableData>
+                  0 1.0
+                780 1.0
+                860 0.0
+              </tableData>
+            </table>
           </product>
         </difference>
       </function>

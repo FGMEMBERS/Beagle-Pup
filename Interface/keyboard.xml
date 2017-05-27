@@ -28,36 +28,26 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <name>Ctrl-a</name>
     <desc>Toggle altitude hold</desc>
     <binding>
-      <command>nasal</command>
-      <script>
-        setprop("autopilot/sperry/alt-hold-button", 1);
-        var t = maketimer(0.1, func {
-            setprop("autopilot/sperry/alt-hold-button", 0);
-        });
-        t.singleShot = 1;
-        t.start();
-        pup.click();
-      </script>
+      <command>switch-momentary</command>
+      <property>autopilot/sperry/alt-hold-button</property>
     </binding>
   </key>
   <key n="26">
     <name>Ctrl-z</name>
     <desc>Toggle autopilot on/off</desc>
     <binding>
-      <command>property-toggle</command>
+      <command>switch-toggle</command>
       <property>autopilot/sperry/main-switch</property>
-    </binding>
-    <binding>
-      <command>nasal</command>
-      <script>pup.click();</script>
     </binding>
   </key>
   <key n="70">
     <name>F</name>
     <desc>Full Power</desc>
     <binding>
-      <command>nasal</command>
-      <script>interpolate("controls/engines/engine/throttle", 1.00, 2.0);</script>
+      <command>property-interpolate</command>
+      <property>controls/engines/engine/throttle</property>
+      <value>1.0</value>
+      <time>2.0</time>
     </binding>
   </key>
   <key n="98">
@@ -65,8 +55,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <desc>Select Both Tanks</desc>
     <mod-alt>
       <binding>
-        <command>nasal</command>
-        <script>pup.select_fuel_tank(pup.Tank.BOTH);</script>
+        <command>tank-select-both</command>
       </binding>
     </mod-alt>
   </key>
@@ -75,8 +64,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <desc>Select Left Tank</desc>
     <mod-alt>
       <binding>
-        <command>nasal</command>
-        <script>pup.select_fuel_tank(pup.Tank.LEFT);</script>
+        <command>tank-select-left</command>
       </binding>
     </mod-alt>
   </key>
@@ -85,8 +73,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <desc>Select Right Tank</desc>
     <mod-alt>
       <binding>
-        <command>nasal</command>
-        <script>pup.select_fuel_tank(pup.Tank.RIGHT);</script>
+        <command>tank-select-right</command>
       </binding>
     </mod-alt>
   </key>
@@ -94,32 +81,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <name>L</name>
     <desc>After Landing Checklist</desc>
     <binding>
-      <command>nasal</command>
-      <script>
-        if (props.globals.getNode("sim/checklists/auto") == nil) {
-        setprop("sim/messages/copilot",
-        "Automated checklists need FGDATA 3.5 or higher"
-        );
-        return;
-        }
-        generic.complete_checklists("after-landing", 0);
-      </script>
+      <command>complete-checklists</command>
+      <name>after-landing</name>
+      <wait>0</wait>
     </binding>
   </key>
   <key n="82">
     <name>R</name>
     <desc>Before Takeoff Checklist</desc>
     <binding>
-      <command>nasal</command>
-      <script>
-        if (props.globals.getNode("sim/checklists/auto") == nil) {
-        setprop("sim/messages/copilot",
-        "Automated checklists need FGDATA 3.5 or higher"
-        );
-        return;
-        }
-        generic.complete_checklists("before-takeoff", 0);
-      </script>
+      <command>complete-checklists</command>
+      <name>before-takeoff</name>
+      <wait>0</wait>
     </binding>
   </key>
 
