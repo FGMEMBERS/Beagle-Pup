@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim>
+    <model>
+      <livery>
+        <name>D-EPUP (Red/White)</name>
+        <texture>Liveries/pup160/D-EPUP.png</texture>
+        <ambient-correction>0.1</ambient-correction>
+        <reflection-correction>-0.3</reflection-correction>
+      </livery>
+    </model>
+  </sim>
+
+</PropertyList>
