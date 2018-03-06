@@ -42,8 +42,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <name>altimeter</name>
     <number>0</number>
     <static-pressure>/systems/static/pressure-inhg</static-pressure>
-    <quantum>0</quantum>
-    <tau>0</tau>
+    <encode-mode-c>1</encode-mode-c>
+    <encode-mode-s>1</encode-mode-s>
   </altimeter>
 
   <attitude-indicator>
@@ -93,6 +93,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </slip-skid-ball>
 
   <transponder>
+    <mode>2</mode>
   </transponder>
 
   <turn-indicator>
