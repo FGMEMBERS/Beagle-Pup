@@ -227,9 +227,11 @@ item("Parking Brake") {
 item("Pitot Heater") {
     breaker = "controls/switches/circuit-breakers/pitot-heater";
     oat = "environment/temperature-degc";
-    state("APPLY", oat > 0) {
+    state("APPLY", (oat > 0 && !breaker) || (oat <= 0 && breaker)) {
         if (oat <= 0)
             fgcommand("switch-assign", property=breaker, value=true);
+        if (oat > 0)
+            fgcommand("switch-assign", property=breaker, value=false);
     }
     state("OFF", !breaker) {
         fgcommand("switch-assign", property=breaker, value=false);
