@@ -4,7 +4,7 @@
 
 Beagle Pup Electrical System
 
-Copyright (c) 2015 Richard Senior
+Copyright (c) 2018 Richard Senior
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -24,495 +24,246 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 <PropertyList>
 
-  <electrical>
-
-    <!-- Disable the default electrical system -->
-    <path></path>
-
-    <!-- Components -->
-
-    <component>
-      <kind type="string">battery</kind>
-      <name type="string">Battery</name>
-      <volts type="float">12</volts>
-      <prop type="string">systems/electrical/suppliers/battery</prop>
-    </component>
-
-    <component>
-      <kind type="string">alternator</kind>
-      <name type="string">Alternator</name>
-      <volts type="float">28</volts>
-      <prop type="string">systems/electrical/suppliers/alternator</prop>
-      <source-prop type="string">engines/engine/rpm</source-prop>
-      <source-min type="float">800</source-min>
-    </component>
-
-    <!-- Busses -->
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">DC Bus</name>
-      <prop type="string">systems/electrical/outputs/bus-dc</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">AM/DG Circuit</name>
-      <prop type="string">systems/electrical/outputs/am-dg-bus-dc</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">LVoltRelay/FuelConts Circuit</name>
-      <prop type="string">systems/electrical/outputs/lvoltrelay-fuelconts-bus-dc</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Stall Warning/Boost Pump Circuit</name>
-      <prop type="string">systems/electrical/outputs/stallwarning-boostpump-bus-dc</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">LandTaxi/Nav Circuit</name>
-      <prop type="string">systems/electrical/outputs/landtaxi-nav-bus-dc</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Alternator Field</name>
-      <prop type="string">systems/electrical/outputs/alternator-field</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Pilot 1 Flood Circuit</name>
-      <prop type="string">systems/electrical/outputs/pilot1-flood-circuit</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Pilot 2 Flood Circuit</name>
-      <prop type="string">systems/electrical/outputs/pilot2-flood-circuit</prop>
-    </component>
-
-    <!-- Other components -->
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Battery Charger</name>
-      <prop type="string">systems/electrical/outputs/battery-charger</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Starter</name>
-      <prop type="string">systems/electrical/outputs/starter</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Flaps</name>
-      <prop type="string">systems/electrical/outputs/flaps</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Fuel Pump</name>
-      <prop type="string">systems/electrical/outputs/fuel-pump</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Pitot Heater</name>
-      <prop type="string">systems/electrical/outputs/pitot-heater</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Autopilot</name>
-      <prop type="string">systems/electrical/outputs/autopilot</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Directional Gyro</name>
-      <prop type="string">systems/electrical/outputs/DG</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">ADF</name>
-      <prop type="string">systems/electrical/outputs/adf</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">DME</name>
-      <prop type="string">systems/electrical/outputs/dme</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">COMMNAV</name>
-      <prop type="string">systems/electrical/outputs/nav</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Transponder</name>
-      <prop type="string">systems/electrical/outputs/transponder</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Turn Coordinator</name>
-      <prop type="string">systems/electrical/outputs/turn-coordinator</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Carb Temp Gauge</name>
-      <prop type="string">systems/electrical/outputs/carb-temp-gauge</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">CHT Gauge</name>
-      <prop type="string">systems/electrical/outputs/cht-gauge</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">EGT Gauge</name>
-      <prop type="string">systems/electrical/outputs/egt-gauge</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">OAT Gauge</name>
-      <prop type="string">systems/electrical/outputs/oat-gauge</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Suction Gauge</name>
-      <prop type="string">systems/electrical/outputs/suction-gauge</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Flap Indicator</name>
-      <prop type="string">systems/electrical/outputs/flap-indicator</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Fuel Gauge</name>
-      <prop type="string">systems/electrical/outputs/fuel-gauge</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Fuel Pressure Gauge</name>
-      <prop type="string">systems/electrical/outputs/fuel-pressure-gauge</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Oil Pressure Gauge</name>
-      <prop type="string">systems/electrical/outputs/oil-pressure-gauge</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Oil Temp Gauge</name>
-      <prop type="string">systems/electrical/outputs/oil-temp-gauge</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Stall Warning</name>
-      <prop type="string">systems/electrical/outputs/stall-warning</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Beacon</name>
-      <prop type="string">systems/electrical/outputs/beacon</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Navigation Lights</name>
-      <prop type="string">systems/electrical/outputs/nav-lights</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Taxi Light</name>
-      <prop type="string">systems/electrical/outputs/taxi-light</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Landing Lights</name>
-      <prop type="string">systems/electrical/outputs/landing-lights</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Pilot 1 Flood</name>
-      <prop type="string">systems/electrical/outputs/pilot1-flood</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Pilot 2 Flood</name>
-      <prop type="string">systems/electrical/outputs/pilot2-flood</prop>
-    </component>
-
-    <component>
-      <kind type="string">output</kind>
-      <name type="string">Panel Lights</name>
-      <prop type="string">systems/electrical/outputs/panel-lights</prop>
-    </component>
-
-    <!-- Connectors -->
-
-    <!-- Connections from suppliers to the main bus -->
-
-    <connector>
-      <input type="string">Battery</input>
-      <output type="string">DC Bus</output>
-      <switch type="string">controls/electric/battery-switch</switch>
-    </connector>
-
-    <connector>
-      <input type="string">Alternator</input>
-      <output type="string">DC Bus</output>
-      <switch type="string">controls/switches/circuit-breakers/alt</switch>
-    </connector>
-
-    <connector>
-      <input type="string">Alternator</input>
-      <output type="string">Alternator Field</output>
-      <switch type="string">controls/switches/circuit-breakers/alt-field</switch>
-    </connector>
-
-    <!-- Switched connections from the main bus  -->
-
-    <connector>
-      <input type="string">DC Bus</input>
-      <output type="string">Starter</output>
-      <switch type="string">controls/electric/engine/starter-master</switch>
-    </connector>
-
-    <!-- Connections from main bus to isolation circuits -->
-
-    <connector>
-      <input type="string">DC Bus</input>
-      <output type="string">AM/DG Circuit</output>
-      <switch type="string">controls/switches/circuit-breakers/am-dg</switch>
-    </connector>
-
-    <connector>
-      <input type="string">DC Bus</input>
-      <output type="string">LVoltRelay/FuelConts Circuit</output>
-      <switch type="string">controls/switches/circuit-breakers/lvrelay-fuelconts</switch>
-    </connector>
-
-    <connector>
-      <input type="string">DC Bus</input>
-      <output type="string">Stall Warning/Boost Pump Circuit</output>
-      <switch type="string">controls/switches/circuit-breakers/stallwarning-boostpump</switch>
-    </connector>
-
-    <connector>
-      <input type="string">DC Bus</input>
-      <output type="string">LandTaxi/Nav Circuit</output>
-      <switch type="string">controls/switches/circuit-breakers/landtaxi-nav</switch>
-    </connector>
-
-    <!-- Alternator Field -->
-
-    <connector>
-      <input type="string">Alternator Field</input>
-      <output type="string">Battery Charger</output>
-      <switch type="string">controls/electric/engine/generator</switch>
-    </connector>
-
-    <!-- Connnections from the main bus -->
-
-    <connector>
-      <input type="string">DC Bus</input>
-      <output type="string">Beacon</output>
-      <switch type="string">controls/switches/circuit-breakers/beacon</switch>
-    </connector>
-
-    <connector>
-      <input type="string">DC Bus</input>
-      <output type="string">Autopilot</output>
-      <switch type="string">controls/switches/circuit-breakers/ap</switch>
-    </connector>
-
-    <connector>
-      <input type="string">DC Bus</input>
-      <output type="string">Turn Coordinator</output>
-      <switch type="string">controls/switches/circuit-breakers/tb</switch>
-    </connector>
-
-    <connector>
-      <input type="string">DC Bus</input>
-      <output type="string">Pilot 1 Flood Circuit</output>
-      <switch type="string">controls/switches/circuit-breakers/pilot1-flood</switch>
-    </connector>
-
-    <connector>
-      <input type="string">DC Bus</input>
-      <output type="string">Pilot 2 Flood Circuit</output>
-      <switch type="string">controls/switches/circuit-breakers/pilot2-flood</switch>
-    </connector>
-
-    <connector>
-      <input type="string">DC Bus</input>
-      <output type="string">Flaps</output>
-      <switch type="string">controls/switches/circuit-breakers/flaps</switch>
-    </connector>
-
-    <connector>
-      <input type="string">DC Bus</input>
-      <output type="string">COMMNAV</output>
-      <switch type="string">controls/switches/circuit-breakers/comm</switch>
-    </connector>
-
-    <connector>
-      <input type="string">DC Bus</input>
-      <output type="string">DME</output>
-      <switch type="string">controls/switches/circuit-breakers/dme</switch>
-    </connector>
-
-    <connector>
-      <input type="string">DC Bus</input>
-      <output type="string">ADF</output>
-      <switch type="string">controls/switches/circuit-breakers/adf</switch>
-    </connector>
-
-    <connector>
-      <input type="string">DC Bus</input>
-      <output type="string">Transponder</output>
-      <switch type="string">controls/switches/circuit-breakers/txp</switch>
-    </connector>
-
-    <connector>
-      <input type="string">DC Bus</input>
-      <output type="string">Pitot Heater</output>
-      <switch type="string">controls/switches/circuit-breakers/pitot-heater</switch>
-    </connector>
-
-    <!-- Connections from isolation circuits -->
-
-    <connector>
-      <input type="string">AM/DG Circuit</input>
-      <output type="string">Directional Gyro</output>
-    </connector>
-
-    <connector>
-      <input type="string">Stall Warning/Boost Pump Circuit</input>
-      <output type="string">Fuel Pump</output>
-      <switch type="string">controls/electric/engine/fuel-pump</switch>
-    </connector>
-
-    <connector>
-      <input type="string">Stall Warning/Boost Pump Circuit</input>
-      <output type="string">Stall Warning</output>
-    </connector>
-
-    <connector>
-      <input type="string">LandTaxi/Nav Circuit</input>
-      <output type="string">Navigation Lights</output>
-    </connector>
-
-    <connector>
-      <input type="string">LandTaxi/Nav Circuit</input>
-      <output type="string">Taxi Light</output>
-      <switch type="string">controls/lighting/taxi-light</switch>
-    </connector>
-
-    <connector>
-      <input type="string">LandTaxi/Nav Circuit</input>
-      <output type="string">Landing Lights</output>
-      <switch type="string">controls/lighting/landing-lights</switch>
-    </connector>
-
-    <connector>
-      <input type="string">LVoltRelay/FuelConts Circuit</input>
-      <output type="string">Panel Lights</output>
-    </connector>
-
-    <connector>
-      <input type="string">LVoltRelay/FuelConts Circuit</input>
-      <output type="string">Carb Temp Gauge</output>
-    </connector>
-
-    <connector>
-      <input type="string">LVoltRelay/FuelConts Circuit</input>
-      <output type="string">CHT Gauge</output>
-    </connector>
-
-    <connector>
-      <input type="string">LVoltRelay/FuelConts Circuit</input>
-      <output type="string">EGT Gauge</output>
-    </connector>
-
-    <connector>
-      <input type="string">LVoltRelay/FuelConts Circuit</input>
-      <output type="string">Suction Gauge</output>
-    </connector>
-
-    <connector>
-      <input type="string">LVoltRelay/FuelConts Circuit</input>
-      <output type="string">OAT Gauge</output>
-    </connector>
-
-    <connector>
-      <input type="string">LVoltRelay/FuelConts Circuit</input>
-      <output type="string">Flap Indicator</output>
-    </connector>
-
-    <connector>
-      <input type="string">LVoltRelay/FuelConts Circuit</input>
-      <output type="string">Fuel Gauge</output>
-    </connector>
-
-    <connector>
-      <input type="string">LVoltRelay/FuelConts Circuit</input>
-      <output type="string">Fuel Pressure Gauge</output>
-    </connector>
-
-    <connector>
-      <input type="string">LVoltRelay/FuelConts Circuit</input>
-      <output type="string">Oil Temp Gauge</output>
-    </connector>
-
-    <connector>
-      <input type="string">LVoltRelay/FuelConts Circuit</input>
-      <output type="string">Oil Pressure Gauge</output>
-    </connector>
-
-    <connector>
-      <input type="string">Pilot 1 Flood Circuit</input>
-      <output type="string">Pilot 1 Flood</output>
-      <switch type="string">controls/lighting/pilot1-flood</switch>
-    </connector>
-
-    <connector>
-      <input type="string">Pilot 2 Flood Circuit</input>
-      <output type="string">Pilot 2 Flood</output>
-      <switch type="string">controls/lighting/pilot2-flood</switch>
-    </connector>
-
-  </electrical>
+  <!--
+  Main bus voltage comes from the alternator if the engine is running and
+  the circuit breaker is in. Otherwise main bus voltage depends on the
+  battery master switch. No attempt is made here to simulate lower output
+  from the alternator at low RPM.
+  -->
+  <filter>
+    <type>gain</type>
+    <input>
+      <condition>
+        <and>
+          <property>engines/engine/running</property>
+          <property>controls/switches/circuit-breakers/alt</property>
+        </and>
+      </condition>
+      <property>systems/electrical/suppliers/alternator</property>
+    </input>
+    <input>
+      <condition>
+        <property>controls/electric/battery-switch</property>
+      </condition>
+      <property>systems/electrical/suppliers/battery</property>
+    </input>
+    <output>systems/electrical/outputs/bus-dc</output>
+  </filter>
+
+  <!--
+  Alternator field is supplied if the alternator is producing current and
+  the alt-field circuit breaker is in.
+  -->
+  <filter>
+    <type>gain</type>
+    <input>
+      <condition>
+        <and>
+          <property>engines/engine/running</property>
+          <property>controls/switches/circuit-breakers/alt-field</property>
+        </and>
+      </condition>
+      <property>systems/electrical/suppliers/alternator</property>
+    </input>
+    <output>systems/electrical/outputs/alternator-field</output>
+  </filter>
+
+  <!--
+  Alternator field feeds the battery charging circuit when the generator
+  switch on the panel is on. Battery charge is not simulated.
+  -->
+  <filter>
+    <type>gain</type>
+    <gain>controls/electric/engine/generator</gain>
+    <input>systems/electrical/outputs/alternator-field</input>
+    <output>systems/electrical/outputs/battery-charger</output>
+  </filter>
+
+  <!-- Connections from the main bus direct to consumers -->
+
+  <filter>
+    <type>gain</type>
+    <gain>controls/electric/engine/starter-master</gain>
+    <input>systems/electrical/outputs/bus-dc</input>
+    <output>systems/electrical/outputs/starter</output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <gain>controls/switches/circuit-breakers/ap</gain>
+    <input>systems/electrical/outputs/bus-dc</input>
+    <output>systems/electrical/outputs/autopilot</output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <gain>controls/switches/circuit-breakers/beacon</gain>
+    <input>systems/electrical/outputs/bus-dc</input>
+    <output>systems/electrical/outputs/beacon</output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <gain>controls/switches/circuit-breakers/tb</gain>
+    <input>systems/electrical/outputs/bus-dc</input>
+    <output>systems/electrical/outputs/turn-coordinator</output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <gain>controls/switches/circuit-breakers/flaps</gain>
+    <input>systems/electrical/outputs/bus-dc</input>
+    <output>systems/electrical/outputs/flaps</output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <gain>controls/switches/circuit-breakers/comm</gain>
+    <input>systems/electrical/outputs/bus-dc</input>
+    <output>systems/electrical/outputs/nav</output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <gain>controls/switches/circuit-breakers/dme</gain>
+    <input>systems/electrical/outputs/bus-dc</input>
+    <output>systems/electrical/outputs/dme</output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <gain>controls/switches/circuit-breakers/adf</gain>
+    <input>systems/electrical/outputs/bus-dc</input>
+    <output>systems/electrical/outputs/adf</output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <gain>controls/switches/circuit-breakers/pitot-heater</gain>
+    <input>systems/electrical/outputs/bus-dc</input>
+    <output>systems/electrical/outputs/pitot-heater</output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <gain>controls/switches/circuit-breakers/txp</gain>
+    <input>systems/electrical/outputs/bus-dc</input>
+    <output>systems/electrical/outputs/transponder</output>
+  </filter>
+
+  <!-- Connections from the main bus to isolation circuits -->
+
+  <filter>
+    <type>gain</type>
+    <gain>controls/switches/circuit-breakers/am-dg</gain>
+    <input>systems/electrical/outputs/bus-dc</input>
+    <output>systems/electrical/outputs/am-dg-bus-dc</output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <gain>controls/switches/circuit-breakers/lvrelay-fuelconts</gain>
+    <input>systems/electrical/outputs/bus-dc</input>
+    <output>systems/electrical/outputs/lvoltrelay-fuelconts-bus-dc</output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <gain>controls/switches/circuit-breakers/stallwarning-boostpump</gain>
+    <input>systems/electrical/outputs/bus-dc</input>
+    <output>systems/electrical/outputs/stallwarning-boostpump-bus-dc</output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <gain>controls/switches/circuit-breakers/landtaxi-nav</gain>
+    <input>systems/electrical/outputs/bus-dc</input>
+    <output>systems/electrical/outputs/landtaxi-nav-bus-dc</output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <gain>controls/switches/circuit-breakers/pilot1-flood</gain>
+    <input>systems/electrical/outputs/bus-dc</input>
+    <output>systems/electrical/outputs/pilot1-flood-circuit</output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <gain>controls/switches/circuit-breakers/pilot2-flood</gain>
+    <input>systems/electrical/outputs/bus-dc</input>
+    <output>systems/electrical/outputs/pilot2-flood-circuit</output>
+  </filter>
+
+  <!-- Connections from isolation circuits to consumers -->
+
+  <filter>
+    <type>gain</type>
+    <input>systems/electrical/outputs/am-dg-bus-dc</input>
+    <output>systems/electrical/outputs/DG</output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <gain>controls/electric/engine/fuel-pump</gain>
+    <input>systems/electrical/outputs/stallwarning-boostpump-bus-dc</input>
+    <output>systems/electrical/outputs/fuel-pump</output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>systems/electrical/outputs/stallwarning-boostpump-bus-dc</input>
+    <output>systems/electrical/outputs/stall-warning</output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>systems/electrical/outputs/landtaxi-nav-bus-dc</input>
+    <output>systems/electrical/outputs/nav-lights</output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <gain>controls/lighting/taxi-light</gain>
+    <input>systems/electrical/outputs/landtaxi-nav-bus-dc</input>
+    <output>systems/electrical/outputs/taxi-light</output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <gain>controls/lighting/landing-lights</gain>
+    <input>systems/electrical/outputs/landtaxi-nav-bus-dc</input>
+    <output>systems/electrical/outputs/landing-lights</output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <input>systems/electrical/outputs/lvoltrelay-fuelconts-bus-dc</input>
+    <output>systems/electrical/outputs/carb-temp-gauge</output>
+    <output>systems/electrical/outputs/cht-gauge</output>
+    <output>systems/electrical/outputs/egt-gauge</output>
+    <output>systems/electrical/outputs/flap-indicator</output>
+    <output>systems/electrical/outputs/fuel-gauge</output>
+    <output>systems/electrical/outputs/fuel-pressure-gauge</output>
+    <output>systems/electrical/outputs/oat-gauge</output>
+    <output>systems/electrical/outputs/oil-pressure-gauge</output>
+    <output>systems/electrical/outputs/oil-temp-gauge</output>
+    <output>systems/electrical/outputs/panel-lights</output>
+    <output>systems/electrical/outputs/suction-gauge</output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <gain>controls/lighting/pilot1-flood</gain>
+    <input>systems/electrical/outputs/pilot1-flood-circuit</input>
+    <output>systems/electrical/outputs/pilot1-flood</output>
+  </filter>
+
+  <filter>
+    <type>gain</type>
+    <gain>controls/lighting/pilot2-flood</gain>
+    <input>systems/electrical/outputs/pilot2-flood-circuit</input>
+    <output>systems/electrical/outputs/pilot2-flood</output>
+  </filter>
 
 </PropertyList>
