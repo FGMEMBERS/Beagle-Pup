@@ -195,7 +195,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
   <nasal>
     <pup>
-      <file>Nasal/electrical.nas</file>
       <file>Nasal/messages.nas</file>
       <file>Nasal/pup.nas</file>
       <file>Nasal/refuel.nas</file>
@@ -222,7 +221,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <help include="Interface/help.xml"/>
     <menubar include="Interface/menubar.xml"/>
 
-    <aircraft-version>0.30.3</aircraft-version>
+    <aircraft-version>0.31.0</aircraft-version>
     <flight-model>jsb</flight-model>
 
     <aircraft-data>
@@ -313,17 +312,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <click type="bool">false</click>
     </sound>
 
-    <systems include="Systems/electrical.xml">
+    <systems>
       <path>Aircraft/Beagle-Pup/pup-systems.xml</path>
       <autopilot>
         <path>Systems/autopilot.xml</path>
       </autopilot>
       <autopilot n="1"/>
+      <electrical>
+        <!-- Disable the default electrical system -->
+        <path></path>
+      </electrical>
       <property-rule n="100">
         <path>Systems/filters.xml</path>
       </property-rule>
       <property-rule n="101">
         <path>Systems/autopilot-logic.xml</path>
+      </property-rule>
+      <property-rule n="102">
+        <path>Systems/electrical.xml</path>
       </property-rule>
     </systems>
 
@@ -340,6 +346,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </sim>
 
   <systems>
+    <electrical>
+      <suppliers>
+        <battery type="double">12</battery>
+        <alternator type="double">28</alternator>
+      </suppliers>
+    </electrical>
     <pitot>
       <total-pressure-inhg-icing alias="/fdm/jsbsim/systems/pitot/total-pressure-inhg"/>
     </pitot>
